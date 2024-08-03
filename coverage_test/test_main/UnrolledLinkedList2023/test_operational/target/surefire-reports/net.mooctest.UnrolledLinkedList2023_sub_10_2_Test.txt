@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.UnrolledLinkedList2023_sub_10_2_Test
+-------------------------------------------------------------------------------
+Tests run: 27, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in net.mooctest.UnrolledLinkedList2023_sub_10_2_Test
+test_4452(net.mooctest.UnrolledLinkedList2023_sub_10_2_Test)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_2_Test.test_4452(UnrolledLinkedList2023_sub_10_2_Test.java:210)
+

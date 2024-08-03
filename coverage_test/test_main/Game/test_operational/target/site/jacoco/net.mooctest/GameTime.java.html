@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameTime.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">GameTime.java</span></div><h1>GameTime.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+public class GameTime
+{
+    private double deltaTime;
+    private long baseTime;
+    private long pausedTime;
+    private long stopTime;
+    private long prevTime;
+    private long currTime;
+    private long lCurrTime;
+    private boolean stopped;
+
+    /**
+     * Complete Constructor.
+     * Initializes all fields to zero.
+     */
+    public GameTime()
+<span class="fc" id="L19">    {</span>
+        // Initialize Vars
+<span class="fc" id="L21">        this.deltaTime = 0.0f;</span>
+<span class="fc" id="L22">        this.baseTime = 0;</span>
+<span class="fc" id="L23">        this.pausedTime = 0;</span>
+<span class="fc" id="L24">        this.stopTime = 0;</span>
+<span class="fc" id="L25">        this.prevTime = 0;</span>
+<span class="fc" id="L26">        this.currTime = 0;</span>
+<span class="fc" id="L27">        this.lCurrTime = 0;</span>
+<span class="fc" id="L28">        this.stopped = false;</span>
+<span class="fc" id="L29">    }</span>
+
+    /**
+     * Gets the total time elapsed in the program.
+     * @return Returns the total time passed since the program has started.
+     */
+    public float getGameTime()
+    {
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(stopped)</span>
+        {
+<span class="fc" id="L39">            return (float)(this.stopTime - this.baseTime);</span>
+        }
+        else
+        {
+<span class="fc" id="L43">            return (float)((this.currTime - this.pausedTime) - this.baseTime);</span>
+        }
+    }
+
+    /**
+     * Gets the time passed since the last time the clock has been polled.
+     * @return Returns the time in milliseconds since the last update.
+     */
+    public float getDeltaTime()
+    {
+<span class="fc" id="L53">        return (float)this.deltaTime;</span>
+    }
+
+    /**
+     * Gets the time passed since the last time the clock has been polled.
+     * @return Returns the time in seconds since the last update.
+     */
+    public float getDeltaTimeSeconds()
+    {
+<span class="fc" id="L62">        return (float)this.deltaTime / 1000.0f;</span>
+    }
+
+    /**
+     * Resets the GameTime timer.
+     * Resets: &lt;br /&gt;
+     *  baseTime = System.currentTimeMillis(); &lt;br /&gt;
+     *  prevTime = System.currentTimeMillis(); &lt;br /&gt;
+     *  stopTime = 0; &lt;br /&gt;
+     *  stopped  = false; &lt;br /&gt;
+     */
+    public void reset()
+    {
+<span class="fc" id="L75">        lCurrTime = System.currentTimeMillis();</span>
+<span class="fc" id="L76">        this.baseTime = lCurrTime;</span>
+<span class="fc" id="L77">        this.prevTime = lCurrTime;</span>
+<span class="fc" id="L78">        this.stopTime = 0;</span>
+<span class="fc" id="L79">        this.stopped = false;</span>
+<span class="fc" id="L80">    }</span>
+
+    /**
+     * Starts the timer.
+     */
+    public void start()
+    {
+<span class="fc" id="L87">        long startTime = System.currentTimeMillis();</span>
+
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if(stopped)</span>
+        {
+            // Then accumulate stopped time
+<span class="fc" id="L92">            this.pausedTime += (startTime - this.stopTime);</span>
+
+            // Since the timer is starting back up reset it
+<span class="fc" id="L95">            this.prevTime = startTime;</span>
+
+            // No longer stopped
+<span class="fc" id="L98">            this.stopTime = 0;</span>
+<span class="fc" id="L99">            stopped = false;</span>
+        }
+<span class="fc" id="L101">    }</span>
+
+    /**
+     * Stops the timer.
+     */
+    public void stop()
+    {
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        if(!stopped)</span>
+        {
+<span class="fc" id="L110">            lCurrTime = System.currentTimeMillis();</span>
+<span class="fc" id="L111">            this.stopTime = lCurrTime;</span>
+<span class="fc" id="L112">            this.stopped = true;</span>
+        }
+<span class="fc" id="L114">    }</span>
+
+    /**
+     * Calculates the change in time between this update and the last
+     * update and adds the difference to the total game time
+     * game time = total time app has been running since it started.
+     */
+    public void tick()
+    {
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        if(stopped)</span>
+        {
+<span class="nc" id="L125">            this.deltaTime = 0;</span>
+<span class="nc" id="L126">            return;</span>
+        }
+
+<span class="fc" id="L129">        lCurrTime = System.currentTimeMillis();</span>
+<span class="fc" id="L130">        this.currTime = lCurrTime;</span>
+
+        // Time difference between this frame and the previous.
+<span class="fc" id="L133">        this.deltaTime = (this.currTime - this.prevTime);</span>
+
+        // Prepare for next frame.
+<span class="fc" id="L136">        this.prevTime = this.currTime;</span>
+
+        // Set to zero in case of inaccuracy
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">        if(this.deltaTime &lt; 0.0f)</span>
+        {
+<span class="nc" id="L141">            this.deltaTime = 0.0f;</span>
+        }
+<span class="fc" id="L143">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

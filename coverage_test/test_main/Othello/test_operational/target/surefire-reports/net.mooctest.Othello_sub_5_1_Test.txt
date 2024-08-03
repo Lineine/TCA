@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Othello_sub_5_1_Test
+-------------------------------------------------------------------------------
+Tests run: 240, Failures: 4, Errors: 2, Skipped: 0, Time elapsed: 0.123 s <<< FAILURE! - in net.mooctest.Othello_sub_5_1_Test
+test_2020(net.mooctest.Othello_sub_5_1_Test)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at net.mooctest.Othello_sub_5_1_Test.test_2020(Othello_sub_5_1_Test.java:3814)
+
+test_7530(net.mooctest.Othello_sub_5_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<7>
+	at net.mooctest.Othello_sub_5_1_Test.test_7530(Othello_sub_5_1_Test.java:3742)
+
+test_8960(net.mooctest.Othello_sub_5_1_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<[7, 0, 0, 7, 0, 2, 0, 1]> but was:<[0, 7, 0, 7, 0, 2, 0, 1]>
+	at net.mooctest.Othello_sub_5_1_Test.test_8960(Othello_sub_5_1_Test.java:1408)
+
+test_133(net.mooctest.Othello_sub_5_1_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-1> but was:<null>
+	at net.mooctest.Othello_sub_5_1_Test.test_133(Othello_sub_5_1_Test.java:997)
+
+test_147(net.mooctest.Othello_sub_5_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-38> but was:<null>
+	at net.mooctest.Othello_sub_5_1_Test.test_147(Othello_sub_5_1_Test.java:7253)
+
+test_11739(net.mooctest.Othello_sub_5_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at net.mooctest.Othello_sub_5_1_Test.test_11739(Othello_sub_5_1_Test.java:6887)
+

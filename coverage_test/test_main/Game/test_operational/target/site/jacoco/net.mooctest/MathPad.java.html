@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MathPad.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MathPad.java</span></div><h1>MathPad.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+
+/**
+ * Place to test out Math classes without launching a Game Window.
+ * @author paul
+ */
+<span class="nc" id="L8">public class MathPad</span>
+{
+    public static void main(String[] args)
+    {
+        // Tests out Vector2 methods and prints the results.
+        //MathPad.vector2Test();
+        // Tests out Vector3 methods and prints the results.
+        //MathPad.vector3Test();
+        // Tests out Matrix methods and prints the results.
+        //MathPad.matrixTest();
+        // Tests out Matrix3 methods and prints the results.
+        //MathPad.matrix4Test();
+
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        for(int i = 0; i &lt; 10; ++i)</span>
+<span class="nc" id="L22">                System.out.println(MathHelper.random());</span>
+
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        for(int i = 0; i &lt; 1000; i++)</span>
+<span class="nc" id="L25">            System.out.println(Vector2.random());</span>
+
+<span class="nc" id="L27">    }</span>
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Vector2 Unit Test&quot;&gt;
+    public static void vector2Test()
+    {
+<span class="nc" id="L32">        Vector2 a = new Vector2(1, 2);</span>
+<span class="nc" id="L33">        Vector2 b = new Vector2(3, 4);</span>
+
+        Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v;
+        float s1, s2, s3, s4, s5;
+
+        // Add the two vectors together
+<span class="nc" id="L39">        c = Vector2.add(a, b);</span>
+        // Subtract the two vectors from each other
+<span class="nc" id="L41">        d = Vector2.subtract(b, c);</span>
+        // multiply two vectors
+<span class="nc" id="L43">        e = Vector2.multiply(d, -1);</span>
+        // dot product
+<span class="nc" id="L45">        s1 = Vector2.dotProduct(a, b);</span>
+        // Distance
+<span class="nc" id="L47">        s2 = Vector2.distance(a, b);</span>
+        // Distance squared
+<span class="nc" id="L49">        s3 = Vector2.distanceSquared(a, b);</span>
+        // Magnitude
+<span class="nc" id="L51">        s4 = Vector2.magnitude(e);</span>
+        // Magnitude squared
+<span class="nc" id="L53">        s5 = Vector2.magnitudeSquared(e);</span>
+        // Normalize/Unit Vector
+<span class="nc" id="L55">        f = Vector2.normalize(e);</span>
+        // Equality Test
+<span class="nc" id="L57">        g = new Vector2(-1, -1);</span>
+<span class="nc" id="L58">        h = new Vector2(1, 1);</span>
+<span class="nc" id="L59">        boolean equals1 = Vector2.equals(g, h);</span>
+<span class="nc" id="L60">        boolean equals2 = Vector2.equals(g, g);</span>
+        // Min and Max Test
+<span class="nc" id="L62">        i = new Vector2(100, -100);</span>
+<span class="nc" id="L63">        j = new Vector2(-100, 100);</span>
+<span class="nc" id="L64">        k = Vector2.max(i, j);</span>
+<span class="nc" id="L65">        l = Vector2.min(i, j);</span>
+        // Reflect
+<span class="nc" id="L67">        m = Vector2.reflect(a, b);</span>
+        // Barycentric
+<span class="nc" id="L69">        n = Vector2.barycentric(a, b, c, 3, 4);</span>
+        // Scalar Division (Should = Infinity)
+<span class="nc" id="L71">        o = a.divide(0.0f);</span>
+<span class="nc" id="L72">        p = Vector2.divide(a, 5.0f);</span>
+<span class="nc" id="L73">        q = Vector2.divide(a, b);</span>
+        // Lerp, Barycentric, Catmull-Rom
+<span class="nc" id="L75">        r = Vector2.lerp(a, b, 0.5f);</span>
+<span class="nc" id="L76">        s = Vector2.barycentric(a, b, c, 0.7f, 0.2f);</span>
+<span class="nc" id="L77">        t = Vector2.catmullRom(a, b, c, d, 0.314f);</span>
+        // Hermite, and Smooth Step
+<span class="nc" id="L79">        u = Vector2.hermite(a, b, c, d, 0.6f);</span>
+<span class="nc" id="L80">        v = Vector2.smoothStep(a, b, 0.35f);</span>
+
+<span class="nc" id="L82">        System.out.println(&quot;a + b = &quot; + c);</span>
+<span class="nc" id="L83">        System.out.println(&quot;b - c = &quot; + d);</span>
+<span class="nc" id="L84">        System.out.println(&quot;-1 * d = &quot; + e);</span>
+<span class="nc" id="L85">        System.out.println(&quot;a dot b = &quot; + s1);</span>
+<span class="nc" id="L86">        System.out.println(&quot;Distance between a and b: &quot; + s2);</span>
+<span class="nc" id="L87">        System.out.println(&quot;Distance squared between a and b: &quot; + s3);</span>
+<span class="nc" id="L88">        System.out.println(&quot;Magnitude of e = &quot; + s4);</span>
+<span class="nc" id="L89">        System.out.println(&quot;Magnitude squared of e = &quot; + s5);</span>
+<span class="nc" id="L90">        System.out.println(&quot;Unit Vector of e: &quot; + f);</span>
+<span class="nc" id="L91">        System.out.println(&quot;is g == h? &quot; + equals1);</span>
+<span class="nc" id="L92">        System.out.println(&quot;is g == g? &quot; + equals2);</span>
+<span class="nc" id="L93">        System.out.println(&quot;Max of i &amp; j is &quot; + k);</span>
+<span class="nc" id="L94">        System.out.println(&quot;Min of i &amp; j is &quot; + l);</span>
+<span class="nc" id="L95">        System.out.println(&quot;Reflection of a and b: &quot; + m);</span>
+<span class="nc" id="L96">        System.out.println(&quot;Barycentric a, b, c, 3, 4: &quot; + n);</span>
+<span class="nc" id="L97">        System.out.println(&quot;a / 0 = &quot; + o);</span>
+<span class="nc" id="L98">        System.out.println(&quot;a / 5.0f = &quot; + p);</span>
+<span class="nc" id="L99">        System.out.println(&quot;a / b = &quot; + q);</span>
+<span class="nc" id="L100">        System.out.println(&quot;Lerp: &quot; + r);</span>
+<span class="nc" id="L101">        System.out.println(&quot;Barycentric: &quot; + s);</span>
+<span class="nc" id="L102">        System.out.println(&quot;Catmull-Rom: &quot; + t);</span>
+<span class="nc" id="L103">        System.out.println(&quot;Hermite: &quot; + u);</span>
+<span class="nc" id="L104">        System.out.println(&quot;Smooth Step: &quot; + v);</span>
+
+<span class="nc" id="L106">        System.out.println(&quot;SmoothStep a -&gt; b: &quot; + MathHelper.smoothStep(3.0f, 55.0f, 0.35f));</span>
+<span class="nc" id="L107">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Vector3 Unit Test&quot;&gt;
+    /**
+     * Test Method; Performs some operations
+     * To check results
+     */
+    public static void vector3Test()
+    {
+<span class="nc" id="L117">        Vector3 a = new Vector3(1, 2, 0);</span>
+<span class="nc" id="L118">        Vector3 b = new Vector3(3, 4, 0);</span>
+
+        Vector3 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q;
+        float s1, s2, s3, s4, s5;
+
+        // Add the two vectors together
+<span class="nc" id="L124">        c = Vector3.add(a, b);</span>
+        // Subtract the two vectors from each other
+<span class="nc" id="L126">        d = Vector3.subtract(b, c);</span>
+        // multiply two vectors
+<span class="nc" id="L128">        e = Vector3.multiply(d, -1);</span>
+        // dot product
+<span class="nc" id="L130">        s1 = Vector3.dotProduct(a, b);</span>
+        // Distance
+<span class="nc" id="L132">        s2 = Vector3.distance(a, b);</span>
+        // Distance squared
+<span class="nc" id="L134">        s3 = Vector3.distanceSquared(a, b);</span>
+        // Magnitude
+<span class="nc" id="L136">        s4 = Vector3.magnitude(e);</span>
+        // Magnitude squared
+<span class="nc" id="L138">        s5 = Vector3.magnitudeSquared(e);</span>
+        // Normalize/Unit Vector
+<span class="nc" id="L140">        f = Vector3.normalize(e);</span>
+        // Equality Test
+<span class="nc" id="L142">        g = new Vector3(-1, -1, 0);</span>
+<span class="nc" id="L143">        h = new Vector3(1, 1, 0);</span>
+<span class="nc" id="L144">        boolean equals1 = Vector3.equals(g, h);</span>
+<span class="nc" id="L145">        boolean equals2 = Vector3.equals(g, g);</span>
+        // Min and Max Test
+<span class="nc" id="L147">        i = new Vector3(100, -100, 0);</span>
+<span class="nc" id="L148">        j = new Vector3(-100, 100, 0);</span>
+<span class="nc" id="L149">        k = Vector3.max(i, j);</span>
+<span class="nc" id="L150">        l = Vector3.min(i, j);</span>
+        // Reflect
+<span class="nc" id="L152">        m = Vector3.reflect(a, b);</span>
+        // Barycentric
+        //n = Vector3.barycentric(a, b, c, 3, 4);
+        // Scalar Division (Should = Infinity)
+<span class="nc" id="L156">        o = a.divide(0.0f);</span>
+<span class="nc" id="L157">        p = Vector3.divide(a, 5.0f);</span>
+<span class="nc" id="L158">        q = Vector3.divide(a, b);</span>
+
+<span class="nc" id="L160">        System.out.println(&quot;a + b = &quot; + c);</span>
+<span class="nc" id="L161">        System.out.println(&quot;b - c = &quot; + d);</span>
+<span class="nc" id="L162">        System.out.println(&quot;-1 * d = &quot; + e);</span>
+<span class="nc" id="L163">        System.out.println(&quot;a dot b = &quot; + s1);</span>
+<span class="nc" id="L164">        System.out.println(&quot;Distance between a and b: &quot; + s2);</span>
+<span class="nc" id="L165">        System.out.println(&quot;Distance squared between a and b: &quot; + s3);</span>
+<span class="nc" id="L166">        System.out.println(&quot;Magnitude of e = &quot; + s4);</span>
+<span class="nc" id="L167">        System.out.println(&quot;Magnitude squared of e = &quot; + s5);</span>
+<span class="nc" id="L168">        System.out.println(&quot;Unit Vector of e: &quot; + f);</span>
+<span class="nc" id="L169">        System.out.println(&quot;is g == h? &quot; + equals1);</span>
+<span class="nc" id="L170">        System.out.println(&quot;is g == g? &quot; + equals2);</span>
+<span class="nc" id="L171">        System.out.println(&quot;Max of i &amp; j is &quot; + k);</span>
+<span class="nc" id="L172">        System.out.println(&quot;Min of i &amp; j is &quot; + l);</span>
+<span class="nc" id="L173">        System.out.println(&quot;Reflection of a and b: &quot; + m);</span>
+        //System.out.println(&quot;Barycentric a, b, c, 3, 4: &quot; + n);
+<span class="nc" id="L175">        System.out.println(&quot;a / 0 = &quot; + o);</span>
+<span class="nc" id="L176">        System.out.println(&quot;a / 5.0f = &quot; + p);</span>
+<span class="nc" id="L177">        System.out.println(&quot;a / b = &quot; + q);</span>
+<span class="nc" id="L178">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Matrix Unit Test&quot;&gt;
+    public static void matrixTest()
+    {
+        /*
+        float[][] one = {
+                            {1, 0, 1},
+                            {1, 0, 1}
+                        };
+
+        float[][] two = {
+            {5, 4, 3},
+            {2, 1, 0}
+        };
+
+        float[][] three = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+
+        float[][] four ={
+            {1,2},
+            {3,4},
+            {5,6}
+        };
+
+        float[][] zeros ={
+            {1, 2, 3, 4},
+            {0, 0, 0, 0},
+            {5, 6, 7, 8},
+            {0, 0, 0, 0}
+        };
+
+        float[][] five ={
+            {7, 2, 0, 1},
+            {4, 9, 3, -3},
+            {1, 1, 2, 3},
+            {0, 0, 0, 0},
+            {5, 8, 13, 21}
+        };
+
+        float[][] six = {
+            {1, -1, 1, 3},
+            {2, 1, -3, 5},
+            {4, 1, -1, 11},
+        };
+
+        float[][] ex5 = {
+            {2, 4, -1, 5, -2},
+            {-4, -5, 3, -8, 1},
+            {2, -5, -4, 1, 8},
+            {-6, 0, 7, -3, 1}
+        };
+
+        Matrix a = new Matrix(one);
+        Matrix b = new Matrix(two);
+        Matrix c = new Matrix(three);
+        Matrix d = new Matrix(four);
+        Matrix z = new Matrix(zeros);
+        Matrix e = new Matrix(five);
+        Matrix f = new Matrix(six);
+        Matrix example5 = new Matrix(ex5);
+
+        System.out.println(&quot;A&quot;);
+        System.out.println(a);
+        System.out.println(&quot;B&quot;);
+        System.out.println(b);
+        System.out.println(&quot;A + B&quot;);
+        System.out.println(a.add(b));
+        System.out.println(&quot;B transpose&quot;);
+        System.out.println(b.transpose());
+        System.out.println(&quot;C * D&quot;);
+        System.out.println(c.multiply(d));
+        System.out.println(&quot;REF&quot;);
+        System.out.println(f.ref());
+        System.out.println(&quot;RREF&quot;);
+        //System.out.println(f.rref());
+        //System.out.println(&quot;Rank of f = &quot; + f.rank());
+        System.out.println(&quot;REF ex5&quot;);
+        System.out.println(example5.ref());
+        System.out.println(&quot;RREF&quot;);
+        System.out.println(example5.rref());
+        *
+        */
+<span class="nc" id="L265">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Matrix3 Unit Test&quot;&gt;
+    /**
+     * Tests out Matrix3 operations.
+     */
+    public static void matrix3Test()
+    {
+<span class="nc" id="L274">    }</span>
+    //&lt;/editor-fold&gt;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

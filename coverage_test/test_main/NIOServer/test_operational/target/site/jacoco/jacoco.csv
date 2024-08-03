@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+test_operational,net.mooctest,MessageBuffer,4,199,2,12,0,40,2,10,0,5
+test_operational,net.mooctest,HttpHeaders,0,32,0,0,0,12,0,2,0,2
+test_operational,net.mooctest,Message,10,136,0,8,2,30,0,10,0,6
+test_operational,net.mooctest,SocketAccepter,27,35,0,0,6,13,0,2,0,2
+test_operational,net.mooctest,WriteProxy,4,20,0,0,1,7,1,2,1,2
+test_operational,net.mooctest,QueueIntFlip,0,432,0,44,0,80,0,30,0,8
+test_operational,net.mooctest,Util,113,0,20,0,28,0,13,0,3,0
+test_operational,net.mooctest,Server,0,77,0,0,0,20,0,2,0,2
+test_operational,net.mooctest,HttpMessageReaderFactory,0,7,0,0,0,3,0,2,0,2
+test_operational,net.mooctest,HttpMessageReader,68,32,4,0,15,10,3,3,1,3
+test_operational,net.mooctest,Socket,51,33,8,0,14,9,6,2,2,2
+test_operational,net.mooctest,MessageWriter,54,38,4,6,9,10,3,6,1,3
+test_operational,net.mooctest,SocketProcessor,257,158,22,6,64,54,15,9,1,9
+test_operational,net.mooctest,HttpUtil,3,411,1,43,2,68,1,29,0,8

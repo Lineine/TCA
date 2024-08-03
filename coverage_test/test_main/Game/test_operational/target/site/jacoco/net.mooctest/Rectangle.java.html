@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Rectangle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Rectangle.java</span></div><h1>Rectangle.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.awt.*;
+import java.io.Serializable;
+
+/**
+ * Rectangle geometric primitive.
+ * Has a x-coordinate, y-coordinate, width, and height.
+ * @version 0.1
+ * @author adam
+ */
+public class Rectangle implements Serializable
+{
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Properties&quot;&gt;
+    /**
+     * Integer representing the x-coordinate of the Rectangle.
+     */
+    public final int x;
+
+    /**
+     * Integer representing the y-coordinate of the Rectangle.
+     */
+    public final int y;
+
+    /**
+     * Integer representing the width of the Rectangle.
+     */
+    public final int width;
+
+    /**
+     * Integer representing the height of the Rectangle.
+     */
+    public final int height;
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Constructor&quot;&gt;
+    /**
+     * Complete Constructor
+     * @param x Integer representing the x-coordinate of the Rectangle.
+     * @param y Integer representing the y-coordinate of the Rectangle.
+     * @param width Integer representing the width of the Rectangle.
+     * @param height Integer representing the height of the Rectangle.
+     */
+    public Rectangle(int x, int y, int width, int height)
+<span class="fc" id="L45">    {</span>
+<span class="fc" id="L46">        this.x = x;</span>
+<span class="fc" id="L47">        this.y = y;</span>
+<span class="fc" id="L48">        this.width = width;</span>
+<span class="fc" id="L49">        this.height = height;</span>
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * Copy Constructor.
+     * Creates a copy of the provided Rectangle.
+     * @param rect A Rectangle to be copied.
+     */
+    public Rectangle(Rectangle rect)
+    {
+<span class="fc" id="L59">        this(rect.x, rect.y, rect.width, rect.height);</span>
+<span class="fc" id="L60">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Equals&quot;&gt;
+    /**
+     * Test the equality between this Rectangle and an Object believed to be a Rectangle.
+     * @param obj A Object believed to be a Rectangle.
+     * @return Returns this == that.
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+<span class="fc" id="L72">        boolean result = false;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        if(obj != null)</span>
+        {
+            // If they have the same address they must be the same object.
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">            if(obj == this)</span>
+<span class="nc" id="L77">                result = true;</span>
+            // Determine if the Object is a rectangle.
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">            else if(obj instanceof Rectangle)</span>
+            {
+                // If it is, cast it to a new Rectangle and compare it with the given Rectangle.
+<span class="fc" id="L82">                Rectangle rectangle = (Rectangle)obj;</span>
+<span class="pc bpc" id="L83" title="1 of 4 branches missed.">                if((this.width == rectangle.width) &amp;&amp; (this.height == rectangle.height))</span>
+                {
+<span class="fc" id="L85">                    result = true;</span>
+                }
+            }
+        }
+<span class="fc" id="L89">        return result;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Inflate&quot;&gt;
+    /**
+     * Pushes the edges of a Rectangle out by the provided values starting from the center.
+     * @param r A Rectangle to inflate.
+     * @param xScale Integer representing the horizontal scale.
+     * @param yScale Integer representing the vertical scale.
+     * @return Returns a new Rectangle inflated by the inputs.
+     */
+    public static Rectangle inflate(Rectangle r, int xScale, int yScale) {
+		int newWidth, newHeight, newX, newY;
+
+		// Determine the widths of the new Rectangle to return.
+<span class="fc" id="L105">		newWidth = r.width + xScale;</span>
+<span class="fc" id="L106">		newHeight = r.height + yScale;</span>
+
+                // Determine the new position (central anchor point inflation)
+<span class="fc" id="L109">                newX = r.x - xScale/2;</span>
+<span class="fc" id="L110">                newY = r.y - yScale/2;</span>
+
+		// Create a new Rectangle with the original x and y positions, and the
+		// new width and height values.
+<span class="fc" id="L114">		Rectangle rect = new Rectangle (newX, newY, newWidth, newHeight);</span>
+
+<span class="fc" id="L116">		return rect;</span>
+    }
+
+    /**
+     * Pushes the edges of this Rectangle out by the provided values.
+     * @param xScale Integer representing the horizontal scale.
+     * @param yScale Integer representing the vertical scale.
+     * @return Returns a new Rectangle scaled by the inputs.
+     */
+    public Rectangle inflate(int xScale, int yScale)
+    {
+<span class="fc" id="L127">        return Rectangle.inflate(this, xScale, yScale);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Intersection&quot;&gt;
+    /**
+     * Finds the intersection between two Rectangles.
+     * @param a A Rectangle.
+     * @param b A Rectangle that may intersect a.
+     * @return Returns a new Rectangle representing a intersect b.
+     */
+    public static Rectangle intersection(Rectangle a, Rectangle b)
+    {
+<span class="fc" id="L140">        int x=0, y=0, xWidth=0, yHeight=0;</span>
+
+        // Determine if b's x value is between a's left and right boundaries.
+        // If it is, set the x value of the new Rectangle to b's x value
+        // and set the width to (smaller right value - x value);
+<span class="pc bpc" id="L145" title="2 of 4 branches missed.">        if(a.left() &lt;= b.left() &amp;&amp; b.left() &lt;= a.right()){</span>
+<span class="fc" id="L146">            x = b.left();</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">            xWidth = (a.right() &lt; b.right()) ? (a.right() - x) : (b.right() - x);</span>
+        }
+
+        // Determine if a's x value is between b's left and right boundaries.
+        // If it is, set the x value of the new Rectangle to a's x value
+        // and set the width to (smaller right value - x value)
+<span class="nc bnc" id="L153" title="All 4 branches missed.">        else if(b.left() &lt;= a.left() &amp;&amp; a.left() &lt;= b.right()){</span>
+<span class="nc" id="L154">            x = a.left();</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">            xWidth = (a.right() &lt; b.right()) ? (a.right() - x) : (b.right() - x);</span>
+        }
+
+        // Determine if b's y value is between a's top and bottom boundaries.
+        // If it is, set the y value of the new Rectangle to b's y value
+        // and set the height to (smaller bottom value - y value)
+<span class="pc bpc" id="L161" title="2 of 4 branches missed.">        if(a.top() &lt;= b.top() &amp;&amp; b.top() &lt;= a.bottom()){</span>
+<span class="fc" id="L162">            y = b.top();</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">            yHeight = (a.bottom() &lt; b.bottom()) ? (a.bottom() - y) : (b.bottom() - y);</span>
+        }
+
+        // Determine if a's y value is between b's top and bottom boundaries.
+        // If it is, set the y value of the new Rectangle to a's y value
+        // and set the height to (smaller bottom value - y value)
+<span class="nc bnc" id="L169" title="All 4 branches missed.">        else if(b.top() &lt;= a.top() &amp;&amp; a.top() &lt;= b.bottom()){</span>
+<span class="nc" id="L170">            y = a.top();</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">            yHeight = (b.bottom() &lt; a.bottom()) ? (b.bottom() - y) : (a.bottom() - y);</span>
+        }
+
+        // Create a new Rectangle with the values found and return it.
+<span class="fc" id="L175">        return new Rectangle(x, y, xWidth, yHeight);</span>
+    }
+
+    /**
+     * Finds the intersection between this Rectangle and that Rectangle.
+     * @param that A Rectangle that may intersect this.
+     * @return Returns a new Rectangle representing this intersect that.
+     */
+    public Rectangle intersection(Rectangle that) {
+<span class="fc" id="L184">        return Rectangle.intersection(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Intersects&quot;&gt;
+    /**
+     * Checks if two Rectangles intersects each other.
+     * @param a A Rectangle.
+     * @param b A Rectangle that may be intersecting a.
+     * @return Returns b intersect a.
+     */
+    public static boolean intersects(Rectangle a, Rectangle b)
+    {
+<span class="nc" id="L197">        boolean result = true;</span>
+<span class="nc" id="L198">        Rectangle test = intersection(a, b);</span>
+<span class="nc bnc" id="L199" title="All 4 branches missed.">        if(test.width == 0 || test.height == 0) result = false;</span>
+<span class="nc" id="L200">            return result;</span>
+    }
+
+    /**
+     * Checks if that Rectangle intersects this Rectangle.
+     * @param that A rectangle that may be intersecting this Rectangle.
+     * @return Returns that intersect this.
+     */
+    public boolean intersects(Rectangle that)
+    {
+<span class="nc" id="L210">        return Rectangle.intersects(this, that);</span>
+    }
+
+    /**
+     * Checks if the point represented by (px,py) intersects the provided Rectangle.
+     * @param r A Rectangle.
+     * @param px The x-coordinate of a point that may be intersecting the Rectangle.
+     * @param py The y-coordinate of a point that may be intersecting the Rectangle.
+     * @return Returns (px,py) intersect r.
+     */
+    public static boolean intersects(Rectangle r, int px, int py)
+    {
+<span class="fc" id="L222">        boolean result = false;</span>
+        // Determine if the Point p falls within the boundaries of Rectangle r.
+<span class="pc bpc" id="L224" title="1 of 4 branches missed.">        if(r.left() &lt;= px &amp;&amp; px &lt;= r.right())</span>
+<span class="pc bpc" id="L225" title="2 of 4 branches missed.">            if(r.top() &lt;= py &amp;&amp; py &lt;= r.bottom())</span>
+<span class="fc" id="L226">                result = true;</span>
+<span class="fc" id="L227">        return result;</span>
+    }
+
+    /**
+     * Checks if the point represented by (px,py) intersects this Rectangle.
+     * @param px The x-coordinate of a point that may be intersecting the Rectangle.
+     * @param py The y-coordinate of a point that may be intersecting the Rectangle.
+     * @return Returns (px,py) intersect this.
+     */
+    public boolean intersects(int px, int py)
+    {
+<span class="fc" id="L238">        return Rectangle.intersects(this, px, py);</span>
+    }
+
+    /**
+     * Checks if a Point intersects a Rectangle.
+     * @param r A Rectangle.
+     * @param p A Point that may be intersecting a.
+     * @return Returns p intersect r.
+     */
+    public static boolean intersects(Rectangle r, Point p)
+    {
+<span class="nc" id="L249">        return Rectangle.intersects(r, p.x, p.y);</span>
+    }
+
+    /**
+     * Checks if a point intersects this Rectangle
+     * @param p A point that may be intersecting this Rectangle.
+     * @return Returns p intersect this.
+     */
+    public boolean intersects(Point p)
+    {
+<span class="nc" id="L259">        return Rectangle.intersects(this, p);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Offset&quot;&gt;
+    /**
+     * Changes the position of a Rectangle.
+     * @param r A Rectangle to be moved.
+     * @param x Integer representing the x-coordinate of the Rectangle.
+     * @param y Integer representing the y-coordinate of the Rectangle.
+     * @return Returns a new Rectangle with the desired position.
+     */
+    public static Rectangle offset(Rectangle r, int x, int y)
+    {
+        // Create a new Rectangle with identical dimensions but moved to given offset.
+<span class="fc" id="L274">        return new Rectangle(x, y, r.width, r.height);</span>
+    }
+
+    /**
+     * Changes the position of this Rectangle.
+     * @param x Integer representing the x-coordinate of the Rectangle.
+     * @param y Integer representing the y-coordinate of the Rectangle.
+     * @return Returns a new Rectangle with the desired position.
+     */
+    public Rectangle offset(int x, int y)
+    {
+<span class="fc" id="L285">        return Rectangle.offset(this, x, y);</span>
+    }
+
+    /**
+     * Changes the position of a Rectangle.
+     * @param r A Rectangle to be moved.
+     * @param p A Point representing the x-coordinate and y-coordinate of the Rectangle.
+     * @return Returns a new Rectangle with the desired position.
+     */
+    public static Rectangle offset(Rectangle r, Point p)
+    {
+<span class="nc" id="L296">        return Rectangle.offset(r, p.x, p.y);</span>
+    }
+
+    /**
+     * Changes the position of this Rectangle.
+     * @param p A Point representing the x-coordinate and y-coordinate of the Rectangle.
+     * @return Returns a new Rectangle with the desired position.
+     */
+    public Rectangle offset(Point p)
+    {
+<span class="nc" id="L306">        return Rectangle.offset(this, p.x, p.y);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Special Rectangles&quot;&gt;
+    /**
+     * Finds the bottom y-coordinate of a Rectangle.
+     * @param r A Rectangle to find the bottom of.
+     * @return Returns the y-coordinate of the bottom of a Rectangle.
+     */
+    public static int bottom(Rectangle r)
+    {
+        // Calculate bottom of rectangle as y + height
+<span class="fc" id="L319">        return (r.y + r.height);</span>
+    }
+
+    /**
+     * Finds the bottom y-coordinate of this Rectangle.
+     * @return Returns the y-coordinate of the bottom of this Rectangle.
+     */
+    public int bottom()
+    {
+<span class="fc" id="L328">        return Rectangle.bottom(this);</span>
+    }
+
+    /**
+     * Finds the (x,y) position of the center of a Rectangle.
+     * @param r A Rectangle to find the center (x,y) of.
+     * @return Returns the (x,y) position of the center of a rectangle.
+     */
+    public static Point center(Rectangle r)
+    {
+        // Calculate center of rectangle and return as a Point.
+<span class="nc" id="L339">        return new Point((r.x + r.width/2), (r.y + r.height/2));</span>
+    }
+
+    /**
+     * Finds the (x,y) position of the center of this Rectangle.
+     * @return Returns the (x,y) position of the center of this rectangle.
+     */
+    public Point center()
+    {
+<span class="nc" id="L348">        return Rectangle.center(this);</span>
+    }
+
+    /**
+     * Determines if the Rectangle is empty.
+     * Width = 0, Height = 0;
+     * @param rect Rectangle object to check.
+     * @return Returns if the Rectangle is empty.
+     */
+    public static boolean isEmpty(Rectangle rect)
+    {
+<span class="nc" id="L359">        boolean result = false;</span>
+<span class="nc bnc" id="L360" title="All 4 branches missed.">        if(rect.width == 0 || rect.height == 0) result = true;</span>
+<span class="nc" id="L361">        return result;</span>
+    }
+
+    /**
+     * Determines if this Rectangle is empty.
+     * Width = 0, Height = 0;
+     * @return Returns if the rectangle is empty.
+     */
+    public boolean isEmpty()
+    {
+<span class="nc" id="L371">        return Rectangle.isEmpty(this);</span>
+    }
+
+    /**
+     * Finds the left side x-coordinate of this Rectangle.
+     * @param r A Rectangle to find the left side of.
+     * @return Returns the x-coordinate of the left side of a Rectangle.
+     */
+    public static int left(Rectangle r)
+    {
+<span class="fc" id="L381">        return r.x;</span>
+    }
+
+    /**
+     * Finds the left side x-coordinate of this Rectangle.
+     * @return Returns the x-coordinate of the left side of this Rectangle.
+     */
+    public int left()
+    {
+<span class="fc" id="L390">        return Rectangle.left(this);</span>
+    }
+
+    /**
+     * Gets the (x,y) position of the upper left side of a Rectangle.
+     * @param r A Rectangle to find the location of.
+     * @return Returns the (x,y) location of a Rectangle.
+     */
+    public static Point location(Rectangle r)
+    {
+        // Return a point representing top left corner of the Rectangle.
+<span class="nc" id="L401">        return new Point(r.left(), r.top());</span>
+    }
+
+    /**
+     * Gets the (x,y) position of the upper left side of this Rectangle.
+     * @return Returns the (x,y) position of the upper left side of the Rectangle.
+     */
+    public Point location()
+    {
+<span class="nc" id="L410">        return Rectangle.location(this);</span>
+    }
+
+    /**
+     * Finds the x-coordinate of the right side of a Rectangle.
+     * @param r A Rectangle to find the right side of.
+     * @return Returns the x-coordinate of the right side of this Rectangle.
+     */
+    public static int right(Rectangle r)
+    {
+        // Calculate right boundary of rectangle as (x + width)
+<span class="fc" id="L421">        return r.x + r.width;</span>
+    }
+
+    /**
+     * Finds the x-coordinate of the right side of this Rectangle.
+     * @return Returns the x-coordinate of the right side of this Rectangle.
+     */
+    public int right()
+    {
+<span class="fc" id="L430">        return Rectangle.right(this);</span>
+    }
+
+    /**
+     * Finds the y-coordinate of the top of a Rectangle.
+     * @param r A Rectangle to find the top of.
+     * @return Returns the y-coordinate of the top of this Rectangle.
+     */
+    public static int top(Rectangle r)
+    {
+        // Calculate top boundary of rectangle as y
+<span class="fc" id="L441">        return r.y;</span>
+    }
+
+    /**
+     * Finds the y-coordinate of the top of this Rectangle.
+     * @return Returns the y-coordinate of the top of this Rectangle.
+     */
+    public int top()
+    {
+<span class="fc" id="L450">        return Rectangle.top(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;To String&quot;&gt;
+    /**
+     * @return Returns a String representation of a Rectangle.
+     */
+    @Override
+    public String toString()
+    {
+        // Creates a String representation of the values of the rectangle
+<span class="nc" id="L462">        String result = String.format(&quot;X-Pos: %d, Y-Pos: %d, Width: %d, Height: %d&quot;, this.x, this.y, this.width, this.height);</span>
+<span class="nc" id="L463">        return result;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Union&quot;&gt;
+    /**
+     * Creates a new Rectangle that contains the two provided Rectangles.
+     * @param a A Rectangle.
+     * @param b A Rectangle.
+     * @return Returns a union b.
+     */
+    public static Rectangle union(Rectangle a, Rectangle b)
+    {
+<span class="nc" id="L476">        int x = 0, y = 0, width = 0, height = 0;</span>
+
+        // Determine which boundary gives more area for the new rectangle
+        // and set that as the new value.
+
+<span class="nc bnc" id="L481" title="All 2 branches missed.">        x = (a.left() &lt; b.left()) ? a.x : b.x;</span>
+<span class="nc bnc" id="L482" title="All 2 branches missed.">        y = (a.bottom() &lt; b.bottom()) ? a.y : b.y;</span>
+<span class="nc bnc" id="L483" title="All 2 branches missed.">        width = (a.right() &lt; b.right()) ? a.right() : b.right();</span>
+<span class="nc bnc" id="L484" title="All 2 branches missed.">        height = (a.top() &lt; b.top()) ? b.top() : a.top();</span>
+
+        // Create a new Rectangle with the given values and return it.
+<span class="nc" id="L487">        return new Rectangle(x, y, (width - x), (height - y));</span>
+    }
+
+    /**
+     * Creates a new Rectangle that contains this Rectangle and that Rectangle.
+     * @param that A Rectangle.
+     * @return Returns this union that.
+     */
+    public Rectangle union(Rectangle that)
+    {
+<span class="nc" id="L497">        return Rectangle.union(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

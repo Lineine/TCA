@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MathHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MathHelper.java</span></div><h1>MathHelper.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+<span class="nc" id="L3">public class MathHelper</span>
+{
+    /**
+     * Clamps a float value between a min and a max value. &lt;br /&gt;
+     * If the value is below min, value is set to min. &lt;br /&gt;
+     * If the value is above max, value is set to max. &lt;br /&gt;
+     * If the value is min &lt; value &lt; max then we leave it alone. &lt;br /&gt;
+     * @param value Value to be clamped.
+     * @param min Minimum value the value can be.
+     * @param max Maximum value the value can be.
+     * @return Returns the clamped value.
+     */
+    public static float clamp(float value, float min, float max)
+    {
+<span class="nc bnc" id="L17" title="All 4 branches missed.">        return (value &gt; max) ? max : (value &lt; min) ? min : value;</span>
+    }
+
+    /**
+     * Clamps a integer value between a min and a max value.&lt;br /&gt;
+     * If the value is below min, value is set to min. &lt;br /&gt;
+     * If the value is above max, value is set to max. &lt;br /&gt;
+     * If the value is min &lt; value &lt; max then we leave it alone.
+     * @param value Value to be clamped.
+     * @param min Minimum value the value can be.
+     * @param max Maximum value the value can be.
+     * @return Returns the clamped value.
+     */
+    public static int clamp(int value, int min, int max)
+    {
+<span class="nc bnc" id="L32" title="All 4 branches missed.">        return (value &gt; max) ? max : (value &lt; min) ? min : value;</span>
+    }
+
+    /**
+     * Do the dot product of two arrays
+     * @param a the first array
+     * @param b the second array
+     * @return the value of the dot product
+     */
+    public static int dotProduct(int[] a, int[] b){
+<span class="nc" id="L42">        int answer = 0;</span>
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if(a.length == b.length){</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            for (int i = 0; i &lt; a.length; i++) {</span>
+<span class="nc" id="L46">                answer += (a[i] * b[i]);</span>
+            }
+<span class="nc" id="L48">        }else throw new IllegalArgumentException(&quot;can't use dotProduct with different sized vectors.&quot;</span>
+                + &quot;The two lengths were &quot; + a.length + &quot; and &quot; + b.length);
+<span class="nc" id="L50">        return answer;</span>
+    }
+
+    /**
+     * Do the dot product of two arrays
+     * @param a the first array
+     * @param b the second array
+     * @return the value of the dot product
+     */
+    public static float dotProduct(float[] a, float[] b){
+<span class="nc" id="L60">        float answer = 0;</span>
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(a.length == b.length){</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            for (int i = 0; i &lt; a.length; i++) {</span>
+<span class="nc" id="L64">                answer += (a[i] * b[i]);</span>
+            }
+<span class="nc" id="L66">        }else throw new IllegalArgumentException(&quot;can't use dotProduct with different sized vectors.&quot;</span>
+                + &quot;The two lengths were &quot; + a.length + &quot; and &quot; + b.length);
+<span class="nc" id="L68">        return answer;</span>
+    }
+
+    /**
+     * Linear interpolation &lt;br /&gt;
+     * value1 + (value2 - value1) * amount
+     * @param start A float value we want to interpolate with.
+     * @param end A float value we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two floats.
+     */
+    public static float lerp(float start, float end, float amount)
+    {
+<span class="fc" id="L81">        float v = start + (end - start) * amount;</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        return amount &gt;= 1 ? end : v;</span>
+    }
+
+    /**
+     * Performs a Smooth Step interpolation between two points.
+     * @param start A float value.
+     * @param end A float value.
+     * @param amount A float value between zero and one.
+     * @return Returns the interpolation between two values.
+     */
+    public static float smoothStep(float start, float end, float amount)
+    {
+        // smoothStep(t) = 3t2 − 2t3
+<span class="fc" id="L95">        amount = (amount * amount) * (3 - (2 * amount));</span>
+        // (A * v) + (B * (1 - v));
+<span class="fc" id="L97">        float v = (start * (1 - amount)) + (end * amount);</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        return amount &gt;= 1 ? end : v;</span>
+    }
+
+    /**
+     * Check to see if a float value is smaller than the min value.
+     * If it is below min, value is set to min.
+     * @param value Value to check.
+     * @param min Minimum value the value can be.
+     * @return Returns the evaluated value.
+     */
+    public static float min(float value, float min)
+    {
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        return (value &lt; min) ? min : value;</span>
+    }
+
+
+    /**
+     * Check to see if a integer value is smaller than the min value.
+     * If it is below min, value is set to min.
+     * @param value Value to check.
+     * @param min Minimum value the value can be.
+     * @return Returns the evaluated value.
+     */
+    public static int min(int value, int min)
+    {
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        return (value &lt; min) ? min : value;</span>
+    }
+
+
+    /**
+     * Check to see if a float value is larger than the max value.
+     * If it is above max, value is set to max.
+     * @param value Value to check.
+     * @param max Maximum value the value can be.
+     * @return Returns the evaluated value.
+     */
+    public static float max(float value, float max)
+    {
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        return (value &gt; max) ? max : value;</span>
+    }
+
+    /**
+     * Check to see if a integer value is larger than the max value.
+     * If it is above max, value is set to max.
+     * @param value Value to check.
+     * @param max Maximum value the value can be.
+     * @return Returns the evaluated value.
+     */
+    public static int max(int value, int max)
+    {
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        return (value &gt; max) ? max : value;</span>
+    }
+
+    /**
+     * Generates a random number between a range inclusively.
+     * @param min int value representing the minimum bound inclusively.
+     * @param max int value representing the maximum bound inclusively.
+     * @return Returns a random number k where min &amp;#8804; k &amp;#8804; max.
+     */
+    public static int random(int min, int max)
+    {
+        int k;
+<span class="pc bpc" id="L160" title="3 of 4 branches missed.">        if(min &lt; 0 &amp;&amp; max &lt; 0)</span>
+        {
+<span class="nc" id="L162">            min *= -1;</span>
+<span class="nc" id="L163">            max *= -1;</span>
+<span class="nc" id="L164">            k = (int)((Math.random() * (min - max + 1)) + max) * -1;</span>
+        }
+<span class="pc bpc" id="L166" title="1 of 2 branches missed.">        else if(min &lt; 0)</span>
+<span class="nc" id="L167">            k = (int)(Math.random() * (Math.abs(min) + max + 1)) - Math.abs(min);</span>
+        else
+<span class="fc" id="L169">            k = (int)((Math.random() * (max - min + 1)) + min);</span>
+<span class="fc" id="L170">        return k;</span>
+    }
+
+    /**
+     * Generates a random number between 0 and max inclusive.
+     * @param max int value representing the maximum bound inclusively.
+     * @return Returns a random number k where 0 &amp;#8804; k &amp;#8804; max.
+     */
+    public static int random(int max)
+    {
+<span class="fc" id="L180">        return MathHelper.random(0, max);</span>
+    }
+
+    /**
+     * Generates a random number between 0 and Integer.MAX_VALUE inclusive.
+     * @return Returns a random number k where 0 &amp;#8804; k &amp;#8804; Integer.MAX_VALUE.
+     */
+    public static int random()
+    {
+<span class="nc" id="L189">        return MathHelper.random(Integer.MAX_VALUE - 1);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AcceleratedGameTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">AcceleratedGameTest.java</span></div><h1>AcceleratedGameTest.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.util.Random;
+
+/*
+ * This is an example of a simple windowed render loop
+ */
+<span class="nc" id="L14">public class AcceleratedGameTest</span>
+{
+
+    public static void main(String[] args)
+    {
+<span class="nc" id="L19">        Vector2 vec1 = new Vector2(1, 1);</span>
+<span class="nc" id="L20">        Vector2 vec2 = new Vector2(5, 1);</span>
+<span class="nc" id="L21">        Vector2 vec3 = new Vector2(3, 5);</span>
+<span class="nc" id="L22">        float b2 = 0.4f;</span>
+<span class="nc" id="L23">        float b3 = 0.6f;</span>
+<span class="nc" id="L24">        Vector2 bary = Vector2.barycentric(vec1, vec2, vec3, b2, b3);</span>
+<span class="nc" id="L25">        System.out.println(bary);</span>
+
+
+
+        // Create game window...
+<span class="nc" id="L30">        JFrame app = new JFrame(&quot;Accelerated Test&quot;);</span>
+<span class="nc" id="L31">        app.setIgnoreRepaint( true );</span>
+<span class="nc" id="L32">        app.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );</span>
+
+        // Create canvas for painting...
+<span class="nc" id="L35">        Canvas canvas = new Canvas();</span>
+<span class="nc" id="L36">        canvas.setIgnoreRepaint(true);</span>
+<span class="nc" id="L37">        canvas.setSize(640, 480);</span>
+
+        // Add canvas to game window...
+<span class="nc" id="L40">        app.add(canvas);</span>
+<span class="nc" id="L41">        app.pack();</span>
+<span class="nc" id="L42">        app.setVisible(true);</span>
+
+        // Create BackBuffer...
+<span class="nc" id="L45">        canvas.createBufferStrategy(2);</span>
+<span class="nc" id="L46">        BufferStrategy buffer = canvas.getBufferStrategy();</span>
+
+        // Get graphics configuration...
+<span class="nc" id="L49">        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</span>
+<span class="nc" id="L50">        GraphicsDevice gd = ge.getDefaultScreenDevice();</span>
+<span class="nc" id="L51">        GraphicsConfiguration gc = gd.getDefaultConfiguration();</span>
+
+        // Create off-screen drawing surface
+<span class="nc" id="L54">        BufferedImage bi = gc.createCompatibleImage(640, 480);</span>
+
+        // Objects needed for rendering...
+<span class="nc" id="L57">        Graphics graphics = null;</span>
+<span class="nc" id="L58">        Graphics2D g2d = null;</span>
+<span class="nc" id="L59">        Color background = Color.BLACK;</span>
+<span class="nc" id="L60">        Random rand = new Random();</span>
+
+        // Variables for counting frames per seconds
+<span class="nc" id="L63">        int fps = 0;</span>
+<span class="nc" id="L64">        int frames = 0;</span>
+<span class="nc" id="L65">        long totalTime = 0;</span>
+<span class="nc" id="L66">        long curTime = System.currentTimeMillis();</span>
+<span class="nc" id="L67">        long lastTime = curTime;</span>
+
+        while(true)
+        {
+            try
+            {
+                // count Frames per second...
+<span class="nc" id="L74">                lastTime = curTime;</span>
+<span class="nc" id="L75">                curTime = System.currentTimeMillis();</span>
+<span class="nc" id="L76">                totalTime += curTime - lastTime;</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">                if(totalTime &gt; 1000)</span>
+                {
+<span class="nc" id="L79">                    totalTime -= 1000;</span>
+<span class="nc" id="L80">                    fps = frames;</span>
+<span class="nc" id="L81">                    frames = 0;</span>
+                }
+<span class="nc" id="L83">                ++frames;</span>
+
+            // clear back buffer...
+<span class="nc" id="L86">            g2d = bi.createGraphics();</span>
+<span class="nc" id="L87">            g2d.setColor( background );</span>
+<span class="nc" id="L88">            g2d.fillRect( 0, 0, 639, 479 );</span>
+
+            // draw some rectangles...
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            for(int i = 0; i &lt; 20; ++i)</span>
+            {
+<span class="nc" id="L93">                int r = rand.nextInt(256);</span>
+<span class="nc" id="L94">                int g = rand.nextInt(256);</span>
+<span class="nc" id="L95">                int b = rand.nextInt(256);</span>
+<span class="nc" id="L96">                g2d.setColor( new Color(r,g,b) );</span>
+<span class="nc" id="L97">                int x = rand.nextInt( 640/2 );</span>
+<span class="nc" id="L98">                int y = rand.nextInt( 480/2 );</span>
+<span class="nc" id="L99">                int w = rand.nextInt( 640/2 );</span>
+<span class="nc" id="L100">                int h = rand.nextInt( 480/2 );</span>
+<span class="nc" id="L101">                g2d.fillRect( x, y, w, h );</span>
+            }
+
+            // display frames per second...
+<span class="nc" id="L105">            g2d.setFont( new Font( &quot;Courier New&quot;, Font.PLAIN, 12 ) );</span>
+<span class="nc" id="L106">            g2d.setColor( Color.GREEN );</span>
+<span class="nc" id="L107">            g2d.drawString( String.format( &quot;FPS: %s&quot;, fps ), 20, 20 );</span>
+
+            // Blit image and flip...
+<span class="nc" id="L110">            graphics = buffer.getDrawGraphics();</span>
+<span class="nc" id="L111">            graphics.drawImage(bi, 0, 0, null);</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">            if(!buffer.contentsLost())</span>
+<span class="nc" id="L113">              buffer.show();</span>
+
+            // Let the OS have a little time...
+<span class="nc" id="L116">            Thread.yield();</span>
+          }
+          finally
+          {
+            // release resources
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            if( graphics != null )</span>
+<span class="nc" id="L122">                graphics.dispose();</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">            if( g2d != null )</span>
+<span class="nc" id="L124">                g2d.dispose();</span>
+<span class="nc" id="L125">            }</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

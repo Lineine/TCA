@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Board_Test
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.Board_Test
+testFinalizeBlackMoves(net.mooctest.Board_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[*]> but was:<[X]>
+	at net.mooctest.Board_Test.testFinalizeBlackMoves(Board_Test.java:119)
+
+testCheckPossibleBlackMoves(net.mooctest.Board_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[1]> but was:<[.]>
+	at net.mooctest.Board_Test.testCheckPossibleBlackMoves(Board_Test.java:62)
+
+testFinalizeWhiteMoves(net.mooctest.Board_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[*]> but was:<[.]>
+	at net.mooctest.Board_Test.testFinalizeWhiteMoves(Board_Test.java:94)
+
+testMakeNodesBlack(net.mooctest.Board_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[X]> but was:<[O]>
+	at net.mooctest.Board_Test.testMakeNodesBlack(Board_Test.java:160)
+
+testMakeNodesWhite(net.mooctest.Board_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[O]> but was:<[X]>
+	at net.mooctest.Board_Test.testMakeNodesWhite(Board_Test.java:138)
+
+testCheckPossibleWhiteMoves(net.mooctest.Board_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[1]> but was:<[.]>
+	at net.mooctest.Board_Test.testCheckPossibleWhiteMoves(Board_Test.java:45)
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Lexer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Lexer.java</span></div><h1>Lexer.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/*
+ * A simple lexer for boolean expressions
+ * TODO: Add handling for XOR operations
+ */
+
+import java.io.*;
+
+public final class Lexer {
+  private StreamTokenizer input;
+  private String lastSeenVar;
+
+  private static final String TRUE_LITERAL = &quot;true&quot;;
+  private static final String FALSE_LITERAL = &quot;false&quot;;
+
+<span class="fc" id="L17">  public Lexer(InputStream source) {</span>
+<span class="fc" id="L18">    BufferedReader rd = new BufferedReader(new InputStreamReader(source));</span>
+<span class="fc" id="L19">    input = new StreamTokenizer(rd);</span>
+
+<span class="fc" id="L21">    input.ordinaryChar('(');</span>
+<span class="fc" id="L22">    input.ordinaryChar(')');</span>
+<span class="fc" id="L23">    input.ordinaryChar('&amp;');</span>
+<span class="fc" id="L24">    input.ordinaryChar('|');</span>
+<span class="fc" id="L25">    input.ordinaryChar('!');</span>
+<span class="fc" id="L26">  }</span>
+
+  /*
+   * Instructs the lexer to reuse the last given token.
+   */
+  public void saveToken() {
+<span class="fc" id="L32">    input.pushBack();</span>
+<span class="fc" id="L33">  }</span>
+
+  public String getVariable() {
+<span class="fc" id="L36">    return lastSeenVar;</span>
+  }
+
+  // TODO: How to signal that this has exhausted the input...?
+  public Token nextToken() {
+<span class="fc" id="L41">    Token result = Token.NONE;</span>
+    try {
+<span class="pc bpc" id="L43" title="4 of 7 branches missed.">      switch (input.nextToken()) {</span>
+        case StreamTokenizer.TT_WORD: {
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">          if (input.sval.equalsIgnoreCase(TRUE_LITERAL)) {</span>
+<span class="nc" id="L46">            result = Token.TRUE;</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">          } else if (input.sval.equalsIgnoreCase(FALSE_LITERAL)) {</span>
+<span class="nc" id="L48">            result = Token.FALSE;</span>
+          } else {
+<span class="fc" id="L50">            result = Token.VARIABLE;</span>
+<span class="fc" id="L51">            lastSeenVar = input.sval;</span>
+          }
+<span class="fc" id="L53">          break;</span>
+        }
+        case '(':
+<span class="fc" id="L56">          result = Token.LEFT_PAREN;</span>
+<span class="fc" id="L57">          break;</span>
+        case ')':
+<span class="nc" id="L59">          result = Token.RIGHT_PAREN;</span>
+<span class="nc" id="L60">          break;</span>
+        case '&amp;':
+<span class="nc" id="L62">          result = Token.AND;</span>
+<span class="nc" id="L63">          break;</span>
+        case '|':
+<span class="nc" id="L65">          result = Token.OR;</span>
+<span class="nc" id="L66">          break;</span>
+        case '!':
+<span class="nc" id="L68">          result = Token.NOT;</span>
+<span class="nc" id="L69">          break;</span>
+        default:
+<span class="fc" id="L71">          result = Token.INVALID;</span>
+          break;
+      }
+<span class="pc" id="L74">    } catch (IOException e) {}</span>
+<span class="fc" id="L75">    return result;</span>
+  }
+
+  //public void close() {
+    // TODO: is this needed?
+  //}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

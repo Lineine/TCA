@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FontHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">FontHelper.java</span></div><h1>FontHelper.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.VolatileImage;
+import java.io.InputStream;
+
+<span class="nc" id="L8">public class FontHelper</span>
+{
+    /**
+     * Graphics2D context for measuring font.
+     */
+    private static Graphics2D g;
+
+    /**
+     * Class to help loading custom fonts.
+     * @param path Path to custom font.
+     * @param size Size of the font to be loaded.
+     * @return Returns a font object containing the custom font.
+     */
+    public static Font loadFont(String path, float size)
+    {
+        Font font;
+<span class="nc" id="L24">        try(InputStream is = FontHelper.class.getResourceAsStream(path))</span>
+        {
+            //InputStream ;
+<span class="nc" id="L27">            font = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(size);</span>
+        }
+<span class="nc" id="L29">        catch (Exception ex)</span>
+        {
+<span class="nc" id="L31">            ex.printStackTrace();</span>
+<span class="nc" id="L32">            System.err.println(path + &quot; not loaded. Using serif font.&quot;);</span>
+<span class="nc" id="L33">            font = new Font(&quot;serif&quot;, Font.PLAIN, 24);</span>
+<span class="nc" id="L34">        }</span>
+<span class="nc" id="L35">        return font;</span>
+    }
+
+    /**
+     * Initializes and creates the Graphics2D context.
+     */
+    protected static void initialize()
+    {
+<span class="fc" id="L43">        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();</span>
+<span class="nc" id="L44">        GraphicsDevice gd = ge.getDefaultScreenDevice();</span>
+<span class="nc" id="L45">        GraphicsConfiguration gc = gd.getDefaultConfiguration();</span>
+<span class="nc" id="L46">        VolatileImage vi = gc.createCompatibleVolatileImage(1, 1); // 1x1 px Windows fix</span>
+<span class="nc" id="L47">        g = vi.createGraphics();</span>
+<span class="nc" id="L48">    }</span>
+
+    /**
+     * Gets the bounds of a String.
+     * @param text String to find the bounds of.
+     * @param font Font object containing the desired font.
+     * @return Returns a Rectangle2D containing the size of the provided String.
+     */
+    public static Rectangle2D getBounds(String text, Font font)
+    {
+<span class="nc" id="L58">        return g.getFontMetrics(font).getStringBounds(text, g).getBounds2D();</span>
+    }
+
+    /**
+     * Computes the width in pixels of a String.
+     * @param text String to find the width of.
+     * @param font Font object containing the desired font.
+     * @return Returns the width of the provided String.
+     */
+    public static int getStringWidth(String text, Font font)
+    {
+<span class="nc" id="L69">        return (int)g.getFontMetrics(font).getStringBounds(text, g).getBounds2D().getWidth();</span>
+    }
+
+    /**
+     * Computes the height in pixels of a String.
+     * @param text String to find the height of.
+     * @param font Font object containing the desired font.
+     * @return Returns the height of the provided String.
+     */
+    public static int getStringHeight(String text, Font font)
+    {
+<span class="nc" id="L80">        return (int)g.getFontMetrics(font).getStringBounds(text, g).getBounds2D().getHeight();</span>
+    }
+
+    /**
+     * Computes the height in pixels of a Font.
+     * @param font Font object containing the desired font.
+     * @return Returns the general height of the provided Font.
+     */
+    public static int getStringHeight(Font font)
+    {
+<span class="nc" id="L90">        return FontHelper.getStringHeight(&quot;L&quot;, font);</span>
+    }
+
+    /**
+     * Computes the ascent in pixels of a Font.
+     * @param font Font object containing the desired font.
+     * @return Returns the ascent.
+     */
+    public static int getAscent(Font font)
+    {
+<span class="nc" id="L100">        return (int)g.getFontMetrics(font).getAscent();</span>
+    }
+
+    /**
+     * Computes the descent in pixels of a Font.
+     * @param font Font object containing the desired font.
+     * @return Returns the descent.
+     */
+    public static int getDescent(Font font)
+    {
+<span class="nc" id="L110">        return (int)g.getFontMetrics(font).getDescent();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

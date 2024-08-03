@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.38.0" timestamp="2024-07-19T01:16:08.289">
+<file name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/main/java/net/mooctest/ChildrenLinkTreeBuilder.java">
+<violation beginline="15" endline="17" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="ChildrenLinkTreeBuilder$Funnel" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'Funnel': member interfaces are implicitly static
+</violation>
+<violation beginline="16" endline="16" begincolumn="16" endcolumn="44" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="ChildrenLinkTreeBuilder$Funnel" method="getChildren" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getChildren': the method is declared in an interface type
+</violation>
+</file>
+<file name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/main/java/net/mooctest/KeyTreeBuilder.java">
+<violation beginline="19" endline="22" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="KeyTreeBuilder$Funnel" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'Funnel': member interfaces are implicitly static
+</violation>
+<violation beginline="20" endline="20" begincolumn="16" endcolumn="32" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="KeyTreeBuilder$Funnel" method="getKey" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getKey': the method is declared in an interface type
+</violation>
+<violation beginline="21" endline="21" begincolumn="16" endcolumn="38" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="KeyTreeBuilder$Funnel" method="getParentKey" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getParentKey': the method is declared in an interface type
+</violation>
+</file>
+<file name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/main/java/net/mooctest/ParentLinkTreeBuilder.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="27" rule="UnnecessaryImport" ruleset="Code Style" package="net.mooctest" class="ParentLinkTreeBuilder" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unnecessary import from the current package 'net.mooctest.Forest'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="25" rule="UnnecessaryImport" ruleset="Code Style" package="net.mooctest" class="ParentLinkTreeBuilder" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unnecessary import from the current package 'net.mooctest.Tree'
+</violation>
+<violation beginline="18" endline="20" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="ParentLinkTreeBuilder$Funnel" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'Funnel': member interfaces are implicitly static
+</violation>
+<violation beginline="19" endline="19" begincolumn="16" endcolumn="35" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="ParentLinkTreeBuilder$Funnel" method="getParent" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getParent': the method is declared in an interface type
+</violation>
+</file>
+<file name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/main/java/net/mooctest/PathTreeBuilder.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="27" rule="UnnecessaryImport" ruleset="Code Style" package="net.mooctest" class="PathTreeBuilder" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unnecessary import from the current package 'net.mooctest.Forest'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="25" rule="UnnecessaryImport" ruleset="Code Style" package="net.mooctest" class="PathTreeBuilder" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unnecessary import from the current package 'net.mooctest.Tree'
+</violation>
+<violation beginline="15" endline="17" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="PathTreeBuilder$Funnel" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'Funnel': member interfaces are implicitly static
+</violation>
+<violation beginline="16" endline="16" begincolumn="16" endcolumn="40" rule="UnnecessaryModifier" ruleset="Code Style" package="net.mooctest" class="PathTreeBuilder$Funnel" method="getPath" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getPath': the method is declared in an interface type
+</violation>
+</file>
+<file name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/main/java/net/mooctest/TreeDFIterator.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="25" rule="UnnecessaryImport" ruleset="Code Style" package="net.mooctest" class="TreeDFIterator" externalInfoUrl="https://pmd.github.io/pmd-6.38.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unnecessary import from the current package 'net.mooctest.Tree'
+</violation>
+</file>
+</pmd>

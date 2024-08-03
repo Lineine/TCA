@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Game_28_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_28_Test
+test_291(net.mooctest.Game_28_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<20.0> but was:<13.0>
+	at net.mooctest.Game_28_Test.test_291(Game_28_Test.java:30)
+
+test_292(net.mooctest.Game_28_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<<0.0,0.0,-1.0>> but was:<<2.0,-1.0,0.0>>
+	at net.mooctest.Game_28_Test.test_292(Game_28_Test.java:24)
+
+test_293(net.mooctest.Game_28_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Game_28_Test.test_293(Game_28_Test.java:41)
+

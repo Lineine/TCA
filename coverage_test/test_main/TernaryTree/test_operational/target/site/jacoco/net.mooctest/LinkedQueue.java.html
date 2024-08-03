@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LinkedQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">LinkedQueue.java</span></div><h1>LinkedQueue.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/**
+ * A class that implements the ADT queue by using a chain of nodes that has both
+ * head and tail references.
+ * @author Frank M. Carrano
+ * @author Timothy M. Henry
+ * @author William C. Garrison
+ * @version 4.5
+ */
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">public final class LinkedQueue&lt;T&gt; implements QueueInterface&lt;T&gt; {</span>
+    // References node at front of queue
+    private Node firstNode;
+    // References node at back of queue
+    private Node lastNode;
+
+<span class="fc" id="L17">    public LinkedQueue() {</span>
+<span class="fc" id="L18">        firstNode = null;</span>
+<span class="fc" id="L19">        lastNode = null;</span>
+<span class="fc" id="L20">    }</span>
+
+    public void enqueue(T newEntry) {
+<span class="fc" id="L23">        Node newNode = new Node(newEntry, null);</span>
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (isEmpty()) {</span>
+<span class="fc" id="L26">            firstNode = newNode;</span>
+        } else {
+<span class="fc" id="L28">            lastNode.setNextNode(newNode);</span>
+        }
+
+<span class="fc" id="L31">        lastNode = newNode;</span>
+<span class="fc" id="L32">    }</span>
+
+    public T getFront() {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (isEmpty()) {</span>
+<span class="fc" id="L36">            throw new EmptyQueueException();</span>
+        } else {
+<span class="fc" id="L38">            return firstNode.getData();</span>
+        }
+    }
+
+    public T dequeue() {
+        // Might throw EmptyQueueException
+<span class="fc" id="L44">        T front = getFront();</span>
+
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">        assert firstNode != null;</span>
+<span class="fc" id="L47">        firstNode.setData(null);</span>
+<span class="fc" id="L48">        firstNode = firstNode.getNextNode();</span>
+
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (firstNode == null) {</span>
+<span class="fc" id="L51">            lastNode = null;</span>
+        }
+
+<span class="fc" id="L54">        return front;</span>
+    }
+
+    public boolean isEmpty() {
+<span class="pc bpc" id="L58" title="1 of 4 branches missed.">        return (firstNode == null) &amp;&amp; (lastNode == null);</span>
+    }
+
+    public void clear() {
+<span class="fc" id="L62">        firstNode = null;</span>
+<span class="fc" id="L63">        lastNode = null;</span>
+<span class="fc" id="L64">    }</span>
+
+    private class Node {
+        // Entry in queue
+        private T data;
+        // Link to next node
+        private Node next;
+
+<span class="nc" id="L72">        private Node(T dataPortion) {</span>
+<span class="nc" id="L73">            data = dataPortion;</span>
+<span class="nc" id="L74">            next = null;</span>
+<span class="nc" id="L75">        }</span>
+
+<span class="fc" id="L77">        private Node(T dataPortion, Node linkPortion) {</span>
+<span class="fc" id="L78">            data = dataPortion;</span>
+<span class="fc" id="L79">            next = linkPortion;</span>
+<span class="fc" id="L80">        }</span>
+
+        private T getData() {
+<span class="fc" id="L83">            return data;</span>
+        }
+
+        private void setData(T newData) {
+<span class="fc" id="L87">            data = newData;</span>
+<span class="fc" id="L88">        }</span>
+
+        private Node getNextNode() {
+<span class="fc" id="L91">            return next;</span>
+        }
+
+        private void setNextNode(Node nextNode) {
+<span class="fc" id="L95">            next = nextNode;</span>
+<span class="fc" id="L96">        }</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

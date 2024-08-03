@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TernaryTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">TernaryTree.java</span></div><h1>TernaryTree.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+
+
+public class TernaryTree&lt;T&gt; implements TernaryTreeInterface&lt;T&gt;{
+	private TernaryNode&lt;T&gt; root;
+	
+<span class="fc" id="L11">	public TernaryTree(){</span>
+<span class="fc" id="L12">		root=null;</span>
+<span class="fc" id="L13">	}</span>
+	
+<span class="fc" id="L15">    public TernaryTree(T rootData) {</span>
+<span class="fc" id="L16">        root = new TernaryNode&lt;&gt;(rootData);</span>
+<span class="fc" id="L17">    }	</span>
+
+    public TernaryTree(T rootData, TernaryTree&lt;T&gt; leftTree, TernaryTree&lt;T&gt; middleTree,
+<span class="fc" id="L20">                      TernaryTree&lt;T&gt; rightTree) {</span>
+<span class="fc" id="L21">        privateSetTree(rootData, leftTree,middleTree, rightTree);</span>
+<span class="fc" id="L22">    }</span>
+
+    public void setTree(T rootData) {
+<span class="fc" id="L25">        root = new TernaryNode&lt;&gt;(rootData);</span>
+<span class="fc" id="L26">    }</span>
+
+	public void setTree(T rootData, TernaryTreeInterface&lt;T&gt; leftTree,
+			TernaryTreeInterface&lt;T&gt; middleTree,
+			TernaryTreeInterface&lt;T&gt; rightTree) {
+<span class="fc" id="L31">        privateSetTree(rootData, (TernaryTree&lt;T&gt;)leftTree, (TernaryTree&lt;T&gt;)middleTree, (TernaryTree&lt;T&gt;)rightTree);</span>
+<span class="fc" id="L32">    }</span>
+
+    private void privateSetTree(T rootData, TernaryTree&lt;T&gt; leftTree, TernaryTree&lt;T&gt; middleTree,
+                                TernaryTree&lt;T&gt; rightTree) {
+<span class="fc" id="L36">        root = new TernaryNode&lt;&gt;(rootData);</span>
+
+<span class="fc bfc" id="L38" title="All 4 branches covered.">        if ((leftTree != null) &amp;&amp; !leftTree.isEmpty()) {</span>
+<span class="fc" id="L39">            root.setLeftChild(leftTree.root);</span>
+        }
+
+<span class="fc bfc" id="L42" title="All 4 branches covered.">        if ((rightTree != null) &amp;&amp; !rightTree.isEmpty()) {</span>
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">            if (rightTree != leftTree &amp;&amp;rightTree!=leftTree) {</span>
+<span class="fc" id="L44">                root.setRightChild(rightTree.root);</span>
+            } else {
+<span class="fc" id="L46">                root.setRightChild(rightTree.root.copy());</span>
+            }
+        }
+<span class="fc bfc" id="L49" title="All 4 branches covered.">        if ((middleTree != null) &amp;&amp; !middleTree.isEmpty()) {</span>
+<span class="fc bfc" id="L50" title="All 4 branches covered.">            if (middleTree != leftTree &amp;&amp;middleTree!=rightTree) {</span>
+<span class="fc" id="L51">                root.setMiddleChild(middleTree.root);</span>
+            } else {
+<span class="fc" id="L53">                root.setMiddleChild(middleTree.root.copy());</span>
+            }
+        }
+
+<span class="fc bfc" id="L57" title="All 4 branches covered.">        if ((leftTree != null) &amp;&amp; (leftTree != this)) {</span>
+<span class="fc" id="L58">            leftTree.clear();</span>
+        }
+<span class="fc bfc" id="L60" title="All 4 branches covered.">        if ((middleTree != null) &amp;&amp; (middleTree != this)) {</span>
+<span class="fc" id="L61">            middleTree.clear();</span>
+        }
+<span class="fc bfc" id="L63" title="All 4 branches covered.">        if ((rightTree != null) &amp;&amp; (rightTree != this)) {</span>
+<span class="fc" id="L64">            rightTree.clear();</span>
+        }
+<span class="fc" id="L66">    }</span>
+
+    public T getRootData() {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (isEmpty()) {</span>
+<span class="fc" id="L70">            throw new EmptyTreeException();</span>
+        } else {
+<span class="fc" id="L72">            return root.getData();</span>
+        }
+    }
+
+    protected void setRootData(T rootData) {
+<span class="fc" id="L77">        root.setData(rootData);</span>
+<span class="fc" id="L78">    }</span>
+
+    protected void setRootNode(TernaryNode&lt;T&gt; rootNode) {
+<span class="fc" id="L81">        root = rootNode;</span>
+<span class="fc" id="L82">    }</span>
+
+    protected TernaryNode&lt;T&gt; getRootNode() {
+<span class="fc" id="L85">        return root;</span>
+    }
+
+	@Override
+	public int getHeight() {
+		// TODO Auto-generated method stub
+<span class="fc" id="L91">		return root.getHeight();</span>
+	}
+
+	@Override
+	public int getNumberOfNodes() {
+		// TODO Auto-generated method stub
+<span class="fc" id="L97">		return root.getNumberOfNodes();</span>
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+<span class="fc bfc" id="L103" title="All 2 branches covered.">		return root==null;</span>
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+<span class="fc" id="L109">		root=null;</span>
+<span class="fc" id="L110">	}</span>
+
+	@Override
+	public Iterator&lt;T&gt; getPreorderIterator() {
+		// TODO Auto-generated method stub
+<span class="fc" id="L115">		return new PreorderIterator();</span>
+	}
+
+	@Override
+    public Iterator&lt;T&gt; getPostorderIterator() {
+<span class="fc" id="L120">        return new PostorderIterator();</span>
+    }
+
+/*
+ * Inorder Iteration not supported. This is due to the iterator needing to access the parent node after evaluating the left child node.
+ * This is not doable with the addition of a middle child, which cuts off access to the parent.
+ */
+	@Override
+	public Iterator&lt;T&gt; getInorderIterator() {
+		// TODO Auto-generated method stub
+<span class="fc" id="L130">		throw new java.lang.UnsupportedOperationException();</span>
+	}
+
+	@Override
+    public Iterator&lt;T&gt; getLevelOrderIterator() {
+<span class="fc" id="L135">        return new LevelOrderIterator();</span>
+    }
+
+    private class PreorderIterator implements Iterator&lt;T&gt; {
+        private StackInterface&lt;TernaryNode&lt;T&gt;&gt; nodeStack;
+
+<span class="fc" id="L141">        public PreorderIterator() {</span>
+<span class="fc" id="L142">            nodeStack = new LinkedStack&lt;&gt;();</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">            if (root != null) {</span>
+<span class="fc" id="L144">                nodeStack.push(root);</span>
+            }
+<span class="fc" id="L146">        }</span>
+
+        public boolean hasNext() {
+<span class="fc bfc" id="L149" title="All 2 branches covered.">            return !nodeStack.isEmpty();</span>
+        }
+
+        public T next() {
+            TernaryNode&lt;T&gt; nextNode;
+
+<span class="fc bfc" id="L155" title="All 2 branches covered.">            if (hasNext()) {</span>
+<span class="fc" id="L156">                nextNode = nodeStack.pop();</span>
+<span class="fc" id="L157">                TernaryNode&lt;T&gt; leftChild = nextNode.getLeftChild();</span>
+<span class="fc" id="L158">                TernaryNode&lt;T&gt; middleChild = nextNode.getMiddleChild();</span>
+<span class="fc" id="L159">                TernaryNode&lt;T&gt; rightChild = nextNode.getRightChild();</span>
+
+                // Push into stack in reverse order of recursive calls
+<span class="fc bfc" id="L162" title="All 2 branches covered.">                if (rightChild != null) {</span>
+<span class="fc" id="L163">                    nodeStack.push(rightChild);</span>
+                }
+<span class="fc bfc" id="L165" title="All 2 branches covered.">                if (middleChild != null) {</span>
+<span class="fc" id="L166">                    nodeStack.push(middleChild);</span>
+                }
+
+<span class="fc bfc" id="L169" title="All 2 branches covered.">                if (leftChild != null) {</span>
+<span class="fc" id="L170">                    nodeStack.push(leftChild);</span>
+                }
+<span class="fc" id="L172">            } else {</span>
+<span class="fc" id="L173">                throw new NoSuchElementException();</span>
+            }
+
+<span class="fc" id="L176">            return nextNode.getData();</span>
+        }
+
+        public void remove() {
+<span class="fc" id="L180">            throw new UnsupportedOperationException();</span>
+        }
+    }
+
+    public void iterativePreorderTraverse() {
+<span class="fc" id="L185">        StackInterface&lt;TernaryNode&lt;T&gt;&gt; nodeStack = new LinkedStack&lt;&gt;();</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        if (root != null) {</span>
+<span class="fc" id="L187">            nodeStack.push(root);</span>
+        }
+        TernaryNode&lt;T&gt; nextNode;
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        while (!nodeStack.isEmpty()) {</span>
+<span class="fc" id="L191">            nextNode = nodeStack.pop();</span>
+<span class="fc" id="L192">            TernaryNode&lt;T&gt; leftChild = nextNode.getLeftChild();</span>
+<span class="fc" id="L193">            TernaryNode&lt;T&gt; middleChild = nextNode.getMiddleChild();</span>
+<span class="fc" id="L194">            TernaryNode&lt;T&gt; rightChild = nextNode.getRightChild();</span>
+
+            // Push into stack in reverse order of recursive calls
+<span class="fc bfc" id="L197" title="All 2 branches covered.">            if (rightChild != null) {</span>
+<span class="fc" id="L198">                nodeStack.push(rightChild);</span>
+            }
+<span class="fc bfc" id="L200" title="All 2 branches covered.">            if (middleChild != null) {</span>
+<span class="fc" id="L201">                nodeStack.push(middleChild);</span>
+            }
+<span class="fc bfc" id="L203" title="All 2 branches covered.">            if (leftChild != null) {</span>
+<span class="fc" id="L204">                nodeStack.push(leftChild);</span>
+            }
+
+<span class="fc" id="L207">            System.out.print(nextNode.getData() + &quot; &quot;);</span>
+<span class="fc" id="L208">        }</span>
+<span class="fc" id="L209">    }</span>
+
+    private class PostorderIterator implements Iterator&lt;T&gt; {
+        private StackInterface&lt;TernaryNode&lt;T&gt;&gt; nodeStack;
+        private TernaryNode&lt;T&gt; currentNode;
+
+<span class="fc" id="L215">        public PostorderIterator() {</span>
+<span class="fc" id="L216">            nodeStack = new LinkedStack&lt;&gt;();</span>
+<span class="fc" id="L217">            currentNode = root;</span>
+<span class="fc" id="L218">        }</span>
+
+        public boolean hasNext() {
+<span class="fc bfc" id="L221" title="All 4 branches covered.">            return !nodeStack.isEmpty() || (currentNode != null);</span>
+        }
+        public T next() {
+<span class="fc" id="L224">            boolean foundNext = false;</span>
+<span class="fc" id="L225">            TernaryNode&lt;T&gt; leftChild, middleChild, rightChild, nextNode = null;</span>
+
+            // Find leftmost leaf
+<span class="fc bfc" id="L228" title="All 2 branches covered.">            while (currentNode != null) {</span>
+<span class="fc" id="L229">                nodeStack.push(currentNode);</span>
+<span class="fc" id="L230">                leftChild = currentNode.getLeftChild();</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">                if (leftChild == null) {</span>
+<span class="fc" id="L232">                    middleChild = currentNode.getMiddleChild();</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">                	if(middleChild == null){</span>
+<span class="fc" id="L234">                		currentNode = currentNode.getRightChild();</span>
+                	}else{
+<span class="fc" id="L236">                		currentNode = middleChild;</span>
+                	}
+                }
+                else {
+<span class="fc" id="L240">                    currentNode = leftChild;</span>
+                }
+            }
+
+            // Stack is not empty either because we just pushed a node, or
+            // it wasn't empty to begin with since hasNext() is true.
+            // But Iterator specifies an exception for next() in case
+            // hasNext() is false.
+
+<span class="fc bfc" id="L249" title="All 2 branches covered.">            if (!nodeStack.isEmpty()) {</span>
+<span class="fc" id="L250">                nextNode = nodeStack.pop();</span>
+                // nextNode != null since stack was not empty before pop
+
+<span class="fc" id="L253">                TernaryNode&lt;T&gt; parent = null;</span>
+<span class="fc bfc" id="L254" title="All 2 branches covered.">                if (!nodeStack.isEmpty()) {</span>
+<span class="fc" id="L255">                    parent = nodeStack.peek();</span>
+<span class="fc bfc" id="L256" title="All 4 branches covered.">                    if (nextNode == parent.getLeftChild() &amp;&amp; parent.getMiddleChild()!=null) {</span>
+<span class="fc" id="L257">                        currentNode = parent.getMiddleChild();</span>
+<span class="fc bfc" id="L258" title="All 2 branches covered.">                    } else if (nextNode != parent.getRightChild()) {</span>
+<span class="fc" id="L259">                      currentNode = parent.getRightChild();</span>
+                    } else {
+<span class="fc" id="L261">                      currentNode = null;</span>
+                    }
+                } else {
+<span class="fc" id="L264">                    currentNode = null;</span>
+                }
+<span class="fc" id="L266">            } else {</span>
+<span class="fc" id="L267">                throw new NoSuchElementException();</span>
+            }
+
+<span class="fc" id="L270">            return nextNode.getData();</span>
+        }
+
+        public void remove() {
+<span class="fc" id="L274">            throw new UnsupportedOperationException();</span>
+        }
+    }
+
+    private class LevelOrderIterator implements Iterator&lt;T&gt; {
+        private QueueInterface&lt;TernaryNode&lt;T&gt;&gt; nodeQueue;
+
+<span class="fc" id="L281">        public LevelOrderIterator() {</span>
+<span class="fc" id="L282">            nodeQueue = new LinkedQueue&lt;&gt;();</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">            if (root != null) {</span>
+<span class="fc" id="L284">                nodeQueue.enqueue(root);</span>
+            }
+<span class="fc" id="L286">        }</span>
+
+        public boolean hasNext() {
+<span class="fc bfc" id="L289" title="All 2 branches covered.">            return !nodeQueue.isEmpty();</span>
+        }
+
+        public T next() {
+            TernaryNode&lt;T&gt; nextNode;
+
+<span class="fc bfc" id="L295" title="All 2 branches covered.">            if (hasNext()) {</span>
+<span class="fc" id="L296">                nextNode = nodeQueue.dequeue();</span>
+<span class="fc" id="L297">                TernaryNode&lt;T&gt; leftChild = nextNode.getLeftChild();</span>
+<span class="fc" id="L298">                TernaryNode&lt;T&gt; middleChild = nextNode.getMiddleChild();</span>
+<span class="fc" id="L299">                TernaryNode&lt;T&gt; rightChild = nextNode.getRightChild();</span>
+
+                // Add to queue in order of recursive calls
+<span class="fc bfc" id="L302" title="All 2 branches covered.">                if (leftChild != null) {</span>
+<span class="fc" id="L303">                    nodeQueue.enqueue(leftChild);</span>
+                }
+<span class="fc bfc" id="L305" title="All 2 branches covered.">                if (middleChild != null) {</span>
+<span class="fc" id="L306">                    nodeQueue.enqueue(middleChild);</span>
+                }
+<span class="fc bfc" id="L308" title="All 2 branches covered.">                if (rightChild != null) {</span>
+<span class="fc" id="L309">                    nodeQueue.enqueue(rightChild);</span>
+                }
+<span class="fc" id="L311">            } else {</span>
+<span class="fc" id="L312">                throw new NoSuchElementException();</span>
+            }
+
+<span class="fc" id="L315">            return nextNode.getData();</span>
+        }
+
+        public void remove() {
+<span class="fc" id="L319">            throw new UnsupportedOperationException();</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

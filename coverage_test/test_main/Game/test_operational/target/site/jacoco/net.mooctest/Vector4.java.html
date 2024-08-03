@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vector4.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Vector4.java</span></div><h1>Vector4.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.io.Serializable;
+
+/**
+ * Vector4 class representing a vector of &lt;x, y, z, w&gt; components.
+ * &lt;br /&gt;
+ * &lt;h1&gt;Not Yet Implemented&lt;/h1&gt;
+ * &lt;ul&gt;
+ *  &lt;li&gt;Transform&lt;/li&gt;
+ * &lt;/ul&gt;
+ * @version incomplete
+ * @author paul
+ */
+public class Vector4 extends Vector3 implements Serializable
+{
+    /**
+     * The w component of the Vector4.
+     */
+    public final float w;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Constructors&quot;&gt;
+    /**
+     * Complete Constructor
+     * Sets x, y, z, and w components of the Vector4
+     * @param x x component of Vector4
+     * @param y y component of Vector4
+     * @param z z component of Vector4
+     * @param w w component of Vector4
+     */
+    public Vector4(float x, float y, float z, float w)
+    {
+<span class="nc" id="L33">        super(x, y, z);</span>
+<span class="nc" id="L34">        this.w = w;</span>
+<span class="nc" id="L35">    }</span>
+
+    /**
+     * Sets x, y, z, and w components of the Vector4.
+     * Converts integer arguments to float.
+     * @param x x component of Vector4
+     * @param y y component of Vector4
+     * @param z z component of Vector4
+     * @param w w component of Vector4
+     */
+    public Vector4(int x, int y, int z, int w)
+    {
+<span class="nc" id="L47">        this((float)x, (float)y, (float)z, (float)w);</span>
+<span class="nc" id="L48">    }</span>
+
+    /**
+     * Sets x, y, z, and w components of Vector4 to value.
+     * @param value Float value used to set all components to.
+     */
+    public Vector4(float value)
+    {
+<span class="nc" id="L56">        this(value, value, value, value);</span>
+<span class="nc" id="L57">    }</span>
+
+
+    /**
+     * Sets x, y, z, and w components of Vector4 to value.
+     * Converts integer arguments to float.
+     * @param value Integer value used to set all components to.
+     */
+    public Vector4(int value)
+    {
+<span class="nc" id="L67">        this((int)value, (int)value, (int)value, (int)value);</span>
+<span class="nc" id="L68">    }</span>
+
+    /**
+     * Empty Constructor.
+     * Sets all components of the Vector4 to zero.
+     */
+    public Vector4()
+    {
+<span class="nc" id="L76">        this(0.0f, 0.0f, 0.0f, 0.0f);</span>
+<span class="nc" id="L77">    }</span>
+
+    /**
+     * Copy Constructor.
+     * Makes a copy of the Vector4 provided.
+     * @param copy Vector4 to be copied.
+     */
+    public Vector4(Vector4 copy)
+    {
+<span class="nc" id="L86">        this(copy.x, copy.y , copy.z, copy.w);</span>
+<span class="nc" id="L87">    }</span>
+
+    /**
+     * Creates a Vector4 with a Vector3 parameter.
+     * @param vec3 A Vector3 we want to change to a Vector4.
+     */
+    public Vector4(Vector3 vec3)
+    {
+<span class="nc" id="L95">        this(vec3.x, vec3.y, vec3.z, 0.0f);</span>
+<span class="nc" id="L96">    }</span>
+
+    /**
+     * Creates a Vector4 with a Vector3 and a float w.
+     * @param vec3 A Vector3 we want to change to a Vector4.
+     * @param w A float value we want to set the w value to.
+     */
+    public Vector4(Vector3 vec3, float w)
+    {
+<span class="nc" id="L105">        this(vec3.x, vec3.y, vec3.z, w);</span>
+<span class="nc" id="L106">    }</span>
+
+    /**
+     * Creates a Vector4 with a Vector2.
+     * @param vec2 A Vector2 we want to change to a Vector4.
+     */
+    public Vector4(Vector2 vec2)
+    {
+<span class="nc" id="L114">        this(vec2.x, vec2.y, 0.0f, 0.0f);</span>
+<span class="nc" id="L115">    }</span>
+
+    /**
+     * Creates a Vector4 with a Vector2, a float z, and a float w.
+     * @param vec2 A Vector3 we want to change to a Vector4.
+     * @param z A float value we want to set the z value to.
+     * @param w A float value we want to set the w value to.
+     */
+    public Vector4(Vector2 vec2, float z, float w)
+    {
+<span class="nc" id="L125">        this(vec2.x, vec2.y, z, w);</span>
+<span class="nc" id="L126">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Add&quot;&gt;
+    /**
+     * Performs Vector4 Addition on two Vector4
+     * @param a Vector4 to be added
+     * @param b Vector4 to be added
+     * @return Returns the result of a + b
+     */
+    public static Vector4 add(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L138">        return new Vector4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);</span>
+    }
+
+    /**
+     * Performs Vector4 addition with a Vector4 and a Vector3
+     * @param a Vector4 to be added.
+     * @param b Vector3 to be added.
+     * @return Returns the result of a + b.
+     */
+    public static Vector4 add(Vector4 a, Vector3 b)
+    {
+<span class="nc" id="L149">        return Vector4.add(a, new Vector4(b));</span>
+    }
+
+    /**
+     * Performs Vector4 addition with a Vector4 and a Vector2
+     * @param a Vector4 to be added.
+     * @param b Vector2 to be added.
+     * @return Returns the result of a + b.
+     */
+    public static Vector4 add(Vector4 a, Vector2 b)
+    {
+<span class="nc" id="L160">        return Vector4.add(a, new Vector4(b));</span>
+    }
+
+    /**
+     * Performs Vector4 addition with this Vector4 and that Vector4
+     * @param that Vector4 to be added.
+     * @return returns the result of this + that.
+     */
+    public Vector4 add(Vector4 that)
+    {
+<span class="nc" id="L170">        return Vector4.add(this, that);</span>
+    }
+
+    /**
+     * Performs Vector4 addition with this Vector4 and that Vector3
+     * @param that Vector3 to be added.
+     * @return Returns the result of this + that.
+     */
+    @Override
+    public Vector4 add(Vector3 that)
+    {
+<span class="nc" id="L181">        return Vector4.add(this, that);</span>
+    }
+
+    /**
+     * Performs Vector4 addition with this Vector4 and a Vector3 and a w value.
+     * @param that Vector3 to be added.
+     * @param w The w component to append to the Vector3.
+     * @return Returns this + that;
+     */
+    public Vector4 add(Vector3 that, float w)
+    {
+<span class="nc" id="L192">        return Vector4.add(this, new Vector4(that, w));</span>
+    }
+
+    /**
+     * Performs Vector4 addition with this Vector4 and that Vector2
+     * @param that Vector2 to be added.
+     * @return Returns the result of this + that.
+     */
+    @Override
+    public Vector4 add(Vector2 that)
+    {
+<span class="nc" id="L203">        return Vector4.add(this, that);</span>
+    }
+
+    /**
+     * Performs Vector4 addition with this Vector4 and a Vector2, a z value, and a w value.
+     * @param that Vector2 to be added.
+     * @param z The z component to append to the Vector2.
+     * @param w The w component to append to the Vector2.
+     * @return Returns this + that;
+     */
+    public Vector4 add(Vector2 that, float z, float w)
+    {
+<span class="nc" id="L215">        return Vector4.add(this, new Vector4(that, z, w));</span>
+    }
+
+    /**
+     * Performs addition with this Vector4 and the x, y, z, and w values provided.
+     * @param x The x component we want to add to this Vector4.
+     * @param y The y component we want to add to this Vector4.
+     * @param z The z component we want to add to this Vector4.
+     * @param w The w component we want to add to this Vector4.
+     * @return Returns a Vector4 with x added to this.x, y added to this.y, z added to this.z, and w added to this.w
+     */
+    public Vector4 add(float x, float y, float z, float w)
+    {
+<span class="nc" id="L228">        return Vector4.add(this, new Vector4(x, y, z, w));</span>
+    }
+
+    /**
+     * Performs addition with this Vector4 and the x, y, z, and w values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector4.
+     * @param y The y component we want to add to this Vector4.
+     * @param z The z component we want to add to this Vector4.
+     * @param w The w component we want to add to this Vector4.
+     * @return Returns a Vector4 with x added to this.x, y added to this.y, z added to this.z, and w added to this.w
+     */
+    public Vector4 add(int x, int y, int z, int w)
+    {
+<span class="nc" id="L242">        return Vector4.add(this, new Vector4(x, y, z, w));</span>
+    }
+
+    /**
+     * Adds the value provided to the x component.
+     * @param x The x value we want to add to this Vector4.
+     * @return Returns a Vector4 with x added to this.x
+     */
+    @Override
+    public Vector4 addX(float x)
+    {
+<span class="nc" id="L253">        return Vector4.add(this, new Vector4(x, 0.0f, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Adds the value provided to the x component.
+     * Converts integer arguments to float.
+     * @param x The x value we want to add to this Vector4.
+     * @return Returns a Vector4 with x added to this.x
+     */
+    @Override
+    public Vector4 addX(int x)
+    {
+<span class="nc" id="L265">        return Vector4.add(this, new Vector4((float)x, 0.0f, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Adds the value provided to the y component.
+     * @param y The y value we want to add to this Vector4.
+     * @return Returns a Vector4 with y added to this.y
+     */
+    @Override
+    public Vector4 addY(float y)
+    {
+<span class="nc" id="L276">        return Vector4.add(this, new Vector4(0.0f, y, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Adds the value provided to the y component.
+     * Converts integer arguments to float.
+     * @param y The y value we want to add to this Vector4.
+     * @return Returns a Vector4 with y added to this.y
+     */
+    @Override
+    public Vector4 addY(int y)
+    {
+<span class="nc" id="L288">        return Vector4.add(this, new Vector4(0.0f, (float)y, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Adds the value provided to the z component.
+     * @param z The z value we want to add to this Vector4.
+     * @return Returns a Vector4 with z added to this.z
+     */
+    @Override
+    public Vector4 addZ(float z)
+    {
+<span class="nc" id="L299">        return Vector4.add(this, new Vector4(0.0f, 0.0f, z, 0.0f));</span>
+    }
+
+
+    /**
+     * Adds the value provided to the z component.
+     * Converts integer arguments to float.
+     * @param z The z value we want to add to this Vector4.
+     * @return Returns a Vector4 with z added to this.z
+     */
+    @Override
+    public Vector4 addZ(int z)
+    {
+<span class="nc" id="L312">        return Vector4.add(this, new Vector4(0.0f, 0.0f, (float)z, 0.0f));</span>
+    }
+
+    /**
+     * Adds the value provided to the w component.
+     * @param w The w value we want to add to this Vector4.
+     * @return Returns a Vector4 with w added to this.w
+     */
+    public Vector4 addW(float w)
+    {
+<span class="nc" id="L322">        return Vector4.add(this, new Vector4(0.0f, 0.0f, 0.0f, w));</span>
+    }
+
+    /**
+     * Adds the value provided to the w component.
+     * Converts integer arguments to float.
+     * @param w The w value we want to add to this Vector4.
+     * @return Returns a Vector4 with w added to this.w
+     */
+    public Vector4 addW(int w)
+    {
+<span class="nc" id="L333">        return Vector4.add(this, new Vector4(0.0f, 0.0f, 0.0f, (float)w));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Barycentric&quot;&gt;
+    /**
+     * The Vector3 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle
+     * vertices, V1, V2, and V3), and two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument
+     * and b3 is the amount2 argument). The b2 coordinate relates to vertex V2, and the b3coordinate relates to V3.
+     * @param v1 A Vector4 representing a vertex of a triangle.
+     * @param v2 A Vector4 representing a vertex of a triangle.
+     * @param v3 A Vector4 representing a vertex of a triangle.
+     * @param b2 Areal coordinate.
+     * @param b3 Areal coordinate.
+     * @return Returns a Vector4 containing the 4D Cartesian coordinates of the specified point.
+     */
+    public static Vector4 barycentric(Vector4 v1, Vector4 v2, Vector4 v3, float b2, float b3)
+    {
+<span class="nc" id="L351">        float b1 = 1 - b2 - b3;</span>
+<span class="nc" id="L352">        float px = (b1 * v1.x) + (b2 * v2.x) + (b3 * v3.x);</span>
+<span class="nc" id="L353">        float py = (b1 * v1.y) + (b2 * v2.y) + (b3 * v3.y);</span>
+<span class="nc" id="L354">        float pz = (b1 * v1.z) + (b2 * v2.z) + (b3 * v3.z);</span>
+<span class="nc" id="L355">        float pw = (b1 * v1.w) + (b2 * v2.w) + (b3 * v3.w);</span>
+<span class="nc" id="L356">        return new Vector4(px, py, pz, pw);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;CatmullRom&quot;&gt;
+    /**
+     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ &amp; http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&amp;p=66079#post66079
+     * @param p0 The first position in the interpolation.
+     * @param p1 The second position in the interpolation.
+     * @param p2 The third position in the interpolation.
+     * @param p3 The fourth position in the interpolation.
+     * @param t A float value between zero and one.
+     * @return Returns a Vector4 that is the result of the Catmull-Rom interpolation.
+     */
+    public static Vector4 catmullRom(Vector4 p0, Vector4 p1, Vector4 p2, Vector4 p3, float t)
+    {
+<span class="nc" id="L372">        float t2 = t * t;</span>
+<span class="nc" id="L373">        float t3 = t2 * t;</span>
+<span class="nc" id="L374">        float outX = 0.5f * ((2.0f * p1.x) +</span>
+                    (-p0.x + p2.x) * t +
+                    (2.0f * p0.x - 5.0f * p1.x + 4 * p2.x - p3.x) * t2 +
+                    (-p0.x + 3.0f * p1.x - 3.0f * p2.x + p3.x) * t3);
+
+<span class="nc" id="L379">        float outY = 0.5f * ((2.0f * p1.y) +</span>
+                    (-p0.y + p2.y) * t +
+                    (2.0f * p0.y - 5.0f * p1.y + 4 * p2.y - p3.y) * t2 +
+                    (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
+
+<span class="nc" id="L384">        float outZ = 0.5f * ((2.0f * p1.z) +</span>
+                    (-p0.z + p2.z) * t +
+                    (2.0f * p0.z - 5.0f * p1.z + 4 * p2.z - p3.z) * t2 +
+                    (-p0.z + 3.0f * p1.z - 3.0f * p2.z + p3.z) * t3);
+
+<span class="nc" id="L389">        float outW = 0.5f * ((2.0f * p1.w) +</span>
+                    (-p0.w + p2.w) * t +
+                    (2.0f * p0.w - 5.0f * p1.w + 4 * p2.w - p3.w) * t2 +
+                    (-p0.w + 3.0f * p1.w - 3.0f * p2.w + p3.w) * t3);
+
+<span class="nc" id="L394">        return new Vector4(outX, outY, outZ, outW);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Clamp&quot;&gt;
+    /**
+     * Clamps a Vector4 between a min Vector4 and a max Vector4
+     * @param value The Vector4 we want to clamp.
+     * @param min A Vector4 containing the minimum values.
+     * @param max A Vector4 containing the maximum values.
+     * @return Returns a Vector4 clamped between min and max inclusive.
+     */
+    public static Vector4 clamp(Vector4 value, Vector4 min, Vector4 max)
+    {
+<span class="nc" id="L408">        return new Vector4</span>
+        (
+<span class="nc" id="L410">            MathHelper.clamp(value.x, min.x, max.x),</span>
+<span class="nc" id="L411">            MathHelper.clamp(value.y, min.y, max.y),</span>
+<span class="nc" id="L412">            MathHelper.clamp(value.z, min.z, max.z),</span>
+<span class="nc" id="L413">            MathHelper.clamp(value.w, min.w, max.w)</span>
+        );
+    }
+
+    /**
+     * Clamps this Vector4 between a min Vector4 and a max Vector4
+     * @param min A Vector4 containing the minimum values.
+     * @param max A Vector4 containing the maximum values.
+     * @return Returns a Vector4 clamped between min and max inclusive.
+     */
+    public Vector4 clamp(Vector4 min, Vector4 max)
+    {
+<span class="nc" id="L425">        return Vector4.clamp(this, min, max);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Distance&quot;&gt;
+    /**
+     * Computes the distance between two Vector4.
+     * @param a A Vector4 we want to compute the distance with.
+     * @param b A Vector4 we want to compute the distance with.
+     * @return Returns the distance between a and b.
+     */
+    public static float distance(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L438">        return Vector4.subtract(a, b).magnitude();</span>
+    }
+
+    /**
+     * Computes the distance between this and that.
+     * @param that A Vector4 we want to compute the distance with this.
+     * @return Returns the distance between this and that.
+     */
+    public float distance(Vector4 that)
+    {
+<span class="nc" id="L448">        return Vector4.distance(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Distance Squared&quot;&gt;
+    /**
+     * Computes the distance between two Vector4 squared.
+     * @param a A Vector4 we want to compute the distance squared with.
+     * @param b A Vector4 we want to compute the distance squared with.
+     * @return Returns the distance between a and b squared.
+     */
+    public static float distanceSquared(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L461">        return Vector4.subtract(a, b).magnitudeSquared();</span>
+    }
+
+    /**
+     * Computes the distance between this and that squared.
+     * @param that A Vector4 we want to compute the distance squared with this.
+     * @return Returns the distance between this and that squared.
+     */
+    public float distanceSquared(Vector4 that)
+    {
+<span class="nc" id="L471">        return Vector4.distanceSquared(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Divide&quot;&gt;
+    /**
+     * Performs scalar division between a Vector4 and a scalar.
+     * @param vec A Vector4 we want to divide.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
+    public static Vector4 divide(Vector4 a, float scalar)
+    {
+<span class="nc" id="L484">        return new Vector4(a.x / scalar, a.y / scalar, a.z / scalar, a.w / scalar);</span>
+    }
+
+    /**
+     * Performs scalar division between a Vector4 and a scalar.
+     * Converts integer arguments to float.
+     * @param vec A Vector4 we want to divide.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
+    public static Vector4 divide(Vector4 a, int scalar)
+    {
+<span class="nc" id="L496">        return Vector4.divide(a, (float)scalar);</span>
+    }
+
+    /**
+     * Performs scalar division between this Vector4 and a scalar.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
+    @Override
+    public Vector4 divide(float scalar)
+    {
+<span class="nc" id="L507">        return Vector4.divide(this, scalar);</span>
+    }
+
+    /**
+     * Performs scalar division between this Vector4 and a scalar.
+     * Converts integer arguments to float.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
+    @Override
+    public Vector4 divide(int scalar)
+    {
+<span class="nc" id="L519">        return Vector4.divide(this, (float)scalar);</span>
+    }
+
+    /**
+     * Performs scalar division component wise between two Vector4's
+     * @param a A Vector4 we want to divide.
+     * @param b A Vector4 we want to divide by.
+     * @return Returns a new Vector4 divided component wise by another Vector4.
+     */
+    public static Vector4 divide(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L530">        return new Vector4(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);</span>
+    }
+
+    /**
+     * Performs scalar division component wise between this Vector4 and that Vector4
+     * @param that A Vector4 we want to divide by.
+     * @return Returns a new Vector4 divided component wise by another Vector4.
+     */
+    public Vector4 divide(Vector4 that)
+    {
+<span class="nc" id="L540">        return Vector4.divide(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Dot Product&quot;&gt;
+    /**
+     * Performs the dot product between two Vector4's.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector4 that we want to perform the dot product on.
+     * @param vecb A Vector4 that we want to perform the dot product on.
+     * @return Returns a dot b.
+     */
+    public static float dotProduct(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L555">        return (a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w);</span>
+    }
+
+    /**
+     * Performs the dot product between a Vector4 and a Vector3.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector4 that we want to perform the dot product on.
+     * @param vecb A Vector3 that we want to perform the dot product on.
+     * @return Returns a dot b.
+     */
+    public static float dotProduct(Vector4 a, Vector3 b)
+    {
+<span class="nc" id="L568">        return Vector4.dotProduct(a, new Vector4(b));</span>
+    }
+
+    /**
+     * Performs the dot product between a Vector4 and a Vector2.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector4 that we want to perform the dot product on.
+     * @param vecb A Vector2 that we want to perform the dot product on.
+     * @return Returns a dot b.
+     */
+    public static float dotProduct(Vector4 a, Vector2 b)
+    {
+<span class="nc" id="L581">        return Vector4.dotProduct(a, new Vector4(b));</span>
+    }
+
+    /**
+     * Performs the dot product between this Vector4 and that Vector4.
+     * @param that A Vector4 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
+    public float dotProduct(Vector4 that)
+    {
+<span class="nc" id="L591">        return Vector4.dotProduct(this, that);</span>
+    }
+
+    /**
+     * Performs the dot product between this Vector4 and that Vector3.
+     * @param that A Vector3 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
+    @Override
+    public float dotProduct(Vector3 that)
+    {
+<span class="nc" id="L602">        return Vector4.dotProduct(this, new Vector4(that));</span>
+    }
+
+    /**
+     * Performs the dot product between this Vector4 and that Vector2.
+     * @param that A Vector2 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
+    @Override
+    public float dotProduct(Vector2 that)
+    {
+<span class="nc" id="L613">        return Vector4.dotProduct(this, new Vector4(that));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Equals&quot;&gt;
+    @Override
+    /**
+     * Checks if the object is a Vector4 and if so is it equal with this Vector4.
+     * @param object An object that is believed to be a Vector4.
+     * @return Returns the result of the comparison between this Vector4 and that Vector4.
+     */
+    public boolean equals(Object object)
+    {
+<span class="nc" id="L626">        boolean equals = false;</span>
+<span class="nc bnc" id="L627" title="All 4 branches missed.">        if(object != null &amp;&amp; object instanceof Vector4)</span>
+        {
+<span class="nc" id="L629">            Vector4 that = (Vector4)object;</span>
+<span class="nc" id="L630">            equals = Vector4.equals(this, that);</span>
+        }
+<span class="nc" id="L632">        return equals;</span>
+    }
+
+    /**
+     * Checks the equality between two Vector4
+     * @param veca A Vector4 that we want to compare.
+     * @param vecb A Vector4 that we want to compare.
+     * @return Returns the result of the comparison between the two Vector4.
+     */
+    public static boolean equals(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L643">        boolean equals = false;</span>
+<span class="nc bnc" id="L644" title="All 8 branches missed.">        if(a.x == b.x &amp;&amp; a.y == b.y &amp;&amp; a.z == b.z &amp;&amp; a.w == b.w)</span>
+<span class="nc" id="L645">            equals = true;</span>
+<span class="nc" id="L646">        return equals;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Hermite&quot;&gt;
+    /**
+     * Definition found @ http://cubic.org/docs/hermite.htm
+     * Performs a Hermite spline interpolation.
+     * @param p1 Start-point of the curve.
+     * @param t1 Tangent(direction and speed) to how the curves leaves the start-point.
+     * @param p2 End-point of the curve.
+     * @param t2 Tangent (direction and speed) to how the curve meets the endpoint.
+     * @param amount Weight factor.
+     * @return Returns a Vector4 containing the result of the Hermite spline interpolation.
+     */
+    public static Vector4 hermite(Vector4 p1, Vector4 t1, Vector4 p2, Vector4 t2, float amount)
+    {
+        float h1, h2, h3, h4, amount2, amount3, outX, outY, outZ, outW;
+
+<span class="nc" id="L665">        amount2 = amount * amount; // amount^2</span>
+<span class="nc" id="L666">        amount3 = amount2 * amount; // amount^3</span>
+<span class="nc" id="L667">        h1 = (2 * amount3) - (3 * amount2) + 1; // weight for p1</span>
+<span class="nc" id="L668">        h2 = (-2 * amount3) + (3 * amount2); // weight for p2</span>
+<span class="nc" id="L669">        h3 = amount3 - (2 * amount2) + amount; // weight for t1</span>
+<span class="nc" id="L670">        h4 = (amount3 - amount2); // weight for t2</span>
+<span class="nc" id="L671">        outX = (h1 * p1.x) + (h2 * p2.x) + (h3 * t1.x) + (h4 * t2.x);</span>
+<span class="nc" id="L672">        outY = (h1 * p1.y) + (h2 * p2.y) + (h3 * t1.y) + (h4 * t2.y);</span>
+<span class="nc" id="L673">        outZ = (h1 * p1.z) + (h2 * p2.z) + (h3 * t1.z) + (h4 * t2.z);</span>
+<span class="nc" id="L674">        outW = (h1 * p1.w) + (h2 * p2.w) + (h3 * t1.w) + (h4 * t2.w);</span>
+<span class="nc" id="L675">        return new Vector4(outX, outY, outZ, outW);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Linear Interpolation&quot;&gt;
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value1 A Vector4 we want to interpolate with.
+     * @param value2 A Vector4 we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector4.
+     */
+    public static Vector4 lerp(Vector4 value1, Vector4 value2, float amount)
+    {
+<span class="nc" id="L690">        return new Vector4</span>
+        (
+<span class="nc" id="L692">            MathHelper.lerp(value1.x, value2.x, amount),</span>
+<span class="nc" id="L693">            MathHelper.lerp(value1.y, value2.y, amount),</span>
+<span class="nc" id="L694">            MathHelper.lerp(value1.z, value2.z, amount),</span>
+<span class="nc" id="L695">            MathHelper.lerp(value1.w, value2.w, amount)</span>
+        );
+    }
+
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value2 A Vector4 we want to interpolate with this Vector4.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector4.
+     */
+    public Vector4 lerp(Vector4 that, float amount)
+    {
+<span class="nc" id="L708">        return Vector4.lerp(this, that, amount);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Magnitude&quot;&gt;
+    /**
+     * Computes the magnitude of a Vector4.
+     * @param a A Vector4 to find the magnitude of.
+     * @return Returns the magnitude of the Vector4 provided.
+     */
+    public static float magnitude(Vector4 a)
+    {
+<span class="nc" id="L720">        return (float)Math.sqrt(a.magnitudeSquared());</span>
+    }
+
+    /**
+     * Computes the magnitude of this Vector4.
+     * @return Returns the magnitude of this Vector4.
+     */
+    @Override
+    public float magnitude()
+    {
+<span class="nc" id="L730">        return Vector4.magnitude(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Magnitude Squared&quot;&gt;
+    /**
+     * Computes the magnitude squared of a Vector4
+     * @param a A Vector4 to find the magnitude squared of.
+     * @return Returns the magnitude squared of the Vector4 provided.
+     */
+    public static float magnitudeSquared(Vector4 a)
+    {
+<span class="nc" id="L742">        return (a.x * a.x) + (a.y * a.y) + (a.z * a.z) + (a.w * a.w);</span>
+    }
+
+    /**
+     * Computes the magnitude squared of this Vector3
+     * @return Returns the magnitude squared of this Vector4.
+     */
+    @Override
+    public float magnitudeSquared()
+    {
+<span class="nc" id="L752">        return Vector4.magnitude(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Max and Min&quot;&gt;
+    /**
+     * @param veca A Vector4 we want to find a max value from.
+     * @param vecb A Vector4 we want to find a max value from.
+     * @return Returns a Vector4 containing the max value from each components.
+     */
+    public static Vector4 max(Vector4 a, Vector4 b)
+    {
+<span class="nc bnc" id="L764" title="All 2 branches missed.">        float mx = (a.x &gt; b.x) ? a.x : b.x;</span>
+<span class="nc bnc" id="L765" title="All 2 branches missed.">        float my = (a.y &gt; b.y) ? a.y : b.y;</span>
+<span class="nc bnc" id="L766" title="All 2 branches missed.">        float mz = (a.z &gt; b.z) ? a.z : b.z;</span>
+<span class="nc bnc" id="L767" title="All 2 branches missed.">        float mw = (a.w &gt; b.w) ? a.w : b.w;</span>
+<span class="nc" id="L768">        return new Vector4(mx, my, mz, mw);</span>
+    }
+
+    /**
+     * @param veca A Vector4 we want to find a min value from.
+     * @param vecb A Vector4 we want to find a min value from.
+     * @return Returns a Vector4 containing the min value from each components.
+     */
+    public static Vector4 min(Vector4 a, Vector4 b)
+    {
+<span class="nc bnc" id="L778" title="All 2 branches missed.">        float mx = (a.x &lt; b.x) ? a.x : b.x;</span>
+<span class="nc bnc" id="L779" title="All 2 branches missed.">        float my = (a.y &lt; b.y) ? a.y : b.y;</span>
+<span class="nc bnc" id="L780" title="All 2 branches missed.">        float mz = (a.z &lt; b.z) ? a.z : b.z;</span>
+<span class="nc bnc" id="L781" title="All 2 branches missed.">        float mw = (a.w &lt; b.w) ? a.w : b.w;</span>
+<span class="nc" id="L782">        return new Vector4(mx, my, mz, mw);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Multiply&quot;&gt;
+    /**
+     * Multiplies a Vector4 by a scalar.
+     * @param veca A Vector4 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector4.
+     * @return Returns a new Vector4 multiplied by the scalar.
+     */
+    public static Vector4 multiply(Vector4 a, float scalar)
+    {
+<span class="nc" id="L795">        return new Vector4(a.x * scalar, a.y * scalar, a.z * scalar, a.w * scalar);</span>
+    }
+
+    /**
+     * Multiplies a Vector4 by a scalar.
+     * Converts integer arguments to float.
+     * @param veca A Vector4 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector4.
+     * @return Returns a new Vector4 multiplied by the scalar.
+     */
+    public static Vector4 multiply(Vector4 a, int scalar)
+    {
+<span class="nc" id="L807">        return Vector4.multiply(a, (float)scalar);</span>
+    }
+
+    /**
+     * Multiplies this Vector4 by a scalar.
+     * @param scalar A scalar value we want to multiply into this Vector4.
+     * @return Returns this Vector4 multiplied by the scalar
+     */
+    @Override
+    public Vector4 multiply(float scalar)
+    {
+<span class="nc" id="L818">        return Vector4.multiply(this, scalar);</span>
+    }
+
+    /**
+     * Multiplies this Vector4 by a scalar.
+     * Converts integer arguments to float.
+     * @param scalar A scalar value we want to multiply into this Vector4.
+     * @return Returns this Vector4 multiplied by the scalar
+     */
+    @Override
+    public Vector4 multiply(int scalar)
+    {
+<span class="nc" id="L830">        return Vector4.multiply(this, (float)scalar);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Negate&quot;&gt;
+    /**
+     * @param a The Vector4 we want to negate.
+     * @return Returns A Vector4 that has been negated.
+     */
+    public static Vector4 negate(Vector4 a)
+    {
+<span class="nc" id="L841">        return new Vector4(-1 * a.x,-1 * a.y, -1 * a.z, -1 * a.w);</span>
+    }
+
+    /**
+     * @return Returns this Vector4 that has been negated.
+     */
+    @Override
+    public Vector4 negate()
+    {
+<span class="nc" id="L850">        return Vector4.negate(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Normalize&quot;&gt;
+    /**
+     * Normalizes a input Vector4
+     * @param vec Vector4 that we want to normalize.
+     * @return Vector4 that is normalized.
+     */
+    public static Vector4 normalize(Vector4 a)
+    {
+<span class="nc" id="L862">        float magnitude = a.magnitude();</span>
+<span class="nc" id="L863">        return new Vector4(a.x / magnitude, a.y / magnitude, a.z / magnitude, a.w / magnitude);</span>
+    }
+
+    /**
+     * Normalizes this Vector4
+     * @return Returns this Vector4 normalized.
+     */
+    @Override
+    public Vector4 normalize()
+    {
+<span class="nc" id="L873">        return Vector4.normalize(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Random Vector4&quot;&gt;
+    /**
+     * Generates a Vector4 with random values for components from [-10000,10000].
+     * @return Returns a new Vector4 with its x, y, z, and w components set randomly.
+     */
+    public static Vector4 random()
+    {
+<span class="nc" id="L884">        return new Vector4(Vector3.random(), MathHelper.random(-10000, 10000));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Smooth Step&quot;&gt;
+    /**
+     * Performs a Smooth Step interpolation between two points.
+     * Traditional: smoothstep(t) = 3t2 − 2t3
+     * Ken Perlin: smootherstep(t) = 6t5 − 15t4 + 10t3
+     * @param a A Vector4 containing the starting point.
+     * @param b A Vector4 containing the ending point.
+     * @param amount A float value between zero and one.
+     * @return Returns the interpolation between two values.
+     */
+    public static Vector4 smoothStep(Vector4 a, Vector4 b, float amount)
+    {
+<span class="nc" id="L900">        return new Vector4</span>
+        (
+<span class="nc" id="L902">            MathHelper.smoothStep(a.x, b.x, amount),</span>
+<span class="nc" id="L903">            MathHelper.smoothStep(a.y, b.y, amount),</span>
+<span class="nc" id="L904">            MathHelper.smoothStep(a.z, b.z, amount),</span>
+<span class="nc" id="L905">            MathHelper.smoothStep(a.w, b.w, amount)</span>
+        );
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Special Vectors&quot;&gt;
+    /**
+     * Special type of Vector4; The One vector, &lt;1.0, 1.0 ,1.0, 1.0&gt;
+     * @return Returns a Vector4 with all components set to 1.0.
+     */
+    public static Vector4 one()
+    {
+<span class="nc" id="L917">        return new Vector4(1.0f);</span>
+    }
+
+    /**
+     * Returns the unit vector for the x-axis. &lt;1.0, 0.0, 0.0, 0.0&gt;
+     * @return Returns a Vector4 with the x component set to 1.0.
+     */
+    public static Vector4 unitX()
+    {
+<span class="nc" id="L926">        return new Vector4(1.0f, 0.0f, 0.0f, 0.0f);</span>
+    }
+
+    /**
+     * Returns the unit vector for the y-axis. &lt;0.0, 1.0, 0.0, 0.0&gt;
+     * @return Returns a Vector4 with the y component set to 1.0.
+     */
+    public static Vector4 unitY()
+    {
+<span class="nc" id="L935">        return new Vector4(0.0f, 1.0f, 0.0f, 0.0f);</span>
+    }
+
+
+    /**
+     * Returns the unit vector for the z-axis. &lt;0.0, 0.0, 1.0, 0.0&gt;
+     * @return Returns a Vector4 with the z component set to 1.0.
+     */
+    public static Vector4 unitZ()
+    {
+<span class="nc" id="L945">        return new Vector4(0.0f, 0.0f, 1.0f, 0.0f);</span>
+    }
+
+    /**
+     * Returns the unit vector for the w-axis. &lt;0.0, 0.0, 0.0, 1.0&gt;
+     * @return Returns a Vector4 with the w component set to 1.0.
+     */
+    public static Vector4 unitW()
+    {
+<span class="nc" id="L954">        return new Vector4(0.0f, 0.0f, 0.0f, 1.0f);</span>
+    }
+
+
+    /**
+     * Special type of Vector4; Zero vector also known as the null vector, &lt;0.0, 0.0, 0.0, 0.0&gt;
+     * @return Returns a Vector4 with all components set to 0.0.
+     */
+    public static Vector4 zero()
+    {
+<span class="nc" id="L964">        return new Vector4(0.0f);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Subtract&quot;&gt;
+    /**
+     * Performs Vector4 Subtraction on two Vector4
+     * @param veca A Vector4 to be subtracted.
+     * @param vecb A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the two provided Vector4.
+     */
+    public static Vector4 subtract(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L977">        return new Vector4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);</span>
+    }
+
+    /**
+     * Performs Vector4 Subtraction on a Vector4 and a Vector3
+     * @param veca A Vector4 to be subtracted.
+     * @param vecb A Vector3 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector4 and the Vector3.
+     */
+    public static Vector4 subtract(Vector4 a, Vector3 b)
+    {
+<span class="nc" id="L988">        return Vector4.subtract(a, new Vector4(b));</span>
+    }
+
+    /**
+     * Performs Vector4 Subtraction on a Vector3 and a Vector4
+     * @param veca A Vector3 to be subtracted.
+     * @param vecb A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector3 and the Vector4.
+     */
+    public static Vector4 subtract(Vector3 a, Vector4 b)
+    {
+<span class="nc" id="L999">        return Vector4.subtract(new Vector4(a), b);</span>
+    }
+
+    /**
+     * Performs Vector4 Subtraction on a Vector4 and a Vector2
+     * @param veca A Vector4 to be subtracted.
+     * @param vecb A Vector2 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector4 and the Vector2.
+     */
+    public static Vector4 subtract(Vector4 a, Vector2 b)
+    {
+<span class="nc" id="L1010">        return Vector4.subtract(a, new Vector4(b));</span>
+    }
+
+    /**
+     * Performs Vector4 Subtraction on a Vector2 and a Vector4
+     * @param veca A Vector2 to be subtracted.
+     * @param vecb A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector2 and the Vector4.
+     */
+    public static Vector4 subtract(Vector2 a, Vector4 b)
+    {
+<span class="nc" id="L1021">        return Vector4.subtract(new Vector4(a), b);</span>
+    }
+
+    /**
+     * Subtracts a Vector4 from this
+     * @param that A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector4.
+     */
+    public Vector4 subtract(Vector4 that)
+    {
+<span class="nc" id="L1031">        return Vector4.subtract(this, that);</span>
+    }
+
+    /**
+     * Subtracts a Vector4 from this
+     * @param that A Vector3 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector3.
+     */
+    @Override
+    public Vector4 subtract(Vector3 that)
+    {
+<span class="nc" id="L1042">        return Vector4.subtract(this, new Vector4(that));</span>
+    }
+
+    /**
+     * Subtracts a Vector4 from this
+     * @param that A Vector2 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector2.
+     */
+    @Override
+    public Vector4 subtract(Vector2 that)
+    {
+<span class="nc" id="L1053">        return Vector4.subtract(this, new Vector4(that));</span>
+    }
+
+    /**
+     * Performs subtraction with this Vector4 and the x, y, z, and w values provided.
+     * @param x The x component we want to subtract from this Vector4.
+     * @param y The y component we want to subtract from this Vector4.
+     * @param z The z component we want to subtract from this Vector4.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x, y subtracted from this.y, z subtracted from this.z, and w subtracted from this.w
+     */
+    public Vector4 subtract(float x, float y, float z, float w)
+    {
+<span class="nc" id="L1066">        return Vector4.subtract(this, new Vector4(x, y, z, w));</span>
+    }
+
+    /**
+     * Performs subtraction with this Vector4 and the x, y, z, and w values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector4.
+     * @param y The y component we want to subtract from this Vector4.
+     * @param z The z component we want to subtract from this Vector4.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x, y subtracted from this.y, z subtracted from this.z, and w subtracted from this.w
+     */
+    public Vector4 subtract(int x, int y, int z, int w)
+    {
+<span class="nc" id="L1080">        return Vector4.subtract(this, new Vector4((int)x, (int)y, (int)z, (int)w));</span>
+    }
+
+    /**
+     * Creates a new Vector4 from a Vector3 and a w value and subtracts it from this.
+     * @param a A Vector3 that we want to subtract.
+     * @param w A w value we want to append to the Vector3.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector3 and a w value.
+     */
+    public Vector4 subtract(Vector3 vec, float w)
+    {
+<span class="nc" id="L1091">        return Vector4.subtract(this, new Vector4(vec, w));</span>
+    }
+
+    /**
+     * Creates a new Vector4 from a Vector2, a z value, and a w value and subtracts it from this.
+     * @param a A Vector2 that we want to subtract.
+     * @param z A z value we want to append to the Vector2.
+     * @param w A w value we want to append to the Vector2.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector3 and a w value.
+     */
+    public Vector4 subtract(Vector2 vec, float z, float w)
+    {
+<span class="nc" id="L1103">        return Vector4.subtract(this, new Vector4(vec, z, w));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x
+     */
+    @Override
+    public Vector4 subtractX(float x)
+    {
+<span class="nc" id="L1114">        return Vector4.subtract(this, new Vector4(x, 0.0f, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the x component.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x
+     */
+    @Override
+    public Vector4 subtractX(int x)
+    {
+<span class="nc" id="L1126">        return Vector4.subtract(this, new Vector4((float)x, 0.0f, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the y component.
+     * @param y The y component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with y subtracted from this.y
+     */
+    @Override
+    public Vector4 subtractY(float y)
+    {
+<span class="nc" id="L1137">        return Vector4.subtract(this, new Vector4(0.0f, y, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the y component.
+     * Converts integer arguments to float.
+     * @param y The y component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with y subtracted from this.y
+     */
+    @Override
+    public Vector4 subtractY(int y)
+    {
+<span class="nc" id="L1149">        return Vector4.subtract(this, new Vector4(0.0f, (float)y, 0.0f, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the z component.
+     * @param z The z component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with z subtracted from this.z
+     */
+    @Override
+    public Vector4 subtractZ(float z)
+    {
+<span class="nc" id="L1160">        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, z, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the z component.
+     * Converts integer arguments to float.
+     * @param z The z component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with z subtracted from this.z
+     */
+    @Override
+    public Vector4 subtractZ(int z)
+    {
+<span class="nc" id="L1172">        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, (float)z, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the w component.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with w subtracted from this.w
+     */
+    public Vector4 subtractW(float w)
+    {
+<span class="nc" id="L1182">        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, 0.0f, w));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the w component.
+     * Converts integer arguments to float.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with w subtracted from this.w
+     */
+    public Vector4 subtractW(int w)
+    {
+<span class="nc" id="L1193">        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, 0.0f, (float)w));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;To String&quot;&gt;
+    /**
+     * Converts the Vector4 to a string. &lt;x,y,z,w&gt;
+     * @return Returns a string representing the Vector4.
+     */
+    @Override
+    public String toString()
+    {
+<span class="nc" id="L1205">        return &quot;&lt;&quot; + this.x + &quot;,&quot; + this.y + &quot;,&quot; + this.z + &quot;,&quot; + this.w + &quot;&gt;&quot;;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Transformations&quot;&gt;
+    public static Vector4 transform(Vector4 a, Vector4 b)
+    {
+<span class="nc" id="L1212">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

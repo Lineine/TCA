@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Anagram.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Anagram.java</span></div><h1>Anagram.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * This class will implement the logic to solve multi-word anagrams
+ *
+ */
+<span class="pc bpc" id="L12" title="1 of 2 branches missed.">public class Anagram {</span>
+
+<span class="fc" id="L14">    private int minWordSize = 3;</span>
+    private Dictionary sortedDictionary;
+    private String dictionaryFilePath;
+
+<span class="fc" id="L18">    public Anagram(String dictionaryFilePath) {</span>
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        assert !dictionaryFilePath.isEmpty();</span>
+<span class="fc" id="L20">        sortedDictionary = new Dictionary();</span>
+<span class="fc" id="L21">        this.dictionaryFilePath = dictionaryFilePath;</span>
+<span class="fc" id="L22">    }</span>
+
+    public Anagram(int minWordSize, String dictionaryFilePath) {
+<span class="fc" id="L25">        this(dictionaryFilePath);</span>
+<span class="fc" id="L26">        this.minWordSize = minWordSize;</span>
+<span class="fc" id="L27">    }</span>
+
+    /*
+     * returns set of strings with all anagrams also prints the results on std out
+     */
+    public Set&lt;Set&lt;String&gt;&gt; findAllAnagrams(String wordString) throws IOException {
+
+        // remove all white space chars from string
+<span class="fc" id="L35">        wordString = wordString.replaceAll(&quot;\\s&quot;, &quot;&quot;);</span>
+<span class="fc" id="L36">        Set&lt;Set&lt;String&gt;&gt; anagramsSet = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+        // load dictionary for subset words
+<span class="fc" id="L38">        sortedDictionary.loadDictionaryWithSubsets(dictionaryFilePath, wordString, minWordSize);</span>
+<span class="fc" id="L39">        List&lt;String&gt; keyList = sortedDictionary.getDictionaryKeyList();</span>
+
+<span class="fc" id="L41">        int count = 0;</span>
+        // check for all the words in key list for anagrams
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (int index = 0; index &lt; keyList.size(); index++) {</span>
+<span class="fc" id="L44">            char[] charInventory = wordString.toCharArray();</span>
+<span class="fc" id="L45">            Set&lt;Set&lt;String&gt;&gt; dictWordAnagramsSet = findAnagrams(index, charInventory, keyList);</span>
+<span class="fc" id="L46">            Set&lt;Set&lt;String&gt;&gt; tempAnagramSet = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+<span class="pc bpc" id="L47" title="3 of 4 branches missed.">            if (dictWordAnagramsSet != null &amp;&amp; !dictWordAnagramsSet.isEmpty()) {</span>
+<span class="nc" id="L48">                Set&lt;Set&lt;String&gt;&gt; mergeResult = null;</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">                for (Set&lt;String&gt; anagramSet : dictWordAnagramsSet) {</span>
+<span class="nc" id="L50">                    mergeResult = mergeAnagramKeyWords(anagramSet);</span>
+<span class="nc" id="L51">                    tempAnagramSet.addAll(mergeResult);</span>
+<span class="nc" id="L52">                }</span>
+<span class="nc" id="L53">                System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L54">                System.out.println(&quot;\t(&quot; + sortedDictionary.findSingleWordAnagrams(keyList.get(index)).toString()</span>
+<span class="nc" id="L55">                        .replace(&quot;,&quot;, &quot;&quot;) + &quot;)&quot;);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                for (Set&lt;String&gt; anagramSet : tempAnagramSet) {</span>
+<span class="nc" id="L57">                    System.out.println(&quot;&quot; + ++count + &quot;.\t&quot; + anagramSet.toString().replace(&quot;,&quot;, &quot;&quot;));</span>
+<span class="nc" id="L58">                }</span>
+<span class="nc" id="L59">                anagramsSet.addAll(tempAnagramSet);</span>
+            }
+        }
+
+<span class="fc" id="L63">        return anagramsSet;</span>
+    }
+
+
+    // recursive function to find all the anagrams for charInventory characters
+    // starting with the word at dictionaryIndex in dictionary keyList
+    private Set&lt;Set&lt;String&gt;&gt; findAnagrams(int dictionaryIndex, char[] charInventory, List&lt;String&gt; keyList) {
+        // terminating condition if no words are found
+<span class="fc bfc" id="L71" title="All 4 branches covered.">        if (dictionaryIndex &gt;= keyList.size() || charInventory.length &lt; minWordSize) {</span>
+<span class="fc" id="L72">            return null;</span>
+        }
+
+<span class="fc" id="L75">        String searchWord = keyList.get(dictionaryIndex);</span>
+<span class="fc" id="L76">        char[] searchWordChars = searchWord.toCharArray();</span>
+        // this is where you find the anagrams for whole word
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (Helper.isEquivalent(searchWordChars, charInventory)) {</span>
+<span class="fc" id="L79">            Set&lt;Set&lt;String&gt;&gt; anagramsSet = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+<span class="fc" id="L80">            Set&lt;String&gt; anagramSet = new HashSet&lt;String&gt;();</span>
+<span class="fc" id="L81">            anagramSet.add(searchWord);</span>
+<span class="fc" id="L82">            anagramsSet.add(anagramSet);</span>
+
+<span class="fc" id="L84">            return anagramsSet;</span>
+        }
+
+        // this is where you find the anagrams with multiple words
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (Helper.isSubset(searchWordChars, charInventory)) {</span>
+            // update charInventory by removing the characters of the search
+            // word as it is subset of characters for the anagram search word
+<span class="fc" id="L91">            char[] newCharInventory = Helper.setDifference(charInventory, searchWordChars);</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">            if (newCharInventory.length &gt;= minWordSize) {</span>
+<span class="fc" id="L93">                Set&lt;Set&lt;String&gt;&gt; anagramsSet = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">                for (int index = dictionaryIndex + 1; index &lt; keyList.size(); index++) {</span>
+<span class="fc" id="L95">                    Set&lt;Set&lt;String&gt;&gt; searchWordAnagramsKeysSet = findAnagrams(index, newCharInventory, keyList);</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">                    if (searchWordAnagramsKeysSet != null) {</span>
+<span class="nc" id="L97">                        Set&lt;Set&lt;String&gt;&gt; mergedSets = mergeWordToSets(searchWord, searchWordAnagramsKeysSet);</span>
+<span class="nc" id="L98">                        anagramsSet.addAll(mergedSets);</span>
+                    }
+                }
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">                return anagramsSet.isEmpty() ? null : anagramsSet;</span>
+            }
+        }
+
+        // no anagrams found for current word
+<span class="fc" id="L106">        return null;</span>
+    }
+
+    // this function will merge the real dictionary words found under the sorted key word
+    // for e.g. if the set of words to be merged are [elt, aet]
+    // and the real dictionary words for 'elt' are [let, tel]
+    // and the real dictionary words for 'aet' are [eat, tea]
+    // then the merged set would be [[let, eat], [let, tea], [tel, eat], [tel, tea]]
+    private Set&lt;Set&lt;String&gt;&gt; mergeAnagramKeyWords(
+            Set&lt;String&gt; anagramKeySet) {
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        if (anagramKeySet == null) {</span>
+<span class="nc" id="L117">            throw new IllegalStateException(&quot;anagram keys set cannot be null&quot;);</span>
+        }
+<span class="fc" id="L119">        Set&lt;Set&lt;String&gt;&gt; anagramsSet = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        for (String word : anagramKeySet) {</span>
+<span class="nc" id="L121">            Set&lt;String&gt; anagramWordSet = sortedDictionary.findSingleWordAnagrams(word);</span>
+<span class="nc" id="L122">            anagramsSet.add(anagramWordSet);</span>
+<span class="nc" id="L123">        }</span>
+        @SuppressWarnings(&quot;unchecked&quot;) // cannot use generics with Set array - Java bug???
+<span class="fc" id="L125">        Set&lt;String&gt;[] anagramsSetArray = anagramsSet.toArray(new Set[0]);</span>
+
+<span class="fc" id="L127">        return Helper.setMultiplication(anagramsSetArray);</span>
+    }
+
+    // add word to all the sets
+    private Set&lt;Set&lt;String&gt;&gt; mergeWordToSets(String word, Set&lt;Set&lt;String&gt;&gt; sets) {
+<span class="pc bpc" id="L132" title="2 of 4 branches missed.">        assert !word.isEmpty();</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        if (sets == null) {</span>
+<span class="fc" id="L134">            return null;</span>
+        }
+<span class="fc" id="L136">        Set&lt;Set&lt;String&gt;&gt; mergedSets = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        for (Set&lt;String&gt; set : sets) {</span>
+<span class="pc bpc" id="L138" title="1 of 2 branches missed.">            if (set == null) {</span>
+<span class="nc" id="L139">                throw new IllegalStateException(&quot;anagram keys set cannot be null&quot;);</span>
+            }
+<span class="fc" id="L141">            set.add(word);</span>
+<span class="fc" id="L142">            mergedSets.add(set);</span>
+<span class="fc" id="L143">        }</span>
+
+<span class="fc" id="L145">        return mergedSets;</span>
+    }
+
+    /*
+     * prints usage instructions
+     */
+    private static void usage() {
+
+<span class="fc" id="L153">        System.out.println(&quot;Usage:&quot;);</span>
+<span class="fc" id="L154">        System.out.println(&quot;\tjava -cp AnagramSolver.jar com.parthparekh.algorithms.AnagramSolver &quot; +</span>
+                                    &quot;&lt;absolute_path_to_wordlist_file&gt; &lt;min_word_length&gt; &lt;words_for_anagram_search&gt;&quot;);
+<span class="fc" id="L156">        System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L157">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

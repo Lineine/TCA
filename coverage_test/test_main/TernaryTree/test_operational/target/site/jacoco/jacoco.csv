@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+test_operational,net.mooctest,LinkedStack.Node,4,28,0,0,2,10,1,5,1,5
+test_operational,net.mooctest,EmptyQueueException,0,8,0,0,0,4,0,2,0,2
+test_operational,net.mooctest,TernaryTree.LevelOrderIterator,0,74,0,12,0,21,0,10,0,4
+test_operational,net.mooctest,LinkedStack,6,60,3,7,0,16,3,9,0,7
+test_operational,net.mooctest,EmptyTreeException,0,8,0,0,0,4,0,2,0,2
+test_operational,net.mooctest,TernaryTree,0,241,1,45,0,65,1,41,0,19
+test_operational,net.mooctest,TernaryTree.PostorderIterator,0,124,0,20,0,31,0,14,0,4
+test_operational,net.mooctest,LinkedQueue.Node,12,26,0,0,4,10,1,5,1,5
+test_operational,net.mooctest,TernaryNode,0,187,0,26,0,50,0,32,0,19
+test_operational,net.mooctest,TernaryTree.PreorderIterator,0,74,0,12,0,21,0,10,0,4
+test_operational,net.mooctest,LinkedQueue,6,91,4,12,0,25,4,11,0,7

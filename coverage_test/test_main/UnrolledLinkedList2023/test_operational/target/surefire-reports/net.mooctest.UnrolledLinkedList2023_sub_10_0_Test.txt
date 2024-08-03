@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.UnrolledLinkedList2023_sub_10_0_Test
+-------------------------------------------------------------------------------
+Tests run: 263, Failures: 0, Errors: 11, Skipped: 0, Time elapsed: 0.016 s <<< FAILURE! - in net.mooctest.UnrolledLinkedList2023_sub_10_0_Test
+test_2966(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_2966(UnrolledLinkedList2023_sub_10_0_Test.java:4540)
+
+test_4160(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4160(UnrolledLinkedList2023_sub_10_0_Test.java:4213)
+
+test_4161(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4161(UnrolledLinkedList2023_sub_10_0_Test.java:1033)
+
+test_4163(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4163(UnrolledLinkedList2023_sub_10_0_Test.java:1923)
+
+test_4164(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: -2147483647
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4164(UnrolledLinkedList2023_sub_10_0_Test.java:5604)
+
+test_4215(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: nodeCapacity < 8
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4215(UnrolledLinkedList2023_sub_10_0_Test.java:4353)
+
+test_4397(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4397(UnrolledLinkedList2023_sub_10_0_Test.java:1170)
+
+test_4780(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_4780(UnrolledLinkedList2023_sub_10_0_Test.java:2438)
+
+test_5199(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_5199(UnrolledLinkedList2023_sub_10_0_Test.java:5620)
+
+test_5697(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_5697(UnrolledLinkedList2023_sub_10_0_Test.java:4801)
+
+test_6905(net.mooctest.UnrolledLinkedList2023_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException
+	at net.mooctest.UnrolledLinkedList2023_sub_10_0_Test.test_6905(UnrolledLinkedList2023_sub_10_0_Test.java:1848)
+

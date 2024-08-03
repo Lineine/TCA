@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AStar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">AStar.java</span></div><h1>AStar.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import net.mooctest.Graph;
+import net.mooctest.Graph.Edge;
+import net.mooctest.Graph.Vertex;
+
+/**
+ * In computer science, A* is a computer algorithm that is widely used in path finding and graph traversal, the process 
+ * of plotting an efficiently traversable path between multiple points, called nodes.
+ * @author Justin Wetherell 
+ */
+public class AStar&lt;T extends Comparable&lt;T&gt;&gt; {
+
+<span class="fc" id="L23">    public AStar() { }</span>
+
+    /**
+     * Find the path using the A* algorithm from start vertex to end vertex or NULL if no path exists.
+     * 
+     * @param graph
+     *          Graph to search.
+     * @param start
+     *          Start vertex.
+     * @param goal
+     *          Goal vertex.
+     * 
+     * @return 
+     *          List of Edges to get from start to end or NULL if no path exists.
+     */
+    public List&lt;Graph.Edge&lt;T&gt;&gt; aStar(Graph&lt;T&gt; graph, Graph.Vertex&lt;T&gt; start, Graph.Vertex&lt;T&gt; goal) {
+<span class="fc" id="L39">        final int size = graph.getVertices().size(); // used to size data structures appropriately</span>
+<span class="fc" id="L40">        final Set&lt;Graph.Vertex&lt;T&gt;&gt; closedSet = new HashSet&lt;Graph.Vertex&lt;T&gt;&gt;(size); // The set of nodes already evaluated.</span>
+<span class="fc" id="L41">        final List&lt;Graph.Vertex&lt;T&gt;&gt; openSet = new ArrayList&lt;Graph.Vertex&lt;T&gt;&gt;(size); // The set of tentative nodes to be evaluated, initially containing the start node</span>
+<span class="fc" id="L42">        openSet.add(start);</span>
+<span class="fc" id="L43">        final Map&lt;Graph.Vertex&lt;T&gt;,Graph.Vertex&lt;T&gt;&gt; cameFrom = new HashMap&lt;Graph.Vertex&lt;T&gt;,Graph.Vertex&lt;T&gt;&gt;(size); // The map of navigated nodes.</span>
+
+<span class="fc" id="L45">        final Map&lt;Graph.Vertex&lt;T&gt;,Integer&gt; gScore = new HashMap&lt;Graph.Vertex&lt;T&gt;,Integer&gt;(); // Cost from start along best known path.</span>
+<span class="fc" id="L46">        gScore.put(start, 0);</span>
+
+        // Estimated total cost from start to goal through y.
+<span class="fc" id="L49">        final Map&lt;Graph.Vertex&lt;T&gt;,Integer&gt; fScore = new HashMap&lt;Graph.Vertex&lt;T&gt;,Integer&gt;();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        for (Graph.Vertex&lt;T&gt; v : graph.getVertices())</span>
+<span class="fc" id="L51">            fScore.put(v, Integer.MAX_VALUE);</span>
+<span class="fc" id="L52">        fScore.put(start, heuristicCostEstimate(start,goal));</span>
+
+<span class="fc" id="L54">        final Comparator&lt;Graph.Vertex&lt;T&gt;&gt; comparator = new Comparator&lt;Graph.Vertex&lt;T&gt;&gt;() {</span>
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public int compare(Vertex&lt;T&gt; o1, Vertex&lt;T&gt; o2) {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">                if (fScore.get(o1) &lt; fScore.get(o2))</span>
+<span class="fc" id="L61">                    return -1;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                if (fScore.get(o2) &lt; fScore.get(o1))</span>
+<span class="fc" id="L63">                    return 1;</span>
+<span class="fc" id="L64">                return 0;</span>
+            }
+        };
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        while (!openSet.isEmpty()) {</span>
+<span class="fc" id="L69">            final Graph.Vertex&lt;T&gt; current = openSet.get(0);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            if (current.equals(goal))</span>
+<span class="fc" id="L71">                return reconstructPath(cameFrom, goal);</span>
+
+<span class="fc" id="L73">            openSet.remove(0);</span>
+<span class="fc" id="L74">            closedSet.add(current);</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">            for (Graph.Edge&lt;T&gt; edge : current.getEdges()) {</span>
+<span class="fc" id="L76">                final Graph.Vertex&lt;T&gt; neighbor = edge.getToVertex();</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                if (closedSet.contains(neighbor))</span>
+<span class="fc" id="L78">                    continue; // Ignore the neighbor which is already evaluated.</span>
+
+<span class="fc" id="L80">                final int tenativeGScore = gScore.get(current) + distanceBetween(current,neighbor); // length of this path.</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">                if (!openSet.contains(neighbor))</span>
+<span class="fc" id="L82">                    openSet.add(neighbor); // Discover a new node</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">                else if (tenativeGScore &gt;= gScore.get(neighbor))</span>
+<span class="fc" id="L84">                    continue;</span>
+
+                // This path is the best until now. Record it!
+<span class="fc" id="L87">                cameFrom.put(neighbor, current);</span>
+<span class="fc" id="L88">                gScore.put(neighbor, tenativeGScore);</span>
+<span class="fc" id="L89">                final int estimatedFScore = gScore.get(neighbor) + heuristicCostEstimate(neighbor, goal);</span>
+<span class="fc" id="L90">                fScore.put(neighbor, estimatedFScore);</span>
+
+                // fScore has changed, re-sort the list
+<span class="fc" id="L93">                Collections.sort(openSet,comparator);</span>
+<span class="fc" id="L94">            }</span>
+<span class="fc" id="L95">        }</span>
+
+<span class="fc" id="L97">        return null;</span>
+    }
+
+    /**
+     * Default distance is the edge cost. If there is no edge between the start and next then
+     * it returns Integer.MAX_VALUE;
+     */
+    protected int distanceBetween(Graph.Vertex&lt;T&gt; start, Graph.Vertex&lt;T&gt; next) {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        for (Edge&lt;T&gt; e : start.getEdges()) {</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">            if (e.getToVertex().equals(next))</span>
+<span class="fc" id="L107">                return e.getCost();</span>
+<span class="fc" id="L108">        }</span>
+<span class="fc" id="L109">        return Integer.MAX_VALUE;</span>
+    }
+
+    /**
+     * Default heuristic: cost to each vertex is 1.
+     */
+    @SuppressWarnings(&quot;unused&quot;) 
+    protected int heuristicCostEstimate(Graph.Vertex&lt;T&gt; start, Graph.Vertex&lt;T&gt; goal) {
+<span class="fc" id="L117">        return 1;</span>
+    }
+
+    private List&lt;Graph.Edge&lt;T&gt;&gt; reconstructPath(Map&lt;Graph.Vertex&lt;T&gt;,Graph.Vertex&lt;T&gt;&gt; cameFrom, Graph.Vertex&lt;T&gt; current) {
+<span class="fc" id="L121">        final List&lt;Graph.Edge&lt;T&gt;&gt; totalPath = new ArrayList&lt;Graph.Edge&lt;T&gt;&gt;();</span>
+
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        while (current != null) {</span>
+<span class="fc" id="L124">            final Graph.Vertex&lt;T&gt; previous = current;</span>
+<span class="fc" id="L125">            current = cameFrom.get(current);</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">            if (current != null) {</span>
+<span class="fc" id="L127">                final Graph.Edge&lt;T&gt; edge = current.getEdge(previous);</span>
+<span class="fc" id="L128">                totalPath.add(edge);</span>
+            }
+<span class="fc" id="L130">        }</span>
+<span class="fc" id="L131">        Collections.reverse(totalPath);</span>
+<span class="fc" id="L132">        return totalPath;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

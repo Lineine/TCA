@@ -1,0 +1,7 @@
+     [echo] Compiling main source files...
+    [javac] /data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/antrun/build-main.xml:9: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+     [echo] Compiling test source files...
+    [javac] /data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/antrun/build-main.xml:14: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 20 source files to /data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/test-classes
+    [javac] Compile failed; see the compiler error output for details.
+     [echo] Finished recording compile errors.

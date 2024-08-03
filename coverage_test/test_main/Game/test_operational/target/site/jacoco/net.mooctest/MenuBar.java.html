@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MenuBar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MenuBar.java</span></div><h1>MenuBar.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.util.LinkedList;
+
+public class MenuBar implements GuiComponent
+{
+    private Anchor anchor;
+    private Rectangle bounds;
+    private LinkedList&lt;Menu&gt; menus;
+    private Color paneColor, borderColor;
+    private Font font;
+    // Font Metrics
+    private FontRenderContext frc;
+
+    /**
+     * Complete Constructor.
+     * Creates a MenuBar with the desired properties.
+     * @param anchor Anchor enumeration defining where the MenuBar is located.
+     * @param font Font used within the MenuBar.
+     * @param paneColor Color of the MenuBar.
+     * @param borderColor Color of the border of the MenuBar.
+     */
+    public MenuBar(Anchor anchor, Font font, Color paneColor, Color borderColor)
+<span class="fc" id="L26">    {</span>
+        // Set properties
+<span class="fc" id="L28">        this.anchor = anchor;</span>
+<span class="fc" id="L29">        this.font = font;</span>
+<span class="fc" id="L30">        this.paneColor = paneColor;</span>
+<span class="fc" id="L31">        this.borderColor = borderColor;</span>
+        // Objects for getting font metrics
+<span class="fc" id="L33">        this.frc = new FontRenderContext(font.getTransform(), true, true);</span>
+        // Determine bounds based on the anchor
+<span class="fc" id="L35">        int height = (int)font.getStringBounds(&quot;H&quot;, frc).getHeight();</span>
+<span class="fc" id="L36">        Vector2 position = determineAnchor(anchor, height);</span>
+<span class="fc" id="L37">        this.bounds = new Rectangle</span>
+        (
+                (int)position.x,
+                (int)position.y,
+<span class="fc" id="L41">                GameHelper.WIDTH(),</span>
+                height
+        );
+        // Create list to hold Menus
+<span class="fc" id="L45">        this.menus = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Creates a MenuBar with the default properties anchored at a desired location.
+     * Defaults:
+     *   font: Times New Roman, Font.PLAIN, 16
+     *  color: Color.BLACK
+     * @param anchor Anchor enumeration defining where the MenuBar is located.
+     */
+    public MenuBar(Anchor anchor)
+    {
+<span class="nc" id="L57">        this(anchor, new Font(&quot;Times New Roman&quot;, Font.PLAIN, 16), Color.GRAY, Color.BLACK);</span>
+<span class="nc" id="L58">    }</span>
+
+    /**
+     * Default Constructor.
+     * Creates a MenuBar with the default properties anchored at the top.
+     * Defaults:
+     *  Anchor: Anchor.TOP
+     *    font: Times New Roman, Font.PLAIN, 16
+     *   color: Color.BLACK
+     */
+    public MenuBar()
+    {
+<span class="fc" id="L70">        this(Anchor.TOP, new Font(&quot;Times New Roman&quot;, Font.PLAIN, 16), Color.GRAY, Color.BLACK);</span>
+<span class="fc" id="L71">    }</span>
+
+    /**
+     * Adds a Menu to the MenuBar.
+     * @param menu A Menu to be added to the MenuBar.
+     */
+    public void add(Menu menu)
+    {
+        // Add the new menu
+<span class="fc" id="L80">        this.menus.add(menu);</span>
+<span class="fc" id="L81">    }</span>
+
+    /**
+     * Initialized all Menus in the MenuBar.
+     */
+    @Override
+    public void initialize()
+    {
+        // Initialize all the Menu items.
+<span class="fc" id="L90">        int xPos = 0;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        for(int i = 0; i &lt; menus.size(); ++i)</span>
+        {
+<span class="fc" id="L93">            menus.get(i).setProperties</span>
+<span class="fc" id="L94">            (</span>
+                anchor,
+                xPos,
+                bounds.y,
+                // 10px padding on each side = &quot;+ 20&quot;
+                // TODO: Fix + 20 Magic Number
+<span class="fc" id="L100">                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20,</span>
+                bounds.height
+            );
+            // Set Font and Color
+<span class="fc" id="L104">            menus.get(i).setColors(paneColor, borderColor);</span>
+<span class="fc" id="L105">            menus.get(i).setFont(font);</span>
+            // update the xPos offset
+<span class="fc" id="L107">            xPos += menus.get(i).getClosedWidth();</span>
+        }
+        // Initialize Each Menus MenuItems
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        for(Menu menu : menus)</span>
+<span class="fc" id="L111">            menu.initialize();</span>
+<span class="fc" id="L112">    }</span>
+
+    /**
+     * Loads any content for MenuBar, and MenuBar menu content.
+     */
+    @Override
+    public void loadContent()
+    {
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        for(Menu menu : menus)</span>
+<span class="nc" id="L121">            menu.loadContent();</span>
+<span class="nc" id="L122">    }</span>
+
+    /**
+     * Updates the MenuBar and MenBar menus.
+     * @param gameTime GameTime object containing the timing of the current session.
+     */
+    @Override
+    public void update(GameTime gameTime)
+    {
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        for(Menu menu : menus)</span>
+<span class="nc" id="L132">            menu.update(gameTime);</span>
+<span class="nc" id="L133">    }</span>
+
+    /**
+     * Draws The MenuBar component.
+     * @param g2d Graphics2D object containing the drawable surface of the window.
+     */
+    @Override
+    public void draw(Graphics2D g2d)
+    {
+        // Set the paneColor of the MenuBar
+<span class="nc" id="L143">        g2d.setColor(paneColor);</span>
+        // Fill The Menu Bar
+<span class="nc" id="L145">        g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);</span>
+        // Set The Color of the Border
+<span class="nc" id="L147">        g2d.setColor(borderColor);</span>
+        // Draw The Border
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        switch(anchor)</span>
+        {
+            case BOTTOM:
+<span class="nc" id="L152">                g2d.drawLine(bounds.x, bounds.y, bounds.width, bounds.y);</span>
+<span class="nc" id="L153">                break;</span>
+            case TOP:
+            default:
+<span class="nc" id="L156">                g2d.drawLine(bounds.x, bounds.height, bounds.width, bounds.height);</span>
+                break;
+        }
+        // Draw The Menu's on this Menu Bar
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for(Menu menu : menus)</span>
+<span class="nc" id="L161">            menu.draw(g2d);</span>
+<span class="nc" id="L162">    }</span>
+
+    /**
+     * Determines where the MenuBar should be positioned based on the provided anchor.
+     * @param anchor Anchor enumeration defining where the MenuBar is located.
+     * @param height Integer representing the height of the MenuBar.
+     * @return Returns a Vector2 containing the (x,y) coordinates of the upper-left side of the MenuBar.
+     */
+    private Vector2 determineAnchor(Anchor anchor, int height)
+    {
+        Vector2 pos;
+<span class="pc bpc" id="L173" title="2 of 3 branches missed.">        switch(anchor)</span>
+        {
+            case BOTTOM:
+<span class="nc" id="L176">                pos = new Vector2(0, GameHelper.HEIGHT() - height);</span>
+<span class="nc" id="L177">                break;</span>
+            default:
+<span class="nc" id="L179">                System.out.println(&quot;Anchor: &quot; + anchor + &quot; is not supported.&quot;);</span>
+<span class="nc" id="L180">                System.out.println(&quot;Defaulting to Anchor.TOP&quot;);</span>
+            case TOP:
+<span class="fc" id="L182">                pos = Vector2.zero();</span>
+                break;
+        }
+<span class="fc" id="L185">        return pos;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

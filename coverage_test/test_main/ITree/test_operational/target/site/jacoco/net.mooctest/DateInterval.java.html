@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DateInterval.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">DateInterval.java</span></div><h1>DateInterval.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.Date;
+
+/**
+ * A class representing an interval with Dates as start and end points.
+ */
+public class DateInterval extends Interval&lt;Date&gt; {
+
+	/**
+	 * Instantiates an interval extending from positive infinity to negative
+	 * infinity and thus containing all Dates.
+	 */
+<span class="fc" id="L14">	public DateInterval(){}</span>
+
+	/**
+	 * Instantiates a new bounded interval.
+	 *
+	 * @param start The start date of the interval
+	 * @param end The end date of the interval.
+	 * @param type Description of whether the interval is open/closed at one or both
+	 *             of its ends. See {@link Bounded the documentation of the Bounded enum}
+	 *             for more information on the different possibilities.
+	 */
+	public DateInterval(Date start, Date end, Bounded type){
+<span class="fc" id="L26">		super(start, end, type);</span>
+<span class="fc" id="L27">	}</span>
+
+	/**
+	 * Instantiates a new unbounded interval - an interval that extends to positive or
+	 * negative infinity. The interval will be bounded by either the start point
+	 * or the end point and unbounded in the other point.
+	 *
+	 * @param value The bounding date for either the start or the end point.
+	 * @param type Describes whether the interval extends to positive or negative infinity,
+	 *             as well as if it is open or closed at the bounding point. See {@link Unbounded
+	 *             the Unbounded enum} for description of the different possibilities.
+	 */
+	public DateInterval(Date value, Unbounded type){
+<span class="fc" id="L40">		super(value, type);</span>
+<span class="fc" id="L41">	}</span>
+
+	@Override
+	protected Interval&lt;Date&gt; create() {
+<span class="fc" id="L45">		return new DateInterval();</span>
+	}
+
+	/**
+	 * Determines the center of the interval.
+	 * &lt;p&gt;
+	 *     Similarly to the class {@link IntegerInterval}, it assumes that unbounded intervals
+	 *     are bounded by Dates with timestamps Long.MIN_VALUE and/or Long.MAX_VALUE. The center
+	 *     of an unbounded interval is computed accordingly.
+	 * &lt;/p&gt;
+	 *
+	 * @return The center of the interval.
+	 */
+	@Override
+	public Date getMidpoint() {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		if (isEmpty())</span>
+<span class="fc" id="L61">			return null;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">		long start = getStart() == null ? new Date(Long.MIN_VALUE).getTime() : getStart().getTime();</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		long end = getEnd() == null ? new Date(Long.MAX_VALUE).getTime() : getEnd().getTime();</span>
+
+		// If the calculation would return the start point and the start point
+		// is actually not in the interval, return the end point.
+<span class="fc bfc" id="L67" title="All 4 branches covered.">		if (start+1 == end &amp;&amp; !isStartInclusive())</span>
+<span class="fc" id="L68">			return getEnd();</span>
+
+		// Prevent an overflow
+<span class="fc bfc" id="L71" title="All 4 branches covered.">		if (start &lt;= 0 &amp;&amp; end &gt;= 0)</span>
+<span class="fc" id="L72">			return new Date((end + start) / 2);</span>
+
+<span class="fc" id="L74">		return new Date(start + (end-start)/2);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

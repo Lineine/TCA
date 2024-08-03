@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UnrolledLinkedList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">UnrolledLinkedList.java</span></div><h1>UnrolledLinkedList.java</h1><pre class="source lang-java linenums">/*
+ * This source code is placed in the public domain. This means you can use it
+ * without any restrictions.
+ */
+
+package net.mooctest;
+
+import java.util.AbstractList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
+import java.io.Serializable;
+import java.util.ConcurrentModificationException;
+
+/**
+ * An unrolled linked list implemetation of the
+ * {@link java.util.List List} interface. It offers better performance
+ * than the {{@link java.util.LinkedList LinkedList} class.
+ *
+ * &lt;p&gt;&lt;strong&gt;Note that this implementation is not synchronized.&lt;/strong&gt;
+ * If multiple threads access a linked list concurrently, and at least
+ * one of the threads modifies the list structurally, it &lt;i&gt;must&lt;/i&gt; be
+ * synchronized externally.  (A structural modification is any operation
+ * that adds or deletes one or more elements; merely setting the value of
+ * an element is not a structural modification.)  This is typically
+ * accomplished by synchronizing on some object that naturally
+ * encapsulates the list.
+ *
+ * If no such object exists, the list should be &quot;wrapped&quot; using the
+ * {@link java.util.Collections#synchronizedList Collections.synchronizedList}
+ * method.  This is best done at creation time, to prevent accidental
+ * unsynchronized access to the list:&lt;pre&gt;
+ *   List list = Collections.synchronizedList(new LinkedList(...));&lt;/pre&gt;
+ *
+ * &lt;p&gt;The iterators returned by this class's &lt;tt&gt;iterator&lt;/tt&gt; and
+ * &lt;tt&gt;listIterator&lt;/tt&gt; methods are &lt;i&gt;fail-fast&lt;/i&gt;: if the list is
+ * structurally modified at any time after the iterator is created, in
+ * any way except through the Iterator's own &lt;tt&gt;remove&lt;/tt&gt; or
+ * &lt;tt&gt;add&lt;/tt&gt; methods, the iterator will throw a {@link
+ * ConcurrentModificationException}.  Thus, in the face of concurrent
+ * modification, the iterator fails quickly and cleanly, rather than
+ * risking arbitrary, non-deterministic behavior at an undetermined
+ * time in the future.
+ *
+ * @param &lt;E&gt; the type of elements held in this collection
+ * @see &lt;a href=&quot;http://en.wikipedia.org/wiki/Unrolled_linked_list&quot;&gt;Unrolled_linked_list&lt;/a&gt;
+ */
+
+// TODO: Implement the java.util.List.addAll(int index, Collection&lt;? extends E&gt; c)
+//       method in a more efficient way. The current implementation is inherited
+//       from the java.util.AbstractList class.
+// TODO: Testing
+
+public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt;, Serializable {
+
+    /**
+     * The maximum number of elements that can be stored in a single node.
+     */
+    public int nodeCapacity;
+
+    /**
+     * The current size of this list.
+     */
+<span class="fc" id="L66">    public int size = 0;</span>
+
+    /**
+     * The first node of this list.
+     */
+    public Node firstNode;
+
+    /**
+     * The last node of this list.
+     */
+    public Node lastNode;
+
+    /**
+     * Constructs an empty list with the specified
+     * {@link UnrolledLinkedList#nodeCapacity nodeCapacity}. For performance
+     * reasons &lt;tt&gt;nodeCapacity&lt;/tt&gt; must be greater than or equal to 8.
+     *
+     * @param nodeCapacity The maximum number of elements
+     *        that can be stored in a single node.
+     * @throws IllegalArgumentException if &lt;tt&gt;nodeCapacity&lt;/tt&gt; is less than 8
+     */
+<span class="fc" id="L87">    public UnrolledLinkedList(int nodeCapacity) throws IllegalArgumentException {</span>
+
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (nodeCapacity &lt; 8) {</span>
+<span class="fc" id="L90">            throw new IllegalArgumentException(&quot;nodeCapacity &lt; 8&quot;);</span>
+        }
+<span class="fc" id="L92">        this.nodeCapacity = nodeCapacity;</span>
+<span class="fc" id="L93">        firstNode = new Node();</span>
+<span class="fc" id="L94">        lastNode = firstNode;</span>
+
+<span class="fc" id="L96">    }</span>
+
+    /**
+     * Constructs an empty list with
+     * {@link UnrolledLinkedList#nodeCapacity nodeCapacity} of 16.
+     */
+    public UnrolledLinkedList() {
+
+<span class="fc" id="L104">        this(16);</span>
+
+<span class="fc" id="L106">    }</span>
+
+    /**
+     * Returns the number of elements in this list.
+     *
+     * @return the number of elements in this list
+     */
+    public int size() {
+
+<span class="fc" id="L115">        return size;</span>
+
+    }
+
+    /**
+     * Returns &lt;tt&gt;true&lt;/tt&gt; if this list contains no elements.
+     *
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list contains no elements
+     */
+    @Override
+    public boolean isEmpty() {
+
+<span class="fc bfc" id="L127" title="All 2 branches covered.">        return (size == 0);</span>
+
+    }
+
+    /**
+     * Returns &lt;tt&gt;true&lt;/tt&gt; if this list contains the specified element.
+     * More formally, returns &lt;tt&gt;true&lt;/tt&gt; if and only if this list contains
+     * at least one element &lt;tt&gt;e&lt;/tt&gt; such that
+     * &lt;tt&gt;(o==null&amp;nbsp;?&amp;nbsp;e==null&amp;nbsp;:&amp;nbsp;o.equals(e))&lt;/tt&gt;.
+     *
+     * @param o element whose presence in this list is to be tested
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list contains the specified element
+     */
+    @Override
+    public boolean contains(Object o) {
+
+<span class="fc bfc" id="L143" title="All 2 branches covered.">        return (indexOf(o) != -1);</span>
+
+    }
+
+    /**
+     * Returns an iterator over the elements in this list in proper sequence.
+     *
+     * @return an iterator over the elements in this list in proper sequence
+     */
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+
+<span class="fc" id="L155">        return new ULLIterator(firstNode, 0, 0);</span>
+
+    }
+
+    /**
+     * Returns an array containing all of the elements in this list
+     * in proper sequence (from first to last element).
+     *
+     * &lt;p&gt;The returned array will be &quot;safe&quot; in that no references to it are
+     * maintained by this list.  (In other words, this method must allocate
+     * a new array).  The caller is thus free to modify the returned array.
+     *
+     * &lt;p&gt;This method acts as bridge between array-based and collection-based
+     * APIs.
+     *
+     * @return an array containing all of the elements in this list
+     *         in proper sequence
+     */
+    @Override
+    public Object[] toArray() {
+
+<span class="fc" id="L176">        Object[] array = new Object[size];</span>
+<span class="fc" id="L177">        int p = 0;</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">        for (Node node = firstNode; node != null; node = node.next) {</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">            for (int i = 0; i &lt; node.numElements; i++) {</span>
+<span class="fc" id="L180">                array[p] = node.elements[i];</span>
+<span class="fc" id="L181">                p++;</span>
+            }
+        }
+<span class="fc" id="L184">        return array;</span>
+
+    }
+
+    /**
+     * Returns an array containing all of the elements in this list
+     * in proper sequence (from first to last element).
+     *
+     * &lt;p&gt;The returned array will be &quot;safe&quot; in that no references to it are
+     * maintained by this list.  (In other words, this method must allocate
+     * a new array).  The caller is thus free to modify the returned array.
+     *
+     * &lt;p&gt;This method acts as bridge between array-based and collection-based
+     * APIs.
+     *
+     * @return an array containing all of the elements in this list
+     *         in proper sequence
+     */
+    @Override
+    public &lt;T&gt; T[] toArray(T[] a) {
+
+<span class="fc bfc" id="L205" title="All 2 branches covered.">        if (a.length &lt; size) {</span>
+<span class="fc" id="L206">            a = (T[]) java.lang.reflect.Array.newInstance(</span>
+<span class="fc" id="L207">                    a.getClass().getComponentType(), size);</span>
+        }
+<span class="fc" id="L209">        Object[] result = a;</span>
+<span class="fc" id="L210">        int p = 0;</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">        for (Node node = firstNode; node != null; node = node.next) {</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">            for (int i = 0; i &lt; node.numElements; i++) {</span>
+<span class="fc" id="L213">                result[p] = node.elements[i];</span>
+<span class="fc" id="L214">                p++;</span>
+            }
+        }
+<span class="fc" id="L217">        return a;</span>
+
+    }
+
+    /**
+     * Appends the specified element to the end of this list.
+     *
+     * @param e element to be appended to this list
+     * @return &lt;tt&gt;true&lt;/tt&gt; (as specified by {@link Collection#add})
+     */
+    @Override
+    public boolean add(E e) {
+
+<span class="fc" id="L230">        insertIntoNode(lastNode, lastNode.numElements, e);</span>
+<span class="fc" id="L231">        return true;</span>
+
+    }
+
+    /**
+     * Removes the first occurrence of the specified element from this list,
+     * if it is present.  If this list does not contain the element, it is
+     * unchanged.  More formally, removes the element with the lowest index
+     * &lt;tt&gt;i&lt;/tt&gt; such that
+     * &lt;tt&gt;(o==null&amp;nbsp;?&amp;nbsp;get(i)==null&amp;nbsp;:&amp;nbsp;o.equals(get(i)))&lt;/tt&gt;
+     * (if such an element exists).  Returns &lt;tt&gt;true&lt;/tt&gt; if this list
+     * contained the specified element (or equivalently, if this list
+     * changed as a result of the call).
+     *
+     * @param o element to be removed from this list, if present
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list contained the specified element
+     */
+    @Override
+    public boolean remove(Object o) {
+
+<span class="fc" id="L251">        int index = 0;</span>
+<span class="fc" id="L252">        Node node = firstNode;</span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">        if (o == null) {</span>
+<span class="fc bfc" id="L254" title="All 2 branches covered.">            while (node != null) {</span>
+<span class="fc bfc" id="L255" title="All 2 branches covered.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
+<span class="fc bfc" id="L256" title="All 2 branches covered.">                    if (node.elements[ptr] == null) {</span>
+<span class="fc" id="L257">                        removeFromNode(node, ptr);</span>
+<span class="fc" id="L258">                        return true;</span>
+                    }
+                }
+<span class="fc" id="L261">                index += node.numElements;</span>
+<span class="fc" id="L262">                node = node.next;</span>
+            }
+        } else {
+<span class="fc bfc" id="L265" title="All 2 branches covered.">            while (node != null) {</span>
+<span class="fc bfc" id="L266" title="All 2 branches covered.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">                    if (o.equals(node.elements[ptr])) {</span>
+<span class="fc" id="L268">                        removeFromNode(node, ptr);</span>
+<span class="fc" id="L269">                        return true;</span>
+                    }
+                }
+<span class="fc" id="L272">                index += node.numElements;</span>
+<span class="fc" id="L273">                node = node.next;</span>
+            }
+        }
+<span class="fc" id="L276">        return false;</span>
+
+    }
+
+    /**
+     * Returns &lt;tt&gt;true&lt;/tt&gt; if this list contains all of the elements of the
+     * specified collection.
+     *
+     * @param  c collection to be checked for containment in this list
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list contains all of the elements of the
+     *         specified collection
+     * @throws NullPointerException if the specified collection is null
+     * @see #contains(Object)
+     */
+    @Override
+    public boolean containsAll(Collection&lt;?&gt; c) {
+
+<span class="fc bfc" id="L293" title="All 2 branches covered.">        if (c == null) {</span>
+<span class="fc" id="L294">            throw new NullPointerException();</span>
+        }
+<span class="fc" id="L296">        Iterator&lt;?&gt; it = c.iterator();</span>
+<span class="fc bfc" id="L297" title="All 2 branches covered.">        while (it.hasNext()) {</span>
+<span class="fc bfc" id="L298" title="All 2 branches covered.">            if (!contains(it.next())) {</span>
+<span class="fc" id="L299">                return false;</span>
+            }
+        }
+<span class="fc" id="L302">        return true;</span>
+
+    }
+
+    /**
+     * Appends all of the elements in the specified collection to the end of
+     * this list, in the order that they are returned by the specified
+     * collection's iterator.  The behavior of this
+     * operation is undefined if the specified collection is modified while
+     * the operation is in progress.  (Note that this will occur if the
+     * specified collection is this list, and it's nonempty.)
+     *
+     * @param c collection containing elements to be added to this list
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list changed as a result of the call
+     * @throws NullPointerException if the specified collection is null
+     * @see #add(Object)
+     */
+    @Override
+    public boolean addAll(Collection&lt;? extends E&gt; c) {
+
+<span class="fc bfc" id="L322" title="All 2 branches covered.">        if (c == null) {</span>
+<span class="fc" id="L323">            throw new NullPointerException();</span>
+        }
+<span class="fc" id="L325">        boolean changed = false;</span>
+<span class="fc" id="L326">        Iterator&lt;? extends E&gt; it = c.iterator();</span>
+<span class="fc bfc" id="L327" title="All 2 branches covered.">        while (it.hasNext()) {</span>
+<span class="fc" id="L328">            add(it.next());</span>
+<span class="fc" id="L329">            changed = true;</span>
+        }
+<span class="fc" id="L331">        return changed;</span>
+
+    }
+
+    /**
+     * Removes from this list all of its elements that are contained in the
+     * specified collection.
+     *
+     * @param c collection containing elements to be removed from this list
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list changed as a result of the call
+     * @throws NullPointerException if the specified collection is null
+     * @see #remove(Object)
+     * @see #contains(Object)
+     */
+    @Override
+    public boolean removeAll(Collection&lt;?&gt; c) {
+
+<span class="fc bfc" id="L348" title="All 2 branches covered.">        if (c == null) {</span>
+<span class="fc" id="L349">            throw new NullPointerException();</span>
+        }
+<span class="fc" id="L351">        Iterator&lt;?&gt; it = c.iterator();</span>
+<span class="fc" id="L352">        boolean changed = false;</span>
+<span class="fc bfc" id="L353" title="All 2 branches covered.">        while (it.hasNext()) {</span>
+<span class="fc bfc" id="L354" title="All 2 branches covered.">            if (remove(it.next())) {</span>
+<span class="fc" id="L355">                changed = true;</span>
+            }
+        }
+<span class="fc" id="L358">        return changed;</span>
+
+    }
+
+    /**
+     * Retains only the elements in this list that are contained in the
+     * specified collection.  In other words, removes
+     * from this list all the elements that are not contained in the specified
+     * collection.
+     *
+     * @param c collection containing elements to be retained in this list
+     * @return &lt;tt&gt;true&lt;/tt&gt; if this list changed as a result of the call
+     * @throws NullPointerException if the specified collection is null
+     * @see #remove(Object)
+     * @see #contains(Object)
+     */
+    @Override
+    public boolean retainAll(Collection&lt;?&gt; c) {
+
+<span class="fc bfc" id="L377" title="All 2 branches covered.">        if (c == null) {</span>
+<span class="fc" id="L378">            throw new NullPointerException();</span>
+        }
+<span class="fc" id="L380">        boolean changed = false;</span>
+<span class="fc bfc" id="L381" title="All 2 branches covered.">        for (Node node = firstNode; node != null; node = node.next) {</span>
+<span class="fc bfc" id="L382" title="All 2 branches covered.">            for (int i = 0; i &lt; node.numElements; i++) {</span>
+<span class="fc bfc" id="L383" title="All 2 branches covered.">                if (!c.contains(node.elements[i])) {</span>
+<span class="fc" id="L384">                    removeFromNode(node, i);</span>
+<span class="fc" id="L385">                    i--;</span>
+<span class="fc" id="L386">                    changed = true;</span>
+                }
+            }
+        }
+<span class="fc" id="L390">        return changed;</span>
+
+    }
+
+    /**
+     * Removes all of the elements from this list.
+     */
+    @Override
+    public void clear() {
+
+<span class="fc" id="L400">        Node node = firstNode.next;</span>
+<span class="fc bfc" id="L401" title="All 2 branches covered.">        while (node != null) {</span>
+<span class="fc" id="L402">            Node next = node.next;</span>
+<span class="fc" id="L403">            node.next = null;</span>
+<span class="fc" id="L404">            node.previous = null;</span>
+<span class="fc" id="L405">            node.elements = null;</span>
+<span class="fc" id="L406">            node = next;</span>
+<span class="fc" id="L407">        }</span>
+<span class="fc" id="L408">        lastNode = firstNode;</span>
+<span class="fc bfc" id="L409" title="All 2 branches covered.">        for (int ptr = 0; ptr &lt; firstNode.numElements; ptr++) {</span>
+<span class="fc" id="L410">            firstNode.elements[ptr] = null;</span>
+        }
+<span class="fc" id="L412">        firstNode.numElements = 0;</span>
+<span class="fc" id="L413">        firstNode.next = null;</span>
+<span class="fc" id="L414">        size = 0;</span>
+
+<span class="fc" id="L416">    }</span>
+
+    /**
+     * Returns the element at the specified position in this list.
+     *
+     * @param index index of the element to return
+     * @return the element at the specified position in this list
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    public E get(int index) throws IndexOutOfBoundsException {
+
+<span class="fc bfc" id="L427" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= size) {</span>
+<span class="fc" id="L428">            throw new IndexOutOfBoundsException();</span>
+        }
+        Node node;
+<span class="fc" id="L431">        int p = 0;</span>
+<span class="fc bfc" id="L432" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="fc" id="L433">            node = firstNode;</span>
+<span class="fc bfc" id="L434" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
+<span class="fc" id="L435">                p += node.numElements;</span>
+<span class="fc" id="L436">                node = node.next;</span>
+            }
+        } else {
+<span class="fc" id="L439">            node = lastNode;</span>
+<span class="fc" id="L440">            p = size;</span>
+<span class="fc bfc" id="L441" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="fc" id="L442">                node = node.previous;</span>
+            }
+        }
+<span class="fc" id="L445">        return (E) node.elements[index - p];</span>
+
+    }
+
+    /**
+     * Replaces the element at the specified position in this list with the
+     * specified element.
+     *
+     * @param index index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    @Override
+    public E set(int index, E element) {
+
+<span class="fc bfc" id="L461" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= size) {</span>
+<span class="fc" id="L462">            throw new IndexOutOfBoundsException();</span>
+        }
+<span class="fc" id="L464">        E el = null;</span>
+        Node node;
+<span class="fc" id="L466">        int p = 0;</span>
+<span class="fc bfc" id="L467" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="fc" id="L468">            node = firstNode;</span>
+<span class="fc bfc" id="L469" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
+<span class="fc" id="L470">                p += node.numElements;</span>
+<span class="fc" id="L471">                node = node.next;</span>
+            }
+        } else {
+<span class="fc" id="L474">            node = lastNode;</span>
+<span class="fc" id="L475">            p = size;</span>
+<span class="fc bfc" id="L476" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="fc" id="L477">                node = node.previous;</span>
+            }
+        }
+<span class="fc" id="L480">        el = (E) node.elements[index - p];</span>
+<span class="fc" id="L481">        node.elements[index - p] = element;</span>
+<span class="fc" id="L482">        return el;</span>
+
+    }
+
+    /**
+     * Inserts the specified element at the specified position in this list.
+     * Shifts the element currently at that position (if any) and any
+     * subsequent elements to the right (adds one to their indices).
+     *
+     * @param index index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    @Override
+    public void add(int index, E element) throws IndexOutOfBoundsException {
+<span class="fc" id="L497">    	System.out.println(&quot;size:&quot;+size);</span>
+<span class="fc" id="L498">    	System.out.println(&quot;index:&quot;+index);</span>
+<span class="fc bfc" id="L499" title="All 4 branches covered.">        if (index &lt; 0 || index &gt; size) {</span>
+<span class="fc" id="L500">            throw new IndexOutOfBoundsException();</span>
+        }
+        Node node;
+<span class="fc" id="L503">        int p = 0;</span>
+<span class="fc bfc" id="L504" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="fc" id="L505">            node = firstNode;</span>
+<span class="fc bfc" id="L506" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
+<span class="fc" id="L507">                p += node.numElements;</span>
+<span class="fc" id="L508">                node = node.next;</span>
+            }
+        } else {
+<span class="fc" id="L511">            node = lastNode;</span>
+<span class="fc" id="L512">            p = size;</span>
+<span class="fc bfc" id="L513" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="fc" id="L514">                node = node.previous;</span>
+            }
+        }
+<span class="fc" id="L517">        insertIntoNode(node, index - p, element);</span>
+
+<span class="fc" id="L519">    }</span>
+
+    /**
+     * Removes the element at the specified position in this list.  Shifts any
+     * subsequent elements to the left (subtracts one from their indices).
+     * Returns the element that was removed from the list.
+     *
+     * @param index the index of the element to be removed
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    @Override
+    public E remove(int index) throws IndexOutOfBoundsException {
+
+<span class="fc bfc" id="L533" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= size) {</span>
+<span class="fc" id="L534">            throw new IndexOutOfBoundsException();</span>
+        }
+<span class="fc" id="L536">        E element = null;</span>
+        Node node;
+<span class="fc" id="L538">        int p = 0;</span>
+<span class="fc bfc" id="L539" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="fc" id="L540">            node = firstNode;</span>
+<span class="fc bfc" id="L541" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
+<span class="fc" id="L542">                p += node.numElements;</span>
+<span class="fc" id="L543">                node = node.next;</span>
+            }
+        } else {
+<span class="fc" id="L546">            node = lastNode;</span>
+<span class="fc" id="L547">            p = size;</span>
+<span class="fc bfc" id="L548" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="fc" id="L549">                node = node.previous;</span>
+            }
+        }
+<span class="fc" id="L552">        element = (E) node.elements[index - p];</span>
+<span class="fc" id="L553">        removeFromNode(node, index - p);</span>
+<span class="fc" id="L554">        return element;</span>
+
+    }
+
+    /**
+     * Returns the index of the first occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the lowest index &lt;tt&gt;i&lt;/tt&gt; such that
+     * &lt;tt&gt;(o==null&amp;nbsp;?&amp;nbsp;get(i)==null&amp;nbsp;:&amp;nbsp;o.equals(get(i)))&lt;/tt&gt;,
+     * or -1 if there is no such index.
+     *
+     * @param o element to search for
+     * @return the index of the first occurrence of the specified element in
+     *         this list, or -1 if this list does not contain the element
+     */
+    @Override
+    public int indexOf(Object o) {
+
+<span class="fc" id="L572">        int index = 0;</span>
+<span class="fc" id="L573">        Node node = firstNode;</span>
+<span class="fc bfc" id="L574" title="All 2 branches covered.">        if (o == null) {</span>
+<span class="fc bfc" id="L575" title="All 2 branches covered.">            while (node != null) {</span>
+<span class="fc bfc" id="L576" title="All 2 branches covered.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
+<span class="fc bfc" id="L577" title="All 2 branches covered.">                    if (node.elements[ptr] == null) {</span>
+<span class="fc" id="L578">                        return index + ptr;</span>
+                    }
+                }
+<span class="fc" id="L581">                index += node.numElements;</span>
+<span class="fc" id="L582">                node = node.next;</span>
+            }
+        } else {
+<span class="fc bfc" id="L585" title="All 2 branches covered.">            while (node != null) {</span>
+<span class="fc bfc" id="L586" title="All 2 branches covered.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
+<span class="fc bfc" id="L587" title="All 2 branches covered.">                    if (o.equals(node.elements[ptr])) {</span>
+<span class="fc" id="L588">                        return index + ptr;</span>
+                    }
+                }
+<span class="fc" id="L591">                index += node.numElements;</span>
+<span class="fc" id="L592">                node = node.next;</span>
+            }
+        }
+<span class="fc" id="L595">        return -1;</span>
+
+    }
+
+    /**
+     * Returns the index of the last occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the highest index &lt;tt&gt;i&lt;/tt&gt; such that
+     * &lt;tt&gt;(o==null&amp;nbsp;?&amp;nbsp;get(i)==null&amp;nbsp;:&amp;nbsp;o.equals(get(i)))&lt;/tt&gt;,
+     * or -1 if there is no such index.
+     *
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     *         this list, or -1 if this list does not contain the element
+     */
+    @Override
+    public int lastIndexOf(Object o) {
+
+<span class="fc" id="L613">        int index = size;</span>
+<span class="fc" id="L614">        Node node = lastNode;</span>
+<span class="fc bfc" id="L615" title="All 2 branches covered.">        if (o == null) {</span>
+<span class="fc bfc" id="L616" title="All 2 branches covered.">            while (node != null) {</span>
+<span class="fc" id="L617">                index -= node.numElements;</span>
+<span class="fc bfc" id="L618" title="All 2 branches covered.">                for (int i = node.numElements - 1; i &gt;= 0; i--) {</span>
+<span class="fc bfc" id="L619" title="All 2 branches covered.">                    if (node.elements[i] == null) {</span>
+<span class="fc" id="L620">                        return (index + i);</span>
+                    }
+                }
+<span class="fc" id="L623">                node = node.previous;</span>
+            }
+        } else {
+<span class="fc bfc" id="L626" title="All 2 branches covered.">            while (node != null) {</span>
+<span class="fc" id="L627">                index -= node.numElements;</span>
+<span class="fc bfc" id="L628" title="All 2 branches covered.">                for (int i = node.numElements - 1; i &gt;= 0; i--) {</span>
+<span class="fc bfc" id="L629" title="All 2 branches covered.">                    if (o.equals(node.elements[i])) {</span>
+<span class="fc" id="L630">                        return (index + i);</span>
+                    }
+                }
+<span class="fc" id="L633">                node = node.previous;</span>
+            }
+        }
+<span class="fc" id="L636">        return -1;</span>
+
+    }
+
+    /**
+     * Returns a list iterator over the elements in this list (in proper
+     * sequence).
+     *
+     * @return a list iterator over the elements in this list (in proper
+     *         sequence)
+     */
+    @Override
+    public ListIterator&lt;E&gt; listIterator() {
+
+<span class="fc" id="L650">        return new ULLIterator(firstNode, 0, 0);</span>
+
+    }
+
+    /**
+     * Returns a list-iterator of the elements in this list (in proper
+     * sequence), starting at the specified position in the list.
+     * Obeys the general contract of &lt;tt&gt;List.listIterator(int)&lt;/tt&gt;.&lt;p&gt;
+     *
+     * The list-iterator is &lt;i&gt;fail-fast&lt;/i&gt;: if the list is structurally
+     * modified at any time after the Iterator is created, in any way except
+     * through the list-iterator's own &lt;tt&gt;remove&lt;/tt&gt; or &lt;tt&gt;add&lt;/tt&gt;
+     * methods, the list-iterator will throw a
+     * &lt;tt&gt;ConcurrentModificationException&lt;/tt&gt;.  Thus, in the face of
+     * concurrent modification, the iterator fails quickly and cleanly, rather
+     * than risking arbitrary, non-deterministic behavior at an undetermined
+     * time in the future.
+     *
+     * @param index index of the first element to be returned from the
+     *              list-iterator (by a call to &lt;tt&gt;next&lt;/tt&gt;)
+     * @return a ListIterator of the elements in this list (in proper
+     *         sequence), starting at the specified position in the list
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @see List#listIterator(int)
+     */
+    @Override
+    public ListIterator&lt;E&gt; listIterator(int index) {
+
+<span class="fc bfc" id="L678" title="All 4 branches covered.">        if (index &lt; 0 || index &gt; size) {</span>
+<span class="fc" id="L679">            throw new IndexOutOfBoundsException();</span>
+        }
+        Node node;
+<span class="fc" id="L682">        int p = 0;</span>
+<span class="fc bfc" id="L683" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="fc" id="L684">            node = firstNode;</span>
+<span class="fc bfc" id="L685" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
+<span class="fc" id="L686">                p += node.numElements;</span>
+<span class="fc" id="L687">                node = node.next;</span>
+            }
+        } else {
+<span class="fc" id="L690">            node = lastNode;</span>
+<span class="fc" id="L691">            p = size;</span>
+<span class="fc bfc" id="L692" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="fc" id="L693">                node = node.previous;</span>
+            }
+        }
+<span class="fc" id="L696">        return new ULLIterator(node, index - p, index);</span>
+
+    }
+
+    public static final long serialVersionUID = -674052309103045211L;
+
+    public class Node {
+
+        /**
+         * The next node.
+         */
+        Node next;
+
+        /**
+         * The previous node.
+         */
+        Node previous;
+
+        /**
+         * The number of elements stored in this node.
+         */
+<span class="fc" id="L717">        int numElements = 0;</span>
+
+        /**
+         * The array in which the elements are stored.
+         */
+        Object[] elements;
+
+        /**
+         * Constructs a new node.
+         */
+<span class="fc" id="L727">        Node() {</span>
+
+<span class="fc" id="L729">            elements = new Object[nodeCapacity];</span>
+
+<span class="fc" id="L731">        }</span>
+
+    }
+
+    public class ULLIterator implements ListIterator&lt;E&gt; {
+
+        Node currentNode;
+        int ptr;
+        int index;
+
+<span class="fc" id="L741">        public int expectedModCount = modCount;</span>
+
+<span class="fc" id="L743">        ULLIterator(Node node, int ptr, int index) {</span>
+
+<span class="fc" id="L745">            this.currentNode = node;</span>
+<span class="fc" id="L746">            this.ptr = ptr;</span>
+<span class="fc" id="L747">            this.index = index;</span>
+
+<span class="fc" id="L749">        }</span>
+
+        @Override
+        public boolean hasNext() {
+
+<span class="fc bfc" id="L754" title="All 2 branches covered.">            return (index &lt; size - 1);</span>
+
+        }
+
+        @Override
+        public E next() {
+
+<span class="fc" id="L761">            ptr++;</span>
+<span class="fc bfc" id="L762" title="All 2 branches covered.">            if (ptr &gt;= currentNode.numElements) {</span>
+<span class="fc bfc" id="L763" title="All 2 branches covered.">                if (currentNode.next != null) {</span>
+<span class="fc" id="L764">                    currentNode = currentNode.next;</span>
+<span class="fc" id="L765">                    ptr = 0;</span>
+                } else {
+<span class="fc" id="L767">                    throw new NoSuchElementException();</span>
+                }
+            }
+<span class="fc" id="L770">            index++;</span>
+<span class="fc" id="L771">            checkForModification();</span>
+<span class="fc" id="L772">            return (E) currentNode.elements[ptr];</span>
+
+        }
+
+        @Override
+        public boolean hasPrevious() {
+
+<span class="fc bfc" id="L779" title="All 2 branches covered.">            return (index &gt; 0);</span>
+
+        }
+
+        @Override
+        public E previous() {
+
+<span class="fc" id="L786">            ptr--;</span>
+<span class="fc bfc" id="L787" title="All 2 branches covered.">            if (ptr &lt; 0) {</span>
+<span class="fc bfc" id="L788" title="All 2 branches covered.">                if (currentNode.previous != null) {</span>
+<span class="fc" id="L789">                    currentNode = currentNode.previous;</span>
+<span class="fc" id="L790">                    ptr = currentNode.numElements - 1;</span>
+                } else {
+<span class="fc" id="L792">                    throw new NoSuchElementException();</span>
+                }
+            }
+<span class="fc" id="L795">            index--;</span>
+<span class="fc" id="L796">            checkForModification();</span>
+<span class="fc" id="L797">            return (E) currentNode.elements[ptr];</span>
+
+        }
+
+        @Override
+        public int nextIndex() {
+
+<span class="fc" id="L804">            return (index + 1);</span>
+
+        }
+
+        @Override
+        public int previousIndex() {
+
+<span class="fc" id="L811">            return (index - 1);</span>
+
+        }
+
+        @Override
+        public void remove() {
+
+<span class="fc" id="L818">            checkForModification();</span>
+<span class="fc" id="L819">            removeFromNode(currentNode, ptr);</span>
+
+<span class="fc" id="L821">        }</span>
+
+        @Override
+        public void set(E e) {
+
+<span class="fc" id="L826">            checkForModification();</span>
+<span class="fc" id="L827">            currentNode.elements[ptr] = e;</span>
+
+<span class="fc" id="L829">        }</span>
+
+        @Override
+        public void add(E e) {
+
+<span class="fc" id="L834">            checkForModification();</span>
+<span class="fc" id="L835">            insertIntoNode(currentNode, ptr + 1, e);</span>
+
+<span class="fc" id="L837">        }</span>
+
+        public void checkForModification() {
+
+<span class="fc bfc" id="L841" title="All 2 branches covered.">            if (modCount != expectedModCount) {</span>
+<span class="fc" id="L842">                throw new ConcurrentModificationException();</span>
+            }
+
+<span class="fc" id="L845">        }</span>
+
+    }
+
+    /**
+     * Insert an element into the specified node. If the node is already full,
+     * a new node will be created and inserted into the list after
+     * the specified node.
+     *
+     * @param node
+     * @param ptr the position at which the element should be inserted
+     *            into the &lt;tt&gt;node.elements&lt;tt&gt; array
+     * @param element the element to be inserted
+     */
+    public void insertIntoNode(Node node, int ptr, E element) {
+
+        // if the node is full
+<span class="fc bfc" id="L862" title="All 2 branches covered.">        if (node.numElements == nodeCapacity) {</span>
+            // create a new node
+<span class="fc" id="L864">            Node newNode = new Node();</span>
+            // move half of the elements to the new node
+<span class="fc" id="L866">            int elementsToMove = nodeCapacity / 2;</span>
+<span class="fc" id="L867">            int startIndex = nodeCapacity - elementsToMove;</span>
+            int i;
+<span class="fc bfc" id="L869" title="All 2 branches covered.">            for (i = 0; i &lt; elementsToMove; i++) {</span>
+<span class="fc" id="L870">                newNode.elements[i] = node.elements[startIndex + i];</span>
+<span class="fc" id="L871">                node.elements[startIndex + i] = null;</span>
+            }
+<span class="fc" id="L873">            node.numElements -= elementsToMove;</span>
+<span class="fc" id="L874">            newNode.numElements = elementsToMove;</span>
+            // insert the new node into the list
+<span class="fc" id="L876">            newNode.next = node.next;</span>
+<span class="fc" id="L877">            newNode.previous = node;</span>
+<span class="fc bfc" id="L878" title="All 2 branches covered.">            if (node.next != null) {</span>
+<span class="fc" id="L879">                node.next.previous = newNode;</span>
+            }
+<span class="fc" id="L881">            node.next = newNode;</span>
+
+<span class="fc bfc" id="L883" title="All 2 branches covered.">            if (node == lastNode) {</span>
+<span class="fc" id="L884">                lastNode = newNode;</span>
+            }
+
+            // check whether the element should be inserted into
+            // the original node or into the new node
+<span class="fc bfc" id="L889" title="All 2 branches covered.">            if (ptr &gt; node.numElements) {</span>
+<span class="fc" id="L890">                node = newNode;</span>
+<span class="fc" id="L891">                ptr -= node.numElements;</span>
+            }
+        }
+<span class="fc bfc" id="L894" title="All 2 branches covered.">        for (int i = node.numElements; i &gt; ptr; i--) {</span>
+<span class="fc" id="L895">            node.elements[i] = node.elements[i - 1];</span>
+        }
+<span class="fc" id="L897">        node.elements[ptr] = element;</span>
+<span class="fc" id="L898">        node.numElements++;</span>
+<span class="fc" id="L899">        size++;</span>
+<span class="fc" id="L900">        modCount++;</span>
+
+<span class="fc" id="L902">    }</span>
+
+    /**
+     * Removes an element from the specified node.
+     *
+     * @param node the node from which an element should be removed
+     * @param ptr the index of the element to be removed within
+     * the &lt;tt&gt;node.elements&lt;tt&gt; array
+     */
+    public void removeFromNode(Node node, int ptr) {
+
+<span class="fc" id="L913">        node.numElements--;</span>
+<span class="fc bfc" id="L914" title="All 2 branches covered.">        for (int i = ptr; i &lt; node.numElements; i++) {</span>
+<span class="fc" id="L915">            node.elements[i] = node.elements[i + 1];</span>
+        }
+<span class="fc" id="L917">        node.elements[node.numElements] = null;</span>
+<span class="fc bfc" id="L918" title="All 4 branches covered.">        if (node.next != null &amp;&amp; node.next.numElements + node.numElements &lt;= nodeCapacity) {</span>
+<span class="fc" id="L919">            mergeWithNextNode(node);</span>
+<span class="fc bfc" id="L920" title="All 4 branches covered.">        } else if (node.previous != null &amp;&amp; node.previous.numElements + node.numElements &lt;= nodeCapacity) {</span>
+<span class="fc" id="L921">            mergeWithNextNode(node.previous);</span>
+        }
+<span class="fc" id="L923">        size--;</span>
+<span class="fc" id="L924">        modCount++;</span>
+
+<span class="fc" id="L926">    }</span>
+
+    /**
+     * This method does merge the specified node with the next node.
+     *
+     * @param node the node which should be merged with the next node
+     */
+    public void mergeWithNextNode(Node node) {
+
+<span class="fc" id="L935">        Node next = node.next;</span>
+<span class="fc bfc" id="L936" title="All 2 branches covered.">        for (int i = 0; i &lt; next.numElements; i++) {</span>
+<span class="fc" id="L937">            node.elements[node.numElements + i] = next.elements[i];</span>
+<span class="fc" id="L938">            next.elements[i] = null;</span>
+        }
+<span class="fc" id="L940">        node.numElements += next.numElements;</span>
+<span class="fc bfc" id="L941" title="All 2 branches covered.">        if (next.next != null) {</span>
+<span class="fc" id="L942">            next.next.previous = node;</span>
+        }
+<span class="fc" id="L944">        node.next = next.next;</span>
+<span class="fc bfc" id="L945" title="All 2 branches covered.">        if (next == lastNode) {</span>
+<span class="fc" id="L946">            lastNode = node;</span>
+        }
+
+<span class="fc" id="L949">    }</span>
+
+    /*
+    // DEBUG
+    void print() {
+
+        System.out.println(&quot;SIZE: &quot; + size);
+        for (Node n = firstNode; n != null; n = n.next) {
+            printNode(n);
+        }
+
+    }
+
+    void print2() {
+
+        System.out.println(&quot;SIZE: &quot; + size);
+        for (Node n = lastNode; n != null; n = n.previous) {
+            printNode(n);
+        }
+
+    }
+
+    void printNode(Node n) {
+
+        System.out.print(n.numElements + &quot; { &quot;);
+        for (int i = 0; i &lt; n.numElements; i++) {
+            System.out.print(n.elements[i] + &quot; &quot;);
+        }
+        System.out.println(&quot;}&quot;);
+
+    }
+    */
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

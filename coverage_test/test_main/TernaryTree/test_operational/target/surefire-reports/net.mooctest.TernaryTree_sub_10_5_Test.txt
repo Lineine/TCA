@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.TernaryTree_sub_10_5_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.TernaryTree_sub_10_5_Test
+test_3205(net.mooctest.TernaryTree_sub_10_5_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException
+	at net.mooctest.TernaryTree_sub_10_5_Test.test_3205(TernaryTree_sub_10_5_Test.java:21)
+

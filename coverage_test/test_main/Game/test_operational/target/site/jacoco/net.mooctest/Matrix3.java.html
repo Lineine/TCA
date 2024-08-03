@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Matrix3.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Matrix3.java</span></div><h1>Matrix3.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/**
+ * Matrix class representing a 3x3 matrix.
+ * Can be used with the java AffineTransform.
+ * &lt;br /&gt;
+ * &lt;h1&gt;Not Yet Implemented&lt;/h1&gt;
+ * &lt;ul&gt;
+ *  &lt;li&gt;Add&lt;/li&gt;
+ *  &lt;li&gt;Constructors&lt;/li&gt;
+ *  &lt;li&gt;Create Billboard&lt;/li&gt;
+ *  &lt;li&gt;Create Constrained Billboard&lt;/li&gt;
+ *  &lt;li&gt;Create from Axis Angle&lt;/li&gt;
+ *  &lt;li&gt;Create from Quaternion&lt;/li&gt;
+ *  &lt;li&gt;Create from Yaw Pitch Roll&lt;/li&gt;
+ *  &lt;li&gt;Create Look At&lt;/li&gt;
+ *  &lt;li&gt;Create Orthographic&lt;/li&gt;
+ *  &lt;li&gt;Create Orthographic Off-Center&lt;/li&gt;
+ *  &lt;li&gt;Create Perspective&lt;/li&gt;
+ *  &lt;li&gt;Create Perspective Field of View&lt;/li&gt;
+ *  &lt;li&gt;Create Perspective Off Center&lt;/li&gt;
+ *  &lt;li&gt;Create Reflection&lt;/li&gt;
+ *  &lt;li&gt;Create Rotation X&lt;/li&gt;
+ *  &lt;li&gt;Create Rotation Y&lt;/li&gt;
+ *  &lt;li&gt;Create Rotation Z&lt;/li&gt;
+ *  &lt;li&gt;Create Scale&lt;/li&gt;
+ *  &lt;li&gt;Create Shadow&lt;/li&gt;
+ *  &lt;li&gt;Create Translation&lt;/li&gt;
+ *  &lt;li&gt;Create World&lt;/li&gt;
+ *  &lt;li&gt;Decompose&lt;/li&gt;
+ *  &lt;li&gt;Determinant&lt;/li&gt;
+ *  &lt;li&gt;Divide&lt;/li&gt;
+ *  &lt;li&gt;Equals&lt;/li&gt;
+ *  &lt;li&gt;Identity&lt;/li&gt;
+ *  &lt;li&gt;Invert&lt;/li&gt;
+ *  &lt;li&gt;Linear Interpolation&lt;/li&gt;
+ *  &lt;li&gt;LU Decomposition&lt;/li&gt;
+ *  &lt;li&gt;Multiply&lt;/li&gt;
+ *  &lt;li&gt;Negate&lt;/li&gt;
+ *  &lt;li&gt;Row Echelon Form&lt;/li&gt;
+ *  &lt;li&gt;Reduced Row Echelon Form&lt;/li&gt;
+ *  &lt;li&gt;Subtract&lt;/li&gt;
+ *  &lt;li&gt;To String&lt;/li&gt;
+ *  &lt;li&gt;Transform&lt;/li&gt;
+ *  &lt;li&gt;Transpose&lt;/li&gt;
+ * &lt;/ul&gt;
+ * @version incomplete
+ * @author paul
+ */
+
+public class Matrix3
+{
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Properties&quot;&gt;
+    /**
+     * Value at row 1 column 1 of this Matrix.
+     */
+    public final float M11;
+
+    /**
+     * Value at row 1 column 2 of this Matrix.
+     */
+    public final float M12;
+
+    /**
+     * Value at row 1 column 3 of this Matrix.
+     */
+    public final float M13;
+
+    /**
+     * Value at row 2 column 1 of this Matrix.
+     */
+    public final float M21;
+
+    /**
+     * Value at row 2 column 2 of this Matrix.
+     */
+    public final float M22;
+
+    /**
+     * Value at row 2 column 3 of this Matrix.
+     */
+    public final float M23;
+
+    /**
+     * Value at row 3 column 1 of this Matrix.
+     */
+    public final float M31;
+
+    /**
+     * Value at row 3 column 2 of this Matrix.
+     */
+    public final float M32;
+
+    /**
+     * Value at row 3 column 3 of this Matrix.
+     */
+    public final float M33;
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Constructors&quot;&gt;
+    /**
+     * Complete Constructor
+     * Creates a Matrix with the float[][] provided.
+     * @param data An array of float[9] containing the representation of a Matrix.
+     */
+    public Matrix3(float[] data)
+<span class="nc" id="L107">    {</span>
+<span class="nc" id="L108">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Creates a Matrix with the elements provided.
+     * @param M11 Value at row 1 column 1 of Matrix.
+     * @param M12 Value at row 1 column 2 of Matrix.
+     * @param M13 Value at row 1 column 3 of Matrix.
+     * @param M21 Value at row 2 column 1 of Matrix.
+     * @param M22 Value at row 2 column 2 of Matrix.
+     * @param M23 Value at row 2 column 3 of Matrix.
+     * @param M31 Value at row 3 column 1 of Matrix.
+     * @param M32 Value at row 3 column 2 of Matrix.
+     * @param M33 Value at row 3 column 3 of Matrix.
+     */
+    public Matrix3(float M11, float M12, float M13,
+                   float M21, float M22, float M23,
+                   float M31, float M32, float M33)
+<span class="fc" id="L126">    {</span>
+<span class="fc" id="L127">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Copy Constructor
+     * Creates a new Matrix with identical properties of the Matrix provided.
+     * @param matrix A Matrix we want to copy.
+     */
+    public Matrix3(Matrix3 matrix)
+<span class="nc" id="L136">    {</span>
+<span class="nc" id="L137">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Empty Constructor / Default Constructor
+     * Creates an identity matrix.
+     */
+    public Matrix3()
+    {
+<span class="nc" id="L146">        this(Matrix3.identity());</span>
+<span class="nc" id="L147">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Add&quot;&gt;
+    /**
+     * Performs addition with two Matrix3.
+     * @param a A Matrix3 we want to add.
+     * @param b A Matrix3 we want to add.
+     * @return Returns a + b.
+     */
+    public static Matrix3 add(Matrix3 a, Matrix3 b)
+    {
+<span class="nc" id="L159">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Performs addition with this Matrix3 and that Matrix3.
+     * @param that A Matrix3 we want to add.
+     * @return Returns this + that.
+     */
+    public Matrix3 add(Matrix3 that)
+    {
+<span class="nc" id="L169">        return Matrix3.add(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Billboard&quot;&gt;
+    public static void createBillboard()
+    {
+<span class="nc" id="L176">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Constrained Billboard&quot;&gt;
+    public static void createConstrainedBillboard()
+    {
+<span class="nc" id="L183">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create From Axis Angle&quot;&gt;
+    public static void createFromAxisAngle()
+    {
+<span class="nc" id="L190">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create From Quaternion&quot;&gt;
+    public static void createFromQuaternion()
+    {
+<span class="nc" id="L197">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create From Yaw Pitch Roll&quot;&gt;
+    public static void createFromYawPitchRoll()
+    {
+<span class="nc" id="L204">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Look At&quot;&gt;
+    public static void createLookAt()
+    {
+<span class="nc" id="L211">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Orthographic&quot;&gt;
+    public static void createOrthographic()
+    {
+<span class="nc" id="L218">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Orthographic Off-Center&quot;&gt;
+    public static void createOrthographicOffCenter()
+    {
+<span class="nc" id="L225">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Perspective&quot;&gt;
+    public static void createPerspective()
+    {
+<span class="nc" id="L232">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Perspective Field of View&quot;&gt;
+    public static void createPerspectiveFieldOfView()
+    {
+<span class="nc" id="L239">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Perspective Off-Center&quot;&gt;
+    public static void createPerspectiveOffCenter()
+    {
+<span class="nc" id="L246">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Reflection&quot;&gt;
+    public static void createReflection()
+    {
+<span class="nc" id="L253">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Rotation X&quot;&gt;
+    public static void createRotationX()
+    {
+<span class="nc" id="L260">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Rotation Y&quot;&gt;
+    public static void createRotationY()
+    {
+<span class="nc" id="L267">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Rotation Z&quot;&gt;
+    public static void createRotationZ()
+    {
+<span class="nc" id="L274">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Scale&quot;&gt;
+    public static void createScale()
+    {
+<span class="nc" id="L281">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Shadow&quot;&gt;
+    public static void createShadow()
+    {
+<span class="nc" id="L288">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create Translation&quot;&gt;
+    public static void createTranslation()
+    {
+<span class="nc" id="L295">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Create World&quot;&gt;
+    public static void createWorld()
+    {
+<span class="nc" id="L302">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Decompose&quot;&gt;
+    public static void decompose()
+    {
+<span class="nc" id="L309">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Determinant&quot;&gt;
+    /**
+     * Calculates the determinant of the Matrix3.
+     * @param a A Matrix3 we want to find the determinant of.
+     * @return Returns DET(A).
+     */
+    public static float determinant(Matrix3 a)
+    {
+<span class="nc" id="L321">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Calculates the determinant of this Matrix.
+     * @return Returns det this.
+     */
+    public float determinant()
+    {
+<span class="nc" id="L330">        return Matrix3.determinant(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Divide&quot;&gt;
+    /**
+     * Divides each component of a Matrix3 by a scalar value.
+     * @param a A Matrix3 we want to divide.
+     * @param scalar A scalar value we want to divide by.
+     * @return Returns A / scalar.
+     */
+    public static Matrix3 divide(Matrix3 a, float scalar)
+    {
+<span class="nc" id="L343">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Divides each component of this Matrix3 by a scalar value.
+     * @param scalar A scalar value we want to divide by.
+     * @return Returns this / scalar.
+     */
+    public Matrix3 divide(float scalar)
+    {
+<span class="nc" id="L353">        return Matrix3.divide(this, scalar);</span>
+    }
+
+    /**
+     * Matrix3 b divides Matrix3 a component wise.
+     * @param a A Matrix3 we want to divide.
+     * @param b A Matrix3 we want to divide.
+     * @return Returns A / B.
+     */
+    public static Matrix3 divide(Matrix3 a, Matrix3 b)
+    {
+<span class="nc" id="L364">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Matrix3 that divides Matrix3 this component wise.
+     * @param that A Matrix3 we want to divide.
+     * @return Returns this / that.
+     */
+    public Matrix3 divide(Matrix3 that)
+    {
+<span class="nc" id="L374">        return Matrix3.divide(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Equals&quot;&gt;
+    /**
+     * Checks the equality between this Matrix3 and an Object believed to be a Matrix3.
+     * @param obj An object believed to be a Matrix3.
+     * @return Returns this == that.
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+<span class="nc" id="L387">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Invert&quot;&gt;
+    /**
+     * Finds the Inverse of a Matrix3.
+     * @param a A Matrix3 we want to find the inverse of.
+     * @return Returns the inverse of A. If no inverse exists a null Matrix3 is returned.
+     */
+    public static Matrix3 invert(Matrix3 a)
+    {
+<span class="nc" id="L399">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Finds the Inverse of this Matrix3.
+     * @return Returns the inverse of this Matrix3.
+     */
+    public Matrix3 invert()
+    {
+<span class="nc" id="L408">        return Matrix3.invert(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Linear Interpolation&quot;&gt;
+    public static void lerp()
+    {
+<span class="nc" id="L415">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;LU Decomposition&quot;&gt;
+    /**
+     * Performs LU Decomposition of a Matrix3.
+     * @param a A Matrix3 we want to perform LU decomposition on.
+     * @return Returns an array containing a lower triangular Matrix3 L and a upper triangular Matrix3 U where LU = A.
+     */
+    public static Matrix3[] luDecomposition(Matrix3 a)
+    {
+<span class="nc" id="L427">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Performs LU Decomposition of this Matrix3.
+     * @return Returns an array containing a lower triangular Matrix3 and a upper triangular Matrix3.
+     */
+    public Matrix3[] luDecomposition()
+    {
+<span class="nc" id="L436">        return Matrix3.luDecomposition(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Multiply&quot;&gt;
+    /**
+     * Perform Matrix3 multiplication between two matrices.
+     * @param a A Matrix3 we want to multiply.
+     * @param b A matrix3 we want to multiply.
+     * @return Returns a * b.
+     */
+    public static Matrix3 multiply(Matrix3 a, Matrix3 b)
+    {
+<span class="nc" id="L449">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Perform Matrix3 multiplication between this Matrix3 and that Matrix3.
+     * @param that A Matrix3 we want to multiply.
+     * @return Returns this * that.
+     */
+    public Matrix3 multiply(Matrix3 that)
+    {
+<span class="nc" id="L459">        return Matrix3.multiply(this, that);</span>
+    }
+
+    /**
+     * Multiplies a scalar value into the Matrix3.
+     * @param a A Matrix3 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the provided Matrix3.
+     * @return Returns scalar * a
+     */
+    public static Matrix3 multiply(Matrix3 a, float scalar)
+    {
+<span class="nc" id="L470">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    /**
+     * Multiplies a scalar value into this Matrix3.
+     * @param scalar A scalar value we want to multiply into the provided Matrix3.
+     * @return Returns scalar * this.
+     */
+    public Matrix3 multiply(float scalar)
+    {
+<span class="nc" id="L479">        return Matrix3.multiply(this, scalar);</span>
+    }
+
+    /**
+     * Matrix Vector multiplication
+     * @param a A Matrix3 that we want to multiply.
+     * @param x A Vector3 that we want to multiply.
+     * @return Returns a Vector3 containing the product of Ax.
+     */
+    public static Vector4 multiply(Matrix3 a, Vector3 x)
+    {
+<span class="nc" id="L490">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Matrix Vector multiplication
+     * @param v A Vector3 that we want to multiply with this Matrix3.
+     * @return Returns a Vector3 containing the product of Ax.
+     */
+    public Vector4 multiply(Vector3 x)
+    {
+<span class="nc" id="L500">        return Matrix3.multiply(this, x);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Negate&quot;&gt;
+    /**
+     * Negates all the components of a Matrix3.
+     * @param a A Matrix3 we want to negate.
+     * @return Returns -A.
+     */
+    public static Matrix3 negate(Matrix3 a)
+    {
+<span class="nc" id="L512">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Negates all the components of this Matrix3.
+     * @return Returns -this.
+     */
+    public Matrix3 negate()
+    {
+<span class="nc" id="L521">        return Matrix3.negate(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Row Echelon Form&quot;&gt;
+    /**
+     * Finds the Row Echelon Form of a Matrix3.
+     * @param a A Matrix3 to find the row echelon form of.
+     * @return Returns a Matrix3 representing the row echelon form of A.
+     */
+    public static Matrix3 ref(Matrix3 a)
+    {
+<span class="nc" id="L533">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Finds the Row Echelon Form of this Matrix3.
+     * @return Returns a Matrix3 representing the row echelon form of this.
+     */
+    public Matrix3 ref()
+    {
+<span class="nc" id="L542">        return Matrix3.ref(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Reduced Row Echelon Form&quot;&gt;
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of the provided Matrix3.
+     * @param a A Matrix3 we want to find the rref of.
+     * @return Returns a Matrix3 in Reduced Row Echelon Form.
+     */
+    public static Matrix3 rref(Matrix3 a)
+    {
+<span class="nc" id="L554">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of this Matrix3.
+     * @return Returns a Matrix3 in Reduced Row Echelon Form.
+     */
+    public Matrix3 rref()
+    {
+<span class="nc" id="L563">        return Matrix3.rref(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Special Matrices&quot;&gt;
+    /**
+     * @return Returns the identity of a Matrix3.
+     */
+    public static Matrix3 identity()
+    {
+<span class="nc" id="L573">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Subtract&quot;&gt;
+    /**
+     * Performs subtraction between two matrices.
+     * @param a A Matrix3 we want to subtract from.
+     * @param b A Matrix3 we want to subtract with.
+     * @return Returns a - b.
+     */
+    public static Matrix3 subtract(Matrix3 a, Matrix3 b)
+    {
+<span class="nc" id="L586">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Subtracts that Matrix3 from this Matrix3.
+     * @param that A Matrix3 we want to subtract.
+     * @return Returns this - that.
+     */
+    public Matrix3 subtract(Matrix3 that)
+    {
+<span class="nc" id="L596">        return Matrix3.subtract(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;To-String&quot;&gt;
+    /**
+     * @return Returns a String representation of a Matrix3.
+     */
+    @Override
+    public String toString()
+    {
+<span class="nc" id="L607">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Transform&quot;&gt;
+    public static void transform()
+    {
+<span class="nc" id="L614">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Transpose&quot;&gt;
+    /**
+     * Transposes the provided Matrix3.
+     * @param a A Matrix3 we want to transpose.
+     * @return Returns the transpose of Matrix3 A.
+     */
+    public static Matrix3 transpose(Matrix3 a)
+    {
+<span class="nc" id="L626">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+
+    /**
+     * Transposes this Matrix3.
+     * @return Returns the transpose of this Matrix3.
+     */
+    public Matrix3 transpose()
+    {
+<span class="nc" id="L635">        return Matrix3.transpose(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Mouse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Mouse.java</span></div><h1>Mouse.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+
+/**
+ * Static wrapper class for the MouseInputObject.
+ * @author paul
+ */
+<span class="fc" id="L10">public final class Mouse</span>
+{
+    /**
+     * MouseInput object to be used for this static instance of the mouse.
+     */
+<span class="fc" id="L15">    public static MouseInput mouse = new MouseInput();</span>
+
+    /**
+     * Polls the mouse for new buttons that might be pressed this update.
+     */
+    public static void poll()
+    {
+<span class="fc" id="L22">        mouse.poll();</span>
+<span class="fc" id="L23">    }</span>
+
+    /**
+     * @return Returns a Point object containing the x, and y coordinates of the mouse.
+     */
+    public static Point getPosition()
+    {
+<span class="fc" id="L30">        return mouse.getPosition();</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is being held.
+     * @param button ID for the button to be evaluated.
+     * @return Returns if the button is being held.
+     */
+    public static boolean buttonDownOnce(int button)
+    {
+<span class="nc" id="L40">        return mouse.buttonDownOnce(button);</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is being held.
+     * @param key MouseKey object containing the key code of the mouse button that is pressed.
+     * @return Returns if the button is being held.
+     */
+    public static boolean buttonDownOnce(MouseKeys key)
+    {
+<span class="nc" id="L50">        return Mouse.buttonDownOnce(key.KEYCODE);</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is pressed.
+     * @param button ID for the button to be evaluated.
+     * @return Returns if the button is down.
+     */
+    public static boolean buttonDown(int button)
+    {
+<span class="nc" id="L60">        return mouse.buttonDown(button);</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is pressed.
+     * @param key MouseKey object containing the key code of the mouse button that is pressed.
+     * @return Returns if the button is down.
+     */
+    public static boolean buttonDown(MouseKeys key)
+    {
+<span class="nc" id="L70">        return Mouse.buttonDown(key.KEYCODE);</span>
+    }
+
+    /**
+     * Detects if a mouse key was pressed for Swing/AWT components.
+     * @param e KeyEvent related to key that was pressed.
+     */
+    public static void mousePressed(MouseEvent e)
+    {
+<span class="nc" id="L79">        mouse.mousePressed(e);</span>
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Detects if a mouse key was released for Swing/AWT components.
+     * @param e KeyEvent related to key that was released.
+     */
+    public static void mouseReleased(MouseEvent e)
+    {
+<span class="nc" id="L88">        mouse.mouseReleased(e);</span>
+<span class="nc" id="L89">    }</span>
+
+    /**
+     * Detects if the mouse has entered a region for Swing/AWT components.
+     * @param e KeyEvent related to the mouse entering a region.
+     */
+    public static void mouseEntered(MouseEvent e)
+    {
+<span class="nc" id="L97">        mouse.mouseEntered(e);</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Detects if the mouse has exited a region for Swing/AWT components.
+     * @param e KeyEvent related to the mouse exiting a region.
+     */
+    public static void mouseExited(MouseEvent e)
+    {
+<span class="nc" id="L106">        mouse.mouseExited(e);</span>
+<span class="nc" id="L107">    }</span>
+
+    /**
+     * Detects if the mouse has been dragged for Swing/AWT components.
+     * @param e KeyEvent related to the mouse being dragged.
+     */
+    public static void mouseDragged(MouseEvent e)
+    {
+<span class="nc" id="L115">        mouse.mouseDragged(e);</span>
+<span class="nc" id="L116">    }</span>
+
+    /**
+     * Detects if the mouse has been moved for Swing/AWT components.
+     * @param e KeyEvent related to the mouse being moved.
+     */
+    public static void mouseMoved(MouseEvent e)
+    {
+<span class="nc" id="L124">        mouse.mouseMoved(e);</span>
+<span class="nc" id="L125">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

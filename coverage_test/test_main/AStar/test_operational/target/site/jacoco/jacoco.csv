@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+test_operational,net.mooctest,Graph.CostVertexPair,1,121,1,15,0,31,1,15,0,8
+test_operational,net.mooctest,Graph.TYPE,0,24,0,0,0,2,0,1,0,1
+test_operational,net.mooctest,AStar.new Comparator() {...},0,41,0,4,0,6,0,4,0,2
+test_operational,net.mooctest,Graph,2,381,1,41,1,77,1,31,0,11
+test_operational,net.mooctest,AStar,0,232,0,22,0,52,0,16,0,5
+test_operational,net.mooctest,Graph.Edge,0,196,0,22,0,47,0,21,0,10
+test_operational,net.mooctest,Graph.CostPathPair,0,136,0,16,0,35,0,15,0,7
+test_operational,net.mooctest,Graph.Vertex,0,312,2,44,0,79,2,35,0,14

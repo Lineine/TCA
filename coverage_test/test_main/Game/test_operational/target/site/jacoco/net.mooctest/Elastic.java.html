@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Elastic.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Elastic.java</span></div><h1>Elastic.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/**
+ * Collection of different functions that perform elastic motion easing.
+ * Equations are adopted from Robert Penner's Elastic.as file provided at
+ * http://www.robertpenner.com/easing/.
+ * @author paul
+ */
+<span class="nc" id="L9">public class Elastic</span>
+{
+    // TODO: Amplitude and period are supposed to be optional; Add Overload for default values
+    public static float easeIn(float time, int begin, int change, float duration,
+            Float amplitude, Float period)
+    {
+        float s;
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        if (time == 0)</span>
+<span class="nc" id="L17">            return begin;</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if ((time /= duration) == 1)</span>
+<span class="nc" id="L19">            return begin + change;</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (period == null)</span>
+<span class="nc" id="L21">            period = duration * 0.3f;</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">        if (amplitude == null || amplitude &lt; Math.abs(change))</span>
+        {
+<span class="nc" id="L24">            amplitude = (float)change;</span>
+<span class="nc" id="L25">            s = period / 4;</span>
+        }
+        else
+<span class="nc" id="L28">            s = period / (float)(2*Math.PI) * (float)Math.asin (change / amplitude);</span>
+
+<span class="nc" id="L30">        return -(amplitude * (float)Math.pow(2, 10 * (time -= 1)) * (float)Math.sin((time * duration - s) * (float)(2 * Math.PI) / period)) + begin;</span>
+    }
+
+    public static float easeOut(float time, int begin, int change, float duration,
+            Float amplitude, Float period)
+    {
+        float s;
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (time == 0)</span>
+<span class="nc" id="L38">            return begin;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if ((time /= duration) == 1)</span>
+<span class="nc" id="L40">            return begin + change;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (period == null)</span>
+<span class="nc" id="L42">            period = duration * 0.3f;</span>
+<span class="nc bnc" id="L43" title="All 4 branches missed.">        if (amplitude == null || amplitude &lt; Math.abs(change))</span>
+        {
+<span class="nc" id="L45">            amplitude = (float)change;</span>
+<span class="nc" id="L46">            s = period / 4;</span>
+        }
+        else
+<span class="nc" id="L49">            s = period / (float)(2 * Math.PI) * (float)Math.asin(change / amplitude);</span>
+
+<span class="nc" id="L51">        return (amplitude * (float)Math.pow(2,-10 * time) * (float)Math.sin((time * duration - s) * (2 * Math.PI) / period) + change + begin);</span>
+    }
+
+    public static float easeInOut(float time, int begin, int change, float duration,
+            Float amplitude, Float period)
+    {
+        float s;
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (time == 0)</span>
+<span class="nc" id="L59">            return begin;</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if ((time /= duration / 2) == 2)</span>
+<span class="nc" id="L61">            return begin + change;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (period == null)</span>
+<span class="nc" id="L63">            period = duration * (float)(.3 * 1.5);</span>
+<span class="nc bnc" id="L64" title="All 4 branches missed.">        if (amplitude == null || amplitude &lt; Math.abs(change))</span>
+        {
+<span class="nc" id="L66">            amplitude = (float)change;</span>
+<span class="nc" id="L67">            s = period / 4;</span>
+        }
+        else
+<span class="nc" id="L70">            s = period / (float)(2 * Math.PI) * (float)Math.asin(change / amplitude);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (time &lt; 1)</span>
+<span class="nc" id="L72">            return -.5f * (amplitude * (float)Math.pow(2,10 * (time -= 1)) * (float)Math.sin((time * duration - s) * (2 * (float)Math.PI) / period)) + begin;</span>
+
+<span class="nc" id="L74">        return amplitude * (float)Math.pow(2,-10 * (time -= 1)) * (float)Math.sin((time * duration  - s) * (2 * Math.PI) / period) * 0.5f + change + begin;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

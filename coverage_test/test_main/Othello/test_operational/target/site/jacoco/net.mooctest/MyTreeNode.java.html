@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyTreeNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MyTreeNode.java</span></div><h1>MyTreeNode.java</h1><pre class="source lang-java linenums">package net.mooctest;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+
+
+/*
+ * We used tree structure to store possible white moves 
+ * in Alpha-Beta Pruning Algorithm.
+ * */
+
+public class MyTreeNode&lt;T&gt;{
+<span class="fc" id="L14">    private T data = null;</span>
+<span class="fc" id="L15">    private int alpha = -10000;         	// alpha = -INF at the beginning</span>
+<span class="fc" id="L16">    private int beta = 10000;				// beta = INF at the beginning </span>
+<span class="fc" id="L17">    private int value = 0;</span>
+    
+<span class="fc" id="L19">    private List&lt;MyTreeNode&gt; children = new ArrayList&lt;MyTreeNode&gt;();</span>
+<span class="fc" id="L20">    private MyTreeNode parent = null;</span>
+   
+<span class="fc" id="L22">    public MyTreeNode(T data) {</span>
+<span class="fc" id="L23">        this.data = data;</span>
+<span class="fc" id="L24">    }</span>
+    
+<span class="fc" id="L26">    public MyTreeNode(int alpha, int beta) {</span>
+<span class="fc" id="L27">        this.alpha = alpha;</span>
+<span class="fc" id="L28">        this.beta = beta;</span>
+<span class="fc" id="L29">    }</span>
+    
+<span class="fc" id="L31">    public MyTreeNode(int value) {</span>
+<span class="fc" id="L32">        this.value = value;</span>
+<span class="fc" id="L33">    }</span>
+
+    public void addChild(MyTreeNode child) {
+<span class="fc" id="L36">        child.setParent(this);</span>
+<span class="fc" id="L37">        this.children.add(child);</span>
+<span class="fc" id="L38">    }</span>
+
+    public void addChild(T data) {
+<span class="fc" id="L41">        MyTreeNode&lt;T&gt; newChild = new MyTreeNode&lt;T&gt;(data);</span>
+<span class="fc" id="L42">        newChild.setParent(this);</span>
+<span class="fc" id="L43">        children.add(newChild);</span>
+<span class="fc" id="L44">    }</span>
+    
+    public void addChildren(List&lt;MyTreeNode&gt; children) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        for(MyTreeNode t : children) {</span>
+<span class="fc" id="L48">            t.setParent(this);</span>
+<span class="fc" id="L49">        }</span>
+<span class="fc" id="L50">        this.children.addAll(children);</span>
+<span class="fc" id="L51">    }</span>
+
+    public List&lt;MyTreeNode&gt; getChildren() {
+<span class="fc" id="L54">        return children;</span>
+    }
+
+    public T getData() {
+<span class="fc" id="L58">        return data;</span>
+    }
+
+    public void setData(T data) {
+<span class="fc" id="L62">        this.data = data;</span>
+<span class="fc" id="L63">    }</span>
+    
+    public int getAlpha() {
+<span class="fc" id="L66">        return alpha;</span>
+    }
+
+    public void setAlpha(int alpha) {
+<span class="fc" id="L70">        this.alpha = alpha;</span>
+<span class="fc" id="L71">    }</span>
+
+    public int getBeta() {
+<span class="fc" id="L74">        return beta;</span>
+    }
+
+    public void setBeta(int beta) {
+<span class="fc" id="L78">        this.beta = beta;</span>
+<span class="fc" id="L79">    }</span>
+    
+    public int getValue() {
+<span class="fc" id="L82">        return value;</span>
+    }
+
+    public void setValue(int value) {
+<span class="fc" id="L86">        this.value = value;</span>
+<span class="fc" id="L87">    }</span>
+    
+    private void setParent(MyTreeNode parent) {
+<span class="fc" id="L90">        this.parent = parent;</span>
+<span class="fc" id="L91">    }</span>
+
+    public MyTreeNode getParent() {
+<span class="fc" id="L94">        return parent;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

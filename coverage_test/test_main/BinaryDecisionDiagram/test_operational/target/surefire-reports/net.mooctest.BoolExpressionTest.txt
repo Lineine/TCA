@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.BoolExpressionTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.045 s <<< FAILURE! - in net.mooctest.BoolExpressionTest
+test0(net.mooctest.BoolExpressionTest)  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.BoolExpressionTest.test0(BoolExpressionTest.java:74)
+

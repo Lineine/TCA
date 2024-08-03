@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.mooctest.Anagram_sub_10_0_Test" time="0.117" tests="279" errors="18" skipped="0" failures="8">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="ANSI_X3.4-1968"/>
+    <property name="java.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/test-classes:/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/classes:/data02/LCD/.m2/repository/junit/junit/4.12/junit-4.12.jar:/data02/LCD/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/data02/LCD/.m2/repository/org/evosuite/evosuite-master/1.0.6/evosuite-master-1.0.6.jar:/data02/LCD/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.7/jacoco-maven-plugin-0.8.7.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar:/data02/LCD/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/data02/LCD/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/data02/LCD/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.core/0.8.7/org.jacoco.core-0.8.7.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-commons/9.1/asm-commons-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-analysis/9.1/asm-analysis-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-tree/9.1/asm-tree-9.1.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.report/0.8.7/org.jacoco.report-0.8.7.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/surefire/surefirebooter4977945933607493015.jar /data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/surefire 2024-06-21T19-05-17_268-jvmRun1 surefire8059645191013158324tmp surefire_0727554968603659571tmp"/>
+    <property name="surefire.test.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/test-classes:/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/classes:/data02/LCD/.m2/repository/junit/junit/4.12/junit-4.12.jar:/data02/LCD/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/data02/LCD/.m2/repository/org/evosuite/evosuite-master/1.0.6/evosuite-master-1.0.6.jar:/data02/LCD/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.7/jacoco-maven-plugin-0.8.7.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar:/data02/LCD/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/data02/LCD/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/data02/LCD/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.core/0.8.7/org.jacoco.core-0.8.7.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-commons/9.1/asm-commons-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-analysis/9.1/asm-analysis-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-tree/9.1/asm-tree-9.1.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.report/0.8.7/org.jacoco.report-0.8.7.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/data02/LCD"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre"/>
+    <property name="basedir" value="/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/target/surefire/surefirebooter4977945933607493015.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/resources.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/rt.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jsse.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jce.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/charsets.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jfr.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_391-b13"/>
+    <property name="user.name" value="lcd"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.15.0-102-generic"/>
+    <property name="java.endorsed.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/data02/LCD/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_391"/>
+    <property name="user.dir" value="/data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/local/cuda-11.1/lib64::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.391-b13"/>
+    <property name="java.specification.maintenance.version" value="5"/>
+    <property name="java.ext.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="test_12" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_15" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_22" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_29" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_31" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_37" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_47" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_61" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_62" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_63" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_64" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_66" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_69" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.004"/>
+  <testcase name="test_76" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_77" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_95" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_96" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_99" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1012" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1016" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="/project/src/main/resources/net/mooctest/demo.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: /project/src/main/resources/net/mooctest/demo.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1016(Anagram_sub_10_0_Test.java:3712)
+</error>
+  </testcase>
+  <testcase name="test_1017" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.017"/>
+  <testcase name="test_1020" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="dictionary not loaded" type="java.lang.IllegalStateException">java.lang.IllegalStateException: dictionary not loaded
+	at net.mooctest.Anagram_sub_10_0_Test.test_1020(Anagram_sub_10_0_Test.java:1187)
+</error>
+  </testcase>
+  <testcase name="test_1035" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1052" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1068" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="123.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: 123.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1068(Anagram_sub_10_0_Test.java:3777)
+</error>
+  </testcase>
+  <testcase name="test_1071" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.002"/>
+  <testcase name="test_1130" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1133" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1151" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1167" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1168" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1169" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1173" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1221" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1255" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1262" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1263" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1265" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1269" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1270" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1272" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001">
+    <error message="demo.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: demo.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1272(Anagram_sub_10_0_Test.java:4576)
+</error>
+  </testcase>
+  <testcase name="test_1280" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1282" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1285" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1287" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1288" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1297" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1301" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1302" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1329" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1347" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1348" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.008"/>
+  <testcase name="test_1353" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1356" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1357" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.003"/>
+  <testcase name="test_1366" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1368" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1373" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="C:\mooctest\projects\2526\44138\Anagram\src\main\resources\net\mooctest\demo.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: C:\mooctest\projects\2526\44138\Anagram\src\main\resources\net\mooctest\demo.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1373(Anagram_sub_10_0_Test.java:3650)
+</error>
+  </testcase>
+  <testcase name="test_1374" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1377" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1434" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1441" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1445" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1449" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1456" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1458" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1461" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="dictionary not loaded" type="java.lang.IllegalStateException">java.lang.IllegalStateException: dictionary not loaded
+	at net.mooctest.Anagram_sub_10_0_Test.test_1461(Anagram_sub_10_0_Test.java:4401)
+</error>
+  </testcase>
+  <testcase name="test_1483" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1487" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1499" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_1500" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1508" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1509" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1510" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1511" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1516" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1531" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1544" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1685" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1760" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1774" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1784" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="wrong number of arguments" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: wrong number of arguments
+	at net.mooctest.Anagram_sub_10_0_Test.test_1784(Anagram_sub_10_0_Test.java:3684)
+</error>
+    <system-out><![CDATA[
+]]></system-out>
+  </testcase>
+  <testcase name="test_1790" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="src/main/resources/net/mooctest/demo1.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: src/main/resources/net/mooctest/demo1.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1790(Anagram_sub_10_0_Test.java:1859)
+</error>
+  </testcase>
+  <testcase name="test_1798" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1799" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1804" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1813" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1815" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1816" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1817" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1818" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="wordlist.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: wordlist.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1818(Anagram_sub_10_0_Test.java:1949)
+</error>
+  </testcase>
+  <testcase name="test_1821" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1831" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1833" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.004"/>
+  <testcase name="test_1837" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1840" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1854" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1856" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1869" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1880" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2003" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2009" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2014" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2016" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2017" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2019" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2020" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2021" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2023" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2033" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2038" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2043" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2058" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.004">
+    <failure message="expected:&lt;true&gt; but was:&lt;false&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<true> but was:<false>
+	at net.mooctest.Anagram_sub_10_0_Test.test_2058(Anagram_sub_10_0_Test.java:3373)
+]]></failure>
+    <system-err><![CDATA[java.lang.IllegalArgumentException: file path invalid
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:50)
+	at net.mooctest.Anagram_sub_10_0_Test.test_2058(Anagram_sub_10_0_Test.java:3331)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.lang.IllegalArgumentException: file path invalid
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:50)
+	at net.mooctest.Anagram_sub_10_0_Test.test_2058(Anagram_sub_10_0_Test.java:3340)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.lang.IllegalArgumentException: file path invalid
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:50)
+	at net.mooctest.Anagram_sub_10_0_Test.test_2058(Anagram_sub_10_0_Test.java:3354)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+]]></system-err>
+  </testcase>
+  <testcase name="test_2059" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2071" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2074" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_2119" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_101" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_104" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_119" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_124" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_130" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_133" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_135" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_143" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_144" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <failure message="expected:&lt;[          abcdefghijk,  eegghhnnzz, dlorw, eghnz, ehllo, gimn, jnu]&gt; but was:&lt;[0demo, dehllloorw, dlorw, ehllo]&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<[          abcdefghijk,  eegghhnnzz, dlorw, eghnz, ehllo, gimn, jnu]> but was:<[0demo, dehllloorw, dlorw, ehllo]>
+	at net.mooctest.Anagram_sub_10_0_Test.test_144(Anagram_sub_10_0_Test.java:1159)
+]]></failure>
+  </testcase>
+  <testcase name="test_146" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <failure message="expected:&lt;[[hello]]&gt; but was:&lt;[]&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;[[hello]]&gt; but was:&lt;[]&gt;	at net.mooctest.Anagram_sub_10_0_Test.test_146(Anagram_sub_10_0_Test.java:1638)</failure>
+  </testcase>
+  <testcase name="test_153" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_156" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_157" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_159" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_160" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_163" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_164" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.01"/>
+  <testcase name="test_165" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_166" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_180" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_182" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_183" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_184" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_185" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_192" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_194" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_200" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001">
+    <error message="C:/Users/Administrator/Desktop/软件测试大赛/demo.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: C:/Users/Administrator/Desktop/软件测试大赛/demo.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_200(Anagram_sub_10_0_Test.java:2438)
+</error>
+  </testcase>
+  <testcase name="test_213" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_214" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_216" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_220" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_221" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_222" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_223" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_224" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_226" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.002"/>
+  <testcase name="test_255" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_256" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_257" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_258" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_264" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_265" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <failure message="expected:&lt;false&gt; but was:&lt;true&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<false> but was:<true>
+	at net.mooctest.Anagram_sub_10_0_Test.test_265(Anagram_sub_10_0_Test.java:2241)
+]]></failure>
+  </testcase>
+  <testcase name="test_268" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_283" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_286" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_287" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_288" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_290" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_292" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_294" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_295" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_296" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_297" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_298" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_326" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_348" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_353" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_354" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_357" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_358" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_359" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_360" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_362" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.009"/>
+  <testcase name="test_364" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_376" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_378" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_383" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_385" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <failure message="expected:&lt;0&gt; but was:&lt;false&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<0> but was:<false>
+	at net.mooctest.Anagram_sub_10_0_Test.test_385(Anagram_sub_10_0_Test.java:2276)
+]]></failure>
+  </testcase>
+  <testcase name="test_404" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_414" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_422" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_424" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_437" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001">
+    <error message="./demo.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: ./demo.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_437(Anagram_sub_10_0_Test.java:3619)
+</error>
+  </testcase>
+  <testcase name="test_442" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_445" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_450" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_455" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_457" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_458" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_459" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_463" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="Index: 0, Size: 0" type="java.lang.IndexOutOfBoundsException">java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at net.mooctest.Anagram_sub_10_0_Test.test_463(Anagram_sub_10_0_Test.java:75)
+</error>
+  </testcase>
+  <testcase name="test_464" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at net.mooctest.Anagram_sub_10_0_Test.test_464(Anagram_sub_10_0_Test.java:4528)
+</error>
+  </testcase>
+  <testcase name="test_469" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_471" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.01"/>
+  <testcase name="test_472" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.002"/>
+  <testcase name="test_473" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_474" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at net.mooctest.Anagram_sub_10_0_Test.test_474(Anagram_sub_10_0_Test.java:2506)
+</error>
+  </testcase>
+  <testcase name="test_481" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_484" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_485" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_490" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_498" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_500" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_501" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_502" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_503" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="hsk (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: hsk (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_503(Anagram_sub_10_0_Test.java:3090)
+</error>
+  </testcase>
+  <testcase name="test_504" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_505" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_509" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_510" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_512" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_538" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_539" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_553" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <failure message="expected:&lt;[[asd, fgh, jkl], [ghjkl, asdf], [asd, fghjkl], [jkl, asdfgh], [hjkl, asdfg]]&gt; but was:&lt;[]&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;[[asd, fgh, jkl], [ghjkl, asdf], [asd, fghjkl], [jkl, asdfgh], [hjkl, asdfg]]&gt; but was:&lt;[]&gt;	at net.mooctest.Anagram_sub_10_0_Test.test_553(Anagram_sub_10_0_Test.java:1497)</failure>
+  </testcase>
+  <testcase name="test_562" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_566" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_571" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_572" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_573" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_602" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_603" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_604" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_615" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_617" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_622" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_624" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_627" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_632" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_639" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_668" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_674" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_676" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="F:\test.txt (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: F:\test.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_676(Anagram_sub_10_0_Test.java:1938)
+</error>
+  </testcase>
+  <testcase name="test_681" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_682" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_718" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_728" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <error message="dictionary not loaded" type="java.lang.IllegalStateException">java.lang.IllegalStateException: dictionary not loaded
+	at net.mooctest.Anagram_sub_10_0_Test.test_728(Anagram_sub_10_0_Test.java:940)
+</error>
+  </testcase>
+  <testcase name="test_729" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_752" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_753" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_763" classname="net.mooctest.Anagram_sub_10_0_Test" time="0">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Anagram_sub_10_0_Test.test_763(Anagram_sub_10_0_Test.java:518)
+]]></failure>
+  </testcase>
+  <testcase name="test_833" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.008">
+    <failure message="expected:&lt;[000000000, 123456789, adfgs]&gt; but was:&lt;[0demo, 123456789, adfgs, dehllloorw]&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<[000000000, 123456789, adfgs]> but was:<[0demo, 123456789, adfgs, dehllloorw]>
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:162)
+]]></failure>
+    <system-err><![CDATA[java.lang.NullPointerException
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.lang.IllegalStateException: dictionary not loaded
+	at net.mooctest.Dictionary.findSingleWordAnagrams(Dictionary.java:130)
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.lang.IllegalArgumentException: file path invalid
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:50)
+	at net.mooctest.Dictionary.loadDictionary(Dictionary.java:33)
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:93)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.io.FileNotFoundException: asdf (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:55)
+	at net.mooctest.Dictionary.loadDictionary(Dictionary.java:33)
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:101)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.lang.IllegalArgumentException: file path invalid
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:50)
+	at net.mooctest.Dictionary.loadDictionary(Dictionary.java:33)
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:109)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+java.lang.NullPointerException
+	at net.mooctest.Dictionary.addWord(Dictionary.java:101)
+	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:139)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+]]></system-err>
+  </testcase>
+  <testcase name="test_834" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.002"/>
+  <testcase name="test_835" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.002"/>
+  <testcase name="test_851" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_852" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_853" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_857" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_862" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.006"/>
+  <testcase name="test_865" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_866" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_867" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_868" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_869" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_872" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_873" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_874" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_883" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_916" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_935" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_936" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_957" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_969" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_972" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_973" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_977" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_978" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_996" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.001">
+    <error message="d:/ana.dic (No such file or directory)" type="java.io.FileNotFoundException">java.io.FileNotFoundException: d:/ana.dic (No such file or directory)
+	at net.mooctest.Anagram_sub_10_0_Test.test_996(Anagram_sub_10_0_Test.java:2773)
+</error>
+    <system-err><![CDATA[java.io.FileNotFoundException: d:/ana.dic (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at net.mooctest.Dictionary.loadDictionaryWithSubsets(Dictionary.java:55)
+	at net.mooctest.Anagram.findAllAnagrams(Anagram.java:38)
+	at net.mooctest.Anagram_sub_10_0_Test.test_996(Anagram_sub_10_0_Test.java:2759)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+]]></system-err>
+  </testcase>
+  <testcase name="test_0" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_1" classname="net.mooctest.Anagram_sub_10_0_Test" time="0.003"/>
+  <testcase name="test_5" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_7" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+  <testcase name="test_8" classname="net.mooctest.Anagram_sub_10_0_Test" time="0"/>
+</testsuite>

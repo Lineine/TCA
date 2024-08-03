@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SquareOfb.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">SquareOfb.java</span></div><h1>SquareOfb.java</h1><pre class="source lang-java linenums">package net.mooctest;
+/**
+ * Output feedback (OFB) support for the Square block cipher.
+ *
+ * @author Public domain implementation by Paulo Barreto &lt;pbarreto@nw.com.br&gt;
+ *
+ * Version 2.1 (1997.08.11)
+ *
+ * =============================================================================
+ *
+ * Differences from version 2.0 (1997.07.28)
+ *
+ * -- Slightly changed the loop form to increase speed.
+ *
+ * =============================================================================
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+<span class="fc" id="L31">public final class SquareOfb implements SquareMode {</span>
+
+    private Square sq;
+<span class="fc" id="L34">	private final byte[] mask = new byte[Square.BLOCK_LENGTH];</span>
+<span class="fc" id="L35">	private int avail = 0; // number of available mask bytes</span>
+
+
+    public final void setKey (byte[] key)
+    	// throws IndexOutOfBoundsException
+    {
+<span class="fc" id="L41">        sq = new Square (key);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (int i = 0; i &lt; Square.BLOCK_LENGTH; i++) {</span>
+<span class="fc" id="L43">            mask[i] = 0;</span>
+        }
+<span class="fc" id="L45">        avail = 0;</span>
+<span class="fc" id="L46">    } // setKey</span>
+
+
+    public final void setIV (byte[/*Square.BLOCK_LENGTH*/] iv)
+    	// throws IndexOutOfBoundsException
+    {
+<span class="fc" id="L52">        System.arraycopy (iv, 0, mask, 0, Square.BLOCK_LENGTH);</span>
+<span class="fc" id="L53">        avail = 0;</span>
+<span class="fc" id="L54">    } // setIV</span>
+
+
+    public final void encrypt (byte[] buf, int off, int len)
+    {
+    	// if there are enough available mask bytes
+    	// to encrypt the whole buffer, just use them:
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    	if (len &lt;= avail) {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">    		for (int i = Square.BLOCK_LENGTH - avail, m = len; m-- &gt; 0; i++) {</span>
+<span class="fc" id="L63">    			buf[off++] ^= mask[i];</span>
+    		}
+<span class="fc" id="L65">    		avail -= len;</span>
+<span class="fc" id="L66">    		return;</span>
+    	}
+    	// use all available (always 0 to Square.BLOCK_LENGTH-1)
+    	// mask bytes to encrypt the first bytes of the buffer:
+<span class="fc bfc" id="L70" title="All 2 branches covered.">    	for (int i = Square.BLOCK_LENGTH - avail; i &lt; Square.BLOCK_LENGTH; i++) {</span>
+<span class="fc" id="L71">    		buf[off++] ^= mask[i];</span>
+    	}
+<span class="fc" id="L73">    	len -= avail;</span>
+    	// encrypt the middle of the buffer in blocks of Square.BLOCK_LENGTH bytes:
+<span class="fc bfc" id="L75" title="All 2 branches covered.">    	while (len &gt; Square.BLOCK_LENGTH) {</span>
+<span class="fc" id="L76">    		sq.blockEncrypt (mask, 0, mask, 0);</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    		for (int i = 0; i &lt; Square.BLOCK_LENGTH; i++) {</span>
+<span class="fc" id="L78">    		    buf[off++] ^= mask[i];</span>
+    		}
+<span class="fc" id="L80">    		len -= Square.BLOCK_LENGTH;</span>
+    	}
+    	// encrypt the last len (always 1 to Square.BLOCK_LENGTH) bytes:
+<span class="fc" id="L83">   		sq.blockEncrypt (mask, 0, mask, 0);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    	for (int i = 0; i &lt; len; i++) {</span>
+<span class="fc" id="L85">   		    buf[off++] ^= mask[i];</span>
+    	}
+<span class="fc" id="L87">    	avail = Square.BLOCK_LENGTH - len;</span>
+<span class="fc" id="L88">    } // encrypt</span>
+
+
+    public final void decrypt (byte[] buf, int off, int len)
+    {
+<span class="fc" id="L93">        encrypt (buf, off, len);</span>
+<span class="fc" id="L94">    } // decrypt</span>
+
+
+    protected final void finalize ()
+        throws Throwable
+    {
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        for (int i = 0; i &lt; Square.BLOCK_LENGTH; i++) {</span>
+<span class="fc" id="L101">            mask[i] = 0;</span>
+        }
+<span class="fc" id="L103">        avail = 0;</span>
+<span class="fc" id="L104">        super.finalize ();</span>
+<span class="fc" id="L105">    } // finalize</span>
+
+} // SquareOfb
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

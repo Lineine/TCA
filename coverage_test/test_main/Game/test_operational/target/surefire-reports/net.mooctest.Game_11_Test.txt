@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Game_11_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in net.mooctest.Game_11_Test
+test_529(net.mooctest.Game_11_Test)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 3
+	at net.mooctest.Game_11_Test.test_529(Game_11_Test.java:14)
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MessageBuffer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MessageBuffer.java</span></div><h1>MessageBuffer.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/**
+ * A shared buffer which can contain many messages inside. A message gets a section of the buffer to use. If the
+ * message outgrows the section in size, the message requests a larger section and the message is copied to that
+ * larger section. The smaller section is then freed again.
+ *
+ *
+ * Created by jjenkov on 18-10-2015.
+ */
+public class MessageBuffer {
+
+<span class="fc" id="L13">    public static int KB = 1024;</span>
+<span class="fc" id="L14">    public static int MB = 1024 * KB;</span>
+
+<span class="fc" id="L16">    private static final int CAPACITY_SMALL  =   4  * KB;</span>
+<span class="fc" id="L17">    private static final int CAPACITY_MEDIUM = 128  * KB;</span>
+<span class="fc" id="L18">    private static final int CAPACITY_LARGE  = 1024 * KB;</span>
+
+    //package scope (default) - so they can be accessed from unit tests.
+<span class="fc" id="L21">    byte[]  smallMessageBuffer  = new byte[1024 *   4 * KB];   //1024 x   4KB messages =  4MB.</span>
+<span class="fc" id="L22">    byte[]  mediumMessageBuffer = new byte[128  * 128 * KB];   // 128 x 128KB messages = 16MB.</span>
+<span class="fc" id="L23">    byte[]  largeMessageBuffer  = new byte[16   *   1 * MB];   //  16 *   1MB messages = 16MB.</span>
+
+<span class="fc" id="L25">    QueueIntFlip smallMessageBufferFreeBlocks  = new QueueIntFlip(1024); // 1024 free sections</span>
+<span class="fc" id="L26">    QueueIntFlip mediumMessageBufferFreeBlocks = new QueueIntFlip(128);  // 128  free sections</span>
+<span class="fc" id="L27">    QueueIntFlip largeMessageBufferFreeBlocks  = new QueueIntFlip(16);   // 16   free sections</span>
+
+    //todo make all message buffer capacities and block sizes configurable
+    //todo calculate free block queue sizes based on capacity and block size of buffers.
+
+<span class="fc" id="L32">    public MessageBuffer() {</span>
+        //add all free sections to all free section queues.
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        for(int i=0; i&lt;smallMessageBuffer.length; i+= CAPACITY_SMALL){</span>
+<span class="fc" id="L35">            this.smallMessageBufferFreeBlocks.put(i);</span>
+        }
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for(int i=0; i&lt;mediumMessageBuffer.length; i+= CAPACITY_MEDIUM){</span>
+<span class="fc" id="L38">            this.mediumMessageBufferFreeBlocks.put(i);</span>
+        }
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for(int i=0; i&lt;largeMessageBuffer.length; i+= CAPACITY_LARGE){</span>
+<span class="fc" id="L41">            this.largeMessageBufferFreeBlocks.put(i);</span>
+        }
+<span class="fc" id="L43">    }</span>
+
+    public Message getMessage() {
+<span class="fc" id="L46">        int nextFreeSmallBlock = this.smallMessageBufferFreeBlocks.take();</span>
+
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if(nextFreeSmallBlock == -1) return null;</span>
+
+<span class="fc" id="L50">        Message message = new Message(this);       //todo get from Message pool - caps memory usage.</span>
+
+<span class="fc" id="L52">        message.sharedArray = this.smallMessageBuffer;</span>
+<span class="fc" id="L53">        message.capacity    = CAPACITY_SMALL;</span>
+<span class="fc" id="L54">        message.offset      = nextFreeSmallBlock;</span>
+<span class="fc" id="L55">        message.length      = 0;</span>
+
+<span class="fc" id="L57">        return message;</span>
+    }
+
+    public boolean expandMessage(Message message){
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if(message.capacity == CAPACITY_SMALL){</span>
+<span class="fc" id="L62">            return moveMessage(message, this.smallMessageBufferFreeBlocks, this.mediumMessageBufferFreeBlocks, this.mediumMessageBuffer, CAPACITY_MEDIUM);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        } else if(message.capacity == CAPACITY_MEDIUM){</span>
+<span class="fc" id="L64">            return moveMessage(message, this.mediumMessageBufferFreeBlocks, this.largeMessageBufferFreeBlocks, this.largeMessageBuffer, CAPACITY_LARGE);</span>
+        } else {
+<span class="fc" id="L66">            return false;</span>
+        }
+    }
+
+    private boolean moveMessage(Message message, QueueIntFlip srcBlockQueue, QueueIntFlip destBlockQueue, byte[] dest, int newCapacity) {
+<span class="fc" id="L71">        int nextFreeBlock = destBlockQueue.take();</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if(nextFreeBlock == -1) return false;</span>
+
+<span class="fc" id="L74">        System.arraycopy(message.sharedArray, message.offset, dest, nextFreeBlock, message.length);</span>
+
+<span class="fc" id="L76">        srcBlockQueue.put(message.offset); //free smaller block after copy</span>
+
+<span class="fc" id="L78">        message.sharedArray = dest;</span>
+<span class="fc" id="L79">        message.offset      = nextFreeBlock;</span>
+<span class="fc" id="L80">        message.capacity    = newCapacity;</span>
+<span class="fc" id="L81">        return true;</span>
+    }
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

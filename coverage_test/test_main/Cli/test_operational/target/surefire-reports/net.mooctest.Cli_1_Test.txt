@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_1_Test
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.014 s <<< FAILURE! - in net.mooctest.Cli_1_Test
+test_110(net.mooctest.Cli_1_Test)  Time elapsed: 0.013 s  <<< ERROR!
+java.lang.IllegalArgumentException: net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
+Caused by: net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
+Caused by: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
+Caused by: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
+

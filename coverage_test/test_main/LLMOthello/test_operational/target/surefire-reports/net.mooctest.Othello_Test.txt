@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Othello_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Othello_Test
+testStrategyOfBlackMove_MultipleBlackPieces(net.mooctest.Othello_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<4>
+	at net.mooctest.Othello_Test.testStrategyOfBlackMove_MultipleBlackPieces(Othello_Test.java:64)
+
+testStrategyOfBlackMove_EmptyBoard(net.mooctest.Othello_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at net.mooctest.Othello_Test.testStrategyOfBlackMove_EmptyBoard(Othello_Test.java:23)
+
+testStrategyOfBlackMove_NoValidMove(net.mooctest.Othello_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: bound must be positive
+	at net.mooctest.Othello_Test.testStrategyOfBlackMove_NoValidMove(Othello_Test.java:82)
+

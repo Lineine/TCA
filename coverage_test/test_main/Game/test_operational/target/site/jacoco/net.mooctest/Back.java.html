@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Back.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Back.java</span></div><h1>Back.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/**
+ * Collection of different functions that perform back motion easing.
+ * Equations are adopted from Robert Penner's Back.as file provided at
+ * http://www.robertpenner.com/easing/.
+ * @author paul
+ */
+<span class="nc" id="L9">public class Back</span>
+{
+    public static float easeIn(float time, int begin, int change, float duration, Float overshoot)
+    {
+<span class="nc bnc" id="L13" title="All 2 branches missed.">        if (overshoot == null)</span>
+<span class="nc" id="L14">            overshoot = 1.70158f;</span>
+<span class="nc" id="L15">        return change * (time /= duration) * time * ((overshoot + 1) * time - overshoot) + begin;</span>
+    }
+
+    public static float easeOut(float time, int begin, int change, float duration, Float overshoot)
+    {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (overshoot == null)</span>
+<span class="nc" id="L21">            overshoot = 1.70158f;</span>
+<span class="nc" id="L22">        return change * ((time = time / duration - 1) * time * ((overshoot + 1) * time + overshoot) + 1) + begin;</span>
+    }
+
+    public static float easeInOut(float time, int begin, int change, float duration, Float overshoot)
+    {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (overshoot == null)</span>
+<span class="nc" id="L28">            overshoot = 1.70158f;</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if ((time /= duration  / 2) &lt; 1)</span>
+<span class="nc" id="L30">            return change / 2 * (time * time *(((overshoot *= (1.525f)) + 1) * time - overshoot)) + begin;</span>
+<span class="nc" id="L31">        return change / 2 * ((time -= 2) * time * (((overshoot *= (1.525f)) + 1) * time + overshoot) + 2) + begin;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

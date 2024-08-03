@@ -1,0 +1,46 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Game_8_Test
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_8_Test
+test_34(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+
+test_35(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+
+test_36(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+
+test_37(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+
+test_38(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+
+test_39(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+
+test_40(net.mooctest.Game_8_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_8_Test.setUp(Game_8_Test.java:13)
+

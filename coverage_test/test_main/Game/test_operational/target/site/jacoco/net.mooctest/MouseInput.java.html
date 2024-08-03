@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MouseInput.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MouseInput.java</span></div><h1>MouseInput.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+/**
+ * Code originally from gamedev
+ * http://www.gamedev.net/page/resources/_/reference/programming/languages/java/java-games-keyboard-and-mouse-r2439
+ *
+ * @author paul
+ */
+public class MouseInput implements MouseListener, MouseMotionListener {
+
+    private static final int BUTTON_COUNT = 3;
+    // Polled position of the mouse cursor
+<span class="fc" id="L18">    private Point mousePos = null;</span>
+    // Current position of the mouse cursor
+<span class="fc" id="L20">    private Point currentPos = null;</span>
+    // Current state of mouse buttons
+<span class="fc" id="L22">    private boolean[] state = null;</span>
+    // Polled mouse buttons
+<span class="fc" id="L24">    private MouseState[] poll = null;</span>
+
+<span class="fc" id="L26">    private enum MouseState</span>
+    {
+
+<span class="fc" id="L29">        RELEASED, // Not down</span>
+<span class="fc" id="L30">        PRESSED, // Down, but not the first time</span>
+<span class="fc" id="L31">        ONCE      // Down for the first time</span>
+    }
+
+    public MouseInput()
+<span class="fc" id="L35">    {</span>
+        // Create default mouse positions
+<span class="fc" id="L37">        mousePos = new Point(0, 0);</span>
+<span class="fc" id="L38">        currentPos = new Point(0, 0);</span>
+        // Setup initial button states
+<span class="fc" id="L40">        state = new boolean[BUTTON_COUNT];</span>
+<span class="fc" id="L41">        poll = new MouseState[BUTTON_COUNT];</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (int i = 0; i &lt; BUTTON_COUNT; ++i) {</span>
+<span class="fc" id="L43">            poll[ i] = MouseState.RELEASED;</span>
+        }
+<span class="fc" id="L45">    }</span>
+
+    /**
+     * Polls the mouse for new buttons that might be pressed this update.
+     */
+    public void poll()
+    {
+        // Save the current location
+<span class="fc" id="L53">        mousePos = new Point(currentPos);</span>
+        // Check each mouse button
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        for (int i = 0; i &lt; BUTTON_COUNT; ++i) {</span>
+            // If the button is down for the first
+            // time, it is ONCE, otherwise it is
+            // PRESSED.
+<span class="fc bfc" id="L59" title="All 2 branches covered.">            if (state[ i]) {</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">                if (poll[ i] == MouseState.RELEASED) {</span>
+<span class="fc" id="L61">                    poll[ i] = MouseState.ONCE;</span>
+                } else {
+<span class="nc" id="L63">                    poll[ i] = MouseState.PRESSED;</span>
+                }
+            } else {
+                // button is not down
+<span class="fc" id="L67">                poll[ i] = MouseState.RELEASED;</span>
+            }
+        }
+<span class="fc" id="L70">    }</span>
+
+    /**
+     * @return Returns a Point object containing the x, and y coordinates of the mouse.
+     */
+    public Point getPosition()
+    {
+<span class="fc" id="L77">        return mousePos;</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is being held.
+     * @param button ID for the button to be evaluated.
+     * @return Returns if the button is being held.
+     */
+    public boolean buttonDownOnce(int button)
+    {
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        return poll[ button - 1] == MouseState.ONCE;</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is being held.
+     * @param key MouseKey object containing the key code of the mouse button that is pressed.
+     * @return Returns if the button is being held.
+     */
+    public boolean buttonDownOnce(MouseKeys key)
+    {
+<span class="nc" id="L97">        return buttonDownOnce(key.KEYCODE);</span>
+    }
+
+    /**
+     * Checks to see if a button on the mouse is pressed.
+     * @param button ID for the button to be evaluated.
+     * @return Returns if the button is down.
+     */
+    public boolean buttonDown(int button)
+    {
+<span class="pc bpc" id="L107" title="1 of 4 branches missed.">        return poll[ button - 1] == MouseState.ONCE</span>
+                || poll[ button - 1] == MouseState.PRESSED;
+    }
+
+    /**
+     * Checks to see if a button on the mouse is pressed.
+     * @param key MouseKey object containing the key code of the mouse button that is pressed.
+     * @return Returns if the button is down.
+     */
+    public boolean buttonDown(MouseKeys key)
+    {
+<span class="nc" id="L118">        return buttonDown(key.KEYCODE);</span>
+    }
+
+    /**
+     * Detects if a mouse key was pressed for Swing/AWT components.
+     * @param e KeyEvent related to key that was pressed.
+     */
+    @Override
+    public void mousePressed(MouseEvent e)
+    {
+<span class="fc" id="L128">        state[ e.getButton() - 1] = true;</span>
+<span class="fc" id="L129">    }</span>
+
+    /**
+     * Detects if a mouse key was released for Swing/AWT components.
+     * @param e KeyEvent related to key that was released.
+     */
+    @Override
+    public void mouseReleased(MouseEvent e)
+    {
+<span class="fc" id="L138">        state[ e.getButton() - 1] = false;</span>
+<span class="fc" id="L139">    }</span>
+
+    /**
+     * Detects if the mouse has entered a region for Swing/AWT components.
+     * @param e KeyEvent related to the mouse entering a region.
+     */
+    @Override
+    public void mouseEntered(MouseEvent e)
+    {
+<span class="nc" id="L148">        mouseMoved(e);</span>
+<span class="nc" id="L149">    }</span>
+
+    /**
+     * Detects if the mouse has exited a region for Swing/AWT components.
+     * @param e KeyEvent related to the mouse exiting a region.
+     */
+    @Override
+    public void mouseExited(MouseEvent e)
+    {
+<span class="nc" id="L158">        mouseMoved(e);</span>
+<span class="nc" id="L159">    }</span>
+
+    /**
+     * Detects if the mouse has been dragged for Swing/AWT components.
+     * @param e KeyEvent related to the mouse being dragged.
+     */
+    @Override
+    public void mouseDragged(MouseEvent e)
+    {
+<span class="nc" id="L168">        mouseMoved(e);</span>
+<span class="nc" id="L169">    }</span>
+
+    /**
+     * Detects if the mouse has been moved for Swing/AWT components.
+     * @param e KeyEvent related to the mouse being moved.
+     */
+    @Override
+    public void mouseMoved(MouseEvent e)
+    {
+<span class="fc" id="L178">        currentPos = e.getPoint();</span>
+<span class="fc" id="L179">    }</span>
+
+    /**
+     * Void Method; Not Implemented.
+     */
+    @Override
+    public void mouseClicked(MouseEvent e)
+    {
+        // NOP
+        //throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);
+<span class="nc" id="L189">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

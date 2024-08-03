@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Game_51_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_51_Test
+test_369(net.mooctest.Game_51_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_51_Test.setup(Game_51_Test.java:11)
+

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+
+import java.awt.*;
+import java.util.LinkedList;
+
+public class Menu implements GuiComponent
+{
+    // Class Properties
+    public final String LABEL;
+    private MenuState menuState;
+    private LinkedList&lt;MenuItem&gt; items;
+    // Values that need to be set by parent
+    private Anchor anchor;
+    private Font font;
+    private Color paneColor, borderColor, fontColor;
+    private Rectangle closedBoundingBox, openBoundingBox;
+
+    /**
+     * Complete Constructor.
+     * Creates a Menu.
+     * @param label String containing the LABEL of the Menu.
+     * @param fontColor Font color of all Menu labels.
+     */
+    public Menu(String label, Color fontColor)
+<span class="fc" id="L26">    {</span>
+<span class="fc" id="L27">        this.LABEL = label;</span>
+<span class="fc" id="L28">        this.fontColor = fontColor;</span>
+<span class="fc" id="L29">        this.menuState = MenuState.CLOSED;</span>
+<span class="fc" id="L30">        this.items = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Creates a Menu.
+     * @param label String containing the LABEL of the Menu.
+     */
+    public Menu(String label)
+    {
+<span class="fc" id="L39">        this(label, Color.WHITE);</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Adds a menu item to be displayed when the menu is activated.
+     * @param menuItem A MenuItem to be added to this Menu.
+     */
+    public void add(MenuItem menuItem)
+    {
+<span class="fc" id="L48">        items.add(menuItem);</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * Sets The Color and Border Color of the menu.
+     * This is set by the parent object MenuBar.
+     * @param paneColor Color of the Menu pane.
+     * @param borderColor Color of the Border surrounding the menu pane.
+     */
+    protected void setColors(Color paneColor, Color borderColor)
+    {
+<span class="fc" id="L59">        this.paneColor = paneColor;</span>
+<span class="fc" id="L60">        this.borderColor = borderColor;</span>
+<span class="fc" id="L61">    }</span>
+
+    /**
+     * Sets properties from parent class.
+     * @param anchor Enumeration defining where the Parent MenuBar is anchored.
+     * @param x Integer representing the x-coordinate of this MenuItem.
+     * @param y Integer representing the y-coordinate of this MenuItem.
+     * @param closedWidth Integer representing the width of this MenuItem.
+     * @param closedHeight Integer representing the height of this MenuItem.
+     */
+    protected void setProperties(Anchor anchor, int x, int y, int closedWidth, int closedHeight)
+    {
+<span class="fc" id="L73">        this.anchor = anchor;</span>
+<span class="fc" id="L74">        this.closedBoundingBox = new Rectangle(x, y, closedWidth, closedHeight);</span>
+        // TODO: need to fix 200 width constant
+<span class="fc" id="L76">        int openHeight = (closedHeight * items.size()) + items.size();</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        switch(anchor)</span>
+        {
+            default:
+            case TOP:
+<span class="fc" id="L81">                this.openBoundingBox = new Rectangle</span>
+                (
+                    closedBoundingBox.x,
+                    closedBoundingBox.y + closedBoundingBox.height,
+                    200,
+                    openHeight
+                );
+<span class="fc" id="L88">                break;</span>
+            case BOTTOM:
+<span class="nc" id="L90">                this.openBoundingBox = new Rectangle</span>
+                (
+                    closedBoundingBox.x,
+                    closedBoundingBox.y - openHeight,
+                    200,
+                    openHeight
+                );
+                break;
+        }
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * Returns the width of the menu when it is closed.
+     */
+    public int getClosedWidth()
+    {
+<span class="fc" id="L106">        return closedBoundingBox.width;</span>
+    }
+
+    /**
+     * Sets the font of the Menu.
+     * @param font Font to be used for Menu Fonts
+     */
+    protected void setFont(Font font)
+    {
+<span class="fc" id="L115">        this.font = font;</span>
+<span class="fc" id="L116">    }</span>
+
+    /**
+     * Initializes all the MenuItems contained within the Menu and the Menu itself.
+     */
+    @Override
+    public void initialize()
+    {
+        int yOffset;
+        // Initialize MenuItems
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">        for(int i = 0; i &lt; items.size(); ++i)</span>
+        {
+<span class="nc" id="L128">            yOffset = i * closedBoundingBox.height;</span>
+<span class="nc" id="L129">            items.get(i).setProperties</span>
+<span class="nc" id="L130">            (</span>
+                anchor,
+                openBoundingBox.x,
+                openBoundingBox.y + yOffset + (i * 1),
+                // TODO: FIX 200 width for menu.
+                200,
+                closedBoundingBox.height
+            );
+<span class="nc" id="L138">            items.get(i).setFont(font);</span>
+<span class="nc" id="L139">            items.get(i).setFontColor(fontColor);</span>
+<span class="nc" id="L140">            items.get(i).initialize();</span>
+        }
+<span class="fc" id="L142">    }</span>
+
+    /**
+     * Loads content for the MenuItems and the Menu.
+     */
+    @Override
+<span class="nc" id="L148">    public void loadContent(){}</span>
+
+    /**
+     * Updates the logic of all the MenuItems and the Menu.
+     * @param gameTime GameTime object containing the timing of the current session.
+     */
+    @Override
+    public void update(GameTime gameTime)
+    {
+        // If the Menu has any items check to see if someone is clicking on it.
+<span class="nc bnc" id="L158" title="All 2 branches missed.">        if(items.size() &gt; 0)</span>
+        {
+            // Determine the User clicked on the menu.
+<span class="nc bnc" id="L161" title="All 4 branches missed.">            if(closedBoundingBox.intersects(Mouse.getPosition()) &amp;&amp; Mouse.buttonDownOnce(MouseKeys.BUTTON_1))</span>
+<span class="nc" id="L162">                menuState = MenuState.OPEN;</span>
+<span class="nc bnc" id="L163" title="All 6 branches missed.">            if(menuState == MenuState.OPEN &amp;&amp; !closedBoundingBox.intersects(Mouse.getPosition()) &amp;&amp; !openBoundingBox.intersects(Mouse.getPosition()))</span>
+<span class="nc" id="L164">                menuState = MenuState.CLOSED;</span>
+        }
+
+        // Check the State of the Menu
+<span class="nc bnc" id="L168" title="All 2 branches missed.">        switch(menuState)</span>
+        {
+            case OPEN:
+<span class="nc bnc" id="L171" title="All 2 branches missed.">                for(MenuItem item : items)</span>
+<span class="nc" id="L172">                    item.update(gameTime);</span>
+                break;
+        }
+<span class="nc" id="L175">    }</span>
+
+    /**
+     * Draws the Menu.
+     * @param g2d Graphics2D object containing the drawable surface of the window.
+     */
+    @Override
+    public void draw(Graphics2D g2d)
+    {
+<span class="nc" id="L184">        g2d.setFont(font);</span>
+<span class="nc" id="L185">        g2d.setColor(fontColor);</span>
+        // TODO: FIX Magic Padding Numbers + 10 and + 15
+<span class="nc" id="L187">        g2d.drawString(LABEL, closedBoundingBox.x + 10, closedBoundingBox.y + 15);</span>
+        // If the menu is open draw that piece as well
+<span class="nc bnc" id="L189" title="All 4 branches missed.">        if(items.size() &gt; 0 &amp;&amp; menuState == MenuState.OPEN)</span>
+        {
+<span class="nc" id="L191">            g2d.setColor(paneColor);</span>
+            // Draw The Menu pane.
+<span class="nc" id="L193">            g2d.fillRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);</span>
+            // Draw The Menu Items.
+<span class="nc bnc" id="L195" title="All 2 branches missed.">            for(MenuItem item : items)</span>
+<span class="nc" id="L196">                item.draw(g2d);</span>
+            // Draw The Border around the Menu.
+<span class="nc" id="L198">            g2d.setColor(borderColor);</span>
+<span class="nc" id="L199">            g2d.drawRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);</span>
+        }
+<span class="nc" id="L201">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

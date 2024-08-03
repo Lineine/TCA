@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.UnrolledLinkedList2023_sub_10_4_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.UnrolledLinkedList2023_sub_10_4_Test
+test_25(net.mooctest.UnrolledLinkedList2023_sub_10_4_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: nodeCapacity < 8
+	at net.mooctest.UnrolledLinkedList2023_sub_10_4_Test.test_25(UnrolledLinkedList2023_sub_10_4_Test.java:14)
+

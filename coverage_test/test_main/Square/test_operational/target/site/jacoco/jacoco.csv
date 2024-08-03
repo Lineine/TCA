@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+test_operational,net.mooctest,SquareCfb,0,371,0,28,0,52,0,20,0,6
+test_operational,net.mooctest,Square,4,1288,2,44,0,142,2,31,0,10
+test_operational,net.mooctest,SquareOfb,0,196,0,16,0,36,0,14,0,6
+test_operational,net.mooctest,SquareEcb,0,37,0,4,0,14,0,7,0,5
+test_operational,net.mooctest,SquareCbc,0,152,0,16,0,29,0,14,0,6
+test_operational,net.mooctest,SquareCts,0,309,0,30,0,48,0,21,0,6

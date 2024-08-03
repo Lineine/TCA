@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MessageWriter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">MessageWriter.java</span></div><h1>MessageWriter.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by jjenkov on 21-10-2015.
+ */
+public class MessageWriter {
+
+<span class="fc" id="L13">    private List&lt;Message&gt; writeQueue   = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L14">    private Message  messageInProgress = null;</span>
+<span class="fc" id="L15">    private int      bytesWritten      =    0;</span>
+
+<span class="fc" id="L17">    public MessageWriter() {</span>
+<span class="fc" id="L18">    }</span>
+
+    public void enqueue(Message message) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if(this.messageInProgress == null){</span>
+<span class="fc" id="L22">            this.messageInProgress = message;</span>
+        } else {
+<span class="fc" id="L24">            this.writeQueue.add(message);</span>
+        }
+<span class="fc" id="L26">    }</span>
+
+    public void write(Socket socket, ByteBuffer byteBuffer) throws IOException {
+<span class="nc" id="L29">        byteBuffer.put(this.messageInProgress.sharedArray, this.messageInProgress.offset + this.bytesWritten, this.messageInProgress.length - this.bytesWritten);</span>
+<span class="nc" id="L30">        byteBuffer.flip();</span>
+
+<span class="nc" id="L32">        this.bytesWritten += socket.write(byteBuffer);</span>
+<span class="nc" id="L33">        byteBuffer.clear();</span>
+
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if(bytesWritten &gt;= this.messageInProgress.length){</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            if(this.writeQueue.size() &gt; 0){</span>
+<span class="nc" id="L37">                this.messageInProgress = this.writeQueue.remove(0);</span>
+            } else {
+<span class="nc" id="L39">                this.messageInProgress = null;</span>
+                //todo unregister from selector
+            }
+        }
+<span class="nc" id="L43">    }</span>
+
+    public boolean isEmpty() {
+<span class="fc bfc" id="L46" title="All 4 branches covered.">        return this.writeQueue.isEmpty() &amp;&amp; this.messageInProgress == null;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

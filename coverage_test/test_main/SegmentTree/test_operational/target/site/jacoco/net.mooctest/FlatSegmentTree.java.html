@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FlatSegmentTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">FlatSegmentTree.java</span></div><h1>FlatSegmentTree.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import net.mooctest.SegmentTree.Data;
+
+/**
+ * Flat segment tree is a variant of segment tree that is designed to store
+ * a collection of non-overlapping segments. This structure is efficient
+ * when you need to store values associated with 1 dimensional segments that
+ * never overlap with each other. The end points of stored segments are
+ * inclusive, that is, when a segment spans from 2 to 6, an arbitrary point
+ * x within that segment can take a value of 2 &lt;= x &lt;= 6.
+ */
+public final class FlatSegmentTree&lt;D extends Data&gt; extends SegmentTree&lt;D&gt; {
+
+    public FlatSegmentTree(List&lt;D&gt; data) {
+<span class="fc" id="L23">        this(data, 1);</span>
+<span class="fc" id="L24">    }</span>
+
+<span class="fc" id="L26">    public FlatSegmentTree(List&lt;D&gt; data, int minLength) {</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (data.size() &lt;= 0)</span>
+<span class="fc" id="L28">            throw new InvalidParameterException(&quot;Segments list is empty.&quot;);</span>
+
+<span class="fc" id="L30">        Collections.sort(data); // Make sure they are sorted</span>
+
+        // Make sure they don't overlap
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (data.size() &gt;= 2) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            for (int i = 0; i &lt; (data.size() - 2); i++) {</span>
+<span class="fc" id="L35">                Data s1 = data.get(i);</span>
+<span class="fc" id="L36">                Data s2 = data.get(i + 1);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                if (s1.end &gt; s2.start)</span>
+<span class="fc" id="L38">                    throw new InvalidParameterException(&quot;Segments are overlapping.&quot;);</span>
+            }
+        }
+
+        // Check for gaps
+<span class="fc" id="L43">        final List&lt;NonOverlappingSegment&lt;D&gt;&gt; segments = new ArrayList&lt;NonOverlappingSegment&lt;D&gt;&gt;();</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for (int i = 0; i &lt; data.size(); i++) {</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (i &lt; data.size() - 1) {</span>
+<span class="fc" id="L46">                final Data d1 = data.get(i);</span>
+<span class="fc" id="L47">                final NonOverlappingSegment&lt;D&gt; s1 = new NonOverlappingSegment&lt;D&gt;(minLength, d1.start, d1.end, (D) d1);</span>
+<span class="fc" id="L48">                segments.add(s1);</span>
+<span class="fc" id="L49">                final Data d2 = data.get(i + 1);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">                if (d2.start - d1.end &gt; 1) {</span>
+<span class="fc" id="L51">                    final Data d3 = d1.copy();</span>
+<span class="fc" id="L52">                    d3.clear();</span>
+<span class="fc" id="L53">                    d3.start = d1.end + 1;</span>
+<span class="fc" id="L54">                    d3.end = d2.start - 1;</span>
+<span class="fc" id="L55">                    final NonOverlappingSegment&lt;D&gt; s3 = new NonOverlappingSegment&lt;D&gt;(minLength, d3.start, d3.end, (D) d3);</span>
+<span class="fc" id="L56">                    segments.add(s3);</span>
+                }
+<span class="fc" id="L58">            } else {</span>
+<span class="fc" id="L59">                final Data d1 = data.get(i);</span>
+<span class="fc" id="L60">                final NonOverlappingSegment&lt;D&gt; s1 = new NonOverlappingSegment&lt;D&gt;(minLength, d1.start, d1.end, (D) d1);</span>
+<span class="fc" id="L61">                segments.add(s1);</span>
+            }
+        }
+
+<span class="fc" id="L65">        final long start = segments.get(0).start;</span>
+<span class="fc" id="L66">        final long end = segments.get(segments.size() - 1).end;</span>
+<span class="fc" id="L67">        final int length = (int) (end - start) + 1;</span>
+<span class="fc" id="L68">        root = NonOverlappingSegment.createFromList(minLength, segments, start, length);</span>
+<span class="fc" id="L69">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public D query(long index) {
+<span class="fc" id="L76">        return this.query(index, index);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public D query(long startOfQuery, long endOfQuery) {
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if (root == null)</span>
+<span class="nc" id="L85">            return null;</span>
+
+<span class="fc" id="L87">        long s = startOfQuery;</span>
+<span class="fc" id="L88">        long e = endOfQuery;</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (s &lt; root.start)</span>
+<span class="fc" id="L90">            s = root.start;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (e &gt; root.end)</span>
+<span class="fc" id="L92">            e = root.end;</span>
+
+<span class="fc" id="L94">        return root.query(s, e);</span>
+    }
+
+    /**
+     * Data structure representing a non-overlapping segment.
+     */
+    protected static final class NonOverlappingSegment&lt;D extends Data&gt; extends Segment&lt;D&gt; {
+
+<span class="fc" id="L102">        private Set&lt;Segment&lt;D&gt;&gt; set = new TreeSet&lt;Segment&lt;D&gt;&gt;();</span>
+
+        public NonOverlappingSegment(int minLength) {
+<span class="fc" id="L105">            super(minLength);</span>
+<span class="fc" id="L106">        }</span>
+
+        public NonOverlappingSegment(int minLength, D data) {
+<span class="fc" id="L109">            this(minLength, data.start, data.end, data);</span>
+<span class="fc" id="L110">        }</span>
+
+        public NonOverlappingSegment(int minLength, long start, long end, D data) {
+<span class="fc" id="L113">            super(minLength);</span>
+
+<span class="fc" id="L115">            this.start = start;</span>
+<span class="fc" id="L116">            this.end = end;</span>
+<span class="fc" id="L117">            this.length = ((int) (end - start)) + 1;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">            if (data == null)</span>
+<span class="fc" id="L119">                return;</span>
+<span class="fc" id="L120">            this.data = ((D) data.copy());</span>
+<span class="fc" id="L121">        }</span>
+
+        protected static &lt;D extends Data&gt; Segment&lt;D&gt; createFromList(int minLength, List&lt;NonOverlappingSegment&lt;D&gt;&gt; segments, long start, int length) {
+<span class="fc" id="L124">            final NonOverlappingSegment&lt;D&gt; segment = new NonOverlappingSegment&lt;D&gt;(minLength);</span>
+<span class="fc" id="L125">            segment.start = start;</span>
+<span class="fc" id="L126">            segment.end = start + (length - 1);</span>
+<span class="fc" id="L127">            segment.length = length;</span>
+
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            for (Segment&lt;D&gt; s : segments) {</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">                if (segment.data == null)</span>
+<span class="fc" id="L131">                    segment.data = ((D) s.data.copy());</span>
+                else
+<span class="fc" id="L133">                    segment.data.combined(s.data); // Update our data to reflect all children's data</span>
+<span class="fc" id="L134">            }</span>
+
+            // If segment is greater or equal to two, split data into children
+<span class="fc bfc" id="L137" title="All 4 branches covered.">            if (segment.length &gt;= 2 &amp;&amp; segment.length &gt;= minLength) {</span>
+<span class="fc" id="L138">                segment.half = segment.length / 2;</span>
+
+<span class="fc" id="L140">                final List&lt;NonOverlappingSegment&lt;D&gt;&gt; s1 = new ArrayList&lt;NonOverlappingSegment&lt;D&gt;&gt;();</span>
+<span class="fc" id="L141">                final List&lt;NonOverlappingSegment&lt;D&gt;&gt; s2 = new ArrayList&lt;NonOverlappingSegment&lt;D&gt;&gt;();</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">                for (int i = 0; i &lt; segments.size(); i++) {</span>
+<span class="fc" id="L143">                    final NonOverlappingSegment&lt;D&gt; s = segments.get(i);</span>
+<span class="fc" id="L144">                    final long middle = segment.start + segment.half;</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">                    if (s.end &lt; middle) {</span>
+<span class="fc" id="L146">                        s1.add(s);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">                    } else if (s.start &gt;= middle) {</span>
+<span class="fc" id="L148">                        s2.add(s);</span>
+                    } else {
+                        // Need to split across middle
+<span class="fc" id="L151">                        final NonOverlappingSegment&lt;D&gt; ss1 = new NonOverlappingSegment&lt;D&gt;(minLength, s.start, middle - 1, s.data);</span>
+<span class="fc" id="L152">                        s1.add(ss1);</span>
+
+<span class="fc" id="L154">                        final NonOverlappingSegment&lt;D&gt; ss2 = new NonOverlappingSegment&lt;D&gt;(minLength, middle, s.end, s.data);</span>
+<span class="fc" id="L155">                        s2.add(ss2);</span>
+                    }
+                }
+
+<span class="fc" id="L159">                final Segment&lt;D&gt; sub1 = createFromList(minLength, s1, segment.start, segment.half);</span>
+<span class="fc" id="L160">                final Segment&lt;D&gt; sub2 = createFromList(minLength, s2, segment.start + segment.half, segment.length - segment.half);</span>
+<span class="fc" id="L161">                segment.segments = new Segment[] { sub1, sub2 };</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">            } else if (segment.length &lt;= minLength) {</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">                for (Segment&lt;D&gt; s : segments) {</span>
+<span class="fc" id="L164">                    segment.set.add(s);</span>
+<span class="fc" id="L165">                }</span>
+            }
+
+<span class="fc" id="L168">            return segment;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public D query(long startOfQuery, long endOfQuery) {
+<span class="fc bfc" id="L176" title="All 4 branches covered.">            if (startOfQuery == this.start &amp;&amp; endOfQuery == this.end) {</span>
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">                if (this.data == null)</span>
+<span class="nc" id="L178">                    return null;</span>
+<span class="fc" id="L179">                final D dataToReturn = ((D) this.data.query(startOfQuery, endOfQuery));</span>
+<span class="fc" id="L180">                return dataToReturn;</span>
+            }
+
+<span class="fc bfc" id="L183" title="All 2 branches covered.">            if (!this.hasChildren()) {</span>
+<span class="fc bfc" id="L184" title="All 4 branches covered.">                if (endOfQuery &lt; this.start || startOfQuery &gt; this.end) {</span>
+                    // Ignore
+                } else {
+<span class="fc" id="L187">                    D dataToReturn = null;</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">                    if (this.set.size() == 0)</span>
+<span class="fc" id="L189">                        return dataToReturn;</span>
+<span class="fc bfc" id="L190" title="All 2 branches covered.">                    for (Segment&lt;D&gt; s : this.set) {</span>
+<span class="fc bfc" id="L191" title="All 4 branches covered.">                        if (s.start &gt;= startOfQuery &amp;&amp; s.end &lt;= endOfQuery) {</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">                            if (dataToReturn == null)</span>
+<span class="fc" id="L193">                                dataToReturn = (D) s.data.query(startOfQuery, endOfQuery);</span>
+                            else
+<span class="nc" id="L195">                                dataToReturn.combined(s.data);</span>
+<span class="fc bfc" id="L196" title="All 4 branches covered.">                        } else if (s.start &lt;= startOfQuery &amp;&amp; s.end &gt;= endOfQuery) {</span>
+<span class="pc bpc" id="L197" title="1 of 2 branches missed.">                            if (dataToReturn == null)</span>
+<span class="fc" id="L198">                                dataToReturn = (D) s.data.query(startOfQuery, endOfQuery);</span>
+                            else
+<span class="nc" id="L200">                                dataToReturn.combined(s.data);</span>
+                        }
+<span class="fc" id="L202">                    }</span>
+<span class="fc" id="L203">                    return dataToReturn;</span>
+                }
+            } 
+
+<span class="fc bfc" id="L207" title="All 2 branches covered.">            if (this.hasChildren()) {</span>
+<span class="fc bfc" id="L208" title="All 4 branches covered.">                if (startOfQuery &lt;= this.getLeftChild().end &amp;&amp; endOfQuery &gt; this.getLeftChild().end) {</span>
+<span class="fc" id="L209">                    final Data q1 = this.getLeftChild().query(startOfQuery, getLeftChild().end);</span>
+<span class="fc" id="L210">                    final Data q2 = this.getRightChild().query(getRightChild().start, endOfQuery);</span>
+<span class="pc bpc" id="L211" title="3 of 4 branches missed.">                    if (q1 == null &amp;&amp; q2 == null)</span>
+<span class="nc" id="L212">                        return null;</span>
+<span class="pc bpc" id="L213" title="2 of 4 branches missed.">                    if (q1 != null &amp;&amp; q2 == null)</span>
+<span class="nc" id="L214">                        return (D) q1;</span>
+<span class="pc bpc" id="L215" title="3 of 4 branches missed.">                    if (q1 == null &amp;&amp; q2 != null)</span>
+<span class="nc" id="L216">                        return (D) q2;</span>
+<span class="pc bpc" id="L217" title="2 of 4 branches missed.">                    if (q1 != null &amp;&amp; q2 != null) </span>
+<span class="fc" id="L218">                        return ((D) q1.combined(q2));</span>
+<span class="pc bpc" id="L219" title="1 of 4 branches missed.">                } else if (startOfQuery &lt;= this.getLeftChild().end &amp;&amp; endOfQuery &lt;= this.getLeftChild().end) {</span>
+<span class="fc" id="L220">                    return this.getLeftChild().query(startOfQuery, endOfQuery);</span>
+                }
+<span class="fc" id="L222">                return this.getRightChild().query(startOfQuery, endOfQuery);</span>
+            }
+
+<span class="fc" id="L225">            return null;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L233">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L234">            builder.append(super.toString()).append(&quot; &quot;);</span>
+<span class="fc" id="L235">            builder.append(&quot;Set=&quot;).append(set);</span>
+<span class="fc" id="L236">            return builder.toString();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

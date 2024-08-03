@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <mkdir dir="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/classes"/>
+  <mkdir dir="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/test-classes"/>
+  <echo>Starting to record compile errors...</echo>
+  <record name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/compile-errors.log" action="start"/>
+  <echo>Compiling main source files...</echo>
+  <javac destdir="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/classes" failonerror="false" srcdir="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/main/java">
+    <compilerarg line="-Xlint"/>
+    <include name="**/*.java"/>
+  </javac>
+  <echo>Compiling test source files...</echo>
+  <javac destdir="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/target/test-classes" failonerror="false" srcdir="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/src/test/java">
+    <compilerarg line="-Xlint"/>
+    <include name="**/*.java"/>
+  </javac>
+  <record name="/data02/LCD/CTCA/coverage_test/test_main/GTree/test_operational/compile-errors.log"/>
+  <echo>Finished recording compile errors.</echo>
+</target>
+</project>

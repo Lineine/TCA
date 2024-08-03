@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TestFramework.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">TestFramework.java</span></div><h1>TestFramework.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+<span class="nc" id="L7">public class TestFramework extends Game</span>
+{
+    /**
+     * Any objects/variables that need to be Initialized should do so
+     * in Initialize().
+     */
+    @Override
+    public void initialize()
+    {
+        // Initialize stuff in Base
+<span class="nc" id="L17">        super.initialize();</span>
+        // TODO:
+<span class="nc" id="L19">    }</span>
+
+    /**
+     * Any Content that needs to be loaded should do so
+     * in loadContent().
+     */
+    @Override
+    public void loadContent()
+    {
+        // All Resources should be placed in the resource folder
+        // A &quot;/resource/&quot; is appended to the path.
+        // To load an image; Texture2D texture = new Texture2D(&quot;path&quot;);
+        // This file should load on all OS inside the jar :)
+        // TODO:
+<span class="nc" id="L33">    }</span>
+
+    /**
+     * Any Content that needs to be unloaded should do so
+     * in unloadContent().
+     * Note: I wouldn't worry about this; Its not implemented properly as of now..
+     */
+    @Override
+    public void unloadContent()
+    {
+        // TODO:
+<span class="nc" id="L44">    }</span>
+
+    /**
+     * Objects/Variables/Logic/Input that need to be updated should be placed
+     * in this method.
+     * @param gameTime
+     */
+    @Override
+    public void update(GameTime gameTime)
+    {
+        // Call base class
+<span class="nc" id="L55">        super.update(gameTime);</span>
+        // TODO:
+<span class="nc" id="L57">        this.fps.update(gameTime);</span>
+
+
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;System &amp; Menu Keys&quot;&gt;
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if(Keyboard.keyDownOnce(KeyEvent.VK_ESCAPE))</span>
+        {
+<span class="nc" id="L63">            Game.exitGame();</span>
+        }
+        //&lt;/editor-fold&gt;
+<span class="nc" id="L66">    }</span>
+
+    /**
+     * This method draws images to the screen buffer
+     * @param g2d
+     */
+    @Override
+    public void draw(Graphics2D g2d)
+    {
+        // Call Base Class to clear Screen
+<span class="nc" id="L76">        super.draw(g2d);</span>
+        // TODO:
+<span class="nc" id="L78">        this.fps.draw(g2d);</span>
+<span class="nc" id="L79">        g2d.drawString(&quot;Mouse: (&quot; + Mouse.getPosition().x + &quot;,&quot; + Mouse.getPosition().y + &quot;)&quot;, 10, 60);</span>
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Main Entrance into TestFramework
+     * @param args
+     */
+    public static void main(String[] args)
+    {
+<span class="nc" id="L88">        TestFramework test = new TestFramework();</span>
+<span class="nc" id="L89">        test.setTitle(&quot;Java Game Framework - Alpha&quot;);</span>
+<span class="nc" id="L90">        test.setDimensions(800, 600);</span>
+<span class="nc" id="L91">        test.run();</span>
+<span class="nc" id="L92">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

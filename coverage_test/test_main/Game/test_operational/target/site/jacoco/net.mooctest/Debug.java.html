@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Debug.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Debug.java</span></div><h1>Debug.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+
+
+import java.awt.*;
+import java.util.ArrayList;
+
+<span class="nc" id="L8">public class Debug</span>
+{
+<span class="nc" id="L10">    private static ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L11">    private static Vector2 cursorPosition = new Vector2();</span>
+
+    public static void print(Graphics2D g2d)
+    {
+<span class="nc" id="L15">        g2d.setColor(Color.GREEN);</span>
+        // Printout all the items in the list
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        for(String item : list)</span>
+        {
+<span class="nc" id="L19">            g2d.drawString(item, cursorPosition.x, cursorPosition.y);</span>
+<span class="nc" id="L20">            cursorPosition = new Vector2(cursorPosition.x, cursorPosition.y + 20);</span>
+<span class="nc" id="L21">        }</span>
+<span class="nc" id="L22">        list.clear();</span>
+<span class="nc" id="L23">    }</span>
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Add&quot;&gt;
+    public static void add(String item)
+    {
+<span class="nc" id="L28">        list.add(item);</span>
+<span class="nc" id="L29">    }</span>
+
+    public static void add(int item)
+    {
+<span class="nc" id="L33">        list.add(Integer.toString(item));</span>
+<span class="nc" id="L34">    }</span>
+
+    public static void add(long item)
+    {
+<span class="nc" id="L38">        list.add(Long.toString(item));</span>
+<span class="nc" id="L39">    }</span>
+
+    public static void add(float item)
+    {
+<span class="nc" id="L43">        list.add(Float.toString(item));</span>
+<span class="nc" id="L44">    }</span>
+
+    public static void add(double item)
+    {
+<span class="nc" id="L48">        list.add(Double.toString(item));</span>
+<span class="nc" id="L49">    }</span>
+    //&lt;/editor-fold&gt;
+
+    public static void setCursorPosition(int x, int y)
+    {
+<span class="nc" id="L54">        cursorPosition = new Vector2(x, y);</span>
+<span class="nc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

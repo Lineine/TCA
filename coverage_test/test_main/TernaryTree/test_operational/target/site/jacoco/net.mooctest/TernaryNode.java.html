@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TernaryNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">TernaryNode.java</span></div><h1>TernaryNode.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+class TernaryNode&lt;T&gt; {
+    private T data;
+    private TernaryNode&lt;T&gt; leftChild;  // Reference to left child
+    private TernaryNode&lt;T&gt; middleChild; //Reference to middle child
+    private TernaryNode&lt;T&gt; rightChild; // Reference to right child
+
+    public TernaryNode() {
+<span class="fc" id="L10">        this(null); // Call next constructor</span>
+<span class="fc" id="L11">    }</span>
+
+    public TernaryNode(T dataPortion) {
+<span class="fc" id="L14">        this(dataPortion, null, null, null); // Call next constructor</span>
+<span class="fc" id="L15">    }</span>
+
+    public TernaryNode(T dataPortion, TernaryNode&lt;T&gt; newLeftChild, TernaryNode&lt;T&gt; newMiddleChild,
+<span class="fc" id="L18">                      TernaryNode&lt;T&gt; newRightChild) {</span>
+<span class="fc" id="L19">        data = dataPortion;</span>
+<span class="fc" id="L20">        leftChild = newLeftChild;</span>
+<span class="fc" id="L21">        middleChild=newMiddleChild;</span>
+<span class="fc" id="L22">        rightChild = newRightChild;</span>
+<span class="fc" id="L23">    }</span>
+
+    /** Retrieves the data portion of this node.
+     *  @return  The object in the data portion of the node. */
+    public T getData() {
+<span class="fc" id="L28">        return data;</span>
+    }
+
+    /** Sets the data portion of this node.
+     *  @param newData  The data object. */
+    public void setData(T newData) {
+<span class="fc" id="L34">        data = newData;</span>
+<span class="fc" id="L35">    }</span>
+
+    /** Retrieves the left child of this node.
+     *  @return  The node’s left child. */
+    public TernaryNode&lt;T&gt; getLeftChild() {
+<span class="fc" id="L40">        return leftChild;</span>
+    }
+
+    /** Sets this node’s left child to a given node.
+     *  @param newLeftChild  A node that will be the left child. */
+    public void setLeftChild(TernaryNode&lt;T&gt; newLeftChild) {
+<span class="fc" id="L46">        leftChild = newLeftChild;</span>
+<span class="fc" id="L47">    }</span>
+
+    /** Detects whether this node has a left child.
+     *  @return  True if the node has a left child. */
+    public boolean hasLeftChild() {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        return leftChild != null;</span>
+    }
+
+    /** Retrieves the middle child of this node.
+     *  @return  The node’s middle child. */
+    public TernaryNode&lt;T&gt; getMiddleChild() {
+<span class="fc" id="L58">        return middleChild;</span>
+    }
+
+    /** Sets this node’s middle child to a given node.
+     *  @param newLeftChild  A node that will be the middlew child. */
+    public void setMiddleChild(TernaryNode&lt;T&gt; newMiddleChild) {
+<span class="fc" id="L64">        middleChild = newMiddleChild;</span>
+<span class="fc" id="L65">    }</span>
+
+    /** Detects whether this node has a middle child.
+     *  @return  True if the node has a middle child. */
+    public boolean hasMiddleChild() {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        return middleChild != null;</span>
+    }
+    
+    /** Retrieves the right child of this node.
+     *  @return  The node’s right child. */
+    public TernaryNode&lt;T&gt; getRightChild() {
+<span class="fc" id="L76">        return rightChild;</span>
+    }
+    
+    /** Sets this node’s right child to a given node.
+     *  @param newRightChild  A node that will be the right child. */
+    public void setRightChild(TernaryNode&lt;T&gt; newRightChild) {
+<span class="fc" id="L82">        rightChild = newRightChild;</span>
+<span class="fc" id="L83">    }</span>
+
+    /** Detects whether this node has a right child.
+     *  @return  True if the node has a right child. */
+    public boolean hasRightChild() {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        return rightChild != null;</span>
+    }
+
+    /** Detects whether this node is a leaf.
+     *  @return  True if the node is a leaf. */
+    public boolean isLeaf() {
+<span class="fc bfc" id="L94" title="All 6 branches covered.">        return (leftChild == null) &amp;&amp; (middleChild==null )&amp;&amp; (rightChild == null);</span>
+    }
+
+    /** Counts the nodes in the subtree rooted at this node.
+     *  @return  The number of nodes in the subtree rooted at this node. */
+    public int getNumberOfNodes() {
+<span class="fc" id="L100">        int leftNumber = 0;</span>
+<span class="fc" id="L101">        int middleNumber=0;</span>
+<span class="fc" id="L102">        int rightNumber = 0;</span>
+
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (leftChild != null) {</span>
+<span class="fc" id="L105">            leftNumber = leftChild.getNumberOfNodes();</span>
+        }
+
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        if (middleChild != null) {</span>
+<span class="fc" id="L109">            middleNumber = middleChild.getNumberOfNodes();</span>
+        }
+        
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (rightChild != null) {</span>
+<span class="fc" id="L113">            rightNumber = rightChild.getNumberOfNodes();</span>
+        }
+
+<span class="fc" id="L116">        return 1 + leftNumber + middleNumber + rightNumber;</span>
+    }
+
+    /** Computes the height of the subtree rooted at this node.
+     *  @return  The height of the subtree rooted at this node. */
+    public int getHeight() {
+<span class="fc" id="L122">        return getHeight(this); // Call private getHeight</span>
+    }
+
+    private int getHeight(TernaryNode&lt;T&gt; node) {
+<span class="fc" id="L126">        int height = 0;</span>
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (node != null)</span>
+<span class="fc" id="L129">            height = 1 + Math.max(Math.max(getHeight(node.getLeftChild()),getHeight(node.getMiddleChild())),</span>
+<span class="fc" id="L130">            		Math.max(getHeight(node.getRightChild()),getHeight(node.getMiddleChild())));</span>
+
+<span class="fc" id="L132">        return height;</span>
+    }
+
+    /** Copies the subtree rooted at this node.
+     *  @return  The root of a copy of the subtree rooted at this node. */
+    public TernaryNode&lt;T&gt; copy() {
+<span class="fc" id="L138">        TernaryNode&lt;T&gt; newRoot = new TernaryNode&lt;&gt;(data);</span>
+
+<span class="fc bfc" id="L140" title="All 2 branches covered.">        if (leftChild != null) {</span>
+<span class="fc" id="L141">            newRoot.setLeftChild(leftChild.copy());</span>
+        }
+
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        if (middleChild != null) {</span>
+<span class="fc" id="L145">            newRoot.setMiddleChild(middleChild.copy());</span>
+        }
+        
+<span class="fc bfc" id="L148" title="All 2 branches covered.">        if (rightChild != null) {</span>
+<span class="fc" id="L149">            newRoot.setRightChild(rightChild.copy());</span>
+        }
+
+<span class="fc" id="L152">        return newRoot;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

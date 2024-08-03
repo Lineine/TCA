@@ -1,0 +1,8 @@
+net/mooctest/Graph$TYPE.class
+net/mooctest/Graph$CostPathPair.class
+net/mooctest/AStar.class
+net/mooctest/Graph$Vertex.class
+net/mooctest/Graph$Edge.class
+net/mooctest/Graph.class
+net/mooctest/Graph$CostVertexPair.class
+net/mooctest/AStar$1.class

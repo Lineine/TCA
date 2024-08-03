@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IntervalTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">IntervalTree.java</span></div><h1>IntervalTree.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.*;
+
+import net.mooctest.TreeNode.*;
+
+/**
+ * An implementation of a Centered Interval Tree for efficient search in a set of intervals. See
+ * &lt;a href=&quot;https://en.wikipedia.org/wiki/Interval_tree&quot;&gt;https://en.wikipedia.org/wiki/Interval_tree&lt;/a&gt;.
+ *
+ * &lt;p&gt;
+ * The tree functions as a set, meaning that it will not store an interval more than
+ * once. More formally, for any two distinct intervals x and y within the tree, it is
+ * guaranteed that x.equals(y) will evaluate to false. If you try to add an interval to the tree,
+ * which is already in it, the tree will reject it. See the documentation of
+ * {@link #add(Interval) the add method} for more information. The tree will also &lt;strong&gt;not&lt;/strong&gt; accept
+ * {@code null} or empty intervals, meaning intervals whose {@link Interval#isEmpty()}
+ * method evaluates to {@code true}.
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * The {@link #iterator()} method of the tree returns a fail-fast iterator, which will
+ * throw a {@link ConcurrentModificationException}, if the tree is modified in any form
+ * during the iteration, other than by using the iterator's own {@code remove} method. However,
+ * this is done in a best-effort manner, since it is generally hard to guarantee this behaviour
+ * while using non-atomic and not synchronized methods.
+ *&lt;/p&gt;
+ * &lt;p&gt;
+ * The tree relies on the usage of a subclass of the {@link Interval} class to represent the
+ * intervals. The majority of the interval methods are already implemented within the
+ * {@code Interval} class and don't have to be implemented by the extending class. Comparisons
+ * between the intervals are also pre-implemented in the {@code Interval} class and use the
+ * start and endpoints to create a total order of all stored intervals. However, if the tree
+ * needs to store intervals that have the same start and end points but represent different
+ * logical entities, you need a subclass that overwrites the {@code equals}, {@code hashCode}
+ * and {@code compareTo} methods. See the documentation of {@link Interval} for more information.
+ *&lt;/p&gt;
+ *
+ * @param &lt;T&gt; The type for the start and end point of the interval
+ */
+<span class="fc" id="L40">public class IntervalTree&lt;T extends Comparable&lt;? super T&gt;&gt; extends AbstractSet&lt;Interval&lt;T&gt;&gt; {</span>
+
+	/**
+	 * The root of the current interval tree. It is {@code null} initially, when the tree is
+	 * empty and may change as the result of adding or removing intervals to the tree.
+	 */
+	TreeNode&lt;T&gt; root;
+
+	/**
+	 * The size of the interval tree, or the amount of intervals stored in it.
+	 */
+	int size;
+
+	/**
+	 * Adds an interval to the tree. If the interval is empty, it is rejected and not
+	 * stored in the tree. This operation may cause a rebalancing of the tree, which
+	 * in turn may cause intervals to be {@link TreeNode#assimilateOverlappingIntervals(TreeNode) assimilated}.
+	 * This is why this operation may run in {@code O(n)} worst-case time, even though
+	 * on average it should run in {@code O(logn)} due to the nature binary trees.
+	 *
+	 * @param interval The interval to be added to the tree.
+	 * @return {@code true}, if the tree has been modified as a result of the operation,
+	 *         or {@code false} otherwise.
+	 */
+	@Override
+	public boolean add(Interval&lt;T&gt; interval){
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		if (interval.isEmpty())</span>
+<span class="fc" id="L67">			return false;</span>
+<span class="fc" id="L68">		int sizeBeforeOperation = size;</span>
+<span class="fc" id="L69">		root = TreeNode.addInterval(this, root, interval);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		return size == sizeBeforeOperation;</span>
+	}
+
+	/**
+	 * Searches for and returns all intervals stored in the tree, that contain a given
+	 * query point. This operation is guaranteed to run in {@code O(logn + k)}, where
+	 * {@code n} is the size of the tree and {@code k} is the size of the returned set,
+	 * provided that the time complexity of iterating over the intervals stored in each
+	 * visited node is amortized {@code O(1)}. This assumption is met for the current
+	 * implementation of {@link TreeNode}, where {@link TreeSet}s are used.
+	 *
+	 * @param point The query point.
+	 * @return A set containing all intervals from the tree, intersecting the query point.
+	 */
+	public Set&lt;Interval&lt;T&gt;&gt; query(T point){
+<span class="fc" id="L85">		return TreeNode.query(root, point, new HashSet&lt;Interval&lt;T&gt;&gt;());</span>
+	}
+
+	/**
+	 * Searches for and returns all intervals stored in the tree, that intersect a given
+	 * query interval. This operation is guaranteed to run in {@code O(logn + k)}, where
+	 * {@code n} is the size of the tree and {@code k} is the size of the returned set,
+	 * provided that the time complexity of iterating over the intervals stored in each
+	 * visited node is amortized {@code O(1)}. This assumption is met for the current
+	 * implementation of {@link TreeNode}, where {@link TreeSet}s are used.
+	 *
+	 * @param interval The query interval.
+	 * @return A set containing all intervals from the tree, intersecting the query interval.
+	 */
+	public Set&lt;Interval&lt;T&gt;&gt; query(Interval&lt;T&gt; interval){
+<span class="fc" id="L100">		Set&lt;Interval&lt;T&gt;&gt; result = new HashSet&lt;&gt;();</span>
+
+<span class="fc bfc" id="L102" title="All 4 branches covered.">		if (root == null || interval.isEmpty())</span>
+<span class="fc" id="L103">			return result;</span>
+<span class="fc" id="L104">		TreeNode&lt;T&gt; node = root;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		while (node != null){</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">			if (interval.contains(node.midpoint)){</span>
+<span class="fc" id="L107">				result.addAll(node.increasing);</span>
+<span class="fc" id="L108">				TreeNode.rangeQueryLeft(node.left, interval, result);</span>
+<span class="fc" id="L109">				TreeNode.rangeQueryRight(node.right, interval, result);</span>
+<span class="fc" id="L110">				break;</span>
+			}
+<span class="fc bfc" id="L112" title="All 2 branches covered.">			if (interval.isLeftOf(node.midpoint)) {</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">				for (Interval&lt;T&gt; next: node.increasing){</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">					if (!interval.intersects(next))</span>
+<span class="fc" id="L115">						break;</span>
+<span class="fc" id="L116">					result.add(next);</span>
+<span class="fc" id="L117">				}</span>
+<span class="fc" id="L118">				node = node.left;</span>
+			}
+			else {
+<span class="fc bfc" id="L121" title="All 2 branches covered.">				for (Interval&lt;T&gt; next: node.decreasing){</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">					if (!interval.intersects(next))</span>
+<span class="fc" id="L123">						break;</span>
+<span class="fc" id="L124">					result.add(next);</span>
+<span class="fc" id="L125">				}</span>
+<span class="fc" id="L126">				node = node.right;</span>
+			}
+		}
+<span class="fc" id="L129">		return result;</span>
+	}
+
+	/**
+	 * Removes an interval from the tree, if it was stored in it. This operation may cause the
+	 * {@link TreeNode#deleteNode(TreeNode) deletion of a node}, which in turn may cause
+	 * rebalancing of the tree and the {@link TreeNode#assimilateOverlappingIntervals(TreeNode) assimilation}
+	 * of intervals from one node to another. This is why this operation may run in {@code O(n)}
+	 * worst-case time, even though on average it should run in {@code O(logn)} due to the
+	 * nature binary trees.
+	 *
+	 * @param interval
+	 * @return
+	 */
+	public boolean remove(Interval&lt;T&gt; interval){
+<span class="fc bfc" id="L144" title="All 4 branches covered.">		if (interval.isEmpty() || root == null)</span>
+<span class="fc" id="L145">			return false;</span>
+<span class="fc" id="L146">		int sizeBeforeOperation = size;</span>
+<span class="fc" id="L147">		root = TreeNode.removeInterval(this, root, interval);</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">		return size == sizeBeforeOperation;</span>
+	}
+
+
+
+
+	// =========================================================================
+	// ============== Iterator over the Intervals in the tree ==================
+	// =========================================================================
+
+	@Override
+	public Iterator&lt;Interval&lt;T&gt;&gt; iterator() {
+<span class="fc bfc" id="L160" title="All 2 branches covered.">		if (root == null){</span>
+<span class="fc" id="L161">			return Collections.emptyIterator();</span>
+		}
+		else {
+<span class="fc" id="L164">			final TreeNode&lt;T&gt;.TreeNodeIterator it = root.iterator();</span>
+<span class="fc" id="L165">			return new Iterator&lt;Interval&lt;T&gt;&gt;() {</span>
+				@Override
+				public void remove() {
+<span class="fc bfc" id="L168" title="All 2 branches covered.">					if (it.currentNode.increasing.size() == 1){</span>
+<span class="fc" id="L169">						root = TreeNode.removeInterval(IntervalTree.this, root, it.currentInterval);</span>
+
+						// Rebuild the whole branch stack in the iterator, because we might have
+						// moved nodes around and introduced new nodes into the branch. The rule
+						// is, add all nodes to the branch stack, to which the current node is
+						// a left descendant.
+<span class="fc" id="L175">						TreeNode&lt;T&gt; node = root;</span>
+<span class="fc" id="L176">						it.stack = new Stack&lt;&gt;();</span>
+
+						// Continue pushing elements according to the aforementioned rule until
+						// you reach the subtreeRoot - this is the root of the subtree, which
+						// the iterator has marked for traversal next. This subtree must not
+						// become a part of the branch stack, or otherwise you will iterate over
+						// some intervals twice.
+<span class="fc bfc" id="L183" title="All 2 branches covered.">						while (node != it.subtreeRoot){</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">							if (it.currentNode.midpoint.compareTo(node.midpoint) &lt; 0) {</span>
+<span class="fc" id="L185">								it.stack.push(node);</span>
+<span class="fc" id="L186">								node = node.left;</span>
+							}
+							else {
+<span class="fc" id="L189">								node = node.right;</span>
+							}
+						}
+<span class="fc" id="L192">					} else {</span>
+<span class="fc" id="L193">						it.remove();</span>
+					}
+<span class="fc" id="L195">				}</span>
+
+				@Override
+				public boolean hasNext() {
+<span class="fc" id="L199">					return it.hasNext();</span>
+				}
+
+				@Override
+				public Interval&lt;T&gt; next() {
+<span class="fc" id="L204">					return it.next();</span>
+				}
+			};
+		}
+	}
+
+
+
+
+
+	// =========================================================================
+	// ================== Methods from the Set interface =======================
+	// =========================================================================
+
+	/**
+	 * Returns the size of the tree.
+	 *
+	 * @return The amount of intervals, stored in the tree.
+	 */
+	public int size(){
+<span class="fc" id="L224">		return size;</span>
+	}
+
+	/**
+	 * Removes all intervals from the tree. This is an {@code O(1)} worst-case
+	 * time operation.
+	 */
+	@Override
+	public void clear() {
+<span class="fc" id="L233">		size = 0;</span>
+<span class="fc" id="L234">		root = null;</span>
+<span class="fc" id="L235">	}</span>
+
+	/**
+	 * Checks if a given object is stored in the tree. This method uses binary
+	 * search instead of iteration over all intervals, which is why it runs in
+	 * guaranteed {@code O(logn)} worst-case time.
+	 * @param o The query object.
+	 * @return {@code true}, if the object is stored in the tree, or {@code false}
+	 *         otherwise.
+	 */
+	@Override
+	public boolean contains(Object o) {
+<span class="fc bfc" id="L247" title="All 4 branches covered.">		if (root == null || o == null)</span>
+<span class="fc" id="L248">			return false;</span>
+<span class="fc bfc" id="L249" title="All 2 branches covered.">		if (!(o instanceof Interval))</span>
+<span class="fc" id="L250">			return false;</span>
+		Interval&lt;T&gt; query;
+<span class="fc" id="L252">		query = (Interval&lt;T&gt;)o;</span>
+<span class="fc" id="L253">		TreeNode&lt;T&gt; node = root;</span>
+<span class="fc bfc" id="L254" title="All 2 branches covered.">		while (node != null){</span>
+<span class="fc bfc" id="L255" title="All 2 branches covered.">			if (query.contains(node.midpoint)){</span>
+<span class="fc" id="L256">				return node.increasing.contains(query);</span>
+			}
+<span class="fc bfc" id="L258" title="All 2 branches covered.">			if (query.isLeftOf(node.midpoint)){</span>
+<span class="fc" id="L259">				node = node.left;</span>
+			} else {
+<span class="fc" id="L261">				node = node.right;</span>
+			}
+		}
+
+<span class="fc" id="L265">		return false;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GraphWriter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">GraphWriter.java</span></div><h1>GraphWriter.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/*
+ * Defines a simple API for writing out graphs as GraphViz files
+ *
+ * Assumes the system is running on MacOSX
+ * GraphViz (and the dot command line utility) must be installed on the system
+ * in order to generate graphs from the resulting .dot files.
+ */
+
+import java.io.File;
+import java.io.FileWriter;
+
+ public final class GraphWriter {
+
+<span class="fc" id="L16">   private StringBuilder graph = new StringBuilder();</span>
+
+   private static final String dotExecutable = &quot;/usr/local/bin/dot&quot;;
+   private static final String outputDir = &quot;./tmp/&quot;;
+
+<span class="fc" id="L21">   public GraphWriter() {</span>
+     // Nothing...
+<span class="fc" id="L23">   }</span>
+
+   public void startGraph() {
+<span class="fc" id="L26">     addln(&quot;digraph G {&quot;);</span>
+<span class="fc" id="L27">   }</span>
+
+   public void addHeader() {
+<span class="fc" id="L30">     addln(&quot;fontsize = 12;&quot;);</span>
+<span class="fc" id="L31">     addln(&quot;center = true;&quot;);</span>
+<span class="fc" id="L32">     addln(&quot;ratio=auto;&quot;);</span>
+<span class="fc" id="L33">   }</span>
+
+   public void addln(String line) {
+<span class="fc" id="L36">     graph.append(line + &quot;\n&quot;);</span>
+<span class="fc" id="L37">   }</span>
+
+   public void endGraph() {
+<span class="fc" id="L40">     addln(&quot;}&quot;);</span>
+<span class="fc" id="L41">   }</span>
+
+   public boolean writeGraphToFile(String fileName) {
+<span class="fc" id="L44">     File out = new File(outputDir + fileName);</span>
+     try {
+<span class="fc" id="L46">       out.getParentFile().mkdirs();</span>
+<span class="fc" id="L47">       out.createNewFile();</span>
+<span class="nc" id="L48">     } catch (Exception e) {</span>
+<span class="nc" id="L49">       System.out.println(&quot;Error occurred making new file.&quot;);</span>
+<span class="nc" id="L50">       return false;</span>
+<span class="fc" id="L51">     }</span>
+
+<span class="fc" id="L53">     try (FileWriter fout = new FileWriter(new File(outputDir + fileName))) {</span>
+<span class="fc" id="L54">       fout.write(graph.toString());</span>
+<span class="nc" id="L55">     } catch (Exception e) {</span>
+<span class="nc" id="L56">       System.out.println(&quot;Error ocurred writing the file&quot;);</span>
+<span class="nc" id="L57">       System.out.println(e);</span>
+<span class="nc" id="L58">       return false;</span>
+<span class="fc" id="L59">     }</span>
+<span class="fc" id="L60">     return true;</span>
+   }
+
+ }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

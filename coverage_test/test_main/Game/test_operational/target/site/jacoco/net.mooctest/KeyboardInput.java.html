@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KeyboardInput.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">KeyboardInput.java</span></div><h1>KeyboardInput.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+/**
+ * Code originally from Gamedev
+ * http://www.gamedev.net/page/resources/_/reference/programming/languages/java/java-games-keyboard-and-mouse-r2439
+ * @author paul
+ */
+
+public class KeyboardInput implements KeyListener
+{
+    private static final int KEY_COUNT = 256;
+
+<span class="fc" id="L16">    private enum KeyState</span>
+    {
+<span class="fc" id="L18">        RELEASED, // Not down</span>
+<span class="fc" id="L19">        PRESSED,  // Down, but not the first time</span>
+<span class="fc" id="L20">        ONCE      // Down for the first time</span>
+    }
+
+    // Current state of the keyboard
+<span class="fc" id="L24">    private boolean[] currentKeys = null;</span>
+
+    // Polled keyboard state
+<span class="fc" id="L27">    private KeyState[] keys = null;</span>
+
+    public KeyboardInput()
+<span class="fc" id="L30">    {</span>
+<span class="fc" id="L31">        currentKeys = new boolean[ KEY_COUNT ];</span>
+<span class="fc" id="L32">        keys = new KeyState[ KEY_COUNT ];</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for(int i = 0; i &lt; KEY_COUNT; ++i)</span>
+        {
+<span class="fc" id="L35">            keys[i] = KeyState.RELEASED;</span>
+        }
+<span class="fc" id="L37">    }</span>
+
+    /**
+     * Polls the keyboard for new keys that might be pressed this update.
+     */
+    public synchronized void poll()
+    {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for(int i = 0; i &lt; KEY_COUNT; ++i)</span>
+        {
+            // Set the key state
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            if(currentKeys[i])</span>
+            {
+                // If the key is down now, but was not
+                // down last frame, set it to ONCE,
+                // otherwise, set it to PRESSED
+<span class="fc bfc" id="L52" title="All 2 branches covered.">                if(keys[i] == KeyState.RELEASED)</span>
+<span class="fc" id="L53">                    keys[i] = KeyState.ONCE;</span>
+                else
+<span class="fc" id="L55">                    keys[i] = KeyState.PRESSED;</span>
+            }
+            else
+            {
+<span class="fc" id="L59">                keys[i] = KeyState.RELEASED;</span>
+            }
+        }
+<span class="fc" id="L62">    }</span>
+
+    /**
+     * Checks to see if a key is being held down.
+     * @param keyCode ID for the key to be evaluated.
+     * @return Returns if the key is being held.
+     */
+    public boolean keyDown(int keyCode)
+    {
+<span class="fc bfc" id="L71" title="All 4 branches covered.">        return keys[keyCode] == KeyState.ONCE ||</span>
+               keys[keyCode] == KeyState.PRESSED;
+    }
+
+    /**
+     * Checks to see if a key was pressed.
+     * @param keyCode ID for the key to be evaluated.
+     * @return Return is the key was pressed.
+     */
+    public boolean keyDownOnce(int keyCode)
+    {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        return keys[keyCode] == KeyState.ONCE;</span>
+    }
+
+    /**
+     * Detects if a key was pressed for Swing/AWT components.
+     * @param e KeyEvent related to key that was pressed.
+     */
+    public synchronized void keyPressed(KeyEvent e)
+    {
+<span class="fc" id="L91">        int keyCode = e.getKeyCode();</span>
+<span class="pc bpc" id="L92" title="2 of 4 branches missed.">        if(keyCode &gt;= 0 &amp;&amp; keyCode &lt; KEY_COUNT)</span>
+        {
+<span class="fc" id="L94">            currentKeys[keyCode] = true;</span>
+        }
+<span class="fc" id="L96">    }</span>
+
+    /**
+     * Detects if a key was released for Swing/AWT components.
+     * @param e KeyEvent related to key that was released.
+     */
+    public synchronized void keyReleased(KeyEvent e)
+    {
+<span class="fc" id="L104">        int keyCode = e.getKeyCode();</span>
+<span class="pc bpc" id="L105" title="2 of 4 branches missed.">        if(keyCode &gt;= 0 &amp;&amp; keyCode &lt; KEY_COUNT)</span>
+        {
+<span class="fc" id="L107">            currentKeys[keyCode] = false;</span>
+        }
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Void method. Not Implemented.
+     */
+    public void keyTyped(KeyEvent e)
+    {
+        // NOP
+        //throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);
+<span class="nc" id="L118">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

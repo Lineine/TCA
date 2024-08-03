@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.AlphaBetaPruning_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.041 s <<< FAILURE! - in net.mooctest.AlphaBetaPruning_Test
+testCalculateWhiteScore_WithValidInput_ReturnsScore(net.mooctest.AlphaBetaPruning_Test)  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at net.mooctest.AlphaBetaPruning_Test.testCalculateWhiteScore_WithValidInput_ReturnsScore(AlphaBetaPruning_Test.java:76)
+
+testCreateAlphaBetaTree_WithValidInput_ReturnsNextMove(net.mooctest.AlphaBetaPruning_Test)  Time elapsed: 0.002 s  <<< FAILURE!
+org.junit.ComparisonFailure: Expected move expected:<[]> but was:<[1,2]>
+	at net.mooctest.AlphaBetaPruning_Test.testCreateAlphaBetaTree_WithValidInput_ReturnsNextMove(AlphaBetaPruning_Test.java:26)
+

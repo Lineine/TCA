@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.SegmentTree_sub_10_7_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.SegmentTree_sub_10_7_Test
+test_1319(net.mooctest.SegmentTree_sub_10_7_Test)  Time elapsed: 0 s  <<< ERROR!
+java.security.InvalidParameterException: Segments are overlapping.
+	at net.mooctest.SegmentTree_sub_10_7_Test.test_1319(SegmentTree_sub_10_7_Test.java:33)
+

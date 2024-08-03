@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">GameHelper.java</span></div><h1>GameHelper.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
+
+<span class="nc" id="L7">public class GameHelper</span>
+{
+    /**
+     * Static variable representing the width of the Game screen.
+     */
+<span class="fc" id="L12">    private static int width = 0;</span>
+
+    /**
+     * Static variable representing the height of the Game screen.
+     */
+<span class="fc" id="L17">    private static int height = 0;</span>
+
+    /**
+     * Static Variable containing the JFrame of the Game.
+     */
+    private static JFrame window;
+
+    /**
+     * Uses a hack to return a path to a image file based on the operating system that is being used.
+     * @param path Relative path to the file that needs a path.
+     * @return Returns a path to the file.
+     */
+    public static URL osIndependentFilePath(String path)
+    {
+<span class="fc" id="L31">        URL systemIndependentPath = null;</span>
+
+        // Ghetto Solution to a cross compatible file path loader
+        try
+        {
+<span class="fc" id="L36">            throw new Exception();</span>
+	}
+<span class="fc" id="L38">	catch(Exception e)</span>
+        {
+<span class="fc" id="L40">            StackTraceElement[] sTrace = e.getStackTrace();</span>
+            // sTrace[0] will be always there
+<span class="fc" id="L42">            systemIndependentPath = sTrace[0].getClass().getResource(path);</span>
+	}
+        finally
+        {
+<span class="pc" id="L46">            return systemIndependentPath;</span>
+        }
+    }
+
+    /**
+     * Stores the Cursor related to the JFrame of the program.
+     * @param cursor The JFrames Cursor object.
+     */
+    public static void setCursor(Cursor cursor)
+    {
+        // Check to make sure that the window was set
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if(window != null)</span>
+<span class="nc" id="L58">            GameHelper.window.setCursor(cursor);</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Gets the cursor of the current JFrame.
+     * @return Returns the Cursor associated with the current Game JFrame.
+     */
+    public static Cursor getCursor()
+    {
+<span class="fc" id="L67">        Cursor cursor = Cursor.getDefaultCursor();</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if(window != null)</span>
+<span class="nc" id="L69">            cursor = GameHelper.window.getCursor();</span>
+<span class="fc" id="L70">        return cursor;</span>
+    }
+
+    /**
+     * Sets the title of the Games JFrame
+     * @param title String representing the desired title of the JFrame.
+     */
+    public static void setTitle(String title)
+    {
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if(window != null)</span>
+<span class="nc" id="L80">            GameHelper.window.setTitle(title);</span>
+<span class="fc" id="L81">    }</span>
+
+    /**
+     * Gets the title of the JFrame.
+     * @return Returns the title of the Game JFrame.
+     */
+    public static String getTitle()
+    {
+<span class="fc" id="L89">        String title = &quot;null&quot;;</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        if(window != null)</span>
+<span class="nc" id="L91">            title = GameHelper.window.getTitle();</span>
+<span class="fc" id="L92">        return title;</span>
+    }
+
+    /**
+     * Sets the Main JFrame of project.
+     * @param frame The main JFrame
+     */
+    protected static void setWindow(JFrame frame)
+    {
+<span class="nc" id="L101">        GameHelper.window = frame;</span>
+<span class="nc" id="L102">    }</span>
+
+    /**
+     * Stores the width of the Game Window.
+     * Only to be used within the framework itself.
+     * @param width Width of the Game Window.
+     */
+    protected static void setScreenWidth(int width)
+    {
+<span class="fc" id="L111">        GameHelper.width = width;</span>
+<span class="fc" id="L112">    }</span>
+
+    /**
+     * Stores the height of the Game Window.
+     * Only to be used within the framework itself.
+     * @param width Height of the Game Window.
+     */
+    protected static void setScreenHeight(int height)
+    {
+<span class="fc" id="L121">        GameHelper.height = height;</span>
+<span class="fc" id="L122">    }</span>
+
+    /**
+     * Gets the width of the game window in pixels.
+     * @return Returns the width of the game window.
+     */
+    public static int WIDTH()
+    {
+<span class="fc" id="L130">        return GameHelper.width;</span>
+    }
+
+    /**
+     * Gets the height of the game window in pixels.
+     * @return Returns the height of the game window.
+     */
+    public static int HEIGHT()
+    {
+<span class="fc" id="L139">        return GameHelper.height;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

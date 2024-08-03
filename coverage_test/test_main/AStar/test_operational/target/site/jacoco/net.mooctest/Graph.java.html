@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Graph.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Graph.java</span></div><h1>Graph.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * Graph. Could be directed or undirected depending on the TYPE enum. A graph is
+ * an abstract representation of a set of objects where some pairs of the
+ * objects are connected by links.
+ * @author Justin Wetherell
+ */
+@SuppressWarnings(&quot;unchecked&quot;)
+public class Graph&lt;T extends Comparable&lt;T&gt;&gt; {
+
+<span class="fc" id="L18">    private List&lt;Vertex&lt;T&gt;&gt; allVertices = new ArrayList&lt;Vertex&lt;T&gt;&gt;();</span>
+<span class="fc" id="L19">    private List&lt;Edge&lt;T&gt;&gt; allEdges = new ArrayList&lt;Edge&lt;T&gt;&gt;();</span>
+
+<span class="fc" id="L21">    public enum TYPE {</span>
+<span class="fc" id="L22">        DIRECTED, UNDIRECTED</span>
+    }
+
+    /** Defaulted to undirected */
+<span class="fc" id="L26">    private TYPE type = TYPE.UNDIRECTED;</span>
+
+<span class="fc" id="L28">    public Graph() { }</span>
+
+<span class="fc" id="L30">    public Graph(TYPE type) {</span>
+<span class="fc" id="L31">        this.type = type;</span>
+<span class="fc" id="L32">    }</span>
+
+    /** Deep copies **/
+<span class="fc" id="L35">    public Graph(Graph&lt;T&gt; g) {</span>
+<span class="fc" id="L36">        type = g.getType();</span>
+
+        // Copy the vertices which also copies the edges
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (Vertex&lt;T&gt; v : g.getVertices())</span>
+<span class="fc" id="L40">            this.allVertices.add(new Vertex&lt;T&gt;(v));</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (Vertex&lt;T&gt; v : this.getVertices()) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            for (Edge&lt;T&gt; e : v.getEdges()) {</span>
+<span class="fc" id="L44">                this.allEdges.add(e);</span>
+<span class="fc" id="L45">            }</span>
+<span class="fc" id="L46">        }</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * Creates a Graph from the vertices and edges. This defaults to an undirected Graph
+     * 
+     * NOTE: Duplicate vertices and edges ARE allowed.
+     * NOTE: Copies the vertex and edge objects but does NOT store the Collection parameters itself.
+     * 
+     * @param vertices Collection of vertices
+     * @param edges Collection of edges
+     */
+    public Graph(Collection&lt;Vertex&lt;T&gt;&gt; vertices, Collection&lt;Edge&lt;T&gt;&gt; edges) {
+<span class="fc" id="L59">        this(TYPE.UNDIRECTED, vertices, edges);</span>
+<span class="fc" id="L60">    }</span>
+
+    /**
+     * Creates a Graph from the vertices and edges.
+     * 
+     * NOTE: Duplicate vertices and edges ARE allowed.
+     * NOTE: Copies the vertex and edge objects but does NOT store the Collection parameters itself.
+     * 
+     * @param vertices Collection of vertices
+     * @param edges Collection of edges
+     */
+    public Graph(TYPE type, Collection&lt;Vertex&lt;T&gt;&gt; vertices, Collection&lt;Edge&lt;T&gt;&gt; edges) {
+<span class="fc" id="L72">        this(type);</span>
+
+<span class="fc" id="L74">        this.allVertices.addAll(vertices);</span>
+<span class="fc" id="L75">        this.allEdges.addAll(edges);</span>
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        for (Edge&lt;T&gt; e : edges) {</span>
+<span class="fc" id="L78">            final Vertex&lt;T&gt; from = e.from;</span>
+<span class="fc" id="L79">            final Vertex&lt;T&gt; to = e.to;</span>
+
+<span class="fc bfc" id="L81" title="All 4 branches covered.">            if (!this.allVertices.contains(from) || !this.allVertices.contains(to))</span>
+<span class="fc" id="L82">                continue;</span>
+
+<span class="fc" id="L84">            from.addEdge(e);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">            if (this.type == TYPE.UNDIRECTED) {</span>
+<span class="fc" id="L86">                Edge&lt;T&gt; reciprical = new Edge&lt;T&gt;(e.cost, to, from);</span>
+<span class="fc" id="L87">                to.addEdge(reciprical);</span>
+<span class="fc" id="L88">                this.allEdges.add(reciprical);</span>
+            }
+<span class="fc" id="L90">        }</span>
+<span class="fc" id="L91">    }</span>
+
+    public TYPE getType() {
+<span class="fc" id="L94">        return type;</span>
+    }
+
+    public List&lt;Vertex&lt;T&gt;&gt; getVertices() {
+<span class="fc" id="L98">        return allVertices;</span>
+    }
+
+    public List&lt;Edge&lt;T&gt;&gt; getEdges() {
+<span class="fc" id="L102">        return allEdges;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+<span class="fc" id="L110">        int code = this.type.hashCode() + this.allVertices.size() + this.allEdges.size();</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">        for (Vertex&lt;T&gt; v : allVertices)</span>
+<span class="fc" id="L112">            code *= v.hashCode();</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">        for (Edge&lt;T&gt; e : allEdges)</span>
+<span class="fc" id="L114">            code *= e.hashCode();</span>
+<span class="fc" id="L115">        return 31 * code;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object g1) {
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if (!(g1 instanceof Graph))</span>
+<span class="fc" id="L124">            return false;</span>
+
+<span class="fc" id="L126">        final Graph&lt;T&gt; g = (Graph&lt;T&gt;) g1;</span>
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        final boolean typeEquals = this.type == g.type;</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if (!typeEquals)</span>
+<span class="fc" id="L130">            return false;</span>
+
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        final boolean verticesSizeEquals = this.allVertices.size() == g.allVertices.size();</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        if (!verticesSizeEquals)</span>
+<span class="fc" id="L134">            return false;</span>
+
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        final boolean edgesSizeEquals = this.allEdges.size() == g.allEdges.size();</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        if (!edgesSizeEquals)</span>
+<span class="fc" id="L138">            return false;</span>
+
+        // Vertices can contain duplicates and appear in different order but both arrays should contain the same elements
+<span class="fc" id="L141">        final Object[] ov1 = this.allVertices.toArray();</span>
+<span class="fc" id="L142">        Arrays.sort(ov1);</span>
+<span class="fc" id="L143">        final Object[] ov2 = g.allVertices.toArray();</span>
+<span class="fc" id="L144">        Arrays.sort(ov2);</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">        for (int i=0; i&lt;ov1.length; i++) {</span>
+<span class="fc" id="L146">            final Vertex&lt;T&gt; v1 = (Vertex&lt;T&gt;) ov1[i];</span>
+<span class="fc" id="L147">            final Vertex&lt;T&gt; v2 = (Vertex&lt;T&gt;) ov2[i];</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">            if (!v1.equals(v2))</span>
+<span class="fc" id="L149">                return false;</span>
+        }
+
+        // Edges can contain duplicates and appear in different order but both arrays should contain the same elements
+<span class="fc" id="L153">        final Object[] oe1 = this.allEdges.toArray();</span>
+<span class="fc" id="L154">        Arrays.sort(oe1);</span>
+<span class="fc" id="L155">        final Object[] oe2 = g.allEdges.toArray();</span>
+<span class="fc" id="L156">        Arrays.sort(oe2);</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">        for (int i=0; i&lt;oe1.length; i++) {</span>
+<span class="fc" id="L158">            final Edge&lt;T&gt; e1 = (Edge&lt;T&gt;) oe1[i];</span>
+<span class="fc" id="L159">            final Edge&lt;T&gt; e2 = (Edge&lt;T&gt;) oe2[i];</span>
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">            if (!e1.equals(e2))</span>
+<span class="nc" id="L161">                return false;</span>
+        }
+
+<span class="fc" id="L164">        return true;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L172">        final StringBuilder builder = new StringBuilder();</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">        for (Vertex&lt;T&gt; v : allVertices)</span>
+<span class="fc" id="L174">            builder.append(v.toString());</span>
+<span class="fc" id="L175">        return builder.toString();</span>
+    }
+
+    public static class Vertex&lt;T extends Comparable&lt;T&gt;&gt; implements Comparable&lt;Vertex&lt;T&gt;&gt; {
+
+<span class="fc" id="L180">        private T value = null;</span>
+<span class="fc" id="L181">        private int weight = 0;</span>
+<span class="fc" id="L182">        private List&lt;Edge&lt;T&gt;&gt; edges = new ArrayList&lt;Edge&lt;T&gt;&gt;();</span>
+
+<span class="fc" id="L184">        public Vertex(T value) {</span>
+<span class="fc" id="L185">            this.value = value;</span>
+<span class="fc" id="L186">        }</span>
+
+        public Vertex(T value, int weight) {
+<span class="fc" id="L189">            this(value);</span>
+<span class="fc" id="L190">            this.weight = weight;</span>
+<span class="fc" id="L191">        }</span>
+
+        /** Deep copies the edges along with the value and weight **/
+        public Vertex(Vertex&lt;T&gt; vertex) {
+<span class="fc" id="L195">            this(vertex.value, vertex.weight);</span>
+
+<span class="fc" id="L197">            this.edges.addAll(vertex.edges);</span>
+<span class="fc" id="L198">        }</span>
+
+        public T getValue() {
+<span class="fc" id="L201">            return value;</span>
+        }
+
+        public int getWeight() {
+<span class="fc" id="L205">            return weight;</span>
+        }
+
+        public void setWeight(int weight) {
+<span class="fc" id="L209">            this.weight = weight;</span>
+<span class="fc" id="L210">        }</span>
+
+        public void addEdge(Edge&lt;T&gt; e) {
+<span class="fc" id="L213">            edges.add(e);</span>
+<span class="fc" id="L214">        }</span>
+
+        public List&lt;Edge&lt;T&gt;&gt; getEdges() {
+<span class="fc" id="L217">            return edges;</span>
+        }
+
+        public Edge&lt;T&gt; getEdge(Vertex&lt;T&gt; v) {
+<span class="fc bfc" id="L221" title="All 2 branches covered.">            for (Edge&lt;T&gt; e : edges) {</span>
+<span class="fc bfc" id="L222" title="All 2 branches covered.">                if (e.to.equals(v))</span>
+<span class="fc" id="L223">                    return e;</span>
+<span class="fc" id="L224">            }</span>
+<span class="fc" id="L225">            return null;</span>
+        }
+
+        public boolean pathTo(Vertex&lt;T&gt; v) {
+<span class="fc bfc" id="L229" title="All 2 branches covered.">            for (Edge&lt;T&gt; e : edges) {</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">                if (e.to.equals(v))</span>
+<span class="fc" id="L231">                    return true;</span>
+<span class="fc" id="L232">            }</span>
+<span class="fc" id="L233">            return false;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int hashCode() {
+<span class="fc" id="L241">            final int code = this.value.hashCode() + this.weight + this.edges.size();</span>
+<span class="fc" id="L242">            return 31 * code;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean equals(Object v1) {
+<span class="fc bfc" id="L250" title="All 2 branches covered.">            if (!(v1 instanceof Vertex))</span>
+<span class="fc" id="L251">                return false;</span>
+
+<span class="fc" id="L253">            final Vertex&lt;T&gt; v = (Vertex&lt;T&gt;) v1;</span>
+
+<span class="fc bfc" id="L255" title="All 2 branches covered.">            final boolean weightEquals = this.weight == v.weight;</span>
+<span class="fc bfc" id="L256" title="All 2 branches covered.">            if (!weightEquals)</span>
+<span class="fc" id="L257">                return false;</span>
+
+<span class="fc bfc" id="L259" title="All 2 branches covered.">            final boolean edgesSizeEquals = this.edges.size() == v.edges.size();</span>
+<span class="fc bfc" id="L260" title="All 2 branches covered.">            if (!edgesSizeEquals)</span>
+<span class="fc" id="L261">                return false;</span>
+
+<span class="fc" id="L263">            final boolean valuesEquals = this.value.equals(v.value);</span>
+<span class="fc bfc" id="L264" title="All 2 branches covered.">            if (!valuesEquals)</span>
+<span class="fc" id="L265">                return false;</span>
+
+<span class="fc" id="L267">            final Iterator&lt;Edge&lt;T&gt;&gt; iter1 = this.edges.iterator();</span>
+<span class="fc" id="L268">            final Iterator&lt;Edge&lt;T&gt;&gt; iter2 = v.edges.iterator();</span>
+<span class="pc bpc" id="L269" title="1 of 4 branches missed.">            while (iter1.hasNext() &amp;&amp; iter2.hasNext()) {</span>
+                // Only checking the cost
+<span class="fc" id="L271">                final Edge&lt;T&gt; e1 = iter1.next();</span>
+<span class="fc" id="L272">                final Edge&lt;T&gt; e2 = iter2.next();</span>
+<span class="fc bfc" id="L273" title="All 2 branches covered.">                if (e1.cost != e2.cost)</span>
+<span class="fc" id="L274">                    return false;</span>
+<span class="fc" id="L275">            }</span>
+
+<span class="fc" id="L277">            return true;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int compareTo(Vertex&lt;T&gt; v) {
+<span class="fc" id="L285">            final int valueComp = this.value.compareTo(v.value);</span>
+<span class="fc bfc" id="L286" title="All 2 branches covered.">            if (valueComp != 0)</span>
+<span class="fc" id="L287">                return valueComp;</span>
+
+<span class="fc bfc" id="L289" title="All 2 branches covered.">            if (this.weight &lt; v.weight)</span>
+<span class="fc" id="L290">                return -1;</span>
+<span class="fc bfc" id="L291" title="All 2 branches covered.">            if (this.weight &gt; v.weight)</span>
+<span class="fc" id="L292">                return 1;</span>
+
+<span class="fc bfc" id="L294" title="All 2 branches covered.">            if (this.edges.size() &lt; v.edges.size())</span>
+<span class="fc" id="L295">                return -1;</span>
+<span class="fc bfc" id="L296" title="All 2 branches covered.">            if (this.edges.size() &gt; v.edges.size())</span>
+<span class="fc" id="L297">                return 1;</span>
+
+<span class="fc" id="L299">            final Iterator&lt;Edge&lt;T&gt;&gt; iter1 = this.edges.iterator();</span>
+<span class="fc" id="L300">            final Iterator&lt;Edge&lt;T&gt;&gt; iter2 = v.edges.iterator();</span>
+<span class="pc bpc" id="L301" title="1 of 4 branches missed.">            while (iter1.hasNext() &amp;&amp; iter2.hasNext()) {</span>
+                // Only checking the cost
+<span class="fc" id="L303">                final Edge&lt;T&gt; e1 = iter1.next();</span>
+<span class="fc" id="L304">                final Edge&lt;T&gt; e2 = iter2.next();</span>
+<span class="fc bfc" id="L305" title="All 2 branches covered.">                if (e1.cost &lt; e2.cost)</span>
+<span class="fc" id="L306">                    return -1;</span>
+<span class="fc bfc" id="L307" title="All 2 branches covered.">                if (e1.cost &gt; e2.cost)</span>
+<span class="fc" id="L308">                    return 1;</span>
+<span class="fc" id="L309">            }</span>
+
+<span class="fc" id="L311">            return 0;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L319">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L320">            builder.append(&quot;Value=&quot;).append(value).append(&quot; weight=&quot;).append(weight).append(&quot;\n&quot;);</span>
+<span class="fc bfc" id="L321" title="All 2 branches covered.">            for (Edge&lt;T&gt; e : edges)</span>
+<span class="fc" id="L322">                builder.append(&quot;\t&quot;).append(e.toString());</span>
+<span class="fc" id="L323">            return builder.toString();</span>
+        }
+    }
+
+    public static class Edge&lt;T extends Comparable&lt;T&gt;&gt; implements Comparable&lt;Edge&lt;T&gt;&gt; {
+
+<span class="fc" id="L329">        private Vertex&lt;T&gt; from = null;</span>
+<span class="fc" id="L330">        private Vertex&lt;T&gt; to = null;</span>
+<span class="fc" id="L331">        private int cost = 0;</span>
+
+<span class="fc" id="L333">        public Edge(int cost, Vertex&lt;T&gt; from, Vertex&lt;T&gt; to) {</span>
+<span class="fc bfc" id="L334" title="All 4 branches covered.">            if (from == null || to == null)</span>
+<span class="fc" id="L335">                throw (new NullPointerException(&quot;Both 'to' and 'from' vertices need to be non-NULL.&quot;));</span>
+
+<span class="fc" id="L337">            this.cost = cost;</span>
+<span class="fc" id="L338">            this.from = from;</span>
+<span class="fc" id="L339">            this.to = to;</span>
+<span class="fc" id="L340">        }</span>
+
+        public Edge(Edge&lt;T&gt; e) {
+<span class="fc" id="L343">            this(e.cost, e.from, e.to);</span>
+<span class="fc" id="L344">        }</span>
+
+        public int getCost() {
+<span class="fc" id="L347">            return cost;</span>
+        }
+
+        public void setCost(int cost) {
+<span class="fc" id="L351">            this.cost = cost;</span>
+<span class="fc" id="L352">        }</span>
+
+        public Vertex&lt;T&gt; getFromVertex() {
+<span class="fc" id="L355">            return from;</span>
+        }
+
+        public Vertex&lt;T&gt; getToVertex() {
+<span class="fc" id="L359">            return to;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int hashCode() {
+<span class="fc" id="L367">            final int cost = (this.cost * (this.getFromVertex().hashCode() * this.getToVertex().hashCode())); </span>
+<span class="fc" id="L368">            return 31 * cost;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean equals(Object e1) {
+<span class="fc bfc" id="L376" title="All 2 branches covered.">            if (!(e1 instanceof Edge))</span>
+<span class="fc" id="L377">                return false;</span>
+
+<span class="fc" id="L379">            final Edge&lt;T&gt; e = (Edge&lt;T&gt;) e1;</span>
+
+<span class="fc bfc" id="L381" title="All 2 branches covered.">            final boolean costs = this.cost == e.cost;</span>
+<span class="fc bfc" id="L382" title="All 2 branches covered.">            if (!costs)</span>
+<span class="fc" id="L383">                return false;</span>
+
+<span class="fc" id="L385">            final boolean from = this.from.equals(e.from);</span>
+<span class="fc bfc" id="L386" title="All 2 branches covered.">            if (!from)</span>
+<span class="fc" id="L387">                return false;</span>
+
+<span class="fc" id="L389">            final boolean to = this.to.equals(e.to);</span>
+<span class="fc bfc" id="L390" title="All 2 branches covered.">            if (!to)</span>
+<span class="fc" id="L391">                return false;</span>
+
+<span class="fc" id="L393">            return true;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int compareTo(Edge&lt;T&gt; e) {
+<span class="fc bfc" id="L401" title="All 2 branches covered.">            if (this.cost &lt; e.cost)</span>
+<span class="fc" id="L402">                return -1;</span>
+<span class="fc bfc" id="L403" title="All 2 branches covered.">            if (this.cost &gt; e.cost)</span>
+<span class="fc" id="L404">                return 1;</span>
+
+<span class="fc" id="L406">            final int from = this.from.compareTo(e.from);</span>
+<span class="fc bfc" id="L407" title="All 2 branches covered.">            if (from != 0)</span>
+<span class="fc" id="L408">                return from;</span>
+
+<span class="fc" id="L410">            final int to = this.to.compareTo(e.to);</span>
+<span class="fc bfc" id="L411" title="All 2 branches covered.">            if (to != 0)</span>
+<span class="fc" id="L412">                return to;</span>
+
+<span class="fc" id="L414">            return 0;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L422">            StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L423">            builder.append(&quot;[ &quot;).append(from.value).append(&quot;(&quot;).append(from.weight).append(&quot;) &quot;).append(&quot;]&quot;).append(&quot; -&gt; &quot;)</span>
+<span class="fc" id="L424">                   .append(&quot;[ &quot;).append(to.value).append(&quot;(&quot;).append(to.weight).append(&quot;) &quot;).append(&quot;]&quot;).append(&quot; = &quot;).append(cost).append(&quot;\n&quot;);</span>
+<span class="fc" id="L425">            return builder.toString();</span>
+        }
+    }
+
+    public static class CostVertexPair&lt;T extends Comparable&lt;T&gt;&gt; implements Comparable&lt;CostVertexPair&lt;T&gt;&gt; {
+
+<span class="fc" id="L431">        private int cost = Integer.MAX_VALUE;</span>
+<span class="fc" id="L432">        private Vertex&lt;T&gt; vertex = null;</span>
+
+<span class="fc" id="L434">        public CostVertexPair(int cost, Vertex&lt;T&gt; vertex) {</span>
+<span class="fc bfc" id="L435" title="All 2 branches covered.">            if (vertex == null)</span>
+<span class="fc" id="L436">                throw (new NullPointerException(&quot;vertex cannot be NULL.&quot;));</span>
+
+<span class="fc" id="L438">            this.cost = cost;</span>
+<span class="fc" id="L439">            this.vertex = vertex;</span>
+<span class="fc" id="L440">        }</span>
+
+        public int getCost() {
+<span class="fc" id="L443">            return cost;</span>
+        }
+
+        public void setCost(int cost) {
+<span class="fc" id="L447">            this.cost = cost;</span>
+<span class="fc" id="L448">        }</span>
+
+        public Vertex&lt;T&gt; getVertex() {
+<span class="fc" id="L451">            return vertex;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int hashCode() {
+<span class="pc bpc" id="L459" title="1 of 2 branches missed.">            return 31 * (this.cost * ((this.vertex!=null)?this.vertex.hashCode():1));</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean equals(Object e1) {
+<span class="fc bfc" id="L467" title="All 2 branches covered.">            if (!(e1 instanceof CostVertexPair))</span>
+<span class="fc" id="L468">                return false;</span>
+
+<span class="fc" id="L470">            final CostVertexPair&lt;?&gt; pair = (CostVertexPair&lt;?&gt;)e1;</span>
+<span class="fc bfc" id="L471" title="All 2 branches covered.">            if (this.cost != pair.cost)</span>
+<span class="fc" id="L472">                return false;</span>
+
+<span class="fc bfc" id="L474" title="All 2 branches covered.">            if (!this.vertex.equals(pair.vertex))</span>
+<span class="fc" id="L475">                return false;</span>
+
+<span class="fc" id="L477">            return true;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int compareTo(CostVertexPair&lt;T&gt; p) {
+<span class="fc bfc" id="L485" title="All 2 branches covered.">            if (p == null)</span>
+<span class="fc" id="L486">                throw new NullPointerException(&quot;CostVertexPair 'p' must be non-NULL.&quot;);</span>
+
+<span class="fc bfc" id="L488" title="All 2 branches covered.">            if (this.cost &lt; p.cost)</span>
+<span class="fc" id="L489">                return -1;</span>
+<span class="fc bfc" id="L490" title="All 2 branches covered.">            if (this.cost &gt; p.cost)</span>
+<span class="fc" id="L491">                return 1;</span>
+<span class="fc" id="L492">            return 0;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L500">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L501">            builder.append(vertex.getValue()).append(&quot; (&quot;).append(vertex.weight).append(&quot;) &quot;).append(&quot; cost=&quot;).append(cost).append(&quot;\n&quot;);</span>
+<span class="fc" id="L502">            return builder.toString();</span>
+        }
+    }
+
+    public static class CostPathPair&lt;T extends Comparable&lt;T&gt;&gt; {
+
+<span class="fc" id="L508">        private int cost = 0;</span>
+<span class="fc" id="L509">        private List&lt;Edge&lt;T&gt;&gt; path = null;</span>
+
+<span class="fc" id="L511">        public CostPathPair(int cost, List&lt;Edge&lt;T&gt;&gt; path) {</span>
+<span class="fc bfc" id="L512" title="All 2 branches covered.">            if (path == null)</span>
+<span class="fc" id="L513">                throw (new NullPointerException(&quot;path cannot be NULL.&quot;));</span>
+
+<span class="fc" id="L515">            this.cost = cost;</span>
+<span class="fc" id="L516">            this.path = path;</span>
+<span class="fc" id="L517">        }</span>
+
+        public int getCost() {
+<span class="fc" id="L520">            return cost;</span>
+        }
+
+        public void setCost(int cost) {
+<span class="fc" id="L524">            this.cost = cost;</span>
+<span class="fc" id="L525">        }</span>
+
+        public List&lt;Edge&lt;T&gt;&gt; getPath() {
+<span class="fc" id="L528">            return path;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int hashCode() {
+<span class="fc" id="L536">            int hash = this.cost;</span>
+<span class="fc bfc" id="L537" title="All 2 branches covered.">            for (Edge&lt;T&gt; e : path)</span>
+<span class="fc" id="L538">                hash *= e.cost;</span>
+<span class="fc" id="L539">            return 31 * hash;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean equals(Object obj) {
+<span class="fc bfc" id="L547" title="All 2 branches covered.">            if (!(obj instanceof CostPathPair))</span>
+<span class="fc" id="L548">                return false;</span>
+
+<span class="fc" id="L550">            final CostPathPair&lt;?&gt; pair = (CostPathPair&lt;?&gt;) obj;</span>
+<span class="fc bfc" id="L551" title="All 2 branches covered.">            if (this.cost != pair.cost)</span>
+<span class="fc" id="L552">                return false;</span>
+
+<span class="fc" id="L554">            final Iterator&lt;?&gt; iter1 = this.getPath().iterator();</span>
+<span class="fc" id="L555">            final Iterator&lt;?&gt; iter2 = pair.getPath().iterator();</span>
+<span class="fc bfc" id="L556" title="All 4 branches covered.">            while (iter1.hasNext() &amp;&amp; iter2.hasNext()) {</span>
+<span class="fc" id="L557">                Edge&lt;T&gt; e1 = (Edge&lt;T&gt;) iter1.next();</span>
+<span class="fc" id="L558">                Edge&lt;T&gt; e2 = (Edge&lt;T&gt;) iter2.next();</span>
+<span class="fc bfc" id="L559" title="All 2 branches covered.">                if (!e1.equals(e2))</span>
+<span class="fc" id="L560">                    return false;</span>
+<span class="fc" id="L561">            }</span>
+
+<span class="fc" id="L563">            return true;</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L571">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L572">            builder.append(&quot;Cost = &quot;).append(cost).append(&quot;\n&quot;);</span>
+<span class="fc bfc" id="L573" title="All 2 branches covered.">            for (Edge&lt;T&gt; e : path)</span>
+<span class="fc" id="L574">                builder.append(&quot;\t&quot;).append(e);</span>
+<span class="fc" id="L575">            return builder.toString();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

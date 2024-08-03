@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProblemSolver.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">ProblemSolver.java</span></div><h1>ProblemSolver.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Arrays;
+import java.util.regex.*;
+
+import java.io.*;
+
+<span class="fc" id="L11">public final class ProblemSolver {</span>
+
+  private static void readExprFromFile(HashMap&lt;String, String&gt; options) {
+<span class="nc" id="L14">      StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L15">      String varOrder = &quot;&quot;;</span>
+<span class="nc" id="L16">      try (BufferedReader br = new BufferedReader(new FileReader(options.get(&quot;inFile&quot;)))) {</span>
+<span class="nc" id="L17">        varOrder = br.readLine();</span>
+        String line;
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        while ((line = br.readLine()) != null) {</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">          if (!line.startsWith(&quot;//&quot;)) {</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            if (builder.length() != 0) builder.append(&quot; &amp; &quot;);</span>
+<span class="nc" id="L22">            builder.append(line);</span>
+          }
+        }
+<span class="nc" id="L25">      } catch (Exception e) {</span>
+<span class="nc" id="L26">        System.err.println(&quot;Error encountered reading file&quot;);</span>
+<span class="nc" id="L27">        System.err.println(e);</span>
+<span class="nc" id="L28">        System.exit(1);</span>
+<span class="nc" id="L29">      }</span>
+
+<span class="nc" id="L31">      String expr = builder.toString();</span>
+<span class="nc" id="L32">      options.put(&quot;expression&quot;, expr);</span>
+
+      // TODO: make this better
+<span class="nc bnc" id="L35" title="All 2 branches missed.">      if (!options.containsKey(&quot;order&quot;)) options.put(&quot;order&quot;, varOrder);</span>
+<span class="nc" id="L36">      createAndSolveBDD(options);</span>
+<span class="nc" id="L37">  }</span>
+
+  private static void createAndSolveBDD(HashMap&lt;String, String&gt; options) {
+    try {
+<span class="nc" id="L41">      BoolExpression expr = new BoolExpression(options.get(&quot;expression&quot;));</span>
+
+<span class="nc" id="L43">      BDD bdd = null;</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">      if (options.containsKey(&quot;order&quot;)) {</span>
+<span class="nc" id="L45">        String order = options.get(&quot;order&quot;);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        bdd = (order.equals(&quot;random&quot;)) ? BDD.ofRandomOrder(expr) : BDD.of(expr, parseOrder(order));</span>
+<span class="nc" id="L47">      } else {</span>
+<span class="nc" id="L48">        bdd = BDD.of(expr);</span>
+      }
+
+<span class="nc" id="L51">      List&lt;String&gt; vars = bdd.getVariables();</span>
+<span class="nc" id="L52">      double numSolutions = bdd.getNumSolutions();</span>
+
+<span class="nc bnc" id="L54" title="All 2 branches missed.">      Map&lt;String, Boolean&gt; solution = (numSolutions != 0) ? bdd.anySat() : null;</span>
+
+<span class="nc" id="L56">      reportStats(options.get(&quot;expression&quot;), vars, numSolutions, BDD.getNumNodes(), solution);</span>
+
+<span class="nc bnc" id="L58" title="All 2 branches missed.">      if (options.containsKey(&quot;outFile&quot;)) {</span>
+<span class="nc" id="L59">        bdd.outputGraph(options.get(&quot;outFile&quot;));</span>
+      }
+
+<span class="nc" id="L62">    } catch (Exception e) {</span>
+<span class="nc" id="L63">      System.err.println(&quot;Error encountered while solving expression.&quot;);</span>
+<span class="nc" id="L64">      System.err.println(e);</span>
+<span class="nc" id="L65">      System.exit(1);</span>
+<span class="nc" id="L66">    }</span>
+<span class="nc" id="L67">  }</span>
+
+  private static void reportStats(String expr, List&lt;String&gt; vars, double numSolutions,
+        int numNodes, Map&lt;String, Boolean&gt; soln) {
+<span class="nc" id="L71">    System.out.println(&quot;Statistics for expression: &quot; + expr);</span>
+<span class="nc" id="L72">    System.out.println(&quot;- - - - - - -&quot;);</span>
+
+<span class="nc" id="L74">    System.out.print(&quot;\nVariable Ordering: &quot;);</span>
+<span class="nc" id="L75">    System.out.println(vars);</span>
+
+<span class="nc" id="L77">    System.out.print(&quot;\nNumber of BDD Nodes: &quot;);</span>
+<span class="nc" id="L78">    System.out.println(numNodes);</span>
+
+<span class="nc" id="L80">    System.out.print(&quot;\nNum solutions: &quot;);</span>
+<span class="nc" id="L81">    System.out.println(numSolutions);</span>
+
+<span class="nc bnc" id="L83" title="All 2 branches missed.">    if (soln != null) {</span>
+<span class="nc" id="L84">      System.out.print(&quot;\nSatisfying solution: &quot;);</span>
+<span class="nc" id="L85">      System.out.println(soln);</span>
+    }
+<span class="nc" id="L87">  }</span>
+
+  // TODO: Add option to specify variable ordering
+  private static HashMap&lt;String, String&gt; parseOptions(String args[]) {
+<span class="nc" id="L91">    HashMap&lt;String, String&gt; result = new HashMap&lt;String, String&gt;();</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">    for (int i = 0; i &lt; args.length; i++) {</span>
+<span class="nc" id="L93">      String arg = args[i];</span>
+<span class="nc bnc" id="L94" title="All 4 branches missed.">      if (arg.length() &gt; 0 &amp;&amp; arg.charAt(0) == '-') {</span>
+
+<span class="nc bnc" id="L96" title="All 4 branches missed.">        if (arg.equals(&quot;-file&quot;) || arg.equals(&quot;-f&quot;)) {</span>
+          try {
+<span class="nc" id="L98">            result.put(&quot;inFile&quot;, args[i+1]);</span>
+<span class="nc" id="L99">            i++;</span>
+<span class="nc" id="L100">          } catch (ArrayIndexOutOfBoundsException e) {</span>
+<span class="nc" id="L101">            System.err.println(&quot;Expecting file name after -file flag&quot;);</span>
+<span class="nc" id="L102">            System.exit(1);</span>
+<span class="nc" id="L103">          }</span>
+        }
+
+<span class="nc bnc" id="L106" title="All 4 branches missed.">        if (arg.equals(&quot;-o&quot;) || arg.equals(&quot;-out&quot;)) {</span>
+          try {
+<span class="nc" id="L108">            result.put(&quot;outFile&quot;, args[i+1]);</span>
+<span class="nc" id="L109">            i++;</span>
+<span class="nc" id="L110">          } catch (ArrayIndexOutOfBoundsException e) {</span>
+<span class="nc" id="L111">            System.err.println(&quot;Expecting file name after -out flag&quot;);</span>
+<span class="nc" id="L112">            System.exit(1);</span>
+<span class="nc" id="L113">          }</span>
+        }
+
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (arg.equals(&quot;-order&quot;)) {</span>
+          try {
+<span class="nc" id="L118">            result.put(&quot;order&quot;, args[i+1]);</span>
+<span class="nc" id="L119">            i++;</span>
+<span class="nc" id="L120">          } catch (ArrayIndexOutOfBoundsException e) {</span>
+<span class="nc" id="L121">            System.err.println(&quot;Expecting variable ordering after -order flag&quot;);</span>
+<span class="nc" id="L122">            System.exit(1);</span>
+<span class="nc" id="L123">          }</span>
+        }
+      } else {
+        // Assume this argument is a boolean expression to parse;
+<span class="nc" id="L127">        result.put(&quot;expression&quot;, arg);</span>
+      }
+    }
+
+<span class="nc" id="L131">    return result;</span>
+  }
+
+  private static List&lt;String&gt; parseOrder(String orderStr) {
+<span class="nc" id="L135">    return Arrays.asList(orderStr.split(Pattern.quote(&quot; &quot;)));</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

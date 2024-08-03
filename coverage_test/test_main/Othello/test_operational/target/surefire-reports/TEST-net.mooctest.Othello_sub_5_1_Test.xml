@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.mooctest.Othello_sub_5_1_Test" time="0.123" tests="240" errors="2" skipped="0" failures="4">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="ANSI_X3.4-1968"/>
+    <property name="java.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/test-classes:/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/classes:/data02/LCD/.m2/repository/junit/junit/4.12/junit-4.12.jar:/data02/LCD/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/data02/LCD/.m2/repository/org/evosuite/evosuite-master/1.0.6/evosuite-master-1.0.6.jar:/data02/LCD/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.7/jacoco-maven-plugin-0.8.7.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar:/data02/LCD/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/data02/LCD/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/data02/LCD/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.core/0.8.7/org.jacoco.core-0.8.7.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-commons/9.1/asm-commons-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-analysis/9.1/asm-analysis-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-tree/9.1/asm-tree-9.1.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.report/0.8.7/org.jacoco.report-0.8.7.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/surefire/surefirebooter1432895586857086510.jar /data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/surefire 2024-06-28T12-20-02_725-jvmRun1 surefire857791192369563932tmp surefire_06971021111829533574tmp"/>
+    <property name="surefire.test.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/test-classes:/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/classes:/data02/LCD/.m2/repository/junit/junit/4.12/junit-4.12.jar:/data02/LCD/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/data02/LCD/.m2/repository/org/evosuite/evosuite-master/1.0.6/evosuite-master-1.0.6.jar:/data02/LCD/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.7/jacoco-maven-plugin-0.8.7.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar:/data02/LCD/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/data02/LCD/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/data02/LCD/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.core/0.8.7/org.jacoco.core-0.8.7.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-commons/9.1/asm-commons-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-analysis/9.1/asm-analysis-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-tree/9.1/asm-tree-9.1.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.report/0.8.7/org.jacoco.report-0.8.7.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/data02/LCD"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre"/>
+    <property name="basedir" value="/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational/target/surefire/surefirebooter1432895586857086510.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/resources.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/rt.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jsse.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jce.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/charsets.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jfr.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_391-b13"/>
+    <property name="user.name" value="lcd"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.15.0-102-generic"/>
+    <property name="java.endorsed.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/data02/LCD/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_391"/>
+    <property name="user.dir" value="/data02/LCD/CTCA/coverage_test/test_main/Othello/test_operational"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/local/cuda-11.1/lib64::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.391-b13"/>
+    <property name="java.specification.maintenance.version" value="5"/>
+    <property name="java.ext.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="test_13" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_19" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_21" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_23" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_32" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_36" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_37" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_42" classname="net.mooctest.Othello_sub_5_1_Test" time="0.005"/>
+  <testcase name="test_43" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_47" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_89" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_97" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1013" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1015" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_1016" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_1017" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1019" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_1044" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1123" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1170" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1185" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1361" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1480" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1482" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1636" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_1694" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1697" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1705" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1787" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_1806" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1809" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_1815" classname="net.mooctest.Othello_sub_5_1_Test" time="0.002"/>
+  <testcase name="test_1900" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_1901" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2014" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2015" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2017" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2020" classname="net.mooctest.Othello_sub_5_1_Test" time="0.004">
+    <error message="bound must be positive" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: bound must be positive
+	at net.mooctest.Othello_sub_5_1_Test.test_2020(Othello_sub_5_1_Test.java:3814)
+</error>
+  </testcase>
+  <testcase name="test_2022" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2036" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2037" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2039" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2043" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2044" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_2045" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_2047" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2048" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2049" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_2097" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2136" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2555" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2628" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2640" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2643" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2647" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2669" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2687" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2693" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2886" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2888" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2889" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2898" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2905" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2932" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2937" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_2938" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_2949" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3089" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3203" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3241" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3426" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_3516" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3576" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3594" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3595" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3596" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3607" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3609" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_3610" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3612" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3616" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_3617" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3618" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3619" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_3621" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_7530" classname="net.mooctest.Othello_sub_5_1_Test" time="0">
+    <failure message="expected:&lt;0&gt; but was:&lt;7&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<0> but was:<7>
+	at net.mooctest.Othello_sub_5_1_Test.test_7530(Othello_sub_5_1_Test.java:3742)
+]]></failure>
+  </testcase>
+  <testcase name="test_7532" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_7533" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7534" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_7621" classname="net.mooctest.Othello_sub_5_1_Test" time="0.009"/>
+  <testcase name="test_7622" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7623" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7624" classname="net.mooctest.Othello_sub_5_1_Test" time="0.01"/>
+  <testcase name="test_7625" classname="net.mooctest.Othello_sub_5_1_Test" time="0.004"/>
+  <testcase name="test_7628" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7644" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7682" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7793" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7814" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7940" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_7997" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_7999" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8000" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8006" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8021" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8022" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8024" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8027" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8028" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8029" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8055" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8405" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8406" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8407" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8413" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8421" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_8579" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8594" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8596" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8601" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8616" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8621" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8742" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8758" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_8764" classname="net.mooctest.Othello_sub_5_1_Test" time="0.002"/>
+  <testcase name="test_8765" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8773" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_8775" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8776" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8788" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8960" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001">
+    <failure message="expected:&lt;[7, 0, 0, 7, 0, 2, 0, 1]&gt; but was:&lt;[0, 7, 0, 7, 0, 2, 0, 1]&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<[7, 0, 0, 7, 0, 2, 0, 1]> but was:<[0, 7, 0, 7, 0, 2, 0, 1]>
+	at net.mooctest.Othello_sub_5_1_Test.test_8960(Othello_sub_5_1_Test.java:1408)
+]]></failure>
+  </testcase>
+  <testcase name="test_8961" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_8962" classname="net.mooctest.Othello_sub_5_1_Test" time="0.009"/>
+  <testcase name="test_8963" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9023" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9087" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9096" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9131" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_9132" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9134" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9135" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9269" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9276" classname="net.mooctest.Othello_sub_5_1_Test" time="0.008"/>
+  <testcase name="test_9279" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9410" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9412" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9415" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9420" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9422" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_9639" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9727" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9799" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9829" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9833" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9842" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9854" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9864" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_9958" classname="net.mooctest.Othello_sub_5_1_Test" time="0.006"/>
+  <testcase name="test_119" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_120" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_126" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_132" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_133" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001">
+    <failure message="expected:&lt;-1&gt; but was:&lt;null&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<-1> but was:<null>
+	at net.mooctest.Othello_sub_5_1_Test.test_133(Othello_sub_5_1_Test.java:997)
+]]></failure>
+  </testcase>
+  <testcase name="test_134" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_139" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_142" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_144" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_146" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_147" classname="net.mooctest.Othello_sub_5_1_Test" time="0">
+    <failure message="expected:&lt;-38&gt; but was:&lt;null&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<-38> but was:<null>
+	at net.mooctest.Othello_sub_5_1_Test.test_147(Othello_sub_5_1_Test.java:7253)
+]]></failure>
+  </testcase>
+  <testcase name="test_149" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_151" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_159" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_160" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_194" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_205" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_206" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_207" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_382" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_401" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_402" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_403" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_404" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_407" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_412" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_424" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_499" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_501" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_509" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_515" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_521" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_603" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_636" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_637" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_640" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_647" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_653" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_717" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_888" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_889" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_891" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_981" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_0" classname="net.mooctest.Othello_sub_5_1_Test" time="0.002"/>
+  <testcase name="test_10136" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10295" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10310" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10326" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10331" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10400" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10451" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10478" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10513" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_10612" classname="net.mooctest.Othello_sub_5_1_Test" time="0.002"/>
+  <testcase name="test_10622" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10648" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10663" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10736" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10741" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10753" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10761" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10762" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10768" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10974" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10982" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10985" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10986" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10988" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_10989" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11556" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11558" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11612" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11621" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11672" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11680" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11739" classname="net.mooctest.Othello_sub_5_1_Test" time="0">
+    <error message="bound must be positive" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: bound must be positive
+	at net.mooctest.Othello_sub_5_1_Test.test_11739(Othello_sub_5_1_Test.java:6887)
+</error>
+  </testcase>
+  <testcase name="test_11742" classname="net.mooctest.Othello_sub_5_1_Test" time="0.018"/>
+  <testcase name="test_11751" classname="net.mooctest.Othello_sub_5_1_Test" time="0.001"/>
+  <testcase name="test_11752" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11754" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11757" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+  <testcase name="test_11760" classname="net.mooctest.Othello_sub_5_1_Test" time="0"/>
+</testsuite>

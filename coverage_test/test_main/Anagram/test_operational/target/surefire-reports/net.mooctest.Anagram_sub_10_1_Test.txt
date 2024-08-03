@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Anagram_sub_10_1_Test
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.Anagram_sub_10_1_Test
+test_696(net.mooctest.Anagram_sub_10_1_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.io.FileNotFoundException: src\main\resources\net\mooctest\demo.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_1_Test.test_696(Anagram_sub_10_1_Test.java:136)
+
+test_982(net.mooctest.Anagram_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.io.FileNotFoundException: /data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/src/test/java/demo2.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_1_Test.test_982(Anagram_sub_10_1_Test.java:143)
+

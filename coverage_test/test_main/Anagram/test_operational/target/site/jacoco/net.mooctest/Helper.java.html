@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Helper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Helper.java</span></div><h1>Helper.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * this is a helper class holding all the static methods useful for solving anagrams
+ *
+ */
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">public class Helper {</span>
+
+    /*
+      * sort the characters in word string
+      *
+      * @param wordString - string to sort
+      *
+      * @return string with sorted characters
+      */
+    public static String sortWord(String wordString) {
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (wordString.isEmpty()) {</span>
+<span class="fc" id="L24">            return null;</span>
+        }
+<span class="fc" id="L26">        byte[] charBytes = wordString.getBytes();</span>
+<span class="fc" id="L27">        Arrays.sort(charBytes);</span>
+
+<span class="fc" id="L29">        return new String(charBytes);</span>
+    }
+
+    /*
+      * checks if the first character array is subset of second character array
+      *
+      * @param charArr1 - character array charArr1 to check for subset
+      *
+      * @param charArr2 - checking for subset against character array charArr2
+      *
+      * @return true is charArray1 is subset of charArray2, false otherwise
+      */
+    public static boolean isSubset(char[] charArr1, char[] charArr2) {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (charArr1.length &gt; charArr2.length) {</span>
+<span class="fc" id="L43">            return false;</span>
+        }
+<span class="fc" id="L45">        List&lt;Character&gt; charList1 = toList(charArr1);</span>
+<span class="fc" id="L46">        List&lt;Character&gt; charList2 = toList(charArr2);</span>
+        // cannot do containsAll as there can be duplicate characters
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for (Character charValue : charList1) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            if (charList2.contains(charValue)) {</span>
+<span class="fc" id="L50">                charList2.remove(charValue);</span>
+            } else {
+<span class="fc" id="L52">                return false;</span>
+            }
+<span class="fc" id="L54">        }</span>
+<span class="fc" id="L55">        return true;</span>
+    }
+
+    /*
+      * converts character array to character list
+      */
+    private static List&lt;Character&gt; toList(char[] charArr) {
+<span class="pc bpc" id="L62" title="1 of 4 branches missed.">        assert charArr != null;</span>
+<span class="fc" id="L63">        List&lt;Character&gt; charList = new ArrayList&lt;Character&gt;();</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        for (char ch : charArr) {</span>
+<span class="fc" id="L65">            charList.add(ch);</span>
+        }
+<span class="fc" id="L67">        return charList;</span>
+    }
+
+    /*
+      * converts character list to character array
+      */
+    private static char[] toCharArray(List&lt;Character&gt; charList) {
+<span class="fc bfc" id="L74" title="All 4 branches covered.">        if (charList == null || charList.isEmpty()) {</span>
+<span class="fc" id="L75">            return new char[0];</span>
+        }
+
+<span class="fc" id="L78">        char[] charArr = new char[charList.size()];</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        for (int index = 0; index &lt; charList.size(); index++) {</span>
+<span class="fc" id="L80">            charArr[index] = charList.get(index);</span>
+        }
+<span class="fc" id="L82">        return charArr;</span>
+    }
+
+    /*
+      * checks if two character arrays are equivalent;
+      * char arrays are equivalent if:
+      * 1. the number of elements in them are equal, and
+      * 2. all the elements are same (not necessarily in same order)
+      * complexity should be O(n)
+      *
+      * @param charArr1 - first character array for equivalence check
+      *
+      * @param charArr2 - second character array for equivalence check
+      *
+      * @return true is charArr1 is equivalent to charArr2, false otherwise
+      */
+    public static boolean isEquivalent(char[] charArr1, char[] charArr2) {
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (charArr1.length != charArr2.length) {</span>
+<span class="fc" id="L100">            return false;</span>
+        }
+<span class="fc" id="L102">        int sum1 = 0;</span>
+<span class="fc" id="L103">        int sum2 = 0;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        for (int index = 0; index &lt; charArr1.length; index++) {</span>
+<span class="fc" id="L105">            sum1 += charArr1[index];</span>
+<span class="fc" id="L106">            sum2 += charArr2[index];</span>
+        }
+        // in most cases it would return from here
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        if (sum1 != sum2) {</span>
+<span class="fc" id="L110">            return false;</span>
+        }
+<span class="fc" id="L112">        List&lt;Character&gt; charList1 = toList(charArr1);</span>
+<span class="fc" id="L113">        List&lt;Character&gt; charList2 = toList(charArr2);</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        for (Character charValue : charList1) {</span>
+<span class="fc" id="L115">            charList2.remove(charValue);</span>
+<span class="fc" id="L116">        }</span>
+<span class="fc" id="L117">        return charList2.isEmpty();</span>
+    }
+
+    /*
+      * calculates set difference for 2 character arrays i.e. charArr1 - charArr2 removes all charArr2 elements from charArr1
+      * complexity should be O(n)
+      *
+      * @param charArr1 - first character array for set difference
+      *
+      * @param charArr2 - second character array for set difference
+      *
+      * @return resultant character array of set difference between charArr1 and charArr2
+      */
+    public static char[] setDifference(char[] charArr1, char[] charArr2) {
+<span class="fc" id="L131">        List&lt;Character&gt; list1 = toList(charArr1);</span>
+<span class="fc" id="L132">        List&lt;Character&gt; list2 = toList(charArr2);</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        for (Character charObj : list2) {</span>
+<span class="fc" id="L134">            list1.remove(charObj);</span>
+<span class="fc" id="L135">        }</span>
+<span class="fc" id="L136">        return toCharArray(list1);</span>
+    }
+
+    /*
+      * function to perform set multiplication of all the sets of strings passed
+      *
+      * @param setsArray - muliple sets to multiply (can be a set of strings array)
+      *
+      * @return returns set consisting of set of strings after cartesian product is applied
+      */
+    public static Set&lt;Set&lt;String&gt;&gt; setMultiplication(Set&lt;String&gt;... setsArray) {
+<span class="fc bfc" id="L147" title="All 4 branches covered.">        if (setsArray == null || setsArray.length == 0) {</span>
+<span class="fc" id="L148">            return null;</span>
+        }
+<span class="fc" id="L150">        return setMultiplication(0, setsArray);</span>
+    }
+
+    // recursive function to calculate the cartesian product of all the sets of strings passed
+    private static Set&lt;Set&lt;String&gt;&gt; setMultiplication(int index, Set&lt;String&gt;... setsArray) {
+<span class="fc" id="L155">        Set&lt;Set&lt;String&gt;&gt; setsMultiplied = new HashSet&lt;Set&lt;String&gt;&gt;();</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        if (index == setsArray.length) {</span>
+<span class="fc" id="L157">            setsMultiplied.add(new HashSet&lt;String&gt;());</span>
+        } else {
+<span class="fc bfc" id="L159" title="All 2 branches covered.">            for (String obj : setsArray[index]) {</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">                for (Set&lt;String&gt; set : setMultiplication(index + 1, setsArray)) {</span>
+<span class="fc" id="L161">                    set.add(obj);</span>
+<span class="fc" id="L162">                    setsMultiplied.add(set);</span>
+<span class="fc" id="L163">                }</span>
+<span class="fc" id="L164">            }</span>
+        }
+
+<span class="fc" id="L167">        return setsMultiplied;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vector2.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Vector2.java</span></div><h1>Vector2.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.io.Serializable;
+
+/**
+ * Vector2 class representing a vector of &lt;x, y&gt; components.
+ * &lt;br /&gt;
+ * &lt;h1&gt;Not Yet Implemented&lt;/h1&gt;
+ * &lt;ul&gt;
+ *  &lt;li&gt;Transform&lt;/li&gt;
+ * &lt;/ul&gt;
+ * @version incomplete
+ * @author paul
+ */
+
+public class Vector2 implements Serializable
+{
+    /**
+     * The x component of the Vector2.
+     * Also referred to as i component in vectorial notation.
+     */
+    public final float x;
+
+    /**
+     * The y component of the Vector2.
+     * Also referred to as j component in vectorial notation.
+     */
+    public final float y;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Constructors&quot;&gt;
+    /**
+     * Complete Constructor
+     * @param x x component of the Vector2
+     * @param y y component of the Vector2
+     */
+    public Vector2(float x, float y)
+<span class="fc" id="L37">    {</span>
+<span class="fc" id="L38">        this.x = x;</span>
+<span class="fc" id="L39">        this.y = y;</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Takes integer input and converts them into floats
+     * @param x x component of the Vector2
+     * @param y y component of the Vector2
+     */
+    public Vector2(int x, int y)
+    {
+<span class="fc" id="L49">        this((float)x, (float)y);</span>
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * Takes a float value and sets it to the x and y component's of the Vector2.
+     * @param value for x and y components of the Vector2
+     */
+    public Vector2(float value)
+    {
+<span class="nc" id="L58">        this(value, value);</span>
+<span class="nc" id="L59">    }</span>
+
+    /**
+     * Takes a integer value and casts it to a float value.
+     * The float value is then set to the x and y
+     * component's of the vector.
+     * @param value for x and y components of the Vector2
+     */
+    public Vector2(int value)
+    {
+<span class="nc" id="L69">        this(value, value);</span>
+<span class="nc" id="L70">    }</span>
+
+    /**
+     * Empty Constructor
+     * Sets both x and y components to zero.
+     * This is also known as the zero vector or null vector.
+     */
+    public Vector2()
+    {
+<span class="nc" id="L79">        this(0.0f, 0.0f);</span>
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Copy Constructor
+     * copies the contents of of the provided vector and creates a new vector.
+     * @param vec A Vector2 to make a copy of.
+     */
+    public Vector2(Vector2 vec)
+    {
+<span class="nc" id="L89">        this(vec.x, vec.y);</span>
+<span class="nc" id="L90">    }</span>
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Add&quot;&gt;
+    /**
+     * Performs Vector2 Addition on two Vector2
+     * and returns a new Vector2
+     * @param veca Vector2 to be added
+     * @param vecb Vector2 to be added
+     * @return Returns a new Vector2 with the result of veca + vecb
+     */
+    public static Vector2 add(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc" id="L103">        return new Vector2(veca.x + vecb.x, veca.y + vecb.y);</span>
+    }
+
+    /**
+     * Performs Vector2 addition with this Vector2
+     * @param that Vector2 to be added to this Vector2
+     * @return Returns a new Vector2 with the result of this + that
+     */
+    public Vector2 add(Vector2 that)
+    {
+<span class="nc" id="L113">        return Vector2.add(this, that);</span>
+    }
+
+    /**
+     * Performs addition with this Vector2 and the x and y values provided.
+     * @param x The x component we want to add to this Vector2.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x and y added to this.y
+     */
+    public Vector2 add(float x, float y)
+    {
+<span class="nc" id="L124">        return Vector2.add(this, new Vector2(x, y));</span>
+    }
+
+    /**
+     * Performs addition with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector2.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x and y added to this.y
+     */
+    public Vector2 add(int x, int y)
+    {
+<span class="nc" id="L136">        return Vector2.add(this, new Vector2((float)x, (float)y));</span>
+    }
+
+    /**
+     * Adds the value provided to the x component.
+     * @param x The x component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x
+     */
+    public Vector2 addX(float x)
+    {
+<span class="nc" id="L146">        return Vector2.add(this, new Vector2(x, 0.0f));</span>
+    }
+
+    /**
+     * Converts the integer to a float and adds the value provided to the x component.
+     * @param x The x component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x
+     */
+    public Vector2 addX(int x)
+    {
+<span class="nc" id="L156">        return Vector2.add(this, new Vector2((float)x, 0.0f));</span>
+    }
+
+    /**
+     * Adds the value provided to the y component.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with y added to this.y
+     */
+    public Vector2 addY(float y)
+    {
+<span class="nc" id="L166">        return Vector2.add(this, new Vector2(0.0f, y));</span>
+    }
+
+    /**
+     * Converts the integer to a float and adds the value provided to the y component.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with y added to this.y
+     */
+    public Vector2 addY(int y)
+    {
+<span class="nc" id="L176">        return Vector2.add(this, new Vector2(0.0f, (float)y));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Barycentric&quot;&gt;
+    /**
+     * The Vector2 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle vertices, V1, V2, and V3), and
+     * two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument, and b3 is the amount2 argument). &lt;br /&gt;
+     * The b2 coordinate relates to vertex V2, and the b3coordinate relates to V3. &lt;br /&gt;
+     * Barycentric then calculates the Cartesian coordinate of P as follows: &lt;br /&gt;
+       Px = ( (1 - b2 - b3) * V1x ) + (b2 * V2x) + (b3 * V3x); &lt;br /&gt;
+       Py = ( (1 - b2 - b3) * V1y ) + (b2 * V2y) + (b3 * V3y); &lt;br /&gt;
+     * Thus, to calculate the 2D Cartesian coordinates of P, you would pass the coordinates of the triangle vertices to Barycentric together with the appropriate
+     * normalized barycentric coordinates of P. &lt;br /&gt;
+     * If ( (amount1 &lt;= 0) and (amount2 &gt;= 0) and (1 − amount1 − amount2 &gt;= 0) ), then the point is inside the triangle defined by value1, value2, and value3.&lt;br /&gt;
+     * If ( (amount1 == 0) and (amount2 &gt;= 0) and (1 − amount1 − amount2 &gt;= 0) ), then the point is on the line defined by value1 and value3.&lt;br /&gt;
+     * If ( (amount1 &gt;= 0) and (amount2 == 0) and (1 − amount1 − amount2 &gt;= 0) ), then the point is on the line defined by value1 and value2.&lt;br /&gt;
+     * If ( (amount1 &gt;= 0) and (amount2 &gt;= 0) and (1 − amount1 − amount2 == 0) ), then the point is on the line defined by value2 and value3.&lt;br /&gt;
+     * @param v1 A Vector2 representing a vertex of a triangle.
+     * @param v2 A Vector2 representing a vertex of a triangle.
+     * @param v3 A Vector2 representing a vertex of a triangle.
+     * @param b2 Areal coordinate.
+     * @param b3 Areal coordinate.
+     * @return Returns a Vector2 containing the 2D Cartesian coordinates of the specified point.
+     */
+    public static Vector2 barycentric(Vector2 v1, Vector2 v2, Vector2 v3, float b2, float b3)
+    {
+<span class="fc" id="L203">        float b1 = 1 - b2 - b3;</span>
+<span class="fc" id="L204">        float px = (b1 * v1.x) + (b2 * v2.x) + (b3 * v3.x);</span>
+<span class="fc" id="L205">        float py = (b1 * v1.y) + (b2 * v2.y) + (b3 * v3.y);</span>
+<span class="fc" id="L206">        return new Vector2(px, py);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;CatmullRom&quot;&gt;
+    /**
+     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ &amp; http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&amp;p=66079#post66079
+     * Performs a Catmull-Rom interpolation with the provided points.
+     * @param p0 The first position in the interpolation.
+     * @param p1 The second position in the interpolation.
+     * @param p2 The third position in the interpolation.
+     * @param p3 The fourth position in the interpolation.
+     * @param t A float value between zero and one.
+     * @return Returns a Vector2 that is the result of the Catmull-Rom interpolation.
+     */
+    public static Vector2 catmullRom(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float t)
+    {
+<span class="nc" id="L223">        float t2 = t * t;</span>
+<span class="nc" id="L224">        float t3 = t2 * t;</span>
+<span class="nc" id="L225">        float outX = 0.5f * ((2.0f * p1.x) +</span>
+                    (-p0.x + p2.x) * t +
+                    (2.0f * p0.x - 5.0f * p1.x + 4 * p2.x - p3.x) * t2 +
+                    (-p0.x + 3.0f * p1.x - 3.0f * p2.x + p3.x) * t3);
+
+<span class="nc" id="L230">        float outY = 0.5f * ((2.0f * p1.y) +</span>
+                    (-p0.y + p2.y) * t +
+                    (2.0f * p0.y - 5.0f * p1.y + 4 * p2.y - p3.y) * t2 +
+                    (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
+<span class="nc" id="L234">        return new Vector2(outX, outY);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Clamp&quot;&gt;
+    /**
+     * Clamps a Vector2 between a min Vector2 and a max Vector2
+     * and returns the modified Vector2
+     * @param vec The Vector2 we want to clamp.
+     * @param min The minimum value we want the Vector2 to fall on.
+     * @param max The maximum value we want the Vector2 to fall on.
+     * @return Returns a Vector2 that is between the two Vector2 provided.
+     */
+    public static Vector2 clamp(Vector2 vec, Vector2 min, Vector2 max)
+    {
+<span class="nc" id="L249">        return new Vector2</span>
+        (
+<span class="nc" id="L251">            MathHelper.clamp(vec.x, min.x, max.x),</span>
+<span class="nc" id="L252">            MathHelper.clamp(vec.y, min.y, max.y)</span>
+        );
+    }
+
+    /**
+     * Clamps this Vector2 between a min Vector2 and a max Vector2
+     * and returns the modified Vector2
+     * @param min The minimum value we want the Vector2 to fall on.
+     * @param max The maximum value we want the Vector2 to fall on.
+     * @return Returns a Vector2 that is between the two Vector2 provided.
+     */
+    public Vector2 clamp(Vector2 min, Vector2 max)
+    {
+<span class="nc" id="L265">        return Vector2.clamp(this, min, max);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Direction Cosine&quot;&gt;
+    /**
+     * Computes the angle between the Vector2 and the x-axis
+     * @param vec Vector2 we want to find the angle with respect to the x-axis.
+     * @return Returns the angle between the Vector2 and the x-axis in radians.
+     */
+    public static float directionAlpha(Vector2 vec)
+    {
+<span class="nc" id="L277">        return (float)Math.acos(vec.x / Vector2.magnitude(vec));</span>
+    }
+
+    /**
+     * Computes the angle between this Vector2 and the x-axis
+     * @return Returns the angle between this Vector2 and the x-axis in radians.
+     */
+    public float directionAlpha()
+    {
+<span class="nc" id="L286">        return Vector2.directionAlpha(this);</span>
+    }
+
+    /**
+     * Computes the angle between the Vector2 and the y-axis
+     * @param vec Vector2 we want to find the angle with respect to the y-axis.
+     * @return Returns the angle between the Vector2 and the y-axis in radians.
+     */
+    public static float directionBeta(Vector2 vec)
+    {
+<span class="nc" id="L296">        return (float)Math.acos(vec.y / Vector2.magnitude(vec));</span>
+    }
+
+    /**
+     * Computes the angle between this Vector2 and the y-axis
+     * @return Returns the angle between this Vector2 and the y-axis in radians.
+     */
+    public float directionBeta()
+    {
+<span class="nc" id="L305">        return Vector2.directionBeta(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Distance&quot;&gt;
+    /**
+     * Calculates the distance between two Vector2
+     * @param veca A Vector2 we want to find the distance between.
+     * @param vecb A Vector2 we want to find the distance between.
+     * @return Returns the distance between the two provided Vector2.
+     */
+    public static float distance(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc" id="L318">        return Vector2.subtract(veca, vecb).magnitude();</span>
+    }
+
+    /**
+     * Calculates the distance between two Vector2
+     * @param that A Vector2 we want to find the distance between.
+     * @return Returns the distance between this Vector2 and that Vector2.
+     */
+    public float distance(Vector2 that)
+    {
+<span class="nc" id="L328">        return Vector2.distance(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Distance Squared&quot;&gt;
+    /**
+     * Calculates the distance between two Vector2 squared.
+     * @param veca A Vector2 we want to find the distance squared between.
+     * @param vecb A Vector2 we want to find the distance squared between.
+     * @return Returns the distance squared between the two provided Vector2.
+     */
+    public static float distanceSquared(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc" id="L341">        return Vector2.subtract(veca, vecb).magnitudeSquared();</span>
+    }
+
+    /**
+     * Calculates the distance between two Vector2 squared.
+     * @param that A Vector2 we want to find the distance squared between.
+     * @return Returns the distance squared between this Vector2 and that Vector2.
+     */
+    public float distanceSquared(Vector2 that)
+    {
+<span class="nc" id="L351">        return Vector2.distanceSquared(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Division&quot;&gt;
+    /**
+     * Performs scalar division between a Vector2 and a scalar.
+     * @param vec A Vector2 we want to divide.
+     * @param scalar A scalar we want to divide the Vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public static Vector2 divide(Vector2 vec, float scalar)
+    {
+<span class="nc" id="L364">        return new Vector2(vec.x / scalar, vec.y / scalar);</span>
+    }
+
+    /**
+     * Performs scalar division between a Vector2 and a scalar.
+     * Converts integer arguments to float.
+     * @param vec A Vector2 we want to divide.
+     * @param scalar A scalar we want to divide the Vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public static Vector2 divide(Vector2 vec, int scalar)
+    {
+<span class="nc" id="L376">        return new Vector2(vec.x / (float)scalar, vec.y / (float)scalar);</span>
+    }
+
+    /**
+     * Performs scalar division between this Vector2 and a scalar.
+     * @param scalar A scalar we want to divide the Vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public Vector2 divide(float scalar)
+    {
+<span class="nc" id="L386">        return Vector2.divide(this, scalar);</span>
+    }
+
+    /**
+     * Performs scalar division between this Vector2 and a scalar.
+     * Converts integer arguments to float.
+     * @param scalar A scalar we want to divide the Vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public Vector2 divide(int scalar)
+    {
+<span class="nc" id="L397">        return Vector2.divide(this, (float)scalar);</span>
+    }
+
+    /**
+     * Performs scalar division component wise between two Vector2's
+     * @param a A Vector2 we want to divide.
+     * @param b A Vector2 we want to divide by.
+     * @return Returns a new Vector2 divided component wise by another Vector2.
+     */
+    public static Vector2 divide(Vector2 a, Vector2 b)
+    {
+<span class="nc" id="L408">        return new Vector2(a.x / b.x, a.y / b.y);</span>
+    }
+
+    /**
+     * Performs scalar division component wise between this Vector2 and that Vector2
+     * @param that A Vector2 we want to divide by.
+     * @return Returns a new Vector2 divided component wise by another Vector2.
+     */
+    public Vector2 divide(Vector2 that)
+    {
+<span class="nc" id="L418">        return Vector2.divide(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Dot Product&quot;&gt;
+    /**
+     * Performs the dot product between two Vector2's.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector2 that we want to perform the dot product on.
+     * @param vecb A Vector2 that we want to perform the dot product on.
+     * @return Returns the dot product between the two Vector2 provided.
+     */
+    public static float dotProduct(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc" id="L433">        return (veca.x * vecb.x) + (veca.y * vecb.y);</span>
+    }
+
+    /**
+     * Performs the dot product between two Vector2's.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param that A Vector2 that we want to perform the dot product on.
+     * @return Returns the dot product between this Vector2 and that Vector2.
+     */
+    public float dotProduct(Vector2 that)
+    {
+<span class="nc" id="L445">        return Vector2.dotProduct(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Equals&quot;&gt;
+    /**
+     * Checks if Vector B is equal with this Vector2.
+     * @param object An object that is believed to be a Vector2.
+     * @return Returns the result of the comparison between this Vector2 and that Vector2.
+     */
+    @Override
+    public boolean equals(Object object)
+    {
+<span class="nc" id="L458">        boolean equal = false;</span>
+<span class="nc bnc" id="L459" title="All 2 branches missed.">        if(object != null) {</span>
+<span class="nc bnc" id="L460" title="All 2 branches missed.">            if(object == this)</span>
+<span class="nc" id="L461">                equal = true;</span>
+<span class="nc bnc" id="L462" title="All 2 branches missed.">            else if(object instanceof Vector2) {</span>
+<span class="nc" id="L463">                Vector2 that = (Vector2)object;</span>
+<span class="nc" id="L464">                equal = Vector2.equals(this, that);</span>
+            }
+        }
+<span class="nc" id="L467">        return equal;</span>
+    }
+
+    /**
+     * Checks the equality between two Vector2
+     * @param veca A Vector2 that we want to compare.
+     * @param vecb A Vector2 that we want to compare.
+     * @return Returns the result of the comparison between the two Vector2.
+     */
+    public static boolean equals(Vector2 a, Vector2 b)
+    {
+<span class="pc bpc" id="L478" title="1 of 4 branches missed.">        return a.x == b.x &amp;&amp; a.y == b.y;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Hash Code&quot;&gt;
+    /**
+     * @return Returns a hash code for the object
+     */
+    @Override
+    public int hashCode()
+    {
+<span class="nc" id="L489">        int hash = 3;</span>
+<span class="nc" id="L490">        hash = 61 * hash + Float.floatToIntBits(this.x);</span>
+<span class="nc" id="L491">        hash = 61 * hash + Float.floatToIntBits(this.y);</span>
+<span class="nc" id="L492">        return hash;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Hermite&quot;&gt;
+    /**
+     * Definition found @ http://cubic.org/docs/hermite.htm
+     * Performs a Hermite spline interpolation.
+     * @param p1 Start-point of the curve.
+     * @param t1 Tangent(direction and speed) to how the curves leaves the start-point.
+     * @param p2 End-point of the curve.
+     * @param t2 Tangent (direction and speed) to how the curve meets the endpoint.
+     * @param amount Weight factor.
+     * @return Returns a Vector2 containing the result of the Hermite spline interpolation.
+     */
+    public static Vector2 hermite(Vector2 p1, Vector2 t1, Vector2 p2, Vector2 t2, float amount)
+    {
+        float h1, h2, h3, h4, amount2, amount3, outX, outY;
+
+<span class="nc" id="L511">        amount2 = amount * amount; // amount^2</span>
+<span class="nc" id="L512">        amount3 = amount2 * amount; // amount^3</span>
+<span class="nc" id="L513">        h1 = (2 * amount3) - (3 * amount2) + 1; // weight for p1</span>
+<span class="nc" id="L514">        h2 = (-2 * amount3) + (3 * amount2); // weight for p2</span>
+<span class="nc" id="L515">        h3 = amount3 - (2 * amount2) + amount; // weight for t1</span>
+<span class="nc" id="L516">        h4 = (amount3 - amount2); // weight for t2</span>
+<span class="nc" id="L517">        outX = (h1 * p1.x) + (h2 * p2.x) + (h3 * t1.x) + (h4 * t2.x);</span>
+<span class="nc" id="L518">        outY = (h1 * p1.y) + (h2 * p2.y) + (h3 * t1.y) + (h4 * t2.y);</span>
+<span class="nc" id="L519">        return new Vector2(outX, outY);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Linear Interpolation&quot;&gt;
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value1 A Vector2 we want to interpolate with.
+     * @param value2 A Vector2 we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector2.
+     */
+    public static Vector2 lerp(Vector2 value1, Vector2 value2, float amount)
+    {
+<span class="nc" id="L534">        return new Vector2</span>
+        (
+<span class="nc" id="L536">            MathHelper.lerp(value1.x, value2.x, amount),</span>
+<span class="nc" id="L537">            MathHelper.lerp(value1.y, value2.y, amount)</span>
+        );
+    }
+
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value2 A Vector2 we want to interpolate with this Vector2.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector2.
+     */
+    public Vector2 lerp(Vector2 that, float amount)
+    {
+<span class="nc" id="L550">        return Vector2.lerp(this, that, amount);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Magnitude&quot;&gt;
+    /**
+     * Computes the magnitude of a Vector2.
+     * Magnitude is also known as the length of the vector.
+     * @return Returns the magnitude of the Vector2.
+     */
+    public static float magnitude(Vector2 vec)
+    {
+<span class="nc" id="L562">        return (float)Math.sqrt(vec.magnitudeSquared());</span>
+    }
+
+    /**
+     * Computes the magnitude of this Vector2.
+     * Magnitude is also known as the length of the vector.
+     * @return Returns the magnitude of this Vector2.
+     */
+    public float magnitude()
+    {
+<span class="nc" id="L572">        return Vector2.magnitude(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Magnitide Squared&quot;&gt;
+    /**
+     * Calculates the magnitude of a Vector2 squared.
+     * @return Returns the magnitude of the Vector2 squared.
+     */
+    public static float magnitudeSquared(Vector2 veca)
+    {
+<span class="nc" id="L583">        return (veca.x * veca.x) + (veca.y * veca.y);</span>
+    }
+
+    /**
+     * Calculates the magnitude of this Vector2 squared.
+     * @return Returns the magnitude of this Vector2 squared.
+     */
+    public float magnitudeSquared()
+    {
+<span class="nc" id="L592">        return Vector2.magnitudeSquared(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Max &amp; Min&quot;&gt;
+    /**
+     * Returns a Vector2 that contains the highest value
+     * from each matching pair of components.
+     * @param veca
+     * @param vecb
+     * @return Vector2
+     */
+    public static Vector2 max(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc bnc" id="L606" title="All 2 branches missed.">        float cx = (veca.x &gt; vecb.x) ? veca.x : vecb.x;</span>
+<span class="nc bnc" id="L607" title="All 2 branches missed.">        float cy = (veca.y &gt; vecb.y) ? veca.y : vecb.y;</span>
+<span class="nc" id="L608">        return new Vector2(cx, cy);</span>
+    }
+
+    /**
+     * Returns a Vector2 that contains the lowest value from
+     * each matching pair of components.
+     * @param veca
+     * @param vecb
+     * @return Vector2
+     */
+    public static Vector2 min(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc bnc" id="L620" title="All 2 branches missed.">        float cx = (veca.x &lt; vecb.x) ? veca.x : vecb.x;</span>
+<span class="nc bnc" id="L621" title="All 2 branches missed.">        float cy = (veca.y &lt; vecb.y) ? veca.y : vecb.y;</span>
+<span class="nc" id="L622">        return new Vector2(cx, cy);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Multiply&quot;&gt;
+    /**
+     * Multiplies a Vector2 by a scalar
+     * @param veca A Vector2 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns a new Vector2 multiplied by the scalar.
+     */
+    public static Vector2 multiply(Vector2 veca, float scalar)
+    {
+<span class="nc" id="L635">        return new Vector2(veca.x * scalar, veca.y * scalar);</span>
+    }
+
+    /**
+     * Converts an integer to float for scalar multiplication of a Vector2.
+     * @param veca A Vector2 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns a new Vector2 multiplied by the scalar.
+     */
+    public static Vector2 multiply(Vector2 veca, int scalar)
+    {
+<span class="nc" id="L646">        return Vector2.multiply(veca, (float)scalar);</span>
+    }
+
+    /**
+     * Multiplies this Vector2 by a scalar.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns this Vector2 multiplied by the scalar.
+     */
+    public Vector2 multiply(float scalar)
+    {
+<span class="nc" id="L656">        return Vector2.multiply(this, scalar);</span>
+    }
+
+    /**
+     * Converts an integer to float then multiplies this Vector2 by a scalar.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns this Vector2 multiplied by the scalar.
+     */
+    public Vector2 multiply(int scalar)
+    {
+<span class="nc" id="L666">        return Vector2.multiply(this, (float)scalar);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Negate&quot;&gt;
+    /**
+     * Returns a new Vector2 pointing in the opposite direction.
+     * @param veca The Vector2 we want to negate.
+     * @return Returns A Vector2 that has been negated.
+     */
+    public static Vector2 negate(Vector2 veca)
+    {
+<span class="nc" id="L678">        return new Vector2(veca.x * -1, veca.y * -1);</span>
+    }
+
+    /**
+     * Returns this Vector2 pointing in the opposite direction.
+     * @return Returns this Vector2 negated.
+     */
+    public Vector2 negate()
+    {
+<span class="nc" id="L687">        return Vector2.negate(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Normalize&quot;&gt;
+    /**
+     * Normalizes a Vector2; Also know as the unit vector.
+     * @param vec A Vector2 we want to normalize.
+     * @return Returns a new Vector2 that is normalized.
+     */
+    public static Vector2 normalize(Vector2 vec)
+    {
+<span class="nc" id="L699">        float magnitude = magnitude(vec);</span>
+<span class="nc" id="L700">        return new Vector2(vec.x / magnitude, vec.y / magnitude);</span>
+    }
+
+    /**
+     * Normalizes this Vector2
+     * @return Returns this Vector2 that has been normalized.
+     */
+    public Vector2 normalize()
+    {
+<span class="nc" id="L709">        return Vector2.normalize(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Perpendicular&quot;&gt;
+    /**
+     * Creates a Vector2 perpendicular to the provided Vector2.
+     * @param a A Vector2 we want to find a perpendicular Vector2 of.
+     * @return Returns a Vector2 perpendicular to the Vector2 provided.
+     */
+    public static Vector2 perpendicular(Vector2 a)
+    {
+<span class="nc" id="L721">        return new Vector2(-a.y, a.x);</span>
+    }
+
+    /**
+     * Creates a Vector2 perpendicular to this Vector2.
+     * @return Returns a Vector2 perpendicular to this Vector2.
+     */
+    public Vector2 perpendicular()
+    {
+<span class="nc" id="L730">        return Vector2.perpendicular(this);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Projection&quot;&gt;
+    /**
+     * Calculates the scalar projection of b onto a.
+     * @param a A Vector2 we want to project onto.
+     * @param b A Vector2 we want project.
+     * @return Returns the scalar projection of b onto a.
+     */
+    public static float scalarProjection(Vector2 a, Vector2 b)
+    {
+<span class="nc" id="L743">        return Vector2.dotProduct(a, b) / Vector2.magnitude(a);</span>
+    }
+
+    /**
+     * Calculates the scalar projection of that onto this.
+     * @param that A vector2 we want to project.
+     * @return Returns the scalar projection of that onto this.
+     */
+    public float scalarProjection(Vector2 that)
+    {
+<span class="nc" id="L753">        return Vector2.scalarProjection(this, that);</span>
+    }
+
+    /**
+     * Calculates the vector projection of b onto a.
+     * @param a A Vector2 we want to project onto.
+     * @param b A Vector2 we want project.
+     * @return Returns the vector projection of b onto a.
+     */
+    public static Vector2 vectorProjection(Vector2 a, Vector2 b)
+    {
+<span class="nc" id="L764">        float scalar = Vector2.scalarProjection(a, b);</span>
+<span class="nc" id="L765">        Vector2 normal = Vector2.normalize(a);</span>
+<span class="nc" id="L766">        return Vector2.multiply(normal, scalar);</span>
+    }
+
+    /**
+     * Calculates the vector projection of that onto this.
+     * @param that A Vector2 we want project.
+     * @return Returns the vector projection of that onto this.
+     */
+    public Vector2 vectorProjection(Vector2 that)
+    {
+<span class="nc" id="L776">        return Vector2.vectorProjection(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Random Vector2&quot;&gt;
+    /**
+     * Generates a Vector2 with random values for components from [-10000,10000].
+     * @return Returns a new Vector2 with its x and y components set randomly.
+     */
+    public static Vector2 random()
+    {
+<span class="nc" id="L787">        return new Vector2</span>
+        (
+<span class="nc" id="L789">            MathHelper.random(-10000, 10000),</span>
+<span class="nc" id="L790">            MathHelper.random(-10000, 10000)</span>
+        );
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Reflect&quot;&gt;
+    /**
+     * r = i - (2 * n * dot(i, n))
+     * @param incident Incident vector
+     * @param normal Surface normal vector
+     * @return Returns the reflected vector.
+     */
+    public static Vector2 reflect(Vector2 incident, Vector2 normal)
+    {
+<span class="nc" id="L804">        return incident.subtract(Vector2.multiply(normal, 2.0f).multiply(Vector2.dotProduct(incident, normal)));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Smooth Step&quot;&gt;
+    /**
+     * Performs a Smooth Step interpolation between two points.
+     * Traditional: smoothstep(t) = 3t2 − 2t3
+     * Ken Perlin: smootherstep(t) = 6t5 − 15t4 + 10t3
+     * @param a A Vector2 containing the starting point.
+     * @param b A Vector2 containing the ending point.
+     * @param amount A float value between zero and one.
+     * @return Returns the interpolation between two values.
+     */
+    public static Vector2 smoothStep(Vector2 a, Vector2 b, float amount)
+    {
+<span class="nc" id="L820">        return new Vector2</span>
+        (
+<span class="nc" id="L822">            MathHelper.smoothStep(a.x, b.x, amount),</span>
+<span class="nc" id="L823">            MathHelper.smoothStep(a.y, b.y, amount)</span>
+        );
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Special Vectors&quot;&gt;
+    /**
+     * Returns a special type of vector; The one vector &lt;1,1&gt;
+     * @return returns the special one vector.
+     */
+    public static Vector2 one()
+    {
+<span class="nc" id="L835">        return new Vector2(1.0f, 1.0f);</span>
+    }
+
+    /**
+     * Returns the unit vector for the x-axis.
+     * @return Vector2
+     */
+    public static Vector2 unitX()
+    {
+<span class="nc" id="L844">        return new Vector2(1.0f, 0.0f);</span>
+    }
+
+    /**
+     * Returns the unit vector for the y-axis.
+     * @return Vector2
+     */
+    public static Vector2 unitY()
+    {
+<span class="nc" id="L853">        return new Vector2(0.0f, 1.0f);</span>
+    }
+
+    /**
+     * Returns a special type of Vector
+     * The Zero vector, also known as the null vector &lt;0,0&gt;
+     * @return Vector2
+     */
+    public static Vector2 zero()
+    {
+<span class="fc" id="L863">        return new Vector2(0.0f, 0.0f);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Subtraction&quot;&gt;
+    /**
+     * Performs Vector2 Subtraction on two Vector2
+     * and returns a new Vector2
+     * @param veca A Vector2 to be subtracted.
+     * @param vecb A Vector2 to be subtracted.
+     * @return Returns a new Vector2 that is the difference between the two provided Vector2's
+     */
+    public static Vector2 subtract(Vector2 veca, Vector2 vecb)
+    {
+<span class="nc" id="L877">        return new Vector2(veca.x - vecb.x, veca.y - vecb.y);</span>
+    }
+
+    /**
+     * Subtracts a Vector2 from this
+     * @param that A Vector2 to be subtracted.
+     * @return Returns a new Vector2 that is the difference between this Vector2 and that Vector2.
+     */
+    public Vector2 subtract(Vector2 that)
+    {
+<span class="nc" id="L887">        return Vector2.subtract(this, that);</span>
+    }
+
+    /**
+     * Performs subtraction with this Vector2 and the x and y values provided.
+     * @param x The x component we want to subtract from this Vector2.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
+     */
+    public Vector2 subtract(float x, float y)
+    {
+<span class="nc" id="L898">        return Vector2.subtract(this, new Vector2(x, y));</span>
+    }
+
+    /**
+     * Performs subtraction with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector2.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
+     */
+    public Vector2 subtract(int x, int y)
+    {
+<span class="nc" id="L910">        return Vector2.subtract(this, new Vector2((float)x, (float)y));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x
+     */
+    public Vector2 subtractX(float x)
+    {
+<span class="nc" id="L920">        return Vector2.subtract(this, new Vector2(x, 0.0f));</span>
+    }
+
+    /**
+     * Converts the integer to a float and subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x
+     */
+    public Vector2 subtractX(int x)
+    {
+<span class="nc" id="L930">        return Vector2.subtract(this, new Vector2((float)x, 0.0f));</span>
+    }
+
+    /**
+     * Subtracts the value provided from the y component.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with y subtracted from this.y
+     */
+    public Vector2 subtractY(float y)
+    {
+<span class="nc" id="L940">        return Vector2.subtract(this, new Vector2(0.0f, y));</span>
+    }
+
+    /**
+     * Converts the integer to a float and subtracts the value provided to the y component.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with y subtracted from this.y
+     */
+    public Vector2 subtractY(int y)
+    {
+<span class="nc" id="L950">        return Vector2.subtract(this, new Vector2(0.0f, (float)y));</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;To String&quot;&gt;
+    /**
+     * Converts the Vector2 to a string. &lt;x,y&gt;
+     * @return Returns a string representing the Vector2.
+     */
+    @Override
+    public String toString()
+    {
+<span class="nc" id="L962">        return &quot;&lt;&quot; + x + &quot;,&quot; + y + &quot;&gt;&quot;;</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Transform&quot;&gt;
+    public static Vector2 transform()
+    {
+<span class="nc" id="L969">        throw new UnsupportedOperationException(&quot;Not yet implemented.&quot;);</span>
+    }
+    //&lt;/editor-fold&gt;
+
+    //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Wedge Product&quot;&gt;
+    /**
+     * Performs the wedge product with two Vector2.
+     * Calculates the signed area of the parallelogram created using the two Vector2.
+     * @param a A Vector2 we want to use; 1 Component of a BiVector.
+     * @param b A Vector2 we want to use; 1 Component of a BiVector.
+     * @return Returns a ^ b.
+     */
+    public static float wedgeProduct(Vector2 a, Vector2 b)
+    {
+<span class="nc" id="L983">        return (a.x * b.y) - (a.y * b.x);</span>
+    }
+
+    /**
+     * Performs the wedge product with this Vector2 and that Vector2.
+     * @param that A Vector2 we want to use; 1 Component of a BiVector.
+     * @return Returns this ^ that.
+     */
+    public float wedgeProduct(Vector2 that)
+    {
+<span class="nc" id="L993">        return Vector2.wedgeProduct(this, that);</span>
+    }
+    //&lt;/editor-fold&gt;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

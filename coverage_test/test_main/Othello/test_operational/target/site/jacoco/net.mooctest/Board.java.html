@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Board.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Board.java</span></div><h1>Board.java</h1><pre class="source lang-java linenums">package net.mooctest;
+<span class="fc" id="L2">public class Board {</span>
+	
+	/*
+	 * createBoard method creates initial Othello board,
+	 * X means black, O means white.
+	 * */
+	
+	public String[][] createBoard(){
+		
+<span class="fc" id="L11">		String[][] board = new String[8][8];</span>
+<span class="fc bfc" id="L12" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L14" title="All 8 branches covered.">				if ((i == 3 &amp;&amp; k == 3) || (i == 4 &amp;&amp; k == 4))</span>
+<span class="fc" id="L15">					board[i][k] = &quot;O&quot;;</span>
+<span class="fc bfc" id="L16" title="All 8 branches covered.">				else if ((i == 3 &amp;&amp; k == 4) || (i == 4 &amp;&amp; k == 3))</span>
+<span class="fc" id="L17">					board[i][k] = &quot;X&quot;;</span>
+				else
+<span class="fc" id="L19">					board[i][k] = &quot;.&quot;;</span>
+			}
+		}
+<span class="fc" id="L22">		return board;</span>
+	}
+	
+	/*
+	 * printBoard method displays any of boards.
+	 * */
+	
+	public void printBoard(String[][] board){
+<span class="fc" id="L30">		System.out.println(&quot;  01234567&quot;);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc" id="L32">			System.out.print(i);</span>
+<span class="fc" id="L33">			System.out.print(&quot; &quot;);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++)</span>
+<span class="fc" id="L35">				System.out.print(board[i][k]);</span>
+<span class="fc" id="L36">			System.out.println();</span>
+		}
+<span class="fc" id="L38">		System.out.println();</span>
+<span class="fc" id="L39">	}</span>
+	
+	/*
+	 * checkPossibleWhiteMoves method puts '1' to all
+	 * squares which are neighbor of black squares.
+	 * We are putting '1' because later all '1's will
+	 * be checked for game rules. 
+	 * We need this method since we can not move any 
+	 * random square in the board according to game
+	 * rules. In other words, in each turn we should
+	 * move legally.
+	 * */
+	
+	public String[][] checkPossibleWhiteMoves(String[][] game_board){
+
+<span class="fc" id="L54">		String[][] white_board = new String[8][8];</span>
+		
+<span class="fc bfc" id="L56" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++)</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++)</span>
+<span class="fc" id="L58">				white_board[i][k] = game_board[i][k];</span>
+		
+<span class="fc" id="L60">		Boolean[][] isChecked = new Boolean[8][8];</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc" id="L63">				isChecked[i][k] = false;</span>
+			}
+		}
+		
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+
+<span class="fc bfc" id="L69" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">				if (white_board[i][k] == &quot;X&quot;){</span>
+<span class="fc bfc" id="L71" title="All 6 branches covered.">					if ((i-1 &gt;= 0) &amp;&amp; white_board[i-1][k] != &quot;X&quot; &amp;&amp; white_board[i-1][k] != &quot;O&quot;)</span>
+<span class="fc" id="L72">						white_board[i-1][k] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L73" title="All 8 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; white_board[i-1][k+1] != &quot;X&quot; &amp;&amp; white_board[i-1][k+1] != &quot;O&quot;)</span>
+<span class="fc" id="L74">						white_board[i-1][k+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L75" title="All 6 branches covered.">					if((k+1) &lt;= 7 &amp;&amp; white_board[i][k+1] != &quot;X&quot; &amp;&amp; white_board[i][k+1] != &quot;O&quot;)</span>
+<span class="fc" id="L76">						white_board[i][k+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L77" title="All 8 branches covered.">					if((i+1 &lt;= 7) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; white_board[i+1][k+1] != &quot;X&quot; &amp;&amp; white_board[i+1][k+1] != &quot;O&quot;)</span>
+<span class="fc" id="L78">						white_board[i+1][k+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L79" title="All 6 branches covered.">					if((i+1 &lt;=7) &amp;&amp; white_board[i+1][k] != &quot;X&quot; &amp;&amp; white_board[i+1][k] != &quot;O&quot;)</span>
+<span class="fc" id="L80">						white_board[i+1][k] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L81" title="All 8 branches covered.">					if((i+1 &lt;=7) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; white_board[i+1][k-1] != &quot;X&quot; &amp;&amp; white_board[i+1][k-1] != &quot;O&quot;)</span>
+<span class="fc" id="L82">						white_board[i+1][k-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L83" title="All 6 branches covered.">					if((k-1 &gt;= 0) &amp;&amp; white_board[i][k-1] != &quot;X&quot; &amp;&amp; white_board[i][k-1] != &quot;O&quot;)</span>
+<span class="fc" id="L84">						white_board[i][k-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L85" title="All 8 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; white_board[i-1][k-1] != &quot;X&quot; &amp;&amp; white_board[i-1][k-1] != &quot;O&quot;)</span>
+<span class="fc" id="L86">						white_board[i-1][k-1] = &quot;1&quot;;</span>
+				}
+			}
+		}
+
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+
+<span class="fc bfc" id="L93" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">				if (white_board[i][k] == &quot;1&quot;){</span>
+<span class="fc bfc" id="L95" title="All 4 branches covered.">					if ((i-1 &gt;= 0) &amp;&amp; white_board[i-1][k] == &quot;X&quot;){ </span>
+<span class="fc" id="L96">						finalizeWhiteMoves(isChecked, white_board, i-1, k, -1, 0);</span>
+					}
+<span class="fc bfc" id="L98" title="All 6 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; white_board[i-1][k+1] == &quot;X&quot;){ </span>
+<span class="fc" id="L99">						finalizeWhiteMoves(isChecked, white_board, i-1, k+1, -1, 1);</span>
+					}
+<span class="fc bfc" id="L101" title="All 4 branches covered.">					if((k+1) &lt;= 7 &amp;&amp; white_board[i][k+1] == &quot;X&quot;){ </span>
+<span class="fc" id="L102">						finalizeWhiteMoves(isChecked, white_board, i, k+1, 0, 1);</span>
+					}
+<span class="fc bfc" id="L104" title="All 6 branches covered.">					if((i+1 &lt;= 7) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; white_board[i+1][k+1] == &quot;X&quot;){  </span>
+<span class="fc" id="L105">						finalizeWhiteMoves(isChecked, white_board, i+1, k+1, 1, 1); </span>
+					}
+<span class="fc bfc" id="L107" title="All 4 branches covered.">					if((i+1 &lt;=7) &amp;&amp; white_board[i+1][k] == &quot;X&quot;){ </span>
+<span class="fc" id="L108">						finalizeWhiteMoves(isChecked, white_board, i+1, k, 1, 0); </span>
+					}
+<span class="fc bfc" id="L110" title="All 6 branches covered.">					if((i+1 &lt;=7) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; white_board[i+1][k-1] == &quot;X&quot;){ </span>
+<span class="fc" id="L111">						finalizeWhiteMoves(isChecked, white_board, i+1, k-1, 1, -1); </span>
+					}
+<span class="fc bfc" id="L113" title="All 4 branches covered.">					if((k-1 &gt;= 0) &amp;&amp; white_board[i][k-1] == &quot;X&quot;){ </span>
+<span class="fc" id="L114">						finalizeWhiteMoves(isChecked, white_board, i, k-1, 0, -1); </span>
+					}
+<span class="fc bfc" id="L116" title="All 6 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; white_board[i-1][k-1] == &quot;X&quot;){  </span>
+<span class="fc" id="L117">						finalizeWhiteMoves(isChecked, white_board, i-1, k-1, -1, -1); </span>
+					}
+				}
+			}
+		}
+		
+<span class="fc" id="L123">		return white_board;</span>
+
+	}
+	
+	/*
+	 * checkPossibleBlackMoves method puts '1' to all
+	 * squares which are neighbor of white squares.
+	 * We are putting '1' because later all '1's will
+	 * be checked for game rules.  
+	 * We need this method since we can not move any 
+	 * random square in the board according to game
+	 * rules. In other words, in each turn we should
+	 * move legally.
+	 * */
+	
+	public String[][] checkPossibleBlackMoves(String[][] game_board){
+	
+<span class="fc" id="L140">		String[][] black_board = new String[8][8];</span>
+		
+<span class="fc bfc" id="L142" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++)</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++)</span>
+<span class="fc" id="L144">				black_board[i][k] = game_board[i][k];</span>
+
+<span class="fc" id="L146">		Boolean[][] isChecked = new Boolean[8][8];</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc" id="L149">				isChecked[i][k] = false;</span>
+			}
+		}
+		
+<span class="fc bfc" id="L153" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+
+<span class="fc bfc" id="L155" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">				if (black_board[i][k] == &quot;O&quot;){</span>
+<span class="fc bfc" id="L157" title="All 6 branches covered.">					if ((i-1 &gt;= 0) &amp;&amp; black_board[i-1][k] != &quot;X&quot; &amp;&amp; black_board[i-1][k] != &quot;O&quot;)  // if that square includes a point.</span>
+<span class="fc" id="L158">						black_board[i-1][k] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L159" title="All 8 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; black_board[i-1][k+1] != &quot;X&quot; &amp;&amp; black_board[i-1][k+1] != &quot;O&quot;)</span>
+<span class="fc" id="L160">						black_board[i-1][k+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L161" title="All 6 branches covered.">					if((k+1) &lt;= 7 &amp;&amp; black_board[i][k+1] != &quot;X&quot; &amp;&amp; black_board[i][k+1] != &quot;O&quot;)</span>
+<span class="fc" id="L162">						black_board[i][k+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L163" title="All 8 branches covered.">					if((i+1 &lt;= 7) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; black_board[i+1][k+1] != &quot;X&quot; &amp;&amp; black_board[i+1][k+1] != &quot;O&quot;)</span>
+<span class="fc" id="L164">						black_board[i+1][k+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L165" title="All 6 branches covered.">					if((i+1 &lt;=7) &amp;&amp; black_board[i+1][k] != &quot;X&quot; &amp;&amp; black_board[i+1][k] != &quot;O&quot;)</span>
+<span class="fc" id="L166">						black_board[i+1][k] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L167" title="All 8 branches covered.">					if((i+1 &lt;=7) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; black_board[i+1][k-1] != &quot;X&quot; &amp;&amp; black_board[i+1][k-1] != &quot;O&quot;)</span>
+<span class="fc" id="L168">						black_board[i+1][k-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L169" title="All 6 branches covered.">					if((k-1 &gt;= 0) &amp;&amp; black_board[i][k-1] != &quot;X&quot; &amp;&amp; black_board[i][k-1] != &quot;O&quot;)</span>
+<span class="fc" id="L170">						black_board[i][k-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L171" title="All 8 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; black_board[i-1][k-1] != &quot;X&quot; &amp;&amp; black_board[i-1][k-1] != &quot;O&quot;)</span>
+<span class="fc" id="L172">						black_board[i-1][k-1] = &quot;1&quot;;</span>
+				}
+			}
+		}
+
+<span class="fc bfc" id="L177" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+
+<span class="fc bfc" id="L179" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">				if (black_board[i][k] == &quot;1&quot;){      // for checking whether we can really put 1 or not</span>
+<span class="fc bfc" id="L181" title="All 4 branches covered.">					if ((i-1 &gt;= 0) &amp;&amp; black_board[i-1][k] == &quot;O&quot;){ </span>
+<span class="fc" id="L182">						finalizeBlackMoves(isChecked, black_board, i-1, k, -1, 0); // -1 = i-1 - i, 0 = k-k</span>
+					}
+<span class="fc bfc" id="L184" title="All 6 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; black_board[i-1][k+1] == &quot;O&quot;){ </span>
+<span class="fc" id="L185">						finalizeBlackMoves(isChecked, black_board, i-1, k+1, -1, 1);</span>
+					}
+<span class="fc bfc" id="L187" title="All 4 branches covered.">					if((k+1) &lt;= 7 &amp;&amp; black_board[i][k+1] == &quot;O&quot;){ </span>
+<span class="fc" id="L188">						finalizeBlackMoves(isChecked, black_board, i, k+1, 0, 1);</span>
+					}
+<span class="fc bfc" id="L190" title="All 6 branches covered.">					if((i+1 &lt;= 7) &amp;&amp; (k+1 &lt;= 7) &amp;&amp; black_board[i+1][k+1] == &quot;O&quot;){  </span>
+<span class="fc" id="L191">						finalizeBlackMoves(isChecked, black_board, i+1, k+1, 1, 1); </span>
+					}
+<span class="fc bfc" id="L193" title="All 4 branches covered.">					if((i+1 &lt;=7) &amp;&amp; black_board[i+1][k] == &quot;O&quot;){ </span>
+<span class="fc" id="L194">						finalizeBlackMoves(isChecked, black_board, i+1, k, 1, 0); </span>
+					}
+<span class="fc bfc" id="L196" title="All 6 branches covered.">					if((i+1 &lt;=7) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; black_board[i+1][k-1] == &quot;O&quot;){ </span>
+<span class="fc" id="L197">						finalizeBlackMoves(isChecked, black_board, i+1, k-1, 1, -1); </span>
+					}
+<span class="fc bfc" id="L199" title="All 4 branches covered.">					if((k-1 &gt;= 0) &amp;&amp; black_board[i][k-1] == &quot;O&quot;){ </span>
+<span class="fc" id="L200">						finalizeBlackMoves(isChecked, black_board, i, k-1, 0, -1); </span>
+					}
+<span class="fc bfc" id="L202" title="All 6 branches covered.">					if((i-1 &gt;= 0) &amp;&amp; (k-1 &gt;= 0) &amp;&amp; black_board[i-1][k-1] == &quot;O&quot;){  </span>
+<span class="fc" id="L203">						finalizeBlackMoves(isChecked, black_board, i-1, k-1, -1, -1); </span>
+					}
+				}
+			}
+		}
+
+<span class="fc" id="L209">		return black_board;</span>
+
+	}
+	
+	/*
+	 * finalizeWhiteMoves method reduces the unnecessary '1' s
+	 * that were put in checkPossibleWhiteMoves. Finally, we are 
+	 * replacing '1' s which are located in playable squares with '*'.
+	 * Before a user move, he or she can choose squares having '*'. 
+	 * */
+	
+	public void finalizeWhiteMoves(Boolean[][] isChecked, String[][] board, int current_row, int current_column, int r , int c){ // r = row_step, c = column_step
+<span class="fc" id="L221">		int row_counter = current_row + r;</span>
+<span class="fc" id="L222">		int column_counter = current_column + c;</span>
+<span class="fc" id="L223">		int actual_row = current_row-r;</span>
+<span class="fc" id="L224">		int actual_column = current_column-c;</span>
+		
+<span class="fc bfc" id="L226" title="All 10 branches covered.">		while(row_counter &lt;= 8 &amp;&amp; column_counter &lt;= 8 &amp;&amp; row_counter &gt;= -1 &amp;&amp; column_counter &gt;= -1 &amp;&amp; isChecked[actual_row][actual_column] == false){</span>
+			
+<span class="fc bfc" id="L228" title="All 8 branches covered.">			if (row_counter &lt;= 7 &amp;&amp; column_counter &lt;= 7 &amp;&amp; row_counter &gt;= 0 &amp;&amp; column_counter &gt;= 0){</span>
+<span class="fc bfc" id="L229" title="All 2 branches covered.">				if (board[row_counter][column_counter] == &quot;O&quot; ){</span>
+<span class="fc" id="L230">					board[actual_row][actual_column] = &quot;*&quot;;</span>
+<span class="fc" id="L231">					isChecked[actual_row][actual_column] = true;</span>
+<span class="fc" id="L232">					break;</span>
+				}
+	
+<span class="fc bfc" id="L235" title="All 6 branches covered.">				else if ((board[row_counter][column_counter] == &quot;*&quot; || board[row_counter][column_counter] == &quot;.&quot; || board[row_counter][column_counter] == &quot;1&quot;)){</span>
+<span class="fc" id="L236">					board[actual_row][actual_column] = &quot;.&quot;;</span>
+<span class="fc" id="L237">					break;</span>
+				}	
+			}
+			else
+<span class="fc" id="L241">				board[actual_row][actual_column] = &quot;.&quot;;</span>
+			
+<span class="fc" id="L243">			row_counter += r;</span>
+<span class="fc" id="L244">			column_counter += c;</span>
+			
+		}
+		
+<span class="fc" id="L248">	}</span>
+	
+	/*
+	 * finalizeBlackMoves method reduces the unnecessary '1' s
+	 * that were put in checkPossibleBlackMoves. Finally, we are 
+	 * replacing '1' s which are located in playable squares with '*'.
+	 * Before a user move, he or she can choose squares having '*'. 
+	 * */
+	
+	public void finalizeBlackMoves(Boolean[][] isChecked, String[][] board, int current_row, int current_column, int r , int c){ // r = row_step, c = column_step
+<span class="fc" id="L258">		int row_counter = current_row + r;</span>
+<span class="fc" id="L259">		int column_counter = current_column + c;</span>
+<span class="fc" id="L260">		int actual_row = current_row-r;</span>
+<span class="fc" id="L261">		int actual_column = current_column-c;</span>
+		
+<span class="fc bfc" id="L263" title="All 10 branches covered.">		while(row_counter &lt;= 8 &amp;&amp; column_counter &lt;= 8 &amp;&amp; row_counter &gt;= -1 &amp;&amp; column_counter &gt;= -1 &amp;&amp; isChecked[actual_row][actual_column] == false){</span>
+			
+<span class="fc bfc" id="L265" title="All 8 branches covered.">			if (row_counter &lt;= 7 &amp;&amp; column_counter &lt;= 7 &amp;&amp; row_counter &gt;= 0 &amp;&amp; column_counter &gt;= 0){</span>
+<span class="fc bfc" id="L266" title="All 2 branches covered.">				if (board[row_counter][column_counter] == &quot;X&quot; ){</span>
+<span class="fc" id="L267">					board[actual_row][actual_column] = &quot;*&quot;;</span>
+<span class="fc" id="L268">					isChecked[actual_row][actual_column] = true;</span>
+<span class="fc" id="L269">					break;</span>
+				}
+	
+<span class="fc bfc" id="L272" title="All 6 branches covered.">				else if ((board[row_counter][column_counter] == &quot;*&quot; || board[row_counter][column_counter] == &quot;.&quot; || board[row_counter][column_counter] == &quot;1&quot;)){</span>
+<span class="fc" id="L273">					board[actual_row][actual_column] = &quot;.&quot;;</span>
+<span class="fc" id="L274">					break;</span>
+				}	
+			}
+			else
+<span class="fc" id="L278">				board[actual_row][actual_column] = &quot;.&quot;;</span>
+			
+<span class="fc" id="L280">			row_counter += r;</span>
+<span class="fc" id="L281">			column_counter += c;</span>
+			
+		}
+		
+<span class="fc" id="L285">	}</span>
+	
+	/*
+	 * makeNodesWhite method updates the board after white player
+	 * move. The color of black squares which are between white 
+	 * squares change into white.
+	 * */
+	
+	public void makeNodesWhite(String [][] game_board, int row, int column){
+
+<span class="fc" id="L295">		String[][] white_movement = new String[8][8];</span>
+<span class="fc" id="L296">		int check = 1;</span>
+		
+<span class="fc bfc" id="L298" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L299" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++)</span>
+<span class="fc" id="L300">				white_movement[i][k] = game_board[i][k];</span>
+		}
+		
+		int row_step, column_step, row_counter, column_counter;
+
+<span class="fc bfc" id="L305" title="All 6 branches covered.">		if (row-1 &gt;= 0 &amp;&amp; column-1 &gt;= 0 &amp;&amp; game_board[row-1][column-1] == &quot;X&quot;)</span>
+<span class="fc" id="L306">			white_movement[row-1][column-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L307" title="All 4 branches covered.">		if (row-1 &gt;= 0 &amp;&amp; game_board[row-1][column] == &quot;X&quot;)</span>
+<span class="fc" id="L308">			white_movement[row-1][column] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L309" title="All 6 branches covered.">		if (row-1 &gt;= 0 &amp;&amp; column+1 &lt;= 7 &amp;&amp; game_board[row-1][column+1] == &quot;X&quot;)</span>
+<span class="fc" id="L310">			white_movement[row-1][column+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L311" title="All 4 branches covered.">		if (column+1 &lt;= 7 &amp;&amp; game_board[row][column+1] == &quot;X&quot;)</span>
+<span class="fc" id="L312">			white_movement[row][column+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L313" title="All 6 branches covered.">		if (row+1 &lt;= 7 &amp;&amp; column+1 &lt;= 7 &amp;&amp; game_board[row+1][column+1] == &quot;X&quot;)</span>
+<span class="fc" id="L314">			white_movement[row+1][column+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L315" title="All 4 branches covered.">		if (row+1 &lt;= 7 &amp;&amp; game_board[row+1][column] == &quot;X&quot;)</span>
+<span class="fc" id="L316">			white_movement[row+1][column] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L317" title="All 6 branches covered.">		if (row+1 &lt;= 7 &amp;&amp; column-1 &gt;= 0 &amp;&amp;  game_board[row+1][column-1] == &quot;X&quot;)</span>
+<span class="fc" id="L318">			white_movement[row+1][column-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L319" title="All 4 branches covered.">		if (column-1 &gt;= 0 &amp;&amp; game_board[row][column-1] == &quot;X&quot;)</span>
+<span class="fc" id="L320">			white_movement[row][column-1] = &quot;1&quot;;</span>
+		
+
+<span class="fc bfc" id="L323" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L324" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L325" title="All 2 branches covered.">				if (white_movement[i][k] == &quot;1&quot;){</span>
+
+<span class="fc" id="L327">					check = 1;</span>
+<span class="fc" id="L328">					row_step = i - row;</span>
+<span class="fc" id="L329">					column_step = k - column;</span>
+<span class="fc" id="L330">					row_counter = i + row_step;</span>
+<span class="fc" id="L331">					column_counter = k + column_step;</span>
+					
+<span class="fc bfc" id="L333" title="All 2 branches covered.">					while(check &gt; 0){</span>
+<span class="fc bfc" id="L334" title="All 8 branches covered.">						if (row_counter &lt;= 7 &amp;&amp; column_counter &lt;= 7 &amp;&amp; row_counter &gt;= 0 &amp;&amp; column_counter &gt;= 0){</span>
+<span class="fc bfc" id="L335" title="All 2 branches covered.">							if(white_movement[row_counter][column_counter] == &quot;O&quot;)</span>
+<span class="fc" id="L336">								break;</span>
+<span class="fc bfc" id="L337" title="All 2 branches covered.">							else if (white_movement[row_counter][column_counter] == &quot;.&quot;)</span>
+<span class="fc" id="L338">								check *= 0;</span>
+<span class="fc" id="L339">							row_counter += row_step;</span>
+<span class="fc" id="L340">							column_counter += column_step;</span>
+							
+						}
+						else
+<span class="fc" id="L344">							check = 0;</span>
+					}
+					
+<span class="fc" id="L347">					row_step = i - row;</span>
+<span class="fc" id="L348">					column_step = k - column;</span>
+<span class="fc" id="L349">					row_counter = i;</span>
+<span class="fc" id="L350">					column_counter = k;</span>
+
+					
+<span class="pc bpc" id="L353" title="4 of 10 branches missed.">					while(row_counter &lt;= 8 &amp;&amp; column_counter &lt;= 8 &amp;&amp; row_counter &gt;= -1 &amp;&amp; column_counter &gt;= -1 &amp;&amp; check &gt; 0){</span>
+<span class="pc bpc" id="L354" title="4 of 8 branches missed.">						if (row_counter &lt;= 7 &amp;&amp; column_counter &lt;= 7 &amp;&amp; row_counter &gt;= 0 &amp;&amp; column_counter &gt;= 0){</span>
+<span class="fc bfc" id="L355" title="All 2 branches covered.">							if (game_board[row_counter][column_counter] == &quot;X&quot;){</span>
+<span class="fc" id="L356">								game_board[row_counter][column_counter] = &quot;O&quot;;</span>
+							}
+				
+							else
+								break;
+						}
+<span class="fc" id="L362">						row_counter += row_step;</span>
+<span class="fc" id="L363">						column_counter += column_step;</span>
+						
+					}
+				}
+			}
+		}
+<span class="fc" id="L369">	}</span>
+	
+	/*
+	 * makeNodesBlack method updates the board after black player
+	 * move. The color of white squares which are between black 
+	 * squares change into black.
+	 * */
+	
+	public void makeNodesBlack(String [][] game_board, int row, int column){
+
+<span class="fc" id="L379">		String[][] black_movement = new String[8][8];</span>
+<span class="fc" id="L380">		int check = 1;</span>
+		
+<span class="fc bfc" id="L382" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L383" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++)</span>
+<span class="fc" id="L384">				black_movement[i][k] = game_board[i][k];</span>
+		}
+		
+		int row_step, column_step, row_counter, column_counter;
+
+<span class="fc bfc" id="L389" title="All 6 branches covered.">		if (row-1 &gt;= 0 &amp;&amp; column-1 &gt;= 0 &amp;&amp; game_board[row-1][column-1] == &quot;O&quot;)</span>
+<span class="fc" id="L390">			black_movement[row-1][column-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L391" title="All 4 branches covered.">		if (row-1 &gt;= 0 &amp;&amp; game_board[row-1][column] == &quot;O&quot;)</span>
+<span class="fc" id="L392">			black_movement[row-1][column] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L393" title="All 6 branches covered.">		if (row-1 &gt;= 0 &amp;&amp; column+1 &lt;= 7 &amp;&amp; game_board[row-1][column+1] == &quot;O&quot;)</span>
+<span class="fc" id="L394">			black_movement[row-1][column+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L395" title="All 4 branches covered.">		if (column+1 &lt;= 7 &amp;&amp; game_board[row][column+1] == &quot;O&quot;)</span>
+<span class="fc" id="L396">			black_movement[row][column+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L397" title="All 6 branches covered.">		if (row+1 &lt;= 7 &amp;&amp; column+1 &lt;= 7 &amp;&amp; game_board[row+1][column+1] == &quot;O&quot;)</span>
+<span class="fc" id="L398">			black_movement[row+1][column+1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L399" title="All 4 branches covered.">		if (row+1 &lt;= 7 &amp;&amp; game_board[row+1][column] == &quot;O&quot;)</span>
+<span class="fc" id="L400">			black_movement[row+1][column] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L401" title="All 6 branches covered.">		if (row+1 &lt;= 7 &amp;&amp; column-1 &gt;= 0 &amp;&amp;  game_board[row+1][column-1] == &quot;O&quot;)</span>
+<span class="fc" id="L402">			black_movement[row+1][column-1] = &quot;1&quot;;</span>
+<span class="fc bfc" id="L403" title="All 4 branches covered.">		if (column-1 &gt;= 0 &amp;&amp; game_board[row][column-1] == &quot;O&quot;)</span>
+<span class="fc" id="L404">			black_movement[row][column-1] = &quot;1&quot;;</span>
+		
+
+<span class="fc bfc" id="L407" title="All 2 branches covered.">		for (int i = 0; i &lt; 8; i++){</span>
+<span class="fc bfc" id="L408" title="All 2 branches covered.">			for (int k = 0; k &lt; 8; k++){</span>
+<span class="fc bfc" id="L409" title="All 2 branches covered.">				if (black_movement[i][k] == &quot;1&quot;){</span>
+					
+<span class="fc" id="L411">					check = 1;</span>
+<span class="fc" id="L412">					row_step = i - row;</span>
+<span class="fc" id="L413">					column_step = k - column;</span>
+<span class="fc" id="L414">					row_counter = i ;</span>
+<span class="fc" id="L415">					column_counter = k ;</span>
+					
+<span class="fc bfc" id="L417" title="All 2 branches covered.">					while(check &gt; 0){</span>
+<span class="fc bfc" id="L418" title="All 8 branches covered.">						if (row_counter &lt;= 7 &amp;&amp; column_counter &lt;= 7 &amp;&amp; row_counter &gt;= 0 &amp;&amp; column_counter &gt;= 0){</span>
+<span class="fc bfc" id="L419" title="All 2 branches covered.">							if(black_movement[row_counter][column_counter] == &quot;X&quot;)</span>
+<span class="fc" id="L420">								break;</span>
+<span class="fc bfc" id="L421" title="All 2 branches covered.">							else if (black_movement[row_counter][column_counter] == &quot;.&quot;)</span>
+<span class="fc" id="L422">								check *= 0;</span>
+<span class="fc" id="L423">							row_counter += row_step;</span>
+<span class="fc" id="L424">							column_counter += column_step;</span>
+						}
+						else
+<span class="fc" id="L427">							check = 0;</span>
+					}
+					
+<span class="fc" id="L430">					row_step = i - row;</span>
+<span class="fc" id="L431">					column_step = k - column;</span>
+<span class="fc" id="L432">					row_counter = i;</span>
+<span class="fc" id="L433">					column_counter = k;</span>
+
+					
+					
+<span class="pc bpc" id="L437" title="4 of 10 branches missed.">					while(row_counter &lt;= 8 &amp;&amp; column_counter &lt;= 8 &amp;&amp; row_counter &gt;= -1 &amp;&amp; column_counter &gt;= -1 &amp;&amp; check &gt; 0){</span>
+<span class="pc bpc" id="L438" title="4 of 8 branches missed.">						if (row_counter &lt;= 7 &amp;&amp; column_counter &lt;= 7 &amp;&amp; row_counter &gt;= 0 &amp;&amp; column_counter &gt;= 0){</span>
+<span class="fc bfc" id="L439" title="All 2 branches covered.">							if (game_board[row_counter][column_counter] == &quot;O&quot;){</span>
+<span class="fc" id="L440">								game_board[row_counter][column_counter] = &quot;X&quot;;</span>
+							}
+				
+							else
+								break;
+						}
+<span class="fc" id="L446">						row_counter += row_step;</span>
+<span class="fc" id="L447">						column_counter += column_step;</span>
+						
+					}
+				}
+			}
+		}
+<span class="fc" id="L453">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SegmentTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">SegmentTree.java</span></div><h1>SegmentTree.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ * Segment tree using objects and pointers. A segment tree is a tree data
+ * structure for storing intervals, or segments. It allows querying which of the
+ * stored segments contain a given point. It is, in principle, a static
+ * structure; that is, its content cannot be modified once the structure is
+ * built.
+ * &lt;p&gt;
+ * This class is meant to be somewhat generic, all you'd have to do is extend
+ * the Data abstract class to store your custom data. I've also included a range
+ * minimum, range maximum, range sum, and interval stabbing implementations.
+ * &lt;p&gt;
+ * @see &lt;a href=&quot;https://en.wikipedia.org/wiki/Segment_tree&quot;&gt;Segment Tree (Wikipedia)&lt;/a&gt;
+ * &lt;br&gt;
+ */
+@SuppressWarnings(&quot;unchecked&quot;)
+<span class="fc" id="L30">public abstract class SegmentTree&lt;D extends SegmentTree.Data&gt; {</span>
+
+<span class="fc" id="L32">    protected Segment&lt;D&gt; root = null;</span>
+
+    /**
+     * Stabbing query
+     * 
+     * @param index
+     *            index to query
+     * @return data at index.
+     */
+    public abstract D query(long index);
+
+    /**
+     * Range query
+     * 
+     * @param start
+     *            start of range (inclusive)
+     * @param end
+     *            end of range to (inclusive)
+     * @return data for range.
+     */
+    public abstract D query(long start, long end);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L59">        StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L60">        builder.append(SegmentTreePrinter.getString(this));</span>
+<span class="fc" id="L61">        return builder.toString();</span>
+    }
+
+    public abstract static class Data implements Comparable&lt;Data&gt; {
+
+<span class="fc" id="L66">        protected long start = Long.MIN_VALUE;</span>
+<span class="fc" id="L67">        protected long end = Long.MAX_VALUE;</span>
+
+        /**
+         * Constructor for data at index
+         * 
+         * @param index
+         *            of data.
+         */
+<span class="fc" id="L75">        public Data(long index) {</span>
+<span class="fc" id="L76">            this.start = index;</span>
+<span class="fc" id="L77">            this.end = index;</span>
+<span class="fc" id="L78">        }</span>
+
+        /**
+         * Constructor for data at range (inclusive)
+         * 
+         * @param start
+         *            start of range for data.
+         * @param end
+         *            end of range for data.
+         */
+<span class="fc" id="L88">        public Data(long start, long end) {</span>
+<span class="fc" id="L89">            this.start = start;</span>
+<span class="fc" id="L90">            this.end = end;</span>
+<span class="fc" id="L91">        }</span>
+
+        /**
+         * Clear the indices
+         */
+        public void clear() {
+<span class="fc" id="L97">            start = Long.MIN_VALUE;</span>
+<span class="fc" id="L98">            end = Long.MAX_VALUE;</span>
+<span class="fc" id="L99">        }</span>
+
+        /**
+         * Combined this data with the Data parameter
+         * 
+         * @param data
+         *            Data to combined
+         * @return Data which represents the combination.
+         */
+        public abstract Data combined(Data data);
+
+        /**
+         * Deep copy of data.
+         * 
+         * @return deep copy.
+         */
+        public abstract Data copy();
+
+        /**
+         * Query inside this data object.
+         * 
+         * @param startOfRange
+         *            start of range (inclusive)
+         * @param endOfRange
+         *            end of range (inclusive)
+         * @return Data queried for or NULL if it doesn't match the query.
+         */
+        public abstract Data query(long startOfRange, long endOfRange);
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L133">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L134">            builder.append(start).append(&quot;-&gt;&quot;).append(end);</span>
+<span class="fc" id="L135">            return builder.toString();</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public int compareTo(Data d) {
+<span class="fc bfc" id="L142" title="All 2 branches covered.">            if (this.end &lt; d.end)</span>
+<span class="fc" id="L143">                return -1;</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            if (d.end &lt; this.end)</span>
+<span class="fc" id="L145">                return 1;</span>
+<span class="fc" id="L146">            return 0;</span>
+        }
+
+        /**
+         * Data structure representing points in the x,y space and their
+         * location in the quadrants.
+         */
+        public static final class QuadrantData extends Data {
+
+<span class="fc" id="L155">            public long quad0 = 0;</span>
+<span class="fc" id="L156">            public long quad1 = 0;</span>
+<span class="fc" id="L157">            public long quad2 = 0;</span>
+<span class="fc" id="L158">            public long quad3 = 0;</span>
+
+            public QuadrantData(long start, long end) {
+<span class="fc" id="L161">                super(start, end);</span>
+<span class="fc" id="L162">            }</span>
+
+            public QuadrantData(long index, long quad1, long quad2, long quad3, long quad4) {
+<span class="fc" id="L165">                super(index);</span>
+
+<span class="fc" id="L167">                this.quad0 = quad1;</span>
+<span class="fc" id="L168">                this.quad1 = quad2;</span>
+<span class="fc" id="L169">                this.quad2 = quad3;</span>
+<span class="fc" id="L170">                this.quad3 = quad4;</span>
+<span class="fc" id="L171">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public void clear() {
+<span class="fc" id="L178">                super.clear();</span>
+
+<span class="fc" id="L180">                quad0 = 0;</span>
+<span class="fc" id="L181">                quad1 = 0;</span>
+<span class="fc" id="L182">                quad2 = 0;</span>
+<span class="fc" id="L183">                quad3 = 0;</span>
+<span class="fc" id="L184">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public QuadrantData copy() {
+<span class="fc" id="L191">                final QuadrantData copy = new QuadrantData(start, end);</span>
+<span class="fc" id="L192">                copy.quad0 = this.quad0;</span>
+<span class="fc" id="L193">                copy.quad1 = this.quad1;</span>
+<span class="fc" id="L194">                copy.quad2 = this.quad2;</span>
+<span class="fc" id="L195">                copy.quad3 = this.quad3;</span>
+<span class="fc" id="L196">                return copy;</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data query(long startOfQuery, long endOfQuery) {
+<span class="fc bfc" id="L204" title="All 4 branches covered.">                if (endOfQuery &lt; this.start || startOfQuery &gt; this.end)</span>
+<span class="fc" id="L205">                    return null;</span>
+<span class="fc" id="L206">                return copy();</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data combined(Data data) {
+<span class="fc" id="L214">                QuadrantData q = null;</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">                if (data instanceof QuadrantData) {</span>
+<span class="fc" id="L216">                    q = (QuadrantData) data;</span>
+<span class="fc" id="L217">                    this.combined(q);</span>
+                }
+<span class="fc" id="L219">                return this;</span>
+            }
+
+            private void combined(QuadrantData data) {
+<span class="fc" id="L223">                this.quad0 += data.quad0;</span>
+<span class="fc" id="L224">                this.quad1 += data.quad1;</span>
+<span class="fc" id="L225">                this.quad2 += data.quad2;</span>
+<span class="fc" id="L226">                this.quad3 += data.quad3;</span>
+<span class="fc" id="L227">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public int hashCode() {
+<span class="fc" id="L234">                return 31 * (int)(this.start + this.end + this.quad0 + this.quad1 + this.quad2 + this.quad3);</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean equals(Object obj) {
+<span class="fc bfc" id="L242" title="All 2 branches covered.">                if (!(obj instanceof QuadrantData))</span>
+<span class="fc" id="L243">                    return false;</span>
+<span class="fc" id="L244">                QuadrantData data = (QuadrantData) obj;</span>
+<span class="fc bfc" id="L245" title="All 12 branches covered.">                if (this.start == data.start &amp;&amp; this.end == data.end &amp;&amp; this.quad0 == data.quad0</span>
+                    &amp;&amp; this.quad1 == data.quad1 &amp;&amp; this.quad2 == data.quad2 &amp;&amp; this.quad3 == data.quad3) 
+                {
+<span class="fc" id="L248">                    return true;</span>
+                }
+<span class="fc" id="L250">                return false;</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public String toString() {
+<span class="fc" id="L258">                final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L259">                builder.append(super.toString()).append(&quot; &quot;);</span>
+<span class="fc" id="L260">                builder.append(quad0).append(&quot;,&quot;);</span>
+<span class="fc" id="L261">                builder.append(quad1).append(&quot;,&quot;);</span>
+<span class="fc" id="L262">                builder.append(quad2).append(&quot;,&quot;);</span>
+<span class="fc" id="L263">                builder.append(quad3);</span>
+<span class="fc" id="L264">                return builder.toString();</span>
+            }
+        }
+
+        /**
+         * Data structure representing maximum in the range.
+         */
+        public static final class RangeMaximumData&lt;N extends Number&gt; extends Data {
+
+<span class="fc" id="L273">            public N maximum = null;</span>
+
+            public RangeMaximumData(long start, long end) {
+<span class="fc" id="L276">                super(start, end);</span>
+<span class="fc" id="L277">            }</span>
+
+            public RangeMaximumData(long index, N number) {
+<span class="fc" id="L280">                super(index);</span>
+
+<span class="fc" id="L282">                this.maximum = number;</span>
+<span class="fc" id="L283">            }</span>
+
+            public RangeMaximumData(long start, long end, N number) {
+<span class="fc" id="L286">                super(start, end);</span>
+
+<span class="fc" id="L288">                this.maximum = number;</span>
+<span class="fc" id="L289">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public void clear() {
+<span class="fc" id="L296">                super.clear();</span>
+
+<span class="fc" id="L298">                maximum = null;</span>
+<span class="fc" id="L299">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data copy() {
+<span class="fc" id="L306">                return new RangeMaximumData&lt;N&gt;(start, end, maximum);</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data query(long startOfQuery, long endOfQuery) {
+<span class="fc bfc" id="L314" title="All 4 branches covered.">                if (endOfQuery &lt; this.start || startOfQuery &gt; this.end)</span>
+<span class="fc" id="L315">                    return null;</span>
+
+<span class="fc" id="L317">                return copy();</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data combined(Data data) {
+<span class="fc" id="L325">                RangeMaximumData&lt;N&gt; q = null;</span>
+<span class="fc bfc" id="L326" title="All 2 branches covered.">                if (data instanceof RangeMaximumData) {</span>
+<span class="fc" id="L327">                    q = (RangeMaximumData&lt;N&gt;) data;</span>
+<span class="fc" id="L328">                    this.combined(q);</span>
+                }
+<span class="fc" id="L330">                return this;</span>
+            }
+
+            private void combined(RangeMaximumData&lt;N&gt; data) {
+<span class="fc bfc" id="L334" title="All 4 branches covered.">                if (this.maximum == null &amp;&amp; data.maximum == null)</span>
+<span class="fc" id="L335">                    return;</span>
+<span class="fc bfc" id="L336" title="All 4 branches covered.">                else if (this.maximum != null &amp;&amp; data.maximum == null)</span>
+<span class="fc" id="L337">                    return;</span>
+<span class="pc bpc" id="L338" title="1 of 4 branches missed.">                else if (this.maximum == null &amp;&amp; data.maximum != null)</span>
+<span class="fc" id="L339">                    this.maximum = data.maximum;</span>
+                else {
+                    /* TODO: This is ugly */
+<span class="pc bpc" id="L342" title="1 of 4 branches missed.">                    if (this.maximum instanceof BigDecimal || data.maximum instanceof BigDecimal) {</span>
+<span class="fc bfc" id="L343" title="All 2 branches covered.">                        if (((BigDecimal)data.maximum).compareTo(((BigDecimal)this.maximum))==1)</span>
+<span class="fc" id="L344">                            this.maximum = data.maximum;</span>
+<span class="pc bpc" id="L345" title="1 of 4 branches missed.">                    } else if (this.maximum instanceof BigInteger || data.maximum instanceof BigInteger) {</span>
+<span class="fc bfc" id="L346" title="All 2 branches covered.">                        if (((BigInteger)data.maximum).compareTo(((BigInteger)this.maximum))==1)</span>
+<span class="fc" id="L347">                            this.maximum = data.maximum;</span>
+<span class="fc bfc" id="L348" title="All 4 branches covered.">                    } else if (this.maximum instanceof Long || data.maximum instanceof Long) {</span>
+<span class="fc bfc" id="L349" title="All 2 branches covered.">                        if (((Long)data.maximum).compareTo(((Long)this.maximum))==1)</span>
+<span class="fc" id="L350">                            this.maximum = data.maximum;</span>
+<span class="pc bpc" id="L351" title="1 of 4 branches missed.">                    } else if (this.maximum instanceof Double || data.maximum instanceof Double) {</span>
+<span class="fc bfc" id="L352" title="All 2 branches covered.">                        if (((Double)data.maximum).compareTo(((Double)this.maximum))==1)</span>
+<span class="fc" id="L353">                            this.maximum = data.maximum;</span>
+<span class="pc bpc" id="L354" title="1 of 4 branches missed.">                    } else if (this.maximum instanceof Float || data.maximum instanceof Float) {</span>
+<span class="fc bfc" id="L355" title="All 2 branches covered.">                        if (((Float)data.maximum).compareTo(((Float)this.maximum))==1)</span>
+<span class="fc" id="L356">                            this.maximum = data.maximum;</span>
+                    } else {
+                        // Integer
+<span class="fc bfc" id="L359" title="All 2 branches covered.">                        if (((Integer)data.maximum).compareTo(((Integer)this.maximum))==1)</span>
+<span class="fc" id="L360">                            this.maximum = data.maximum;</span>
+                    }
+                }
+<span class="fc" id="L363">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public int hashCode() {
+<span class="fc" id="L370">                return 31 * (int)(this.start + this.end + this.maximum.hashCode());</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean equals(Object obj) {
+<span class="fc bfc" id="L378" title="All 2 branches covered.">                if (!(obj instanceof RangeMaximumData))</span>
+<span class="fc" id="L379">                    return false;</span>
+
+<span class="fc" id="L381">                final RangeMaximumData&lt;N&gt; data = (RangeMaximumData&lt;N&gt;) obj;</span>
+<span class="fc bfc" id="L382" title="All 6 branches covered.">                if (this.start == data.start &amp;&amp; this.end == data.end &amp;&amp; this.maximum.equals(data.maximum))</span>
+<span class="fc" id="L383">                    return true;</span>
+<span class="fc" id="L384">                return false;</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public String toString() {
+<span class="fc" id="L392">                StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L393">                builder.append(super.toString()).append(&quot; &quot;);</span>
+<span class="fc" id="L394">                builder.append(&quot;maximum=&quot;).append(maximum);</span>
+<span class="fc" id="L395">                return builder.toString();</span>
+            }
+        }
+
+        /**
+         * Data structure representing minimum in the range.
+         */
+        public static final class RangeMinimumData&lt;N extends Number&gt; extends Data {
+
+<span class="fc" id="L404">            public N minimum = null;</span>
+
+            public RangeMinimumData(long start, long end) {
+<span class="fc" id="L407">                super(start, end);</span>
+<span class="fc" id="L408">            }</span>
+
+            public RangeMinimumData(long index, N number) {
+<span class="fc" id="L411">                super(index);</span>
+
+<span class="fc" id="L413">                this.minimum = number;</span>
+<span class="fc" id="L414">            }</span>
+
+            public RangeMinimumData(long start, long end, N number) {
+<span class="fc" id="L417">                super(start, end);</span>
+
+<span class="fc" id="L419">                this.minimum = number;</span>
+<span class="fc" id="L420">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public void clear() {
+<span class="fc" id="L427">                super.clear();</span>
+
+<span class="fc" id="L429">                minimum = null;</span>
+<span class="fc" id="L430">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data copy() {
+<span class="fc" id="L437">                return new RangeMinimumData&lt;N&gt;(start, end, minimum);</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data query(long startOfQuery, long endOfQuery) {
+<span class="fc bfc" id="L445" title="All 4 branches covered.">                if (endOfQuery &lt; this.start || startOfQuery &gt; this.end)</span>
+<span class="fc" id="L446">                    return null;</span>
+
+<span class="fc" id="L448">                return copy();</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data combined(Data data) {
+<span class="fc" id="L456">                RangeMinimumData&lt;N&gt; q = null;</span>
+<span class="fc bfc" id="L457" title="All 2 branches covered.">                if (data instanceof RangeMinimumData) {</span>
+<span class="fc" id="L458">                    q = (RangeMinimumData&lt;N&gt;) data;</span>
+<span class="fc" id="L459">                    this.combined(q);</span>
+                }
+<span class="fc" id="L461">                return this;</span>
+            }
+
+            private void combined(RangeMinimumData&lt;N&gt; data) {
+<span class="fc bfc" id="L465" title="All 4 branches covered.">                if (this.minimum == null &amp;&amp; data.minimum == null)</span>
+<span class="fc" id="L466">                    return;</span>
+<span class="fc bfc" id="L467" title="All 4 branches covered.">                else if (this.minimum != null &amp;&amp; data.minimum == null)</span>
+<span class="fc" id="L468">                    return;</span>
+<span class="pc bpc" id="L469" title="1 of 4 branches missed.">                else if (this.minimum == null &amp;&amp; data.minimum != null)</span>
+<span class="fc" id="L470">                    this.minimum = data.minimum;</span>
+                else {
+                    /* TODO: This is ugly */
+<span class="pc bpc" id="L473" title="1 of 4 branches missed.">                    if (this.minimum instanceof BigDecimal || data.minimum instanceof BigDecimal) {</span>
+<span class="fc bfc" id="L474" title="All 2 branches covered.">                        if (((BigDecimal)data.minimum).compareTo(((BigDecimal)this.minimum))==-1)</span>
+<span class="fc" id="L475">                            this.minimum = data.minimum;</span>
+<span class="pc bpc" id="L476" title="1 of 4 branches missed.">                    } else if (this.minimum instanceof BigInteger || data.minimum instanceof BigInteger) {</span>
+<span class="fc bfc" id="L477" title="All 2 branches covered.">                        if (((BigInteger)data.minimum).compareTo(((BigInteger)this.minimum))==-1)</span>
+<span class="fc" id="L478">                            this.minimum = data.minimum;</span>
+<span class="pc bpc" id="L479" title="1 of 4 branches missed.">                    } else if (this.minimum instanceof Long || data.minimum instanceof Long) {</span>
+<span class="fc bfc" id="L480" title="All 2 branches covered.">                        if (((Long)data.minimum).compareTo(((Long)this.minimum))==-1)</span>
+<span class="fc" id="L481">                            this.minimum = data.minimum;</span>
+<span class="pc bpc" id="L482" title="1 of 4 branches missed.">                    } else if (this.minimum instanceof Double || data.minimum instanceof Double) {</span>
+<span class="fc bfc" id="L483" title="All 2 branches covered.">                        if (((Double)data.minimum).compareTo(((Double)this.minimum))==-1)</span>
+<span class="fc" id="L484">                            this.minimum = data.minimum;</span>
+<span class="pc bpc" id="L485" title="1 of 4 branches missed.">                    } else if (this.minimum instanceof Float || data.minimum instanceof Float) {</span>
+<span class="fc bfc" id="L486" title="All 2 branches covered.">                        if (((Float)data.minimum).compareTo(((Float)this.minimum))==-1)</span>
+<span class="fc" id="L487">                            this.minimum = data.minimum;</span>
+                    } else {
+                        // Integer
+<span class="fc bfc" id="L490" title="All 2 branches covered.">                        if (((Integer)data.minimum).compareTo(((Integer)this.minimum))==-1)</span>
+<span class="fc" id="L491">                            this.minimum = data.minimum;</span>
+                    }
+                }
+<span class="fc" id="L494">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public int hashCode() {
+<span class="fc" id="L501">                return 31 * (int)(this.start + this.end + this.minimum.hashCode());</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean equals(Object obj) {
+<span class="fc bfc" id="L509" title="All 2 branches covered.">                if (!(obj instanceof RangeMinimumData))</span>
+<span class="fc" id="L510">                    return false;</span>
+ 
+<span class="fc" id="L512">                final RangeMinimumData&lt;N&gt; data = (RangeMinimumData&lt;N&gt;) obj;</span>
+<span class="fc bfc" id="L513" title="All 6 branches covered.">                if (this.start == data.start &amp;&amp; this.end == data.end &amp;&amp; this.minimum.equals(data.minimum))</span>
+<span class="fc" id="L514">                    return true;</span>
+
+<span class="fc" id="L516">                return false;</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public String toString() {
+<span class="fc" id="L524">                StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L525">                builder.append(super.toString()).append(&quot; &quot;);</span>
+<span class="fc" id="L526">                builder.append(&quot;minimum=&quot;).append(minimum);</span>
+<span class="fc" id="L527">                return builder.toString();</span>
+            }
+        }
+
+        /**
+         * Data structure representing sum of the range.
+         */
+        public static final class RangeSumData&lt;N extends Number&gt; extends Data {
+
+<span class="fc" id="L536">            public N sum = null;</span>
+
+            public RangeSumData(long start, long end) {
+<span class="fc" id="L539">                super(start, end);</span>
+<span class="fc" id="L540">            }</span>
+
+            public RangeSumData(long index, N number) {
+<span class="fc" id="L543">                super(index);</span>
+
+<span class="fc" id="L545">                this.sum = number;</span>
+<span class="fc" id="L546">            }</span>
+
+            public RangeSumData(long start, long end, N number) {
+<span class="fc" id="L549">                super(start, end);</span>
+
+<span class="fc" id="L551">                this.sum = number;</span>
+<span class="fc" id="L552">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public void clear() {
+<span class="fc" id="L559">                super.clear();</span>
+
+<span class="fc" id="L561">                sum = null;</span>
+<span class="fc" id="L562">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data copy() {
+<span class="fc" id="L569">                return new RangeSumData&lt;N&gt;(start, end, sum);</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data query(long startOfQuery, long endOfQuery) {
+<span class="fc bfc" id="L577" title="All 4 branches covered.">                if (endOfQuery &lt; this.start || startOfQuery &gt; this.end)</span>
+<span class="fc" id="L578">                    return null;</span>
+
+<span class="fc" id="L580">                return copy();</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data combined(Data data) {
+<span class="fc" id="L588">                RangeSumData&lt;N&gt; q = null;</span>
+<span class="fc bfc" id="L589" title="All 2 branches covered.">                if (data instanceof RangeSumData) {</span>
+<span class="fc" id="L590">                    q = (RangeSumData&lt;N&gt;) data;</span>
+<span class="fc" id="L591">                    this.combined(q);</span>
+                }
+<span class="fc" id="L593">                return this;</span>
+            }
+
+            private void combined(RangeSumData&lt;N&gt; data) {
+<span class="fc bfc" id="L597" title="All 4 branches covered.">                if (this.sum == null &amp;&amp; data.sum == null)</span>
+<span class="fc" id="L598">                    return;</span>
+<span class="fc bfc" id="L599" title="All 4 branches covered.">                else if (this.sum != null &amp;&amp; data.sum == null)</span>
+<span class="fc" id="L600">                    return;</span>
+<span class="pc bpc" id="L601" title="1 of 4 branches missed.">                else if (this.sum == null &amp;&amp; data.sum != null)</span>
+<span class="fc" id="L602">                    this.sum = data.sum;</span>
+                else {
+                    /* TODO: This is ugly and how to handle number overflow? */
+<span class="pc bpc" id="L605" title="1 of 4 branches missed.">                    if (this.sum instanceof BigDecimal || data.sum instanceof BigDecimal) {</span>
+<span class="fc" id="L606">                        BigDecimal result = ((BigDecimal)this.sum).add((BigDecimal)data.sum);</span>
+<span class="fc" id="L607">                        this.sum = (N)result;</span>
+<span class="pc bpc" id="L608" title="1 of 4 branches missed.">                    } else if (this.sum instanceof BigInteger || data.sum instanceof BigInteger) {</span>
+<span class="fc" id="L609">                        BigInteger result = ((BigInteger)this.sum).add((BigInteger)data.sum);</span>
+<span class="fc" id="L610">                        this.sum = (N)result;</span>
+<span class="pc bpc" id="L611" title="1 of 4 branches missed.">                    } else if (this.sum instanceof Long || data.sum instanceof Long) {</span>
+<span class="fc" id="L612">                        Long result = (this.sum.longValue() + data.sum.longValue());</span>
+<span class="fc" id="L613">                        this.sum = (N)result;</span>
+<span class="pc bpc" id="L614" title="1 of 4 branches missed.">                    } else if (this.sum instanceof Double || data.sum instanceof Double) {</span>
+<span class="fc" id="L615">                        Double result = (this.sum.doubleValue() + data.sum.doubleValue());</span>
+<span class="fc" id="L616">                        this.sum = (N)result;</span>
+<span class="pc bpc" id="L617" title="1 of 4 branches missed.">                    } else if (this.sum instanceof Float || data.sum instanceof Float) {</span>
+<span class="fc" id="L618">                        Float result = (this.sum.floatValue() + data.sum.floatValue());</span>
+<span class="fc" id="L619">                        this.sum = (N)result;</span>
+<span class="fc" id="L620">                    } else {</span>
+                        // Integer
+<span class="fc" id="L622">                        Integer result = (this.sum.intValue() + data.sum.intValue());</span>
+<span class="fc" id="L623">                        this.sum = (N)result;</span>
+                    }
+                }
+<span class="fc" id="L626">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public int hashCode() {
+<span class="fc" id="L633">                return 31 * (int)(this.start + this.end + this.sum.hashCode());</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean equals(Object obj) {
+<span class="fc bfc" id="L641" title="All 2 branches covered.">                if (!(obj instanceof RangeSumData))</span>
+<span class="fc" id="L642">                    return false;</span>
+
+<span class="fc" id="L644">                final RangeSumData&lt;N&gt; data = (RangeSumData&lt;N&gt;) obj;</span>
+<span class="fc bfc" id="L645" title="All 6 branches covered.">                if (this.start == data.start &amp;&amp; this.end == data.end &amp;&amp; this.sum.equals(data.sum))</span>
+<span class="fc" id="L646">                    return true;</span>
+
+<span class="fc" id="L648">                return false;</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public String toString() {
+<span class="fc" id="L656">                final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L657">                builder.append(super.toString()).append(&quot; &quot;);</span>
+<span class="fc" id="L658">                builder.append(&quot;sum=&quot;).append(sum);</span>
+<span class="fc" id="L659">                return builder.toString();</span>
+            }
+        }
+
+        /**
+         * Data structure representing an interval.
+         */
+        public static final class IntervalData&lt;O extends Object&gt; extends Data {
+
+<span class="fc" id="L668">            private Set&lt;O&gt; set = new TreeSet&lt;O&gt;(); // Sorted</span>
+
+            /**
+             * Interval data using O as it's unique identifier
+             * 
+             * @param object
+             *            Object which defines the interval data
+             */
+            public IntervalData(long index, O object) {
+<span class="fc" id="L677">                super(index);</span>
+
+<span class="fc" id="L679">                this.set.add(object);</span>
+<span class="fc" id="L680">            }</span>
+
+            /**
+             * Interval data using O as it's unique identifier
+             * 
+             * @param object
+             *            Object which defines the interval data
+             */
+            public IntervalData(long start, long end, O object) {
+<span class="fc" id="L689">                super(start, end);</span>
+
+<span class="fc" id="L691">                this.set.add(object);</span>
+<span class="fc" id="L692">            }</span>
+
+            /**
+             * Interval data list which should all be unique
+             * 
+             * @param set
+             *            of interval data objects
+             */
+            public IntervalData(long start, long end, Set&lt;O&gt; set) {
+<span class="fc" id="L701">                super(start, end);</span>
+
+<span class="fc" id="L703">                this.set = set;</span>
+<span class="fc" id="L704">            }</span>
+
+            /**
+             * Get the data set in this interval
+             * 
+             * @return Unmodifiable collection of data objects
+             */
+            public Collection&lt;O&gt; getData() {
+<span class="fc" id="L712">                return Collections.unmodifiableCollection(this.set);</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public void clear() {
+<span class="fc" id="L720">                super.clear();</span>
+
+<span class="fc" id="L722">                this.set.clear();</span>
+<span class="fc" id="L723">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data copy() {
+<span class="fc" id="L730">                final Set&lt;O&gt; listCopy = new TreeSet&lt;O&gt;();</span>
+<span class="fc" id="L731">                listCopy.addAll(set);</span>
+<span class="fc" id="L732">                return new IntervalData&lt;O&gt;(start, end, listCopy);</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data query(long startOfQuery, long endOfQuery) {
+<span class="fc bfc" id="L740" title="All 4 branches covered.">                if (endOfQuery &lt; this.start || startOfQuery &gt; this.end)</span>
+<span class="fc" id="L741">                    return null;</span>
+
+<span class="fc" id="L743">                return copy();</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Data combined(Data data) {
+<span class="fc" id="L751">                IntervalData&lt;O&gt; q = null;</span>
+<span class="fc bfc" id="L752" title="All 2 branches covered.">                if (data instanceof IntervalData) {</span>
+<span class="fc" id="L753">                    q = (IntervalData&lt;O&gt;) data;</span>
+<span class="fc" id="L754">                    this.combined(q);</span>
+                }
+<span class="fc" id="L756">                return this;</span>
+            }
+
+            /**
+             * Combined for interval specific data.
+             * 
+             * @param data
+             *            resulted from combination.
+             */
+            private void combined(IntervalData&lt;O&gt; data) {
+<span class="fc bfc" id="L766" title="All 2 branches covered.">                if (data.start &lt; this.start)</span>
+<span class="fc" id="L767">                    this.start = data.start;</span>
+<span class="fc bfc" id="L768" title="All 2 branches covered.">                if (data.end &gt; this.end)</span>
+<span class="fc" id="L769">                    this.end = data.end;</span>
+<span class="fc" id="L770">                this.set.addAll(data.set);</span>
+<span class="fc" id="L771">            }</span>
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public int hashCode() {
+<span class="fc" id="L778">                return 31 * (int)(this.start + this.end + this.set.size());</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean equals(Object obj) {
+<span class="fc bfc" id="L786" title="All 2 branches covered.">                if (!(obj instanceof IntervalData))</span>
+<span class="fc" id="L787">                    return false;</span>
+
+<span class="fc" id="L789">                final IntervalData&lt;O&gt; data = (IntervalData&lt;O&gt;) obj;</span>
+<span class="fc bfc" id="L790" title="All 4 branches covered.">                if (this.start == data.start &amp;&amp; this.end == data.end) {</span>
+<span class="fc bfc" id="L791" title="All 2 branches covered.">                    if (this.set.size() != data.set.size())</span>
+<span class="fc" id="L792">                        return false;</span>
+<span class="fc bfc" id="L793" title="All 2 branches covered.">                    for (O o : set) {</span>
+<span class="fc bfc" id="L794" title="All 2 branches covered.">                        if (!data.set.contains(o))</span>
+<span class="fc" id="L795">                            return false;</span>
+<span class="fc" id="L796">                    }</span>
+<span class="fc" id="L797">                    return true;</span>
+                }
+<span class="fc" id="L799">                return false;</span>
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public String toString() {
+<span class="fc" id="L807">                final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L808">                builder.append(super.toString()).append(&quot; &quot;);</span>
+<span class="fc" id="L809">                builder.append(&quot;set=&quot;).append(set);</span>
+<span class="fc" id="L810">                return builder.toString();</span>
+            }
+        }
+    }
+
+    /**
+     * Data structure representing a segment.
+     */
+    protected abstract static class Segment&lt;D extends Data&gt; implements Comparable&lt;Segment&lt;D&gt;&gt; {
+
+<span class="fc" id="L820">        protected Segment&lt;D&gt;[] segments = null;</span>
+<span class="fc" id="L821">        protected int length = 0;</span>
+<span class="fc" id="L822">        protected int half = 0;</span>
+<span class="fc" id="L823">        protected long start = 0;</span>
+<span class="fc" id="L824">        protected long end = 0;</span>
+<span class="fc" id="L825">        protected D data = null;</span>
+<span class="fc" id="L826">        protected int minLength = 0;</span>
+
+<span class="fc" id="L828">        public Segment(int minLength) {</span>
+<span class="fc" id="L829">            this.minLength = minLength;</span>
+<span class="fc" id="L830">        }</span>
+
+        /**
+         * Query for data in range.
+         * 
+         * @param startOfQuery
+         *            of the range to query for.
+         * @param endOfQuery
+         *            of range to query for.
+         * @return Data in the range.
+         */
+        public abstract D query(long startOfQuery, long endOfQuery);
+
+        protected boolean hasChildren() {
+<span class="fc bfc" id="L844" title="All 2 branches covered.">            return (segments != null);</span>
+        }
+
+        protected Segment&lt;D&gt; getLeftChild() {
+<span class="fc" id="L848">            return segments[0];</span>
+        }
+
+        protected Segment&lt;D&gt; getRightChild() {
+<span class="fc" id="L852">            return segments[1];</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String toString() {
+<span class="fc" id="L860">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L861">            builder.append(start).append(&quot;-&gt;&quot;);</span>
+<span class="fc" id="L862">            builder.append(end).append(&quot; &quot;);</span>
+<span class="fc" id="L863">            builder.append(&quot;Length=&quot;).append(length).append(&quot; &quot;);</span>
+<span class="fc" id="L864">            builder.append(&quot;Data={&quot;).append(data).append(&quot;}&quot;);</span>
+<span class="fc" id="L865">            return builder.toString();</span>
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public int compareTo(Segment&lt;D&gt; p) {
+<span class="fc bfc" id="L872" title="All 2 branches covered.">            if (this.end &lt; p.end)</span>
+<span class="fc" id="L873">                return -1;</span>
+<span class="fc bfc" id="L874" title="All 2 branches covered.">            if (p.end &lt; this.end)</span>
+<span class="fc" id="L875">                return 1;</span>
+<span class="fc" id="L876">            return 0;</span>
+        }
+    }
+
+<span class="fc" id="L880">    protected static class SegmentTreePrinter {</span>
+
+        public static &lt;D extends SegmentTree.Data&gt; String getString(SegmentTree&lt;D&gt; tree) {
+<span class="fc bfc" id="L883" title="All 2 branches covered.">            if (tree.root == null)</span>
+<span class="fc" id="L884">                return &quot;Tree has no nodes.&quot;;</span>
+<span class="fc" id="L885">            return getString(tree.root, &quot;&quot;, true);</span>
+        }
+
+        private static &lt;D extends SegmentTree.Data&gt; String getString(Segment&lt;D&gt; segment, String prefix, boolean isTail) {
+<span class="fc" id="L889">            final StringBuilder builder = new StringBuilder();</span>
+<span class="fc bfc" id="L890" title="All 2 branches covered.">            builder.append(prefix + (isTail ? &quot;└── &quot; : &quot;├── &quot;) + segment.toString() + &quot;\n&quot;);</span>
+
+<span class="fc" id="L892">            final List&lt;Segment&lt;D&gt;&gt; children = new ArrayList&lt;Segment&lt;D&gt;&gt;();</span>
+<span class="fc bfc" id="L893" title="All 2 branches covered.">            if (segment.segments != null) {</span>
+<span class="fc bfc" id="L894" title="All 2 branches covered.">                for (Segment&lt;D&gt; c : segment.segments)</span>
+<span class="fc" id="L895">                    children.add(c);</span>
+            }
+
+<span class="fc bfc" id="L898" title="All 2 branches covered.">            for (int i = 0; i &lt; children.size() - 1; i++)</span>
+<span class="fc bfc" id="L899" title="All 2 branches covered.">                builder.append(getString(children.get(i), prefix + (isTail ? &quot;    &quot; : &quot;│   &quot;), false));</span>
+
+<span class="fc bfc" id="L901" title="All 2 branches covered.">            if (children.size() &gt; 1)</span>
+<span class="fc bfc" id="L902" title="All 2 branches covered.">                builder.append(getString(children.get(children.size() - 1), prefix + (isTail ? &quot;    &quot; : &quot;│   &quot;), true));</span>
+
+<span class="fc" id="L904">            return builder.toString();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

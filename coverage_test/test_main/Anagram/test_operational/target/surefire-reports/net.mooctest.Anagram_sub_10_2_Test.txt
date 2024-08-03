@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Anagram_sub_10_2_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s - in net.mooctest.Anagram_sub_10_2_Test
