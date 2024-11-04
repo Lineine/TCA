@@ -8,6 +8,8 @@ The download link for the source data:
 
 - Google Drive: [https://drive.google.com/file/d/1Zfyvw2-OErQuwMefQy9KpGcLwwFVZDF3/view?usp=sharing](https://drive.google.com/file/d/1Zfyvw2-OErQuwMefQy9KpGcLwwFVZDF3/view?usp=sharing)
 
+In `requirements.txt` we provide the environment needed to run the code.
+
 ## Prepare models
 
 During the experiment, you will need CodeT5+. We provide the download URL:
