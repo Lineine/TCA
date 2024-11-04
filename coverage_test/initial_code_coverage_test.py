@@ -297,12 +297,10 @@ else:
 os.makedirs(system_path + '/CTCA/coverage_test/data/' + project_name, exist_ok=True)
 os.makedirs(system_path + '/CTCA/coverage_test/data/' + project_name + '/branch_point', exist_ok=True)
 
-# 指定未分割前的代码文件所在路径
 folder_path = system_path + '/CTCA/data/last_data/' + project_name + '/first_code'
 
 test_ids = get_test_ids(folder_path)
 
-# 遍历文件夹下的所有文件
 for i in trange(0, len(test_ids)):
     clean_directory(maven_project_path)
     print(i)
@@ -314,15 +312,12 @@ for i in trange(0, len(test_ids)):
     for new_seed_value in [7, 42, 101, 2564, 987654321]:
         xml_file_path = maven_project_path + '/pom.xml'
         update_mutation_test_seed(xml_file_path, new_seed_value)
-        # 调用编译和运行函数
         pool = multiprocessing.Pool(processes=1)
         result = pool.apply_async(validate_maven_project, (maven_project_path, file_path))
         timeout = 600
         try:
-            # 在设置的超时时间内获取结果
             result, time_u = result.get(timeout=timeout)
         except multiprocessing.TimeoutError:
-            # 如果在超时时间内未获取到结果，则终止进程并抛出异常
             pool.terminate()
             result = 0
             print("TimeOut!")
@@ -345,45 +340,39 @@ for i in trange(0, len(test_ids)):
             mutation_scores.append(read_mutation_score(pitest_path))
 
     coverage = 0
-    # 打印结果
     if result:
         coverage = read_coverage(jacoco_path)
         mutation_score = average(mutation_scores)
-        print(f'变异覆盖率：{mutation_score}')
+        print(f'Mutation Score: {mutation_score}')
         time_used = average(time_useds)
-        print(f'平均耗时：{time_used}')
-        '''
-        # 打开文件，如果不存在则创建
+        print(f'Time:{time_used}')
+       
         with open(system_path + '/CTCA/coverage_test/data/' + project_name + f'/branch_point/test_{id}.pkl', 'wb') as file:
             classname_to_bc_point = read_coverage_point(maven_project_path + '/target/site/jacoco/net.mooctest')
             pickle.dump(classname_to_bc_point, file)
-        '''
+        
 
         print("Maven project can be built.")
     else:
         print("Maven project build failed.")
     
-    # 打开文件，如果不存在则创建
     with open(system_path + '/CTCA/coverage_test/data/' + project_name + '/initial_code_coverage.csv', 'a', newline='') as file:
         if result:
-            # 要写入的数据
             data_to_append = [f'test_{id}'] + coverage + count_lines_and_length(file_path) + [mutation_score, time_used]
         else:
             data_to_append = [f'test_{id}', 'Maven project build failed.']
 
         writer = csv.writer(file)
-        # 追加写入数据
         writer.writerow(data_to_append)
 
-    # 清除构建过程中创建的文件
     clean_directory(maven_project_path)
 
     user = "lcd"
     keyword = "java"
     kill_processes(user, keyword)
-'''
+
 folder_path = system_path + '/CTCA/coverage_test/data/' + project_name + '/branch_point'
 merged_dict = merge_dicts_in_folder(folder_path)
 with open(system_path + '/CTCA/coverage_test/data/' + project_name + '/branch_point/test_total.pkl', 'wb') as file:
     pickle.dump(merged_dict, file)
-'''
+
