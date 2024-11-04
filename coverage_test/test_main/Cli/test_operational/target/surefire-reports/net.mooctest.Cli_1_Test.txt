@@ -1,14 +1,48 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Cli_1_Test
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.014 s <<< FAILURE! - in net.mooctest.Cli_1_Test
-test_110(net.mooctest.Cli_1_Test)  Time elapsed: 0.013 s  <<< ERROR!
-java.lang.IllegalArgumentException: net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
-	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
-Caused by: net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
-	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
-Caused by: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
-	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
-Caused by: java.text.ParseException: Unparseable date: "2023-04-30"
-	at net.mooctest.Cli_1_Test.test_110(Cli_1_Test.java:23)
+Tests run: 17, Failures: 11, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Cli_1_Test
+test_44(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_44(Cli_1_Test.java:85)
+
+test_45(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_45(Cli_1_Test.java:27)
+
+test_46(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_46(Cli_1_Test.java:21)
+
+test_50(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_50(Cli_1_Test.java:65)
+
+test_51(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_51(Cli_1_Test.java:76)
+
+test_54(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_1_Test.test_54(Cli_1_Test.java:40)
+
+test_56(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_56(Cli_1_Test.java:90)
+
+test_58(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_1_Test.test_58(Cli_1_Test.java:46)
+
+test_61(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_61(Cli_1_Test.java:31)
+
+test_70(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_1_Test.test_70(Cli_1_Test.java:70)
+
+test_72(net.mooctest.Cli_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_1_Test.test_72(Cli_1_Test.java:60)
 

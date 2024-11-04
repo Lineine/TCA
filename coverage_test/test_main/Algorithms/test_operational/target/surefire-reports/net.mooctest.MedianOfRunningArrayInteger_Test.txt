@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.MedianOfRunningArrayInteger_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.MedianOfRunningArrayInteger_Test
+testCalculateAverage  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Optional[3]> but was: <3>
+	at net.mooctest.MedianOfRunningArrayInteger_Test.testCalculateAverage(MedianOfRunningArrayInteger_Test.java:18)
+

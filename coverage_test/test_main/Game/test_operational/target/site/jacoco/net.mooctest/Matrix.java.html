@@ -76,17 +76,17 @@ public class Matrix implements Serializable
      */
     public static Matrix add(Matrix a, Matrix b)
     {
-<span class="fc" id="L79">        Matrix sum = null;</span>
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if(a.data.length == b.data.length)</span>
+<span class="nc" id="L79">        Matrix sum = null;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if(a.data.length == b.data.length)</span>
         {
-<span class="fc" id="L82">            float[] ws = new float[a.data.length];</span>
-<span class="fc bfc" id="L83" title="All 2 branches covered.">            for (int i = 0; i &lt; a.data.length; i++)</span>
+<span class="nc" id="L82">            float[] ws = new float[a.data.length];</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            for (int i = 0; i &lt; a.data.length; i++)</span>
             {
-<span class="fc" id="L85">                ws[i] = a.data[i] + b.data[i];</span>
+<span class="nc" id="L85">                ws[i] = a.data[i] + b.data[i];</span>
             }
-<span class="fc" id="L87">            sum = new Matrix(ws, a.ROWS, a.COLUMNS);</span>
+<span class="nc" id="L87">            sum = new Matrix(ws, a.ROWS, a.COLUMNS);</span>
         }
-<span class="fc" id="L89">        return sum;</span>
+<span class="nc" id="L89">        return sum;</span>
     }
 
     /**
@@ -96,7 +96,7 @@ public class Matrix implements Serializable
      */
     public Matrix add(Matrix that)
     {
-<span class="fc" id="L99">        return Matrix.add(this, that);</span>
+<span class="nc" id="L99">        return Matrix.add(this, that);</span>
     }
     //&lt;/editor-fold&gt;
 
@@ -121,10 +121,10 @@ public class Matrix implements Serializable
      */
     public static Matrix divide(Matrix a, float scalar)
     {
-<span class="fc" id="L124">        float[] ws = new float[a.data.length];</span>
-<span class="fc bfc" id="L125" title="All 2 branches covered.">        for(int i = 0; i &lt; ws.length; i++)</span>
-<span class="fc" id="L126">            ws[i] = a.data[i] / scalar;</span>
-<span class="fc" id="L127">        return new Matrix(ws, a.ROWS, a.COLUMNS);</span>
+<span class="nc" id="L124">        float[] ws = new float[a.data.length];</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        for(int i = 0; i &lt; ws.length; i++)</span>
+<span class="nc" id="L126">            ws[i] = a.data[i] / scalar;</span>
+<span class="nc" id="L127">        return new Matrix(ws, a.ROWS, a.COLUMNS);</span>
     }
 
     /**
@@ -134,7 +134,7 @@ public class Matrix implements Serializable
      */
     public Matrix divide(float scalar)
     {
-<span class="fc" id="L137">        return Matrix.divide(this, scalar);</span>
+<span class="nc" id="L137">        return Matrix.divide(this, scalar);</span>
     }
 
     /**
@@ -341,12 +341,12 @@ public class Matrix implements Serializable
      */
     private static float[] multiply(float[] a, float scalar)
     {
-<span class="fc" id="L344">        float[] ws = new float[a.length];</span>
-<span class="fc bfc" id="L345" title="All 2 branches covered.">        for(int i = 0; i &lt; a.length; ++i)</span>
+<span class="nc" id="L344">        float[] ws = new float[a.length];</span>
+<span class="nc bnc" id="L345" title="All 2 branches missed.">        for(int i = 0; i &lt; a.length; ++i)</span>
         {
-<span class="fc" id="L347">            ws[i] = a[i] * scalar;</span>
+<span class="nc" id="L347">            ws[i] = a[i] * scalar;</span>
         }
-<span class="fc" id="L349">        return ws;</span>
+<span class="nc" id="L349">        return ws;</span>
     }
 
     /**
@@ -357,7 +357,7 @@ public class Matrix implements Serializable
      */
     public static Matrix multiply(Matrix a, float scalar)
     {
-<span class="fc" id="L360">        return new Matrix(Matrix.multiply(a.data, scalar), a.ROWS, a.COLUMNS);</span>
+<span class="nc" id="L360">        return new Matrix(Matrix.multiply(a.data, scalar), a.ROWS, a.COLUMNS);</span>
     }
 
     /**
@@ -367,7 +367,7 @@ public class Matrix implements Serializable
      */
     public Matrix multiply(float scalar)
     {
-<span class="fc" id="L370">        return Matrix.multiply(this, scalar);</span>
+<span class="nc" id="L370">        return Matrix.multiply(this, scalar);</span>
     }
 
     /**
@@ -399,11 +399,11 @@ public class Matrix implements Serializable
     public static Matrix multiply(Matrix a, Matrix b)
     {
 <span class="fc" id="L401">        float[] mData = Matrix.multiply(a.data, b.data, a.ROWS, a.COLUMNS, b.ROWS, b.COLUMNS);</span>
-<span class="fc" id="L402">        return new Matrix</span>
+<span class="pc bpc" id="L402" title="2 of 4 branches missed.">        return new Matrix</span>
                 (
                     mData,
-<span class="pc bpc" id="L405" title="1 of 2 branches missed.">                    (mData != null) ? a.ROWS : 0,</span>
-<span class="pc bpc" id="L406" title="1 of 2 branches missed.">                    (mData != null) ? b.COLUMNS : 0</span>
+                    (mData != null) ? a.ROWS : 0,
+                    (mData != null) ? b.COLUMNS : 0
                 );
     }
 

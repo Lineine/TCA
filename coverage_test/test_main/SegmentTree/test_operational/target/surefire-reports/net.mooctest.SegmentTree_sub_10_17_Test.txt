@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.SegmentTree_sub_10_17_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in net.mooctest.SegmentTree_sub_10_17_Test
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.SegmentTree_sub_10_17_Test
+test_1316(net.mooctest.SegmentTree_sub_10_17_Test)  Time elapsed: 0 s  <<< ERROR!
+java.security.InvalidParameterException: Segments list is empty.
+	at net.mooctest.SegmentTree_sub_10_17_Test.test_1316(SegmentTree_sub_10_17_Test.java:23)
+

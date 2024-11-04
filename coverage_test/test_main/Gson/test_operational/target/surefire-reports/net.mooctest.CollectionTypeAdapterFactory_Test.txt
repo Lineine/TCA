@@ -1,0 +1,52 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.CollectionTypeAdapterFactory_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.106 s <<< FAILURE! - in net.mooctest.CollectionTypeAdapterFactory_Test
+testCreate_WithValidType_ReturnsTypeAdapter(net.mooctest.CollectionTypeAdapterFactory_Test)  Time elapsed: 0.104 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.internal.ConstructorConstructor
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.CollectionTypeAdapterFactory_Test.setUp(CollectionTypeAdapterFactory_Test.java:36)
+
+testWriteNull(net.mooctest.CollectionTypeAdapterFactory_Test)  Time elapsed: 0.001 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.internal.ConstructorConstructor
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.CollectionTypeAdapterFactory_Test.setUp(CollectionTypeAdapterFactory_Test.java:36)
+
+testReadNull(net.mooctest.CollectionTypeAdapterFactory_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.internal.ConstructorConstructor
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.CollectionTypeAdapterFactory_Test.setUp(CollectionTypeAdapterFactory_Test.java:36)
+
+testReadSuccess(net.mooctest.CollectionTypeAdapterFactory_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.internal.ConstructorConstructor
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.CollectionTypeAdapterFactory_Test.setUp(CollectionTypeAdapterFactory_Test.java:36)
+
+testCreate(net.mooctest.CollectionTypeAdapterFactory_Test)  Time elapsed: 0.001 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.internal.ConstructorConstructor
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.CollectionTypeAdapterFactory_Test.setUp(CollectionTypeAdapterFactory_Test.java:36)
+
+testWriteSuccess(net.mooctest.CollectionTypeAdapterFactory_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.internal.ConstructorConstructor
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.CollectionTypeAdapterFactory_Test.setUp(CollectionTypeAdapterFactory_Test.java:36)
+

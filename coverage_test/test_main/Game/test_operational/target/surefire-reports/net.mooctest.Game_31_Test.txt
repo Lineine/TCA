@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_31_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in net.mooctest.Game_31_Test
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in net.mooctest.Game_31_Test
+test_339(net.mooctest.Game_31_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_31_Test.setUp(Game_31_Test.java:14)
+
+test_341(net.mooctest.Game_31_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_31_Test.setUp(Game_31_Test.java:14)
+
+test_342(net.mooctest.Game_31_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_31_Test.setUp(Game_31_Test.java:14)
+
+test_343(net.mooctest.Game_31_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_31_Test.setUp(Game_31_Test.java:14)
+

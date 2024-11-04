@@ -1,4 +1,4 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-test_operational,net.mooctest,UnrolledLinkedList,0,1135,0,164,0,254,0,108,0,26
+test_operational,net.mooctest,UnrolledLinkedList,480,655,82,82,104,150,60,48,3,23
 test_operational,net.mooctest,UnrolledLinkedList.Node,0,14,0,0,0,4,0,1,0,1
-test_operational,net.mooctest,UnrolledLinkedList.ULLIterator,0,182,0,14,0,40,0,18,0,11
+test_operational,net.mooctest,UnrolledLinkedList.ULLIterator,33,149,3,11,6,34,5,13,2,9

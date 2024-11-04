@@ -1,28 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_13_Test
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_13_Test
-test_157(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.UnsupportedOperationException: Not yet implemented.
-	at net.mooctest.Game_13_Test.setUp(Game_13_Test.java:12)
-
-test_158(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.UnsupportedOperationException: Not yet implemented.
-	at net.mooctest.Game_13_Test.setUp(Game_13_Test.java:12)
-
-test_160(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.UnsupportedOperationException: Not yet implemented.
-	at net.mooctest.Game_13_Test.setUp(Game_13_Test.java:12)
-
-test_161(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.UnsupportedOperationException: Not yet implemented.
-	at net.mooctest.Game_13_Test.setUp(Game_13_Test.java:12)
-
-test_162(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.UnsupportedOperationException: Not yet implemented.
-	at net.mooctest.Game_13_Test.setUp(Game_13_Test.java:12)
-
-test_163(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.UnsupportedOperationException: Not yet implemented.
-	at net.mooctest.Game_13_Test.setUp(Game_13_Test.java:12)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_13_Test
+test_42(net.mooctest.Game_13_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at net.mooctest.Game_13_Test.test_42(Game_13_Test.java:14)
 

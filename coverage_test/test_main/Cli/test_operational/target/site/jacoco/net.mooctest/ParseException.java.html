@@ -40,12 +40,12 @@ public class ParseException extends Exception {
      * @since 1.7.0
      */
     public static ParseException wrap(final Throwable e) throws UnsupportedOperationException {
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (e instanceof UnsupportedOperationException) {</span>
-<span class="nc" id="L44">            throw (UnsupportedOperationException) e;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (e instanceof UnsupportedOperationException) {</span>
+<span class="fc" id="L44">            throw (UnsupportedOperationException) e;</span>
         }
 
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (e instanceof ParseException) {</span>
-<span class="nc" id="L48">            return (ParseException) e;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (e instanceof ParseException) {</span>
+<span class="fc" id="L48">            return (ParseException) e;</span>
         }
 <span class="fc" id="L50">        return new ParseException(e);</span>
     }
@@ -56,8 +56,8 @@ public class ParseException extends Exception {
      * @param message the detail message
      */
     public ParseException(final String message) {
-<span class="nc" id="L59">        super(message);</span>
-<span class="nc" id="L60">    }</span>
+<span class="fc" id="L59">        super(message);</span>
+<span class="fc" id="L60">    }</span>
 
     /**
      * Constructs a new {@code ParseException} wrapping the specified exception.

@@ -60,7 +60,7 @@ import java.util.Map;
      */
     public Collection&lt;String&gt; getNames() {
         // the key set is the collection of names
-<span class="nc" id="L63">        return optionMap.keySet();</span>
+<span class="fc" id="L63">        return optionMap.keySet();</span>
     }
 
     /**
@@ -70,7 +70,7 @@ import java.util.Map;
      */
     public Collection&lt;Option&gt; getOptions() {
         // the values are the collection of options
-<span class="nc" id="L73">        return optionMap.values();</span>
+<span class="fc" id="L73">        return optionMap.values();</span>
     }
 
     /**
@@ -80,7 +80,7 @@ import java.util.Map;
      * @return the selected option name.
      */
     public String getSelected() {
-<span class="nc" id="L83">        return selected;</span>
+<span class="fc" id="L83">        return selected;</span>
     }
 
     /**
@@ -89,7 +89,7 @@ import java.util.Map;
      * @return whether this option group is required
      */
     public boolean isRequired() {
-<span class="nc" id="L92">        return required;</span>
+<span class="fc" id="L92">        return required;</span>
     }
 
     /**
@@ -109,8 +109,8 @@ import java.util.Map;
      * @param required whether this group is required.
      */
     public void setRequired(final boolean required) {
-<span class="nc" id="L112">        this.required = required;</span>
-<span class="nc" id="L113">    }</span>
+<span class="fc" id="L112">        this.required = required;</span>
+<span class="fc" id="L113">    }</span>
 
     /**
      * Sets the selected option of this group to {@code name}.
@@ -120,7 +120,7 @@ import java.util.Map;
      * @throws AlreadySelectedException if an option from this group has already been selected.
      */
     public void setSelected(final Option option) throws AlreadySelectedException {
-<span class="nc bnc" id="L123" title="All 2 branches missed.">        if (option == null) {</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        if (option == null) {</span>
             // reset the option previously selected
 <span class="nc" id="L125">            selected = null;</span>
 <span class="nc" id="L126">            return;</span>
@@ -128,11 +128,11 @@ import java.util.Map;
         // if no option has already been selected or the
         // same option is being reselected then set the
         // selected member variable
-<span class="nc bnc" id="L131" title="All 4 branches missed.">        if (selected != null &amp;&amp; !selected.equals(option.getKey())) {</span>
-<span class="nc" id="L132">            throw new AlreadySelectedException(this, option);</span>
+<span class="pc bpc" id="L131" title="1 of 4 branches missed.">        if (selected != null &amp;&amp; !selected.equals(option.getKey())) {</span>
+<span class="fc" id="L132">            throw new AlreadySelectedException(this, option);</span>
         }
-<span class="nc" id="L134">        selected = option.getKey();</span>
-<span class="nc" id="L135">    }</span>
+<span class="fc" id="L134">        selected = option.getKey();</span>
+<span class="fc" id="L135">    }</span>
 
     /**
      * Returns the stringified version of this OptionGroup.
@@ -141,30 +141,30 @@ import java.util.Map;
      */
     @Override
     public String toString() {
-<span class="nc" id="L144">        final StringBuilder buff = new StringBuilder();</span>
-<span class="nc" id="L145">        final Iterator&lt;Option&gt; iter = getOptions().iterator();</span>
-<span class="nc" id="L146">        buff.append(&quot;[&quot;);</span>
-<span class="nc bnc" id="L147" title="All 2 branches missed.">        while (iter.hasNext()) {</span>
-<span class="nc" id="L148">            final Option option = iter.next();</span>
-<span class="nc bnc" id="L149" title="All 2 branches missed.">            if (option.getOpt() != null) {</span>
-<span class="nc" id="L150">                buff.append(&quot;-&quot;);</span>
-<span class="nc" id="L151">                buff.append(option.getOpt());</span>
+<span class="fc" id="L144">        final StringBuilder buff = new StringBuilder();</span>
+<span class="fc" id="L145">        final Iterator&lt;Option&gt; iter = getOptions().iterator();</span>
+<span class="fc" id="L146">        buff.append(&quot;[&quot;);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">        while (iter.hasNext()) {</span>
+<span class="fc" id="L148">            final Option option = iter.next();</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">            if (option.getOpt() != null) {</span>
+<span class="fc" id="L150">                buff.append(&quot;-&quot;);</span>
+<span class="fc" id="L151">                buff.append(option.getOpt());</span>
             } else {
 <span class="nc" id="L153">                buff.append(&quot;--&quot;);</span>
 <span class="nc" id="L154">                buff.append(option.getLongOpt());</span>
             }
 
-<span class="nc bnc" id="L157" title="All 2 branches missed.">            if (option.getDescription() != null) {</span>
-<span class="nc" id="L158">                buff.append(Char.SP);</span>
-<span class="nc" id="L159">                buff.append(option.getDescription());</span>
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">            if (option.getDescription() != null) {</span>
+<span class="fc" id="L158">                buff.append(Char.SP);</span>
+<span class="fc" id="L159">                buff.append(option.getDescription());</span>
             }
 
-<span class="nc bnc" id="L162" title="All 2 branches missed.">            if (iter.hasNext()) {</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">            if (iter.hasNext()) {</span>
 <span class="nc" id="L163">                buff.append(&quot;, &quot;);</span>
             }
-<span class="nc" id="L165">        }</span>
-<span class="nc" id="L166">        buff.append(&quot;]&quot;);</span>
-<span class="nc" id="L167">        return buff.toString();</span>
+<span class="fc" id="L165">        }</span>
+<span class="fc" id="L166">        buff.append(&quot;]&quot;);</span>
+<span class="fc" id="L167">        return buff.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

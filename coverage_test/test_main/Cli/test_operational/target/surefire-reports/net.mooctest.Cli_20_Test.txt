@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_20_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.039 s <<< FAILURE! - in net.mooctest.Cli_20_Test
+test_595(net.mooctest.Cli_20_Test)  Time elapsed: 0.009 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<...ady been selected: '[test-option]'> but was:<...ady been selected: '[null]'>
+	at net.mooctest.Cli_20_Test.test_595(Cli_20_Test.java:14)
+

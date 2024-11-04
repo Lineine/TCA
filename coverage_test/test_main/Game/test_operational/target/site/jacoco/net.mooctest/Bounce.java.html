@@ -10,7 +10,7 @@
 {
     public static float easeIn(float time, int begin, int change, float duration)
     {
-<span class="fc" id="L13">        return change - Bounce.easeOut (duration - time, 0, change, duration) + begin;</span>
+<span class="nc" id="L13">        return change - Bounce.easeOut (duration - time, 0, change, duration) + begin;</span>
     }
 
     public static float easeOut(float time, int begin, int change, float duration)
@@ -35,8 +35,8 @@
 
     public static float easeInOut(float time, int begin, int change, float duration)
     {
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (time &lt; duration / 2)</span>
-<span class="fc" id="L39">            return Bounce.easeIn (time * 2, 0, change, duration) * 0.5f + begin;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (time &lt; duration / 2)</span>
+<span class="nc" id="L39">            return Bounce.easeIn (time * 2, 0, change, duration) * 0.5f + begin;</span>
         else
 <span class="nc" id="L41">            return Bounce.easeOut (time * 2 - duration, 0, change, duration) * 0.5f + change * 0.5f + begin;</span>
     }

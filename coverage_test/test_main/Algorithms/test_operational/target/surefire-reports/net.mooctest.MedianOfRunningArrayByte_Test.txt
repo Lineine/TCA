@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.MedianOfRunningArrayByte_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.MedianOfRunningArrayByte_Test
+testCalculateAverage  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Optional[15]> but was: <15>
+	at net.mooctest.MedianOfRunningArrayByte_Test.testCalculateAverage(MedianOfRunningArrayByte_Test.java:18)
+
+testCalculateAverage_EqualValues  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Optional[10]> but was: <10>
+	at net.mooctest.MedianOfRunningArrayByte_Test.testCalculateAverage_EqualValues(MedianOfRunningArrayByte_Test.java:26)
+
+testCalculateAverage_LargeValues  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Optional[-106]> but was: <22>
+	at net.mooctest.MedianOfRunningArrayByte_Test.testCalculateAverage_LargeValues(MedianOfRunningArrayByte_Test.java:42)
+
+testCalculateAverage_NegativeValues  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Optional[5]> but was: <5>
+	at net.mooctest.MedianOfRunningArrayByte_Test.testCalculateAverage_NegativeValues(MedianOfRunningArrayByte_Test.java:34)
+

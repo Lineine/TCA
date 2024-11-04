@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HammingDistance.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">HammingDistance.java</span></div><h1>HammingDistance.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+/* In information theory, the Hamming distance between two strings of equal length
+is the number of positions at which the corresponding symbols are different.
+https://en.wikipedia.org/wiki/Hamming_distance
+*/
+public final class HammingDistance {
+    private HammingDistance() {
+    }
+
+    /**
+     * calculate the hamming distance between two strings of equal length
+     *
+     * @param s1 the first string
+     * @param s2 the second string
+     * @return {@code int} hamming distance
+     * @throws Exception
+     */
+    public static int calculateHammingDistance(String s1, String s2) throws Exception {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (s1.length() != s2.length()) {</span>
+<span class="fc" id="L21">            throw new Exception(&quot;String lengths must be equal&quot;);</span>
+        }
+
+<span class="fc" id="L24">        int stringLength = s1.length();</span>
+<span class="fc" id="L25">        int counter = 0;</span>
+
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (int i = 0; i &lt; stringLength; i++) {</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (s1.charAt(i) != s2.charAt(i)) {</span>
+<span class="fc" id="L29">                counter++;</span>
+            }
+        }
+<span class="fc" id="L32">        return counter;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

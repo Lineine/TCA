@@ -16,10 +16,10 @@ public class Texture2D
      * @param path Path to where the image is stored.
      */
     public Texture2D(String path)
-<span class="nc" id="L19">    {</span>
-<span class="nc" id="L20">        this.contentLocation = path;</span>
-<span class="nc" id="L21">        this.loadImage(contentLocation);</span>
-<span class="nc" id="L22">    }</span>
+<span class="fc" id="L19">    {</span>
+<span class="fc" id="L20">        this.contentLocation = path;</span>
+<span class="fc" id="L21">        this.loadImage(contentLocation);</span>
+<span class="fc" id="L22">    }</span>
 
     /**
      * Easy way to store and load images for your program.
@@ -38,23 +38,23 @@ public class Texture2D
      */
     private boolean loadImage(String path)
     {
-<span class="nc" id="L41">        boolean loaded = false;</span>
-<span class="nc" id="L42">        URL systemIndependentPath = getClass().getResource(path);</span>
+<span class="fc" id="L41">        boolean loaded = false;</span>
+<span class="fc" id="L42">        URL systemIndependentPath = getClass().getResource(path);</span>
         try
         {
             // If the URL was unsuccessfully made make a last attempt to create a URL.
-<span class="nc bnc" id="L46" title="All 2 branches missed.">            if(systemIndependentPath == null)</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">            if(systemIndependentPath == null)</span>
 <span class="nc" id="L47">                this.bufferedImage = ImageIO.read(new URL(&quot;file:&quot; + path));</span>
             else
 <span class="nc" id="L49">                this.bufferedImage = ImageIO.read(systemIndependentPath);</span>
 <span class="nc" id="L50">            loaded = true;</span>
         }
-<span class="nc" id="L52">        catch(Exception ex)</span>
+<span class="fc" id="L52">        catch(Exception ex)</span>
         {
-<span class="nc" id="L54">            this.bufferedImage = null;</span>
-<span class="nc" id="L55">            System.out.println(&quot;Could not load image: &quot; + path);</span>
+<span class="fc" id="L54">            this.bufferedImage = null;</span>
+<span class="fc" id="L55">            System.out.println(&quot;Could not load image: &quot; + path);</span>
 <span class="nc" id="L56">        }</span>
-<span class="nc" id="L57">        return loaded;</span>
+<span class="fc" id="L57">        return loaded;</span>
     }
 
     /**
@@ -66,21 +66,21 @@ public class Texture2D
     public static BufferedImage loadBufferedImage(String path)
     {
         BufferedImage image;
-<span class="nc" id="L69">        URL systemIndependentPath = GameHelper.osIndependentFilePath(path);</span>
+<span class="fc" id="L69">        URL systemIndependentPath = GameHelper.osIndependentFilePath(path);</span>
         try
         {
             // If the URL was unsuccessfully made make a last attempt to create a URL.
-<span class="nc bnc" id="L73" title="All 2 branches missed.">            if(systemIndependentPath == null)</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            if(systemIndependentPath == null)</span>
 <span class="nc" id="L74">                image = ImageIO.read(new URL(&quot;file:&quot; + path));</span>
             else
 <span class="nc" id="L76">                image = ImageIO.read(systemIndependentPath);</span>
         }
-<span class="nc" id="L78">        catch(Exception ex)</span>
+<span class="fc" id="L78">        catch(Exception ex)</span>
         {
-<span class="nc" id="L80">            image = null;</span>
-<span class="nc" id="L81">            System.out.println(&quot;Could not load image: &quot; + path);</span>
+<span class="fc" id="L80">            image = null;</span>
+<span class="fc" id="L81">            System.out.println(&quot;Could not load image: &quot; + path);</span>
 <span class="nc" id="L82">        }</span>
-<span class="nc" id="L83">        return image;</span>
+<span class="fc" id="L83">        return image;</span>
     }
 
     /**
@@ -88,7 +88,7 @@ public class Texture2D
      */
     public BufferedImage getImage()
     {
-<span class="nc" id="L91">        return this.bufferedImage;</span>
+<span class="fc" id="L91">        return this.bufferedImage;</span>
     }
 
     /**

@@ -71,28 +71,28 @@ public class HelpFormatter {
      *
      * @since 1.7.0
      */
-<span class="nc" id="L74">    public static final class Builder implements Supplier&lt;HelpFormatter&gt; {</span>
+<span class="fc" id="L74">    public static final class Builder implements Supplier&lt;HelpFormatter&gt; {</span>
         // TODO All other instance HelpFormatter instance variables.
         // Make HelpFormatter immutable for 2.0
 
         /**
          * A function to convert a description (not null) and a deprecated Option (not null) to help description
          */
-<span class="nc" id="L81">        private static final Function&lt;Option, String&gt; DEFAULT_DEPRECATED_FORMAT = o -&gt; &quot;[Deprecated] &quot; + getDescription(o);</span>
+<span class="pc" id="L81">        private static final Function&lt;Option, String&gt; DEFAULT_DEPRECATED_FORMAT = o -&gt; &quot;[Deprecated] &quot; + getDescription(o);</span>
 
         /**
          * Formatter for deprecated options.
          */
-<span class="nc" id="L86">        private Function&lt;Option, String&gt; deprecatedFormatFunc = DEFAULT_DEPRECATED_FORMAT;</span>
+<span class="fc" id="L86">        private Function&lt;Option, String&gt; deprecatedFormatFunc = DEFAULT_DEPRECATED_FORMAT;</span>
 
         /**
          * The output PrintWriter, defaults to wrapping {@link System#out}.
          */
-<span class="nc" id="L91">        private PrintWriter printStream = createDefaultPrintWriter();</span>
+<span class="fc" id="L91">        private PrintWriter printStream = createDefaultPrintWriter();</span>
 
         @Override
         public HelpFormatter get() {
-<span class="nc" id="L95">            return new HelpFormatter(deprecatedFormatFunc, printStream);</span>
+<span class="fc" id="L95">            return new HelpFormatter(deprecatedFormatFunc, printStream);</span>
         }
 
         /**
@@ -124,8 +124,8 @@ public class HelpFormatter {
          * @since 1.8.0
          */
         public Builder setShowDeprecated(final Function&lt;Option, String&gt; showDeprecatedFunc) {
-<span class="nc" id="L127">            this.deprecatedFormatFunc = showDeprecatedFunc;</span>
-<span class="nc" id="L128">            return this;</span>
+<span class="fc" id="L127">            this.deprecatedFormatFunc = showDeprecatedFunc;</span>
+<span class="fc" id="L128">            return this;</span>
         }
     }
 
@@ -186,7 +186,7 @@ public class HelpFormatter {
      * @since 1.7.0
      */
     public static Builder builder() {
-<span class="nc" id="L189">        return new Builder();</span>
+<span class="fc" id="L189">        return new Builder();</span>
     }
 
     private static PrintWriter createDefaultPrintWriter() {
@@ -375,9 +375,9 @@ public class HelpFormatter {
      * @return The String of padding
      */
     protected String createPadding(final int len) {
-<span class="nc" id="L378">        final char[] padding = new char[len];</span>
-<span class="nc" id="L379">        Arrays.fill(padding, ' ');</span>
-<span class="nc" id="L380">        return new String(padding);</span>
+<span class="fc" id="L378">        final char[] padding = new char[len];</span>
+<span class="fc" id="L379">        Arrays.fill(padding, ' ');</span>
+<span class="fc" id="L380">        return new String(padding);</span>
     }
 
     /**
@@ -392,16 +392,16 @@ public class HelpFormatter {
      */
     protected int findWrapPos(final String text, final int width, final int startPos) {
         // the line ends before the max wrap pos or a new line char found
-<span class="nc" id="L395">        int pos = text.indexOf(Char.LF, startPos);</span>
-<span class="nc bnc" id="L396" title="All 4 branches missed.">        if (pos != -1 &amp;&amp; pos &lt;= width) {</span>
+<span class="fc" id="L395">        int pos = text.indexOf(Char.LF, startPos);</span>
+<span class="pc bpc" id="L396" title="3 of 4 branches missed.">        if (pos != -1 &amp;&amp; pos &lt;= width) {</span>
 <span class="nc" id="L397">            return pos + 1;</span>
         }
-<span class="nc" id="L399">        pos = text.indexOf(Char.TAB, startPos);</span>
-<span class="nc bnc" id="L400" title="All 4 branches missed.">        if (pos != -1 &amp;&amp; pos &lt;= width) {</span>
+<span class="fc" id="L399">        pos = text.indexOf(Char.TAB, startPos);</span>
+<span class="pc bpc" id="L400" title="3 of 4 branches missed.">        if (pos != -1 &amp;&amp; pos &lt;= width) {</span>
 <span class="nc" id="L401">            return pos + 1;</span>
         }
-<span class="nc bnc" id="L403" title="All 2 branches missed.">        if (startPos + width &gt;= text.length()) {</span>
-<span class="nc" id="L404">            return -1;</span>
+<span class="pc bpc" id="L403" title="1 of 2 branches missed.">        if (startPos + width &gt;= text.length()) {</span>
+<span class="fc" id="L404">            return -1;</span>
         }
         // look for the last whitespace character before startPos+width
 <span class="nc bnc" id="L407" title="All 2 branches missed.">        for (pos = startPos + width; pos &gt;= startPos; --pos) {</span>
@@ -483,7 +483,7 @@ public class HelpFormatter {
      * @since 1.2
      */
     public Comparator&lt;Option&gt; getOptionComparator() {
-<span class="nc" id="L486">        return optionComparator;</span>
+<span class="fc" id="L486">        return optionComparator;</span>
     }
 
     /**
@@ -501,7 +501,7 @@ public class HelpFormatter {
      * @return the 'syntaxPrefix'
      */
     public String getSyntaxPrefix() {
-<span class="nc" id="L504">        return defaultSyntaxPrefix;</span>
+<span class="fc" id="L504">        return defaultSyntaxPrefix;</span>
     }
 
     /**
@@ -580,22 +580,22 @@ public class HelpFormatter {
      */
     public void printHelp(final PrintWriter pw, final int width, final String cmdLineSyntax, final String header, final Options options, final int leftPad,
         final int descPad, final String footer, final boolean autoUsage) {
-<span class="nc bnc" id="L583" title="All 2 branches missed.">        if (Util.isEmpty(cmdLineSyntax)) {</span>
+<span class="pc bpc" id="L583" title="1 of 2 branches missed.">        if (Util.isEmpty(cmdLineSyntax)) {</span>
 <span class="nc" id="L584">            throw new IllegalArgumentException(&quot;cmdLineSyntax not provided&quot;);</span>
         }
-<span class="nc bnc" id="L586" title="All 2 branches missed.">        if (autoUsage) {</span>
-<span class="nc" id="L587">            printUsage(pw, width, cmdLineSyntax, options);</span>
+<span class="pc bpc" id="L586" title="1 of 2 branches missed.">        if (autoUsage) {</span>
+<span class="fc" id="L587">            printUsage(pw, width, cmdLineSyntax, options);</span>
         } else {
 <span class="nc" id="L589">            printUsage(pw, width, cmdLineSyntax);</span>
         }
-<span class="nc bnc" id="L591" title="All 4 branches missed.">        if (header != null &amp;&amp; !header.isEmpty()) {</span>
-<span class="nc" id="L592">            printWrapped(pw, width, header);</span>
+<span class="pc bpc" id="L591" title="2 of 4 branches missed.">        if (header != null &amp;&amp; !header.isEmpty()) {</span>
+<span class="fc" id="L592">            printWrapped(pw, width, header);</span>
         }
-<span class="nc" id="L594">        printOptions(pw, width, options, leftPad, descPad);</span>
-<span class="nc bnc" id="L595" title="All 4 branches missed.">        if (footer != null &amp;&amp; !footer.isEmpty()) {</span>
+<span class="fc" id="L594">        printOptions(pw, width, options, leftPad, descPad);</span>
+<span class="pc bpc" id="L595" title="3 of 4 branches missed.">        if (footer != null &amp;&amp; !footer.isEmpty()) {</span>
 <span class="nc" id="L596">            printWrapped(pw, width, footer);</span>
         }
-<span class="nc" id="L598">    }</span>
+<span class="fc" id="L598">    }</span>
 
     /**
      * Prints the help for {@code options} with the specified command line syntax. This method prints help information
@@ -658,10 +658,10 @@ public class HelpFormatter {
      * @param descPad the number of characters of padding to be prefixed to each description line
      */
     public void printOptions(final PrintWriter pw, final int width, final Options options, final int leftPad, final int descPad) {
-<span class="nc" id="L661">        final StringBuffer sb = new StringBuffer();</span>
-<span class="nc" id="L662">        renderOptions(sb, width, options, leftPad, descPad);</span>
-<span class="nc" id="L663">        pw.println(sb.toString());</span>
-<span class="nc" id="L664">    }</span>
+<span class="fc" id="L661">        final StringBuffer sb = new StringBuffer();</span>
+<span class="fc" id="L662">        renderOptions(sb, width, options, leftPad, descPad);</span>
+<span class="fc" id="L663">        pw.println(sb.toString());</span>
+<span class="fc" id="L664">    }</span>
 
     /**
      * Prints the cmdLineSyntax to the specified writer, using the specified width.
@@ -685,15 +685,15 @@ public class HelpFormatter {
      */
     public void printUsage(final PrintWriter pw, final int width, final String app, final Options options) {
         // initialize the string buffer
-<span class="nc" id="L688">        final StringBuffer buff = new StringBuffer(getSyntaxPrefix()).append(app).append(Char.SP);</span>
+<span class="fc" id="L688">        final StringBuffer buff = new StringBuffer(getSyntaxPrefix()).append(app).append(Char.SP);</span>
         // create a list for processed option groups
-<span class="nc" id="L690">        final Collection&lt;OptionGroup&gt; processedGroups = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L691">        final List&lt;Option&gt; optList = new ArrayList&lt;&gt;(options.getOptions());</span>
-<span class="nc bnc" id="L692" title="All 2 branches missed.">        if (getOptionComparator() != null) {</span>
-<span class="nc" id="L693">            Collections.sort(optList, getOptionComparator());</span>
+<span class="fc" id="L690">        final Collection&lt;OptionGroup&gt; processedGroups = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L691">        final List&lt;Option&gt; optList = new ArrayList&lt;&gt;(options.getOptions());</span>
+<span class="pc bpc" id="L692" title="1 of 2 branches missed.">        if (getOptionComparator() != null) {</span>
+<span class="fc" id="L693">            Collections.sort(optList, getOptionComparator());</span>
         }
         // iterate over the options
-<span class="nc bnc" id="L696" title="All 2 branches missed.">        for (final Iterator&lt;Option&gt; it = optList.iterator(); it.hasNext();) {</span>
+<span class="pc bpc" id="L696" title="1 of 2 branches missed.">        for (final Iterator&lt;Option&gt; it = optList.iterator(); it.hasNext();) {</span>
             // get the next Option
 <span class="nc" id="L698">            final Option option = it.next();</span>
             // check if the option is part of an OptionGroup
@@ -720,8 +720,8 @@ public class HelpFormatter {
 <span class="nc" id="L720">        }</span>
 
         // call printWrapped
-<span class="nc" id="L723">        printWrapped(pw, width, buff.toString().indexOf(' ') + 1, buff.toString());</span>
-<span class="nc" id="L724">    }</span>
+<span class="fc" id="L723">        printWrapped(pw, width, buff.toString().indexOf(' ') + 1, buff.toString());</span>
+<span class="fc" id="L724">    }</span>
 
     /**
      * Prints the specified text to the specified PrintWriter.
@@ -732,10 +732,10 @@ public class HelpFormatter {
      * @param text The text to be written to the PrintWriter
      */
     public void printWrapped(final PrintWriter pw, final int width, final int nextLineTabStop, final String text) {
-<span class="nc" id="L735">        final StringBuffer sb = new StringBuffer(text.length());</span>
-<span class="nc" id="L736">        renderWrappedTextBlock(sb, width, nextLineTabStop, text);</span>
-<span class="nc" id="L737">        pw.println(sb.toString());</span>
-<span class="nc" id="L738">    }</span>
+<span class="fc" id="L735">        final StringBuffer sb = new StringBuffer(text.length());</span>
+<span class="fc" id="L736">        renderWrappedTextBlock(sb, width, nextLineTabStop, text);</span>
+<span class="fc" id="L737">        pw.println(sb.toString());</span>
+<span class="fc" id="L738">    }</span>
 
     /**
      * Prints the specified text to the specified PrintWriter.
@@ -745,8 +745,8 @@ public class HelpFormatter {
      * @param text The text to be written to the PrintWriter
      */
     public void printWrapped(final PrintWriter pw, final int width, final String text) {
-<span class="nc" id="L748">        printWrapped(pw, width, 0, text);</span>
-<span class="nc" id="L749">    }</span>
+<span class="fc" id="L748">        printWrapped(pw, width, 0, text);</span>
+<span class="fc" id="L749">    }</span>
 
     /**
      * Renders the specified Options and return the rendered Options in a StringBuffer.
@@ -760,19 +760,19 @@ public class HelpFormatter {
      * @return the StringBuffer with the rendered Options contents.
      */
     protected StringBuffer renderOptions(final StringBuffer sb, final int width, final Options options, final int leftPad, final int descPad) {
-<span class="nc" id="L763">        final String lpad = createPadding(leftPad);</span>
-<span class="nc" id="L764">        final String dpad = createPadding(descPad);</span>
+<span class="fc" id="L763">        final String lpad = createPadding(leftPad);</span>
+<span class="fc" id="L764">        final String dpad = createPadding(descPad);</span>
         // first create list containing only &lt;lpad&gt;-a,--aaa where
         // -a is opt and --aaa is long opt; in parallel look for
         // the longest opt string this list will be then used to
         // sort options ascending
-<span class="nc" id="L769">        int max = 0;</span>
-<span class="nc" id="L770">        final List&lt;StringBuffer&gt; prefixList = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L771">        final List&lt;Option&gt; optList = options.helpOptions();</span>
-<span class="nc bnc" id="L772" title="All 2 branches missed.">        if (getOptionComparator() != null) {</span>
-<span class="nc" id="L773">            Collections.sort(optList, getOptionComparator());</span>
+<span class="fc" id="L769">        int max = 0;</span>
+<span class="fc" id="L770">        final List&lt;StringBuffer&gt; prefixList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L771">        final List&lt;Option&gt; optList = options.helpOptions();</span>
+<span class="pc bpc" id="L772" title="1 of 2 branches missed.">        if (getOptionComparator() != null) {</span>
+<span class="fc" id="L773">            Collections.sort(optList, getOptionComparator());</span>
         }
-<span class="nc bnc" id="L775" title="All 2 branches missed.">        for (final Option option : optList) {</span>
+<span class="pc bpc" id="L775" title="1 of 2 branches missed.">        for (final Option option : optList) {</span>
 <span class="nc" id="L776">            final StringBuffer optBuf = new StringBuffer();</span>
 <span class="nc bnc" id="L777" title="All 2 branches missed.">            if (option.getOpt() == null) {</span>
 <span class="nc" id="L778">                optBuf.append(lpad).append(&quot;   &quot;).append(getLongOptPrefix()).append(option.getLongOpt());</span>
@@ -795,8 +795,8 @@ public class HelpFormatter {
 <span class="nc" id="L795">            prefixList.add(optBuf);</span>
 <span class="nc" id="L796">            max = Math.max(optBuf.length(), max);</span>
 <span class="nc" id="L797">        }</span>
-<span class="nc" id="L798">        int x = 0;</span>
-<span class="nc bnc" id="L799" title="All 2 branches missed.">        for (final Iterator&lt;Option&gt; it = optList.iterator(); it.hasNext();) {</span>
+<span class="fc" id="L798">        int x = 0;</span>
+<span class="pc bpc" id="L799" title="1 of 2 branches missed.">        for (final Iterator&lt;Option&gt; it = optList.iterator(); it.hasNext();) {</span>
 <span class="nc" id="L800">            final Option option = it.next();</span>
 <span class="nc" id="L801">            final StringBuilder optBuf = new StringBuilder(prefixList.get(x++).toString());</span>
 <span class="nc bnc" id="L802" title="All 2 branches missed.">            if (optBuf.length() &lt; max) {</span>
@@ -814,7 +814,7 @@ public class HelpFormatter {
 <span class="nc" id="L814">                sb.append(getNewLine());</span>
             }
 <span class="nc" id="L816">        }</span>
-<span class="nc" id="L817">        return sb;</span>
+<span class="fc" id="L817">        return sb;</span>
     }
 
     /**
@@ -828,12 +828,12 @@ public class HelpFormatter {
      * @return the StringBuffer with the rendered Options contents.
      */
     protected StringBuffer renderWrappedText(final StringBuffer sb, final int width, final int nextLineTabStop, final String text) {
-<span class="nc" id="L831">        String render = text;</span>
-<span class="nc" id="L832">        int nextLineTabStopPos = nextLineTabStop;</span>
-<span class="nc" id="L833">        int pos = findWrapPos(render, width, 0);</span>
-<span class="nc bnc" id="L834" title="All 2 branches missed.">        if (pos == -1) {</span>
-<span class="nc" id="L835">            sb.append(rtrim(render));</span>
-<span class="nc" id="L836">            return sb;</span>
+<span class="fc" id="L831">        String render = text;</span>
+<span class="fc" id="L832">        int nextLineTabStopPos = nextLineTabStop;</span>
+<span class="fc" id="L833">        int pos = findWrapPos(render, width, 0);</span>
+<span class="pc bpc" id="L834" title="1 of 2 branches missed.">        if (pos == -1) {</span>
+<span class="fc" id="L835">            sb.append(rtrim(render));</span>
+<span class="fc" id="L836">            return sb;</span>
         }
 <span class="nc" id="L838">        sb.append(rtrim(render.substring(0, pos))).append(getNewLine());</span>
 <span class="nc bnc" id="L839" title="All 2 branches missed.">        if (nextLineTabStopPos &gt;= width) {</span>
@@ -867,21 +867,21 @@ public class HelpFormatter {
      */
     private Appendable renderWrappedTextBlock(final StringBuffer sb, final int width, final int nextLineTabStop, final String text) {
         try {
-<span class="nc" id="L870">            final BufferedReader in = new BufferedReader(new StringReader(text));</span>
+<span class="fc" id="L870">            final BufferedReader in = new BufferedReader(new StringReader(text));</span>
             String line;
-<span class="nc" id="L872">            boolean firstLine = true;</span>
-<span class="nc bnc" id="L873" title="All 2 branches missed.">            while ((line = in.readLine()) != null) {</span>
-<span class="nc bnc" id="L874" title="All 2 branches missed.">                if (!firstLine) {</span>
+<span class="fc" id="L872">            boolean firstLine = true;</span>
+<span class="fc bfc" id="L873" title="All 2 branches covered.">            while ((line = in.readLine()) != null) {</span>
+<span class="pc bpc" id="L874" title="1 of 2 branches missed.">                if (!firstLine) {</span>
 <span class="nc" id="L875">                    sb.append(getNewLine());</span>
                 } else {
-<span class="nc" id="L877">                    firstLine = false;</span>
+<span class="fc" id="L877">                    firstLine = false;</span>
                 }
-<span class="nc" id="L879">                renderWrappedText(sb, width, nextLineTabStop, line);</span>
+<span class="fc" id="L879">                renderWrappedText(sb, width, nextLineTabStop, line);</span>
             }
 <span class="nc" id="L881">        } catch (final IOException e) { // NOPMD</span>
             // cannot happen
-<span class="nc" id="L883">        }</span>
-<span class="nc" id="L884">        return sb;</span>
+<span class="fc" id="L883">        }</span>
+<span class="fc" id="L884">        return sb;</span>
     }
 
     /**
@@ -891,14 +891,14 @@ public class HelpFormatter {
      * @return The String of without the trailing padding
      */
     protected String rtrim(final String s) {
-<span class="nc bnc" id="L894" title="All 2 branches missed.">        if (Util.isEmpty(s)) {</span>
+<span class="pc bpc" id="L894" title="1 of 2 branches missed.">        if (Util.isEmpty(s)) {</span>
 <span class="nc" id="L895">            return s;</span>
         }
-<span class="nc" id="L897">        int pos = s.length();</span>
-<span class="nc bnc" id="L898" title="All 4 branches missed.">        while (pos &gt; 0 &amp;&amp; Character.isWhitespace(s.charAt(pos - 1))) {</span>
-<span class="nc" id="L899">            --pos;</span>
+<span class="fc" id="L897">        int pos = s.length();</span>
+<span class="pc bpc" id="L898" title="1 of 4 branches missed.">        while (pos &gt; 0 &amp;&amp; Character.isWhitespace(s.charAt(pos - 1))) {</span>
+<span class="fc" id="L899">            --pos;</span>
         }
-<span class="nc" id="L901">        return s.substring(0, pos);</span>
+<span class="fc" id="L901">        return s.substring(0, pos);</span>
     }
 
     /**

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Since_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Since_Test
+testInvalidVersion(net.mooctest.Since_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Exception expected
+	at net.mooctest.Since_Test.testInvalidVersion(Since_Test.java:24)
+
+testSince(net.mooctest.Since_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Since_Test.testSince(Since_Test.java:16)
+
+testSinceAnnotationOnClass(net.mooctest.Since_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Since_Test.testSinceAnnotationOnClass(Since_Test.java:32)
+

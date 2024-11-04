@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.LongestValidParentheses_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in net.mooctest.LongestValidParentheses_Test
+testInvalidParentheses  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <0> but was: <4>
+	at net.mooctest.LongestValidParentheses_Test.testInvalidParentheses(LongestValidParentheses_Test.java:34)
+
+testMixedParentheses  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2> but was: <6>
+	at net.mooctest.LongestValidParentheses_Test.testMixedParentheses(LongestValidParentheses_Test.java:40)
+

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.JsonWriter_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.JsonWriter_Test
+test_name_value(net.mooctest.JsonWriter_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[{"key":"value"}]> but was:<[net.mooctest.stream.JsonWriter@7af0d91b]>
+	at net.mooctest.JsonWriter_Test.test_name_value(JsonWriter_Test.java:34)
+
+test_flush_close(net.mooctest.JsonWriter_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[{"key":"value"}]> but was:<[net.mooctest.stream.JsonWriter@1c7f6e96]>
+	at net.mooctest.JsonWriter_Test.test_flush_close(JsonWriter_Test.java:54)
+
+test_beginObject_endObject(net.mooctest.JsonWriter_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[{}]> but was:<[net.mooctest.stream.JsonWriter@30ec211a]>
+	at net.mooctest.JsonWriter_Test.test_beginObject_endObject(JsonWriter_Test.java:25)
+
+test_setIndent(net.mooctest.JsonWriter_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<net.mooctest.FormattingStyle@1ac0cdb0> but was:<net.mooctest.FormattingStyle@6684f7f2>
+	at net.mooctest.JsonWriter_Test.test_setIndent(JsonWriter_Test.java:17)
+
+test_nullValue(net.mooctest.JsonWriter_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[{"key":null}]> but was:<[net.mooctest.stream.JsonWriter@1682e6a]>
+	at net.mooctest.JsonWriter_Test.test_nullValue(JsonWriter_Test.java:43)
+

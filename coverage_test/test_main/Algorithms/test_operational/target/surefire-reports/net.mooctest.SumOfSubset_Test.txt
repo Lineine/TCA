@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.SumOfSubset_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in net.mooctest.SumOfSubset_Test
+testEmptyArray  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at net.mooctest.SumOfSubset_Test.testEmptyArray(SumOfSubset_Test.java:15)
+

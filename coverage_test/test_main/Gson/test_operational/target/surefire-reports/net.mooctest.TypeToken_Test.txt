@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.TypeToken_Test
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.TypeToken_Test
+testParameterizedTypeToken(net.mooctest.TypeToken_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<net.mooctest.TypeToken_Test$3@5e3d2765> but was:<java.util.List<java.lang.String>>
+	at net.mooctest.TypeToken_Test.testParameterizedTypeToken(TypeToken_Test.java:25)
+
+testArrayTypeToken(net.mooctest.TypeToken_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<class [Ljava.lang.String;> but was:<java.lang.String[]>
+	at net.mooctest.TypeToken_Test.testArrayTypeToken(TypeToken_Test.java:47)
+
+testTypeTokenGetArray(net.mooctest.TypeToken_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<class [Ljava.lang.String;> but was:<java.lang.String[]>
+	at net.mooctest.TypeToken_Test.testTypeTokenGetArray(TypeToken_Test.java:69)
+

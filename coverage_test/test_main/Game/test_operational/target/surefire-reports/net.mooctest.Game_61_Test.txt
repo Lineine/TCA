@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Game_61_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_61_Test
+test_220(net.mooctest.Game_61_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Game_61_Test.test_220(Game_61_Test.java:13)
+

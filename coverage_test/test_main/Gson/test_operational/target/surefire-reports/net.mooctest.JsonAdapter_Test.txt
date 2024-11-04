@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.JsonAdapter_Test
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.JsonAdapter_Test
+testValue(net.mooctest.JsonAdapter_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.JsonAdapter_Test.testValue(JsonAdapter_Test.java:14)
+
+testNullSafeDefaultValue(net.mooctest.JsonAdapter_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.JsonAdapter_Test.testNullSafeDefaultValue(JsonAdapter_Test.java:20)
+

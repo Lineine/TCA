@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.ITree_sub_10_4_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.ITree_sub_10_4_Test
-test_570(net.mooctest.ITree_sub_10_4_Test)  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.AssertionError
-	at net.mooctest.ITree_sub_10_4_Test.test_570(ITree_sub_10_4_Test.java:69)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in net.mooctest.ITree_sub_10_4_Test

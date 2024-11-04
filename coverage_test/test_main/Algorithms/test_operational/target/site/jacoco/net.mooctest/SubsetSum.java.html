@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SubsetSum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">SubsetSum.java</span></div><h1>SubsetSum.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+<span class="fc" id="L3">public final class SubsetSum {</span>
+    private SubsetSum() {
+    }
+
+    /**
+     * Driver Code
+     */
+    public static void main(String[] args) {
+<span class="nc" id="L11">        int[] arr = new int[] {50, 4, 10, 15, 34};</span>
+<span class="nc bnc" id="L12" title="All 2 branches missed.">        assert subsetSum(arr, 64);</span>
+        /* 4 + 10 + 15 + 34 = 64 */
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        assert subsetSum(arr, 99);</span>
+        /* 50 + 15 + 34 = 99 */
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        assert !subsetSum(arr, 5);</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        assert !subsetSum(arr, 66);</span>
+<span class="nc" id="L18">    }</span>
+
+    /**
+     * Test if a set of integers contains a subset that sum to a given integer.
+     *
+     * @param arr the array contains integers.
+     * @param sum target sum of subset.
+     * @return {@code true} if subset exists, otherwise {@code false}.
+     */
+    public static boolean subsetSum(int[] arr, int sum) {
+<span class="fc" id="L28">        int n = arr.length;</span>
+<span class="fc" id="L29">        boolean[][] isSum = new boolean[n + 2][sum + 1];</span>
+
+<span class="fc" id="L31">        isSum[n + 1][0] = true;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (int i = 1; i &lt;= sum; i++) {</span>
+<span class="fc" id="L33">            isSum[n + 1][i] = false;</span>
+        }
+
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for (int i = n; i &gt; 0; i--) {</span>
+<span class="fc" id="L37">            isSum[i][0] = true;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            for (int j = 1; j &lt;= arr[i - 1] - 1; j++) {</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">                if (j &lt;= sum) {</span>
+<span class="fc" id="L40">                    isSum[i][j] = isSum[i + 1][j];</span>
+                }
+            }
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            for (int j = arr[i - 1]; j &lt;= sum; j++) {</span>
+<span class="fc bfc" id="L44" title="All 4 branches covered.">                isSum[i][j] = (isSum[i + 1][j] || isSum[i + 1][j - arr[i - 1]]);</span>
+            }
+        }
+
+<span class="fc" id="L48">        return isSum[1][sum];</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

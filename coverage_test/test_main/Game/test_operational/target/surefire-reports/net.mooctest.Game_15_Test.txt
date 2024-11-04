@@ -1,16 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_15_Test
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_15_Test
-test_472(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError
-	at net.mooctest.Game_15_Test.test_472(Game_15_Test.java:15)
-
-test_474(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+Tests run: 10, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_15_Test
+test_184(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.NullPointerException
-	at net.mooctest.Game_15_Test.test_474(Game_15_Test.java:26)
+	at net.mooctest.Game_15_Test.test_184(Game_15_Test.java:55)
 
-test_475(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+test_185(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.NullPointerException
-	at net.mooctest.Game_15_Test.test_475(Game_15_Test.java:34)
+	at net.mooctest.Game_15_Test.test_185(Game_15_Test.java:37)
+
+test_186(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_15_Test.test_186(Game_15_Test.java:58)
+
+test_187(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_15_Test.test_187(Game_15_Test.java:81)
+
+test_188(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_15_Test.test_188(Game_15_Test.java:66)
+
+test_189(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_15_Test.test_189(Game_15_Test.java:88)
+
+test_190(net.mooctest.Game_15_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_15_Test.test_190(Game_15_Test.java:74)
 

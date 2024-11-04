@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.NonNullElementWrapperList_Test
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.NonNullElementWrapperList_Test
+testSet_ElementIsValid_ReturnsSetElement(net.mooctest.NonNullElementWrapperList_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[New]Element> but was:<[Old]Element>
+	at net.mooctest.NonNullElementWrapperList_Test.testSet_ElementIsValid_ReturnsSetElement(NonNullElementWrapperList_Test.java:56)
+

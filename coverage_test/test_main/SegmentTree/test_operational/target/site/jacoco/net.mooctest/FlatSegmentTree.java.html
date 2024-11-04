@@ -159,7 +159,7 @@ public final class FlatSegmentTree&lt;D extends Data&gt; extends SegmentTree&lt;
 <span class="fc" id="L159">                final Segment&lt;D&gt; sub1 = createFromList(minLength, s1, segment.start, segment.half);</span>
 <span class="fc" id="L160">                final Segment&lt;D&gt; sub2 = createFromList(minLength, s2, segment.start + segment.half, segment.length - segment.half);</span>
 <span class="fc" id="L161">                segment.segments = new Segment[] { sub1, sub2 };</span>
-<span class="fc bfc" id="L162" title="All 2 branches covered.">            } else if (segment.length &lt;= minLength) {</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">            } else if (segment.length &lt;= minLength) {</span>
 <span class="fc bfc" id="L163" title="All 2 branches covered.">                for (Segment&lt;D&gt; s : segments) {</span>
 <span class="fc" id="L164">                    segment.set.add(s);</span>
 <span class="fc" id="L165">                }</span>

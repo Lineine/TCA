@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.SerializedName_Test
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.SerializedName_Test
+testSerializedName_withAlternateNames(net.mooctest.SerializedName_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<v[1]> but was:<v[3]>
+	at net.mooctest.SerializedName_Test.testSerializedName_withAlternateNames(SerializedName_Test.java:27)
+
+testSerializedName_simple(net.mooctest.SerializedName_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<{["name":"v1","name1":"v2","c":"v3"]}> but was:<{[]}>
+	at net.mooctest.SerializedName_Test.testSerializedName_simple(SerializedName_Test.java:17)
+

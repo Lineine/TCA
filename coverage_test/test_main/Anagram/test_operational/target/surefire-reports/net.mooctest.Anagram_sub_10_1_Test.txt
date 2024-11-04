@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Anagram_sub_10_1_Test
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.Anagram_sub_10_1_Test
-test_696(net.mooctest.Anagram_sub_10_1_Test)  Time elapsed: 0.001 s  <<< ERROR!
-java.io.FileNotFoundException: src\main\resources\net\mooctest\demo.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_1_Test.test_696(Anagram_sub_10_1_Test.java:136)
+Tests run: 13, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.Anagram_sub_10_1_Test
+test_1818(net.mooctest.Anagram_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.io.FileNotFoundException: wordlist.txt (No such file or directory)
+	at net.mooctest.Anagram_sub_10_1_Test.test_1818(Anagram_sub_10_1_Test.java:131)
 
 test_982(net.mooctest.Anagram_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
 java.io.FileNotFoundException: /data02/LCD/CTCA/coverage_test/test_main/Anagram/test_operational/src/test/java/demo2.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_1_Test.test_982(Anagram_sub_10_1_Test.java:143)
+	at net.mooctest.Anagram_sub_10_1_Test.test_982(Anagram_sub_10_1_Test.java:190)
 

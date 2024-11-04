@@ -1,0 +1,192 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+test_operational,net.mooctest.internal,ReflectionAccessFilterHelper.AccessChecker,17,13,2,2,5,6,2,1,0,1
+test_operational,net.mooctest.internal,JavaVersion,42,49,9,5,13,13,8,6,1,6
+test_operational,net.mooctest.internal,TroubleshootingGuide,0,9,0,0,0,1,0,1,0,1
+test_operational,net.mooctest.internal,LinkedTreeMap.KeySet.new LinkedTreeMap.LinkedTreeMapIterator() {...},12,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,LinkedTreeMap.KeySet,18,15,2,0,4,3,4,3,3,3
+test_operational,net.mooctest.internal,NonNullElementWrapperList,38,61,0,2,8,16,7,12,7,11
+test_operational,net.mooctest.internal,.Gson.Types,573,305,114,50,128,79,76,29,8,15
+test_operational,net.mooctest.internal,LinkedTreeMap,413,412,91,57,89,109,62,36,6,18
+test_operational,net.mooctest.internal,LazilyParsedNumber,15,61,1,3,5,19,3,10,2,9
+test_operational,net.mooctest.internal,NumberLimits,0,57,0,4,0,10,0,5,0,3
+test_operational,net.mooctest.internal,Streams,18,44,0,4,6,13,1,5,1,3
+test_operational,net.mooctest.internal,LinkedTreeMap.Node,103,62,24,2,23,18,18,5,5,5
+test_operational,net.mooctest.internal,.Gson.Types.WildcardTypeImpl,150,0,20,0,23,0,16,0,6,0
+test_operational,net.mooctest.internal,UnsafeAllocator.new UnsafeAllocator() {...},17,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,UnsafeAllocator.new UnsafeAllocator() {...},0,23,0,0,0,3,0,2,0,2
+test_operational,net.mooctest.internal,UnsafeAllocator.new UnsafeAllocator() {...},23,0,0,0,3,0,2,0,2,0
+test_operational,net.mooctest.internal,UnsafeAllocator.new UnsafeAllocator() {...},28,0,0,0,3,0,2,0,2,0
+test_operational,net.mooctest.internal,Excluder,157,204,42,32,31,53,33,19,4,11
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},0,18,0,0,0,2,0,2,0,2
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},18,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},28,26,2,2,2,6,2,2,0,2
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},28,28,2,2,2,6,2,2,0,2
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},15,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},15,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},55,0,0,0,12,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},12,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},12,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,LinkedTreeMap.EntrySet.new LinkedTreeMap.LinkedTreeMapIterator() {...},0,11,0,0,0,2,0,2,0,2
+test_operational,net.mooctest.internal,LinkedTreeMap.EntrySet,39,15,8,0,10,3,7,3,3,3
+test_operational,net.mooctest.internal,Streams.AppendableWriter,40,25,0,0,11,7,6,2,6,2
+test_operational,net.mooctest.internal,Excluder.new TypeAdapter() {...},61,0,6,0,12,0,7,0,4,0
+test_operational,net.mooctest.internal,JsonReaderInternalAccess,0,3,0,0,0,1,0,1,0,1
+test_operational,net.mooctest.internal,Primitives,0,136,1,57,0,22,1,32,0,4
+test_operational,net.mooctest.internal,ReflectionAccessFilterHelper.AccessChecker.new ReflectionAccessFilterHelper.AccessChecker() {...},27,0,0,0,4,0,2,0,2,0
+test_operational,net.mooctest.internal,ReflectionAccessFilterHelper.AccessChecker.new ReflectionAccessFilterHelper.AccessChecker() {...},0,6,0,0,0,2,0,2,0,2
+test_operational,net.mooctest.internal,.Gson.Preconditions,14,7,2,2,5,3,3,2,2,1
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},17,16,0,0,2,3,0,2,0,2
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},7,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,UnsafeAllocator,89,42,1,1,17,11,1,4,0,4
+test_operational,net.mooctest.internal,PreJava9DateFormatProvider,14,47,2,7,2,12,2,8,0,3
+test_operational,net.mooctest.internal,.Gson.Types.ParameterizedTypeImpl,45,123,10,8,5,25,9,8,1,7
+test_operational,net.mooctest.internal,Streams.AppendableWriter.CurrentWrite,39,0,2,0,9,0,6,0,5,0
+test_operational,net.mooctest.internal,ConstructorConstructor,230,134,43,19,49,42,28,11,1,7
+test_operational,net.mooctest.internal,LinkedTreeMap.new Comparator() {...},4,3,0,0,1,1,1,1,1,1
+test_operational,net.mooctest.internal,ReflectionAccessFilterHelper,20,64,11,11,4,14,9,9,1,6
+test_operational,net.mooctest.internal,.Gson.Types.GenericArrayTypeImpl,12,28,4,0,1,7,3,4,1,4
+test_operational,net.mooctest.internal,ConstructorConstructor.new ObjectConstructor() {...},15,0,0,0,2,0,2,0,2,0
+test_operational,net.mooctest.internal,LinkedTreeMap.LinkedTreeMapIterator,30,53,4,4,8,10,4,4,1,3
+test_operational,net.mooctest.internal.bind.util,ISO8601Utils,192,532,42,49,33,116,36,19,1,8
+test_operational,net.mooctest,JsonSyntaxException,4,9,0,0,2,4,1,2,1,2
+test_operational,net.mooctest,ToNumberPolicy,0,44,0,0,0,5,0,1,0,1
+test_operational,net.mooctest,Gson.new TypeAdapter() {...},20,6,0,0,4,1,2,1,2,1
+test_operational,net.mooctest,FieldAttributes,0,48,0,2,0,11,0,10,0,9
+test_operational,net.mooctest,Gson.new TypeAdapter() {...},74,6,6,0,17,1,5,1,2,1
+test_operational,net.mooctest,Gson.new TypeAdapter() {...},28,6,4,0,11,1,4,1,2,1
+test_operational,net.mooctest,Gson.new TypeAdapter() {...},38,6,6,0,12,1,5,1,2,1
+test_operational,net.mooctest,Gson.new TypeAdapter() {...},27,0,4,0,10,0,5,0,3,0
+test_operational,net.mooctest,JsonParseException,0,13,0,0,0,6,0,3,0,3
+test_operational,net.mooctest,JsonIOException,0,13,0,0,0,6,0,3,0,3
+test_operational,net.mooctest,GsonBuilder,579,245,50,14,124,49,61,6,29,6
+test_operational,net.mooctest,ToNumberPolicy.new ToNumberPolicy() {...},4,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,ToNumberPolicy.new ToNumberPolicy() {...},6,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,ToNumberPolicy.new ToNumberPolicy() {...},72,6,8,0,14,1,6,1,2,1
+test_operational,net.mooctest,ToNumberPolicy.new ToNumberPolicy() {...},25,6,0,0,5,1,1,1,1,1
+test_operational,net.mooctest,TypeAdapter.new TypeAdapter() {...},8,23,2,2,3,6,2,3,0,3
+test_operational,net.mooctest,TypeAdapter,76,8,0,0,21,2,6,2,6,2
+test_operational,net.mooctest,Gson,438,690,44,30,106,188,51,28,21,21
+test_operational,net.mooctest,FormattingStyle,9,80,0,4,1,18,1,9,1,7
+test_operational,net.mooctest,JsonStreamParser,24,58,1,3,7,14,1,6,0,5
+test_operational,net.mooctest,LongSerializationPolicy.new LongSerializationPolicy() {...},9,6,2,0,3,1,2,1,1,1
+test_operational,net.mooctest,LongSerializationPolicy.new LongSerializationPolicy() {...},10,6,2,0,3,1,2,1,1,1
+test_operational,net.mooctest,LongSerializationPolicy,0,24,0,0,0,3,0,1,0,1
+test_operational,net.mooctest,ReflectionAccessFilter.new ReflectionAccessFilter() {...},3,9,1,1,1,2,2,2,1,2
+test_operational,net.mooctest,ReflectionAccessFilter.new ReflectionAccessFilter() {...},9,3,2,0,2,1,3,1,2,1
+test_operational,net.mooctest,ReflectionAccessFilter.new ReflectionAccessFilter() {...},3,9,1,1,1,2,2,2,1,2
+test_operational,net.mooctest,ReflectionAccessFilter.new ReflectionAccessFilter() {...},3,9,1,1,1,2,2,2,1,2
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},4,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},0,9,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},7,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},6,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,JsonNull,3,13,0,0,1,5,1,4,1,4
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},7,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},7,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,FieldNamingPolicy.new FieldNamingPolicy() {...},7,6,0,0,1,1,1,1,1,1
+test_operational,net.mooctest,JsonParser,52,46,2,4,10,12,3,4,1,3
+test_operational,net.mooctest,Strictness,0,34,0,0,0,4,0,1,0,1
+test_operational,net.mooctest,JsonElement,162,33,5,3,25,11,18,8,14,8
+test_operational,net.mooctest,FieldNamingPolicy,93,74,14,0,18,8,9,1,2,1
+test_operational,net.mooctest,Gson.FutureTypeAdapter,31,13,3,1,9,5,6,2,4,2
+test_operational,net.mooctest,JsonArray,133,131,14,10,26,28,28,17,17,16
+test_operational,net.mooctest,ReflectionAccessFilter,0,17,0,0,0,4,0,1,0,1
+test_operational,net.mooctest,ReflectionAccessFilter.FilterResult,0,44,0,0,0,5,0,1,0,1
+test_operational,net.mooctest,JsonObject,52,117,9,11,8,21,13,16,6,13
+test_operational,net.mooctest,JsonPrimitive,106,303,37,49,13,66,31,35,0,23
+test_operational,net.mooctest.internal.reflect,ReflectionHelper,169,146,16,12,31,31,16,14,5,11
+test_operational,net.mooctest.internal.reflect,ReflectionHelper.RecordSupportedHelper,136,3,4,0,26,1,6,1,4,1
+test_operational,net.mooctest.internal.reflect,ReflectionHelper.RecordNotSupportedHelper,0,21,0,0,0,5,0,5,0,5
+test_operational,net.mooctest.internal.bind,TreeTypeAdapter.GsonContextImpl,20,6,0,0,3,1,3,1,3,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.EnumTypeAdapter,151,0,12,0,30,0,9,0,3,0
+test_operational,net.mooctest.internal.bind,TreeTypeAdapter.SingleTypeFactory,45,37,12,6,4,8,8,3,1,1
+test_operational,net.mooctest.internal.bind,TreeTypeAdapter,54,103,10,8,11,23,11,7,2,7
+test_operational,net.mooctest.internal.bind,CollectionTypeAdapterFactory.Adapter,74,0,8,0,24,0,7,0,3,0
+test_operational,net.mooctest.internal.bind,TypeAdapters.34.new TypeAdapter() {...},56,0,4,0,10,0,5,0,3,0
+test_operational,net.mooctest.internal.bind,NumberTypeAdapter,39,28,3,2,9,10,4,5,2,4
+test_operational,net.mooctest.internal.bind,TypeAdapters,12,239,0,0,3,72,2,5,2,5
+test_operational,net.mooctest.internal.bind,TypeAdapterRuntimeTypeWrapper,35,51,10,6,12,17,8,5,2,3
+test_operational,net.mooctest.internal.bind,JsonAdapterAnnotationTypeAdapterFactory,200,37,35,1,47,11,22,4,4,4
+test_operational,net.mooctest.internal.bind,JsonAdapterAnnotationTypeAdapterFactory.DummyTypeAdapterFactory,5,0,0,0,1,0,1,0,1,0
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.RecordAdapter,220,0,8,0,44,0,10,0,6,0
+test_operational,net.mooctest.internal.bind,DefaultDateTypeAdapter.DateType.new DefaultDateTypeAdapter.DateType() {...},0,6,0,0,0,2,0,2,0,2
+test_operational,net.mooctest.internal.bind,DefaultDateTypeAdapter,99,126,8,6,17,30,8,6,2,5
+test_operational,net.mooctest.internal.bind,SerializationDelegatingTypeAdapter,0,3,0,0,0,1,0,1,0,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},24,3,4,0,6,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},19,3,2,0,6,1,3,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},8,20,2,2,3,7,2,3,0,3
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},47,3,6,0,10,1,5,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},33,8,2,0,8,3,2,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},33,8,2,0,8,3,2,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},30,3,4,0,10,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},75,3,6,0,19,1,5,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},24,3,4,0,8,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},33,3,6,0,9,1,5,1,2,1
+test_operational,net.mooctest.internal.bind,ObjectTypeAdapter.new TypeAdapterFactory() {...},8,12,1,1,1,3,1,2,0,2
+test_operational,net.mooctest.internal.bind,JsonTreeReader.new Reader() {...},8,3,0,0,2,1,2,1,2,1
+test_operational,net.mooctest.internal.bind,JsonTreeReader,413,471,71,44,72,109,55,33,8,21
+test_operational,net.mooctest.internal.bind,TypeAdapters.EnumTypeAdapter.new PrivilegedAction() {...},53,0,4,0,9,0,4,0,2,0
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},58,3,8,0,15,1,6,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},58,3,8,0,15,1,6,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},22,12,3,1,7,4,3,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},19,3,0,0,5,1,2,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},0,34,0,0,0,6,0,3,0,3
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},38,80,3,12,6,25,3,8,0,3
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory,212,318,41,35,37,79,33,13,2,6
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},27,3,4,0,9,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},22,3,4,0,6,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapterFactory() {...},27,25,2,2,3,3,3,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},12,3,0,0,3,1,2,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapterFactory() {...},24,28,0,4,3,3,1,4,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapterFactory() {...},24,19,1,1,2,4,2,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapterFactory() {...},18,19,0,2,1,2,1,3,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapterFactory() {...},19,0,2,0,2,0,3,0,2,0
+test_operational,net.mooctest.internal.bind,ArrayTypeAdapter.new TypeAdapterFactory() {...},0,36,1,5,0,10,1,4,0,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapterFactory() {...},16,12,5,1,4,4,3,2,0,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},150,3,13,0,47,1,11,1,2,1
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.new ReflectiveTypeAdapterFactory.BoundField() {...},101,70,14,6,20,14,11,3,1,3
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},31,3,0,0,7,1,2,1,2,1
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.new TypeAdapter() {...},16,0,0,0,6,0,4,0,4,0
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},85,193,15,31,16,52,14,16,0,5
+test_operational,net.mooctest.internal.bind,JsonTreeWriter.new Writer() {...},12,3,0,0,3,1,3,1,3,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},75,3,16,0,21,1,10,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},38,3,6,0,9,1,5,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},24,11,5,1,5,3,4,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},35,11,3,1,8,3,3,2,1,2
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},24,3,4,0,7,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,TypeAdapters.new TypeAdapter() {...},24,3,4,0,6,1,4,1,2,1
+test_operational,net.mooctest.internal.bind,ArrayTypeAdapter,34,84,5,7,9,23,4,6,0,4
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.FieldsData,0,16,0,0,0,6,0,2,0,2
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.BoundField,0,13,0,0,0,5,0,1,0,1
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.Adapter,25,72,3,7,11,24,3,5,0,3
+test_operational,net.mooctest.internal.bind,JsonTreeWriter,182,206,39,17,36,52,33,16,6,15
+test_operational,net.mooctest.internal.bind,MapTypeAdapterFactory.Adapter,333,0,40,0,80,0,24,0,4,0
+test_operational,net.mooctest.internal.bind,CollectionTypeAdapterFactory,24,18,1,1,5,7,1,2,0,2
+test_operational,net.mooctest.internal.bind,MapTypeAdapterFactory,53,21,5,1,8,8,4,2,1,2
+test_operational,net.mooctest.internal.bind,ReflectiveTypeAdapterFactory.FieldReflectionAdapter,0,18,0,0,0,7,0,4,0,4
+test_operational,net.mooctest.internal.bind,DefaultDateTypeAdapter.new TypeAdapterFactory() {...},2,17,0,2,1,2,1,3,1,2
+test_operational,net.mooctest.internal.bind,NumberTypeAdapter.new TypeAdapterFactory() {...},3,12,1,1,0,2,1,2,0,2
+test_operational,net.mooctest.internal.bind,DefaultDateTypeAdapter.DateType,9,27,0,0,1,6,1,4,1,4
+test_operational,net.mooctest.internal.bind,ObjectTypeAdapter,186,14,31,1,58,4,23,3,5,3
+test_operational,net.mooctest.reflect,TypeToken,539,204,81,19,104,49,54,18,8,14
+test_operational,net.mooctest.internal.sql,SqlTypesSupport,13,28,1,1,7,11,1,1,0,1
+test_operational,net.mooctest.internal.sql,SqlTimeTypeAdapter,89,5,4,0,22,1,5,1,3,1
+test_operational,net.mooctest.internal.sql,SqlTimeTypeAdapter.new TypeAdapterFactory() {...},5,9,1,1,0,2,1,2,0,2
+test_operational,net.mooctest.internal.sql,SqlTimestampTypeAdapter,28,5,2,0,7,1,4,1,3,1
+test_operational,net.mooctest.internal.sql,SqlTimestampTypeAdapter.new TypeAdapterFactory() {...},10,9,1,1,2,3,1,2,0,2
+test_operational,net.mooctest.internal.sql,SqlTypesSupport.new DefaultDateTypeAdapter.DateType() {...},6,4,0,0,1,1,1,1,1,1
+test_operational,net.mooctest.internal.sql,SqlTypesSupport.new DefaultDateTypeAdapter.DateType() {...},6,4,0,0,1,1,1,1,1,1
+test_operational,net.mooctest.internal.sql,SqlDateTypeAdapter.new TypeAdapterFactory() {...},5,9,1,1,0,2,1,2,0,2
+test_operational,net.mooctest.internal.sql,SqlDateTypeAdapter,89,5,4,0,22,1,5,1,3,1
+test_operational,net.mooctest.stream,JsonWriter,297,584,72,64,60,160,61,49,6,34
+test_operational,net.mooctest.stream,MalformedJsonException,4,9,0,0,2,4,1,2,1,2
+test_operational,net.mooctest.stream,JsonToken,0,104,0,0,0,11,0,1,0,1
+test_operational,net.mooctest.stream,JsonReader,1769,1238,347,164,398,297,241,83,14,30
+test_operational,net.mooctest.stream,JsonReader.new JsonReaderInternalAccess() {...},17,27,5,5,6,9,5,2,0,2

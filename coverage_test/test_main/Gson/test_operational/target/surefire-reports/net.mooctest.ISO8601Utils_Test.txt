@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.ISO8601Utils_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in net.mooctest.ISO8601Utils_Test
+testFormat(net.mooctest.ISO8601Utils_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<2021-10-01T[10:0]0:00Z> but was:<2021-10-01T[07:2]0:00Z>
+	at net.mooctest.ISO8601Utils_Test.testFormat(ISO8601Utils_Test.java:18)
+

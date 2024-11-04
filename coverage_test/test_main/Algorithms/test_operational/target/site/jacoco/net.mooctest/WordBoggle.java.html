@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WordBoggle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">WordBoggle.java</span></div><h1>WordBoggle.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+<span class="nc" id="L11">public final class WordBoggle {</span>
+    private WordBoggle() {
+    }
+
+    /**
+     * O(nm * 8^s + ws) time where n = width of boggle board, m = height of
+     * boggle board, s = length of longest word in string array, w = length of
+     * string array, 8 is due to 8 explorable neighbours O(nm + ws) space.
+     */
+    public static List&lt;String&gt; boggleBoard(char[][] board, String[] words) {
+<span class="nc" id="L21">        Trie trie = new Trie();</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        for (String word : words) {</span>
+<span class="nc" id="L23">            trie.add(word);</span>
+        }
+<span class="nc" id="L25">        Set&lt;String&gt; finalWords = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L26">        boolean[][] visited = new boolean[board.length][board.length];</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        for (int i = 0; i &lt; board.length; i++) {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            for (int j = 0; j &lt; board[i].length; j++) {</span>
+<span class="nc" id="L29">                explore(i, j, board, trie.root, visited, finalWords);</span>
+            }
+        }
+<span class="nc" id="L32">        return new ArrayList&lt;&gt;(finalWords);</span>
+    }
+
+    public static void main(String[] args) {
+        // Testcase
+<span class="nc" id="L37">        List&lt;String&gt; ans = new ArrayList&lt;&gt;(Arrays.asList(&quot;a&quot;, &quot;boggle&quot;, &quot;this&quot;, &quot;NOTRE_PEATED&quot;, &quot;is&quot;, &quot;simple&quot;, &quot;board&quot;));</span>
+<span class="nc" id="L38">        assert (boggleBoard(</span>
+            new char[][] {
+                {'t', 'h', 'i', 's', 'i', 's', 'a'},
+                {'s', 'i', 'm', 'p', 'l', 'e', 'x'},
+                {'b', 'x', 'x', 'x', 'x', 'e', 'b'},
+                {'x', 'o', 'g', 'g', 'l', 'x', 'o'},
+                {'x', 'x', 'x', 'D', 'T', 'r', 'a'},
+                {'R', 'E', 'P', 'E', 'A', 'd', 'x'},
+                {'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+                {'N', 'O', 'T', 'R', 'E', '_', 'P'},
+                {'x', 'x', 'D', 'E', 'T', 'A', 'E'},
+            },
+            new String[] {
+                &quot;this&quot;,
+                &quot;is&quot;,
+                &quot;not&quot;,
+                &quot;a&quot;,
+                &quot;simple&quot;,
+                &quot;test&quot;,
+                &quot;boggle&quot;,
+                &quot;board&quot;,
+                &quot;REPEATED&quot;,
+                &quot;NOTRE_PEATED&quot;,
+            })
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                    .equals(ans));</span>
+<span class="nc" id="L63">    }</span>
+
+    public static void explore(int i, int j, char[][] board, TrieNode trieNode, boolean[][] visited, Set&lt;String&gt; finalWords) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (visited[i][j]) {</span>
+<span class="nc" id="L67">            return;</span>
+        }
+
+<span class="nc" id="L70">        char letter = board[i][j];</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (!trieNode.children.containsKey(letter)) {</span>
+<span class="nc" id="L72">            return;</span>
+        }
+<span class="nc" id="L74">        visited[i][j] = true;</span>
+<span class="nc" id="L75">        trieNode = trieNode.children.get(letter);</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (trieNode.children.containsKey('*')) {</span>
+<span class="nc" id="L77">            finalWords.add(trieNode.word);</span>
+        }
+
+<span class="nc" id="L80">        List&lt;Integer[]&gt; neighbors = getNeighbors(i, j, board);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        for (Integer[] neighbor : neighbors) {</span>
+<span class="nc" id="L82">            explore(neighbor[0], neighbor[1], board, trieNode, visited, finalWords);</span>
+<span class="nc" id="L83">        }</span>
+
+<span class="nc" id="L85">        visited[i][j] = false;</span>
+<span class="nc" id="L86">    }</span>
+
+    public static List&lt;Integer[]&gt; getNeighbors(int i, int j, char[][] board) {
+<span class="nc" id="L89">        List&lt;Integer[]&gt; neighbors = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L90" title="All 4 branches missed.">        if (i &gt; 0 &amp;&amp; j &gt; 0) {</span>
+<span class="nc" id="L91">            neighbors.add(new Integer[] {i - 1, j - 1});</span>
+        }
+
+<span class="nc bnc" id="L94" title="All 4 branches missed.">        if (i &gt; 0 &amp;&amp; j &lt; board[0].length - 1) {</span>
+<span class="nc" id="L95">            neighbors.add(new Integer[] {i - 1, j + 1});</span>
+        }
+
+<span class="nc bnc" id="L98" title="All 4 branches missed.">        if (i &lt; board.length - 1 &amp;&amp; j &lt; board[0].length - 1) {</span>
+<span class="nc" id="L99">            neighbors.add(new Integer[] {i + 1, j + 1});</span>
+        }
+
+<span class="nc bnc" id="L102" title="All 4 branches missed.">        if (i &lt; board.length - 1 &amp;&amp; j &gt; 0) {</span>
+<span class="nc" id="L103">            neighbors.add(new Integer[] {i + 1, j - 1});</span>
+        }
+
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        if (i &gt; 0) {</span>
+<span class="nc" id="L107">            neighbors.add(new Integer[] {i - 1, j});</span>
+        }
+
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        if (i &lt; board.length - 1) {</span>
+<span class="nc" id="L111">            neighbors.add(new Integer[] {i + 1, j});</span>
+        }
+
+<span class="nc bnc" id="L114" title="All 2 branches missed.">        if (j &gt; 0) {</span>
+<span class="nc" id="L115">            neighbors.add(new Integer[] {i, j - 1});</span>
+        }
+
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (j &lt; board[0].length - 1) {</span>
+<span class="nc" id="L119">            neighbors.add(new Integer[] {i, j + 1});</span>
+        }
+
+<span class="nc" id="L122">        return neighbors;</span>
+    }
+}
+
+// Trie used to optimize string search
+<span class="nc" id="L127">class TrieNode {</span>
+
+<span class="nc" id="L129">    Map&lt;Character, TrieNode&gt; children = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L130">    String word = &quot;&quot;;</span>
+}
+
+class Trie {
+
+    TrieNode root;
+    char endSymbol;
+
+<span class="nc" id="L138">    Trie() {</span>
+<span class="nc" id="L139">        this.root = new TrieNode();</span>
+<span class="nc" id="L140">        this.endSymbol = '*';</span>
+<span class="nc" id="L141">    }</span>
+
+    public void add(String str) {
+<span class="nc" id="L144">        TrieNode node = this.root;</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        for (int i = 0; i &lt; str.length(); i++) {</span>
+<span class="nc" id="L146">            char letter = str.charAt(i);</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">            if (!node.children.containsKey(letter)) {</span>
+<span class="nc" id="L148">                TrieNode newNode = new TrieNode();</span>
+<span class="nc" id="L149">                node.children.put(letter, newNode);</span>
+            }
+<span class="nc" id="L151">            node = node.children.get(letter);</span>
+        }
+<span class="nc" id="L153">        node.children.put(this.endSymbol, null);</span>
+<span class="nc" id="L154">        node.word = str;</span>
+<span class="nc" id="L155">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

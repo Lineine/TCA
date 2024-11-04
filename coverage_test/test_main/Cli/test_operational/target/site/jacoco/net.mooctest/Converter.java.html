@@ -59,14 +59,14 @@ public interface Converter&lt;T, E extends Throwable&gt; {
     /**
      * Number converter. Converts to a Double if a decimal point ('.') is in the string or a Long otherwise.
      */
-<span class="pc bnc" id="L62" title="All 2 branches missed.">    Converter&lt;Number, NumberFormatException&gt; NUMBER = s -&gt; s.indexOf('.') != -1 ? (Number) Double.valueOf(s) : (Number) Long.valueOf(s);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">    Converter&lt;Number, NumberFormatException&gt; NUMBER = s -&gt; s.indexOf('.') != -1 ? (Number) Double.valueOf(s) : (Number) Long.valueOf(s);</span>
 
     /**
      * Converts a class name to an instance of the class. Uses the Class converter to find the class and then call the default constructor.
      *
      * @see #CLASS
      */
-<span class="pc" id="L69">    Converter&lt;Object, ReflectiveOperationException&gt; OBJECT = s -&gt; CLASS.apply(s).getConstructor().newInstance();</span>
+<span class="fc" id="L69">    Converter&lt;Object, ReflectiveOperationException&gt; OBJECT = s -&gt; CLASS.apply(s).getConstructor().newInstance();</span>
 
     /**
      * Creates a URL. Calls {@link URL#URL(String)}.
@@ -78,7 +78,7 @@ public interface Converter&lt;T, E extends Throwable&gt; {
      */
 <span class="fc" id="L79">    Converter&lt;Date, ParseException&gt; DATE = s -&gt; {</span>
         try {
-<span class="nc" id="L81">            return new SimpleDateFormat(&quot;EEE MMM dd HH:mm:ss zzz yyyy&quot;).parse(s);</span>
+<span class="fc" id="L81">            return new SimpleDateFormat(&quot;EEE MMM dd HH:mm:ss zzz yyyy&quot;).parse(s);</span>
 <span class="fc" id="L82">        } catch (java.text.ParseException e) {</span>
 <span class="fc" id="L83">            throw new RuntimeException(e);</span>
         }

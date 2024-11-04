@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Anagrams.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Anagrams.java</span></div><h1>Anagrams.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+/**
+ * An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+ * typically using all the original letters exactly once.[1]
+ * For example, the word anagram itself can be rearranged into nag a ram,
+ * also the word binary into brainy and the word adobe into abode.
+ * Reference from https://en.wikipedia.org/wiki/Anagram
+ */
+<span class="nc" id="L13">public class Anagrams {</span>
+
+    // 4 approaches are provided for anagram checking. approach 2 and approach 3 are similar but
+    // differ in running time.
+    public static void main(String[] args) {
+<span class="nc" id="L18">        String first = &quot;deal&quot;;</span>
+<span class="nc" id="L19">        String second = &quot;lead&quot;;</span>
+        // All the below methods takes input but doesn't return any output to the main method.
+<span class="nc" id="L21">        Anagrams nm = new Anagrams();</span>
+<span class="nc" id="L22">        System.out.println(nm.approach2(first, second)); /* To activate methods for different approaches*/</span>
+<span class="nc" id="L23">        System.out.println(nm.approach1(first, second)); /* To activate methods for different approaches*/</span>
+<span class="nc" id="L24">        System.out.println(nm.approach3(first, second)); /* To activate methods for different approaches*/</span>
+<span class="nc" id="L25">        System.out.println(nm.approach4(first, second)); /* To activate methods for different approaches*/</span>
+        /**
+         * OUTPUT :
+         * first string =&quot;deal&quot; second string =&quot;lead&quot;
+         * Output: Anagram
+         * Input and output is constant for all four approaches
+         * 1st approach Time Complexity : O(n logn)
+         * Auxiliary Space Complexity : O(1)
+         * 2nd approach Time Complexity : O(n)
+         * Auxiliary Space Complexity : O(1)
+         * 3rd approach Time Complexity : O(n)
+         * Auxiliary Space Complexity : O(1)
+         * 4th approach Time Complexity : O(n)
+         * Auxiliary Space Complexity : O(n)
+         * 5th approach Time Complexity: O(n)
+         * Auxiliary Space Complexity: O(1)
+         */
+<span class="nc" id="L42">    }</span>
+
+    boolean approach1(String s, String t) {
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (s.length() != t.length()) {</span>
+<span class="nc" id="L46">            return false;</span>
+        } else {
+<span class="nc" id="L48">            char[] c = s.toCharArray();</span>
+<span class="nc" id="L49">            char[] d = t.toCharArray();</span>
+<span class="nc" id="L50">            Arrays.sort(c);</span>
+<span class="nc" id="L51">            Arrays.sort(d); /* In this approach the strings are stored in the character arrays and</span>
+                               both the arrays are sorted. After that both the arrays are compared
+                               for checking anangram */
+
+<span class="nc" id="L55">            return Arrays.equals(c, d);</span>
+        }
+    }
+
+    boolean approach2(String a, String b) {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (a.length() != b.length()) {</span>
+<span class="nc" id="L61">            return false;</span>
+        } else {
+<span class="nc" id="L63">            int[] m = new int[26];</span>
+<span class="nc" id="L64">            int[] n = new int[26];</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            for (char c : a.toCharArray()) {</span>
+<span class="nc" id="L66">                m[c - 'a']++;</span>
+            }
+            // In this approach the frequency of both the strings are stored and after that the
+            // frequencies are iterated from 0 to 26(from 'a' to 'z' ). If the frequencies match
+            // then anagram message is displayed in the form of boolean format Running time and
+            // space complexity of this algo is less as compared to others
+<span class="nc bnc" id="L72" title="All 2 branches missed.">            for (char c : b.toCharArray()) {</span>
+<span class="nc" id="L73">                n[c - 'a']++;</span>
+            }
+<span class="nc bnc" id="L75" title="All 2 branches missed.">            for (int i = 0; i &lt; 26; i++) {</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">                if (m[i] != n[i]) {</span>
+<span class="nc" id="L77">                    return false;</span>
+                }
+            }
+<span class="nc" id="L80">            return true;</span>
+        }
+    }
+
+    boolean approach3(String s, String t) {
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (s.length() != t.length()) {</span>
+<span class="nc" id="L86">            return false;</span>
+        }
+        // this is similar to approach number 2 but here the string is not converted to character
+        // array
+        else {
+<span class="nc" id="L91">            int[] a = new int[26];</span>
+<span class="nc" id="L92">            int[] b = new int[26];</span>
+<span class="nc" id="L93">            int k = s.length();</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            for (int i = 0; i &lt; k; i++) {</span>
+<span class="nc" id="L95">                a[s.charAt(i) - 'a']++;</span>
+<span class="nc" id="L96">                b[t.charAt(i) - 'a']++;</span>
+            }
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            for (int i = 0; i &lt; 26; i++) {</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">                if (a[i] != b[i]) return false;</span>
+            }
+<span class="nc" id="L101">            return true;</span>
+        }
+    }
+
+    boolean approach4(String s, String t) {
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        if (s.length() != t.length()) {</span>
+<span class="nc" id="L107">            return false;</span>
+        }
+        // This approach is done using hashmap where frequencies are stored and checked iteratively
+        // and if all the frequencies of first string match with the second string then anagram
+        // message is displayed in boolean format
+        else {
+<span class="nc" id="L113">            HashMap&lt;Character, Integer&gt; nm = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L114">            HashMap&lt;Character, Integer&gt; kk = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">            for (char c : s.toCharArray()) {</span>
+<span class="nc" id="L116">                nm.put(c, nm.getOrDefault(c, 0) + 1);</span>
+            }
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            for (char c : t.toCharArray()) {</span>
+<span class="nc" id="L119">                kk.put(c, kk.getOrDefault(c, 0) + 1);</span>
+            }
+            // It checks for equal frequencies by comparing key-value pairs of two hashmaps
+<span class="nc" id="L122">            return nm.equals(kk);</span>
+        }
+    }
+
+    boolean approach5(String s, String t) {
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (s.length() != t.length()) {</span>
+<span class="nc" id="L128">            return false;</span>
+        }
+        // Approach is different from above 4 aproaches.
+        // Here we initialize an array of size 26 where each element corresponds to the frequency of
+        // a character.
+<span class="nc" id="L133">        int[] freq = new int[26];</span>
+        // iterate through both strings, incrementing the frequency of each character in the first
+        // string and decrementing the frequency of each character in the second string.
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        for (int i = 0; i &lt; s.length(); i++) {</span>
+<span class="nc" id="L137">            int pos1 = s.charAt(i) - 'a';</span>
+<span class="nc" id="L138">            int pos2 = s.charAt(i) - 'a';</span>
+<span class="nc" id="L139">            freq[pos1]++;</span>
+<span class="nc" id="L140">            freq[pos2]--;</span>
+        }
+        // iterate through the frequency array and check if all the elements are zero, if so return
+        // true else false
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        for (int i = 0; i &lt; 26; i++) {</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">            if (freq[i] != 0) {</span>
+<span class="nc" id="L146">                return false;</span>
+            }
+        }
+<span class="nc" id="L149">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_11_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.01 s <<< FAILURE! - in net.mooctest.Cli_11_Test
+test_597(net.mooctest.Cli_11_Test)  Time elapsed: 0.01 s  <<< FAILURE!
+java.lang.AssertionError: expected: net.mooctest.OptionGroup<[-test-option test option]> but was: net.mooctest.OptionGroup<[-test-option test option]>
+	at net.mooctest.Cli_11_Test.test_597(Cli_11_Test.java:22)
+

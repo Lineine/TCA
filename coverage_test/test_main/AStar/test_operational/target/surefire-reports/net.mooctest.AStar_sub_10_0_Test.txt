@@ -1,4 +1,48 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.AStar_sub_10_0_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in net.mooctest.AStar_sub_10_0_Test
+Tests run: 138, Failures: 2, Errors: 9, Skipped: 0, Time elapsed: 1.853 s <<< FAILURE! - in net.mooctest.AStar_sub_10_0_Test
+test_2049(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<605802560> but was:<1343867840>
+	at net.mooctest.AStar_sub_10_0_Test.test_2049(AStar_sub_10_0_Test.java:698)
+
+test_2126(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ClassCastException: [I cannot be cast to net.mooctest.Graph$Edge
+	at net.mooctest.AStar_sub_10_0_Test.test_2126(AStar_sub_10_0_Test.java:750)
+
+test_7053(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-389161294> but was:<-1690120358>
+	at net.mooctest.AStar_sub_10_0_Test.test_7053(AStar_sub_10_0_Test.java:761)
+
+test_7070(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.AStar_sub_10_0_Test.test_7070(AStar_sub_10_0_Test.java:2207)
+
+test_7332(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.AStar_sub_10_0_Test.test_7332(AStar_sub_10_0_Test.java:1911)
+
+test_8022(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: vertex cannot be NULL.
+	at net.mooctest.AStar_sub_10_0_Test.test_8022(AStar_sub_10_0_Test.java:2327)
+
+test_8335(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.AStar_sub_10_0_Test.test_8335(AStar_sub_10_0_Test.java:1816)
+
+test_119(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.AStar_sub_10_0_Test.test_119(AStar_sub_10_0_Test.java:1409)
+
+test_121(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.AStar_sub_10_0_Test.test_121(AStar_sub_10_0_Test.java:2799)
+
+test_133(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.AStar_sub_10_0_Test.test_133(AStar_sub_10_0_Test.java:496)
+
+test_155(net.mooctest.AStar_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Both 'to' and 'from' vertices need to be non-NULL.
+	at net.mooctest.AStar_sub_10_0_Test.test_155(AStar_sub_10_0_Test.java:2505)
+

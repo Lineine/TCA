@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
@@ -91,7 +89,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.1.10</version>
+                <version>1.4.10</version>
                 <configuration>
                     <targetClasses>
                         <param>net.mooctest.*</param>
@@ -108,6 +106,7 @@
                         <mutator>VOID_METHOD_CALLS</mutator>
                         <mutator>NEGATE_CONDITIONALS</mutator>
                     </mutators>
+                    <mutationTestSeed>987654321</mutationTestSeed>
                 </configuration>
             </plugin>
             <plugin>

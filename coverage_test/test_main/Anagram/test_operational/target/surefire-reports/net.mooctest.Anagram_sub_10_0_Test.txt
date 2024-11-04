@@ -1,108 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Anagram_sub_10_0_Test
 -------------------------------------------------------------------------------
-Tests run: 279, Failures: 8, Errors: 18, Skipped: 0, Time elapsed: 0.117 s <<< FAILURE! - in net.mooctest.Anagram_sub_10_0_Test
+Tests run: 178, Failures: 4, Errors: 6, Skipped: 0, Time elapsed: 0.053 s <<< FAILURE! - in net.mooctest.Anagram_sub_10_0_Test
 test_1016(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.io.FileNotFoundException: /project/src/main/resources/net/mooctest/demo.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_1016(Anagram_sub_10_0_Test.java:3712)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1016(Anagram_sub_10_0_Test.java:2633)
 
-test_1020(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: dictionary not loaded
-	at net.mooctest.Anagram_sub_10_0_Test.test_1020(Anagram_sub_10_0_Test.java:1187)
-
-test_1068(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.io.FileNotFoundException: 123.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_1068(Anagram_sub_10_0_Test.java:3777)
-
-test_1272(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
+test_1272(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.io.FileNotFoundException: demo.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_1272(Anagram_sub_10_0_Test.java:4576)
-
-test_1373(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.io.FileNotFoundException: C:\mooctest\projects\2526\44138\Anagram\src\main\resources\net\mooctest\demo.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_1373(Anagram_sub_10_0_Test.java:3650)
-
-test_1461(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: dictionary not loaded
-	at net.mooctest.Anagram_sub_10_0_Test.test_1461(Anagram_sub_10_0_Test.java:4401)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1272(Anagram_sub_10_0_Test.java:3119)
 
 test_1784(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.IllegalArgumentException: wrong number of arguments
-	at net.mooctest.Anagram_sub_10_0_Test.test_1784(Anagram_sub_10_0_Test.java:3684)
-
-test_1790(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.io.FileNotFoundException: src/main/resources/net/mooctest/demo1.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_1790(Anagram_sub_10_0_Test.java:1859)
-
-test_1818(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.io.FileNotFoundException: wordlist.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_1818(Anagram_sub_10_0_Test.java:1949)
+	at net.mooctest.Anagram_sub_10_0_Test.test_1784(Anagram_sub_10_0_Test.java:2605)
 
 test_2058(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.004 s  <<< FAILURE!
 java.lang.AssertionError: expected:<true> but was:<false>
-	at net.mooctest.Anagram_sub_10_0_Test.test_2058(Anagram_sub_10_0_Test.java:3373)
-
-test_144(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: expected:<[          abcdefghijk,  eegghhnnzz, dlorw, eghnz, ehllo, gimn, jnu]> but was:<[0demo, dehllloorw, dlorw, ehllo]>
-	at net.mooctest.Anagram_sub_10_0_Test.test_144(Anagram_sub_10_0_Test.java:1159)
+	at net.mooctest.Anagram_sub_10_0_Test.test_2058(Anagram_sub_10_0_Test.java:2383)
 
 test_146(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError: expected:<[[hello]]> but was:<[]>
-	at net.mooctest.Anagram_sub_10_0_Test.test_146(Anagram_sub_10_0_Test.java:1638)
+	at net.mooctest.Anagram_sub_10_0_Test.test_146(Anagram_sub_10_0_Test.java:1116)
 
-test_200(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
-java.io.FileNotFoundException: C:/Users/Administrator/Desktop/软件测试大赛/demo.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_200(Anagram_sub_10_0_Test.java:2438)
-
-test_265(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+test_204(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError: expected:<false> but was:<true>
-	at net.mooctest.Anagram_sub_10_0_Test.test_265(Anagram_sub_10_0_Test.java:2241)
+	at net.mooctest.Anagram_sub_10_0_Test.test_204(Anagram_sub_10_0_Test.java:1683)
 
 test_385(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError: expected:<0> but was:<false>
-	at net.mooctest.Anagram_sub_10_0_Test.test_385(Anagram_sub_10_0_Test.java:2276)
-
-test_437(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
-java.io.FileNotFoundException: ./demo.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_437(Anagram_sub_10_0_Test.java:3619)
-
-test_463(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
-	at net.mooctest.Anagram_sub_10_0_Test.test_463(Anagram_sub_10_0_Test.java:75)
-
-test_464(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Anagram_sub_10_0_Test.test_464(Anagram_sub_10_0_Test.java:4528)
+	at net.mooctest.Anagram_sub_10_0_Test.test_385(Anagram_sub_10_0_Test.java:1598)
 
 test_474(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.NullPointerException
-	at net.mooctest.Anagram_sub_10_0_Test.test_474(Anagram_sub_10_0_Test.java:2506)
+	at net.mooctest.Anagram_sub_10_0_Test.test_474(Anagram_sub_10_0_Test.java:1736)
 
 test_503(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.io.FileNotFoundException: hsk (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_503(Anagram_sub_10_0_Test.java:3090)
+	at net.mooctest.Anagram_sub_10_0_Test.test_503(Anagram_sub_10_0_Test.java:2112)
 
-test_553(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: expected:<[[asd, fgh, jkl], [ghjkl, asdf], [asd, fghjkl], [jkl, asdfgh], [hjkl, asdfg]]> but was:<[]>
-	at net.mooctest.Anagram_sub_10_0_Test.test_553(Anagram_sub_10_0_Test.java:1497)
-
-test_676(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+test_676(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
 java.io.FileNotFoundException: F:\test.txt (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_676(Anagram_sub_10_0_Test.java:1938)
-
-test_728(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: dictionary not loaded
-	at net.mooctest.Anagram_sub_10_0_Test.test_728(Anagram_sub_10_0_Test.java:940)
-
-test_763(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: expected:<1> but was:<0>
-	at net.mooctest.Anagram_sub_10_0_Test.test_763(Anagram_sub_10_0_Test.java:518)
-
-test_833(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.008 s  <<< FAILURE!
-java.lang.AssertionError: expected:<[000000000, 123456789, adfgs]> but was:<[0demo, 123456789, adfgs, dehllloorw]>
-	at net.mooctest.Anagram_sub_10_0_Test.test_833(Anagram_sub_10_0_Test.java:162)
-
-test_996(net.mooctest.Anagram_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
-java.io.FileNotFoundException: d:/ana.dic (No such file or directory)
-	at net.mooctest.Anagram_sub_10_0_Test.test_996(Anagram_sub_10_0_Test.java:2773)
+	at net.mooctest.Anagram_sub_10_0_Test.test_676(Anagram_sub_10_0_Test.java:1376)
 

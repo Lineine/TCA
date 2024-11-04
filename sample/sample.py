@@ -431,8 +431,8 @@ for n_clusters, sample_method in tqdm(experiment_params):
             java_extract_code = '\n'.join(extract_codes)
 
             num_files = get_file_count(new_folder_path)
-            last_code = java_import_code + java_format('public class ' + project_name + f'_{num_files}_Test ' + '\n' + '{\n' + java_extract_code + '\n' + '\n'.join(java_codes) + '\n}')
-
+            # last_code = java_import_code + java_format('public class ' + project_name + f'_{num_files}_Test ' + '\n' + '{\n' + java_extract_code + '\n' + '\n'.join(java_codes) + '\n}')
+            last_code = java_import_code + java_format('public class ' + project_name + f'_{num_files}_Test ' + '{\n' + '\n'.join(java_codes) + '\n}')
             new_file_name = project_name + f"_{num_files}_Test.java"
             new_file_path = os.path.join(new_folder_path, new_file_name)
 

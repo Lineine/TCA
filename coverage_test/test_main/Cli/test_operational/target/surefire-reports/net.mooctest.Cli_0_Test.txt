@@ -1,12 +1,134 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Cli_0_Test
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in net.mooctest.Cli_0_Test
-test_230(net.mooctest.Cli_0_Test)  Time elapsed: 0.003 s  <<< FAILURE!
+Tests run: 151, Failures: 20, Errors: 11, Skipped: 0, Time elapsed: 0.101 s <<< FAILURE! - in net.mooctest.Cli_0_Test
+test_105(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalArgumentException: must specify longopt
+	at net.mooctest.Cli_0_Test.test_105(Cli_0_Test.java:718)
+
+test_225(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Expected exception message]> but was:<[The option 'testOption2' was specified but an option from this group has already been selected: 'testOption1']>
+	at net.mooctest.Cli_0_Test.test_225(Cli_0_Test.java:808)
+
+test_227(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Expected exception message]> but was:<[Test UnsupportedOperationException]>
+	at net.mooctest.Cli_0_Test.test_227(Cli_0_Test.java:61)
+
+test_230(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError: array lengths differed, expected.length=6 actual.length=7
-	at net.mooctest.Cli_0_Test.test_230(Cli_0_Test.java:50)
+	at net.mooctest.Cli_0_Test.test_230(Cli_0_Test.java:233)
+
+test_283(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_0_Test.test_283(Cli_0_Test.java:105)
+
+test_306(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Exception should have been thrown
+	at net.mooctest.Cli_0_Test.test_306(Cli_0_Test.java:1016)
+
+test_359(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException
+	at net.mooctest.Cli_0_Test.test_359(Cli_0_Test.java:564)
+
+test_403(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_0_Test.test_403(Cli_0_Test.java:887)
+
+test_405(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_0_Test.test_405(Cli_0_Test.java:1117)
+
+test_407(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at net.mooctest.Cli_0_Test.test_407(Cli_0_Test.java:583)
+
+test_420(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<value1> but was:<null>
+	at net.mooctest.Cli_0_Test.test_420(Cli_0_Test.java:256)
+
+test_421(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException: The addValue method is not intended for client use. Subclasses should use the processValue method instead.
+	at net.mooctest.Cli_0_Test.test_421(Cli_0_Test.java:282)
+
+test_441(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<789> but was:<Optional.empty>
+	at net.mooctest.Cli_0_Test.test_441(Cli_0_Test.java:200)
+
+test_453(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<Optional[222]> but was:<222>
+	at net.mooctest.Cli_0_Test.test_453(Cli_0_Test.java:725)
+
+test_462(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: must specify longopt
+	at net.mooctest.Cli_0_Test.test_462(Cli_0_Test.java:707)
+
+test_471(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<class java.lang.Boolean> but was:<class java.lang.String>
+	at net.mooctest.Cli_0_Test.test_471(Cli_0_Test.java:81)
+
+test_493(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Option[a, arg-name, Example option, hasArg=true]]> but was:<[[ Option a arg-name [ARG] :: Example option :: class java.lang.String ]]>
+	at net.mooctest.Cli_0_Test.test_493(Cli_0_Test.java:94)
 
 test_500(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.IllegalArgumentException: NO_ARGS_ALLOWED
-	at net.mooctest.Cli_0_Test.test_500(Cli_0_Test.java:71)
+	at net.mooctest.Cli_0_Test.test_500(Cli_0_Test.java:478)
+
+test_503(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Values should be different. Actual: [ Option k :: null :: class java.lang.String ]
+	at net.mooctest.Cli_0_Test.test_503(Cli_0_Test.java:855)
+
+test_504(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Values should be different. Actual: [ Option l :: null :: class java.lang.String ]
+	at net.mooctest.Cli_0_Test.test_504(Cli_0_Test.java:456)
+
+test_505(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<...ady been selected: '[]'> but was:<...ady been selected: '[null]'>
+	at net.mooctest.Cli_0_Test.test_505(Cli_0_Test.java:195)
+
+test_535(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[]Test> but was:<[java.lang.RuntimeException: ]Test>
+	at net.mooctest.Cli_0_Test.test_535(Cli_0_Test.java:167)
+
+test_548(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Cli_0_Test.test_548(Cli_0_Test.java:138)
+
+test_549(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<help> but was:<null>
+	at net.mooctest.Cli_0_Test.test_549(Cli_0_Test.java:771)
+
+test_567(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_0_Test.test_567(Cli_0_Test.java:697)
+
+test_572(net.mooctest.Cli_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
+net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2022-01-01"
+	at net.mooctest.Cli_0_Test.test_572(Cli_0_Test.java:941)
+Caused by: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2022-01-01"
+	at net.mooctest.Cli_0_Test.test_572(Cli_0_Test.java:941)
+Caused by: java.text.ParseException: Unparseable date: "2022-01-01"
+	at net.mooctest.Cli_0_Test.test_572(Cli_0_Test.java:941)
+
+test_573(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.ParseException: java.lang.ClassNotFoundException: Hello, World!
+	at net.mooctest.Cli_0_Test.test_573(Cli_0_Test.java:659)
+Caused by: java.lang.ClassNotFoundException: Hello, World!
+	at net.mooctest.Cli_0_Test.test_573(Cli_0_Test.java:659)
+
+test_576(net.mooctest.Cli_0_Test)  Time elapsed: 0.066 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Wed Aug 22 [14:30:00 I]ST 2018> but was:<Wed Aug 22 [20:30:00 C]ST 2018>
+	at net.mooctest.Cli_0_Test.test_576(Cli_0_Test.java:125)
+
+test_577(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ClassNotFoundException: InvalidClassName
+	at net.mooctest.Cli_0_Test.test_577(Cli_0_Test.java:815)
+
+test_600(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Cli_0_Test.test_600(Cli_0_Test.java:1067)
+
+test_601(net.mooctest.Cli_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Cli_0_Test.test_601(Cli_0_Test.java:486)
 

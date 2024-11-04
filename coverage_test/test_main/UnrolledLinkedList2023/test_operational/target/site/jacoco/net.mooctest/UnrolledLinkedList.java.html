@@ -86,8 +86,8 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
      */
 <span class="fc" id="L87">    public UnrolledLinkedList(int nodeCapacity) throws IllegalArgumentException {</span>
 
-<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (nodeCapacity &lt; 8) {</span>
-<span class="fc" id="L90">            throw new IllegalArgumentException(&quot;nodeCapacity &lt; 8&quot;);</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if (nodeCapacity &lt; 8) {</span>
+<span class="nc" id="L90">            throw new IllegalArgumentException(&quot;nodeCapacity &lt; 8&quot;);</span>
         }
 <span class="fc" id="L92">        this.nodeCapacity = nodeCapacity;</span>
 <span class="fc" id="L93">        firstNode = new Node();</span>
@@ -152,7 +152,7 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public Iterator&lt;E&gt; iterator() {
 
-<span class="fc" id="L155">        return new ULLIterator(firstNode, 0, 0);</span>
+<span class="nc" id="L155">        return new ULLIterator(firstNode, 0, 0);</span>
 
     }
 
@@ -202,19 +202,19 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public &lt;T&gt; T[] toArray(T[] a) {
 
-<span class="fc bfc" id="L205" title="All 2 branches covered.">        if (a.length &lt; size) {</span>
-<span class="fc" id="L206">            a = (T[]) java.lang.reflect.Array.newInstance(</span>
-<span class="fc" id="L207">                    a.getClass().getComponentType(), size);</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        if (a.length &lt; size) {</span>
+<span class="nc" id="L206">            a = (T[]) java.lang.reflect.Array.newInstance(</span>
+<span class="nc" id="L207">                    a.getClass().getComponentType(), size);</span>
         }
-<span class="fc" id="L209">        Object[] result = a;</span>
-<span class="fc" id="L210">        int p = 0;</span>
-<span class="fc bfc" id="L211" title="All 2 branches covered.">        for (Node node = firstNode; node != null; node = node.next) {</span>
-<span class="fc bfc" id="L212" title="All 2 branches covered.">            for (int i = 0; i &lt; node.numElements; i++) {</span>
-<span class="fc" id="L213">                result[p] = node.elements[i];</span>
-<span class="fc" id="L214">                p++;</span>
+<span class="nc" id="L209">        Object[] result = a;</span>
+<span class="nc" id="L210">        int p = 0;</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        for (Node node = firstNode; node != null; node = node.next) {</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">            for (int i = 0; i &lt; node.numElements; i++) {</span>
+<span class="nc" id="L213">                result[p] = node.elements[i];</span>
+<span class="nc" id="L214">                p++;</span>
             }
         }
-<span class="fc" id="L217">        return a;</span>
+<span class="nc" id="L217">        return a;</span>
 
     }
 
@@ -250,16 +250,16 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
 
 <span class="fc" id="L251">        int index = 0;</span>
 <span class="fc" id="L252">        Node node = firstNode;</span>
-<span class="fc bfc" id="L253" title="All 2 branches covered.">        if (o == null) {</span>
-<span class="fc bfc" id="L254" title="All 2 branches covered.">            while (node != null) {</span>
-<span class="fc bfc" id="L255" title="All 2 branches covered.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
-<span class="fc bfc" id="L256" title="All 2 branches covered.">                    if (node.elements[ptr] == null) {</span>
-<span class="fc" id="L257">                        removeFromNode(node, ptr);</span>
-<span class="fc" id="L258">                        return true;</span>
+<span class="pc bpc" id="L253" title="1 of 2 branches missed.">        if (o == null) {</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">            while (node != null) {</span>
+<span class="nc bnc" id="L255" title="All 2 branches missed.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">                    if (node.elements[ptr] == null) {</span>
+<span class="nc" id="L257">                        removeFromNode(node, ptr);</span>
+<span class="nc" id="L258">                        return true;</span>
                     }
                 }
-<span class="fc" id="L261">                index += node.numElements;</span>
-<span class="fc" id="L262">                node = node.next;</span>
+<span class="nc" id="L261">                index += node.numElements;</span>
+<span class="nc" id="L262">                node = node.next;</span>
             }
         } else {
 <span class="fc bfc" id="L265" title="All 2 branches covered.">            while (node != null) {</span>
@@ -290,8 +290,8 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public boolean containsAll(Collection&lt;?&gt; c) {
 
-<span class="fc bfc" id="L293" title="All 2 branches covered.">        if (c == null) {</span>
-<span class="fc" id="L294">            throw new NullPointerException();</span>
+<span class="pc bpc" id="L293" title="1 of 2 branches missed.">        if (c == null) {</span>
+<span class="nc" id="L294">            throw new NullPointerException();</span>
         }
 <span class="fc" id="L296">        Iterator&lt;?&gt; it = c.iterator();</span>
 <span class="fc bfc" id="L297" title="All 2 branches covered.">        while (it.hasNext()) {</span>
@@ -319,8 +319,8 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public boolean addAll(Collection&lt;? extends E&gt; c) {
 
-<span class="fc bfc" id="L322" title="All 2 branches covered.">        if (c == null) {</span>
-<span class="fc" id="L323">            throw new NullPointerException();</span>
+<span class="pc bpc" id="L322" title="1 of 2 branches missed.">        if (c == null) {</span>
+<span class="nc" id="L323">            throw new NullPointerException();</span>
         }
 <span class="fc" id="L325">        boolean changed = false;</span>
 <span class="fc" id="L326">        Iterator&lt;? extends E&gt; it = c.iterator();</span>
@@ -345,8 +345,8 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public boolean removeAll(Collection&lt;?&gt; c) {
 
-<span class="fc bfc" id="L348" title="All 2 branches covered.">        if (c == null) {</span>
-<span class="fc" id="L349">            throw new NullPointerException();</span>
+<span class="pc bpc" id="L348" title="1 of 2 branches missed.">        if (c == null) {</span>
+<span class="nc" id="L349">            throw new NullPointerException();</span>
         }
 <span class="fc" id="L351">        Iterator&lt;?&gt; it = c.iterator();</span>
 <span class="fc" id="L352">        boolean changed = false;</span>
@@ -374,8 +374,8 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public boolean retainAll(Collection&lt;?&gt; c) {
 
-<span class="fc bfc" id="L377" title="All 2 branches covered.">        if (c == null) {</span>
-<span class="fc" id="L378">            throw new NullPointerException();</span>
+<span class="pc bpc" id="L377" title="1 of 2 branches missed.">        if (c == null) {</span>
+<span class="nc" id="L378">            throw new NullPointerException();</span>
         }
 <span class="fc" id="L380">        boolean changed = false;</span>
 <span class="fc bfc" id="L381" title="All 2 branches covered.">        for (Node node = firstNode; node != null; node = node.next) {</span>
@@ -398,13 +398,13 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     public void clear() {
 
 <span class="fc" id="L400">        Node node = firstNode.next;</span>
-<span class="fc bfc" id="L401" title="All 2 branches covered.">        while (node != null) {</span>
-<span class="fc" id="L402">            Node next = node.next;</span>
-<span class="fc" id="L403">            node.next = null;</span>
-<span class="fc" id="L404">            node.previous = null;</span>
-<span class="fc" id="L405">            node.elements = null;</span>
-<span class="fc" id="L406">            node = next;</span>
-<span class="fc" id="L407">        }</span>
+<span class="pc bpc" id="L401" title="1 of 2 branches missed.">        while (node != null) {</span>
+<span class="nc" id="L402">            Node next = node.next;</span>
+<span class="nc" id="L403">            node.next = null;</span>
+<span class="nc" id="L404">            node.previous = null;</span>
+<span class="nc" id="L405">            node.elements = null;</span>
+<span class="nc" id="L406">            node = next;</span>
+<span class="nc" id="L407">        }</span>
 <span class="fc" id="L408">        lastNode = firstNode;</span>
 <span class="fc bfc" id="L409" title="All 2 branches covered.">        for (int ptr = 0; ptr &lt; firstNode.numElements; ptr++) {</span>
 <span class="fc" id="L410">            firstNode.elements[ptr] = null;</span>
@@ -424,22 +424,22 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
      */
     public E get(int index) throws IndexOutOfBoundsException {
 
-<span class="fc bfc" id="L427" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= size) {</span>
-<span class="fc" id="L428">            throw new IndexOutOfBoundsException();</span>
+<span class="pc bpc" id="L427" title="2 of 4 branches missed.">        if (index &lt; 0 || index &gt;= size) {</span>
+<span class="nc" id="L428">            throw new IndexOutOfBoundsException();</span>
         }
         Node node;
 <span class="fc" id="L431">        int p = 0;</span>
 <span class="fc bfc" id="L432" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
 <span class="fc" id="L433">            node = firstNode;</span>
-<span class="fc bfc" id="L434" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
-<span class="fc" id="L435">                p += node.numElements;</span>
-<span class="fc" id="L436">                node = node.next;</span>
+<span class="pc bpc" id="L434" title="1 of 2 branches missed.">            while (p &lt;= index - node.numElements) {</span>
+<span class="nc" id="L435">                p += node.numElements;</span>
+<span class="nc" id="L436">                node = node.next;</span>
             }
         } else {
 <span class="fc" id="L439">            node = lastNode;</span>
 <span class="fc" id="L440">            p = size;</span>
-<span class="fc bfc" id="L441" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
-<span class="fc" id="L442">                node = node.previous;</span>
+<span class="pc bpc" id="L441" title="1 of 2 branches missed.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="nc" id="L442">                node = node.previous;</span>
             }
         }
 <span class="fc" id="L445">        return (E) node.elements[index - p];</span>
@@ -458,23 +458,23 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public E set(int index, E element) {
 
-<span class="fc bfc" id="L461" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= size) {</span>
-<span class="fc" id="L462">            throw new IndexOutOfBoundsException();</span>
+<span class="pc bpc" id="L461" title="2 of 4 branches missed.">        if (index &lt; 0 || index &gt;= size) {</span>
+<span class="nc" id="L462">            throw new IndexOutOfBoundsException();</span>
         }
 <span class="fc" id="L464">        E el = null;</span>
         Node node;
 <span class="fc" id="L466">        int p = 0;</span>
-<span class="fc bfc" id="L467" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="pc bpc" id="L467" title="1 of 2 branches missed.">        if (size - index &gt; index) {</span>
 <span class="fc" id="L468">            node = firstNode;</span>
-<span class="fc bfc" id="L469" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
-<span class="fc" id="L470">                p += node.numElements;</span>
-<span class="fc" id="L471">                node = node.next;</span>
+<span class="pc bpc" id="L469" title="1 of 2 branches missed.">            while (p &lt;= index - node.numElements) {</span>
+<span class="nc" id="L470">                p += node.numElements;</span>
+<span class="nc" id="L471">                node = node.next;</span>
             }
         } else {
-<span class="fc" id="L474">            node = lastNode;</span>
-<span class="fc" id="L475">            p = size;</span>
-<span class="fc bfc" id="L476" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
-<span class="fc" id="L477">                node = node.previous;</span>
+<span class="nc" id="L474">            node = lastNode;</span>
+<span class="nc" id="L475">            p = size;</span>
+<span class="nc bnc" id="L476" title="All 2 branches missed.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="nc" id="L477">                node = node.previous;</span>
             }
         }
 <span class="fc" id="L480">        el = (E) node.elements[index - p];</span>
@@ -496,22 +496,22 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     public void add(int index, E element) throws IndexOutOfBoundsException {
 <span class="fc" id="L497">    	System.out.println(&quot;size:&quot;+size);</span>
 <span class="fc" id="L498">    	System.out.println(&quot;index:&quot;+index);</span>
-<span class="fc bfc" id="L499" title="All 4 branches covered.">        if (index &lt; 0 || index &gt; size) {</span>
-<span class="fc" id="L500">            throw new IndexOutOfBoundsException();</span>
+<span class="pc bpc" id="L499" title="2 of 4 branches missed.">        if (index &lt; 0 || index &gt; size) {</span>
+<span class="nc" id="L500">            throw new IndexOutOfBoundsException();</span>
         }
         Node node;
 <span class="fc" id="L503">        int p = 0;</span>
-<span class="fc bfc" id="L504" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="pc bpc" id="L504" title="1 of 2 branches missed.">        if (size - index &gt; index) {</span>
 <span class="fc" id="L505">            node = firstNode;</span>
-<span class="fc bfc" id="L506" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
-<span class="fc" id="L507">                p += node.numElements;</span>
-<span class="fc" id="L508">                node = node.next;</span>
+<span class="pc bpc" id="L506" title="1 of 2 branches missed.">            while (p &lt;= index - node.numElements) {</span>
+<span class="nc" id="L507">                p += node.numElements;</span>
+<span class="nc" id="L508">                node = node.next;</span>
             }
         } else {
-<span class="fc" id="L511">            node = lastNode;</span>
-<span class="fc" id="L512">            p = size;</span>
-<span class="fc bfc" id="L513" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
-<span class="fc" id="L514">                node = node.previous;</span>
+<span class="nc" id="L511">            node = lastNode;</span>
+<span class="nc" id="L512">            p = size;</span>
+<span class="nc bnc" id="L513" title="All 2 branches missed.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="nc" id="L514">                node = node.previous;</span>
             }
         }
 <span class="fc" id="L517">        insertIntoNode(node, index - p, element);</span>
@@ -530,23 +530,23 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public E remove(int index) throws IndexOutOfBoundsException {
 
-<span class="fc bfc" id="L533" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= size) {</span>
-<span class="fc" id="L534">            throw new IndexOutOfBoundsException();</span>
+<span class="pc bpc" id="L533" title="2 of 4 branches missed.">        if (index &lt; 0 || index &gt;= size) {</span>
+<span class="nc" id="L534">            throw new IndexOutOfBoundsException();</span>
         }
 <span class="fc" id="L536">        E element = null;</span>
         Node node;
 <span class="fc" id="L538">        int p = 0;</span>
-<span class="fc bfc" id="L539" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="pc bpc" id="L539" title="1 of 2 branches missed.">        if (size - index &gt; index) {</span>
 <span class="fc" id="L540">            node = firstNode;</span>
-<span class="fc bfc" id="L541" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
-<span class="fc" id="L542">                p += node.numElements;</span>
-<span class="fc" id="L543">                node = node.next;</span>
+<span class="pc bpc" id="L541" title="1 of 2 branches missed.">            while (p &lt;= index - node.numElements) {</span>
+<span class="nc" id="L542">                p += node.numElements;</span>
+<span class="nc" id="L543">                node = node.next;</span>
             }
         } else {
-<span class="fc" id="L546">            node = lastNode;</span>
-<span class="fc" id="L547">            p = size;</span>
-<span class="fc bfc" id="L548" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
-<span class="fc" id="L549">                node = node.previous;</span>
+<span class="nc" id="L546">            node = lastNode;</span>
+<span class="nc" id="L547">            p = size;</span>
+<span class="nc bnc" id="L548" title="All 2 branches missed.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="nc" id="L549">                node = node.previous;</span>
             }
         }
 <span class="fc" id="L552">        element = (E) node.elements[index - p];</span>
@@ -571,15 +571,15 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
 
 <span class="fc" id="L572">        int index = 0;</span>
 <span class="fc" id="L573">        Node node = firstNode;</span>
-<span class="fc bfc" id="L574" title="All 2 branches covered.">        if (o == null) {</span>
-<span class="fc bfc" id="L575" title="All 2 branches covered.">            while (node != null) {</span>
-<span class="fc bfc" id="L576" title="All 2 branches covered.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
-<span class="fc bfc" id="L577" title="All 2 branches covered.">                    if (node.elements[ptr] == null) {</span>
-<span class="fc" id="L578">                        return index + ptr;</span>
+<span class="pc bpc" id="L574" title="1 of 2 branches missed.">        if (o == null) {</span>
+<span class="nc bnc" id="L575" title="All 2 branches missed.">            while (node != null) {</span>
+<span class="nc bnc" id="L576" title="All 2 branches missed.">                for (int ptr = 0; ptr &lt; node.numElements; ptr++) {</span>
+<span class="nc bnc" id="L577" title="All 2 branches missed.">                    if (node.elements[ptr] == null) {</span>
+<span class="nc" id="L578">                        return index + ptr;</span>
                     }
                 }
-<span class="fc" id="L581">                index += node.numElements;</span>
-<span class="fc" id="L582">                node = node.next;</span>
+<span class="nc" id="L581">                index += node.numElements;</span>
+<span class="nc" id="L582">                node = node.next;</span>
             }
         } else {
 <span class="fc bfc" id="L585" title="All 2 branches covered.">            while (node != null) {</span>
@@ -612,15 +612,15 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
 
 <span class="fc" id="L613">        int index = size;</span>
 <span class="fc" id="L614">        Node node = lastNode;</span>
-<span class="fc bfc" id="L615" title="All 2 branches covered.">        if (o == null) {</span>
-<span class="fc bfc" id="L616" title="All 2 branches covered.">            while (node != null) {</span>
-<span class="fc" id="L617">                index -= node.numElements;</span>
-<span class="fc bfc" id="L618" title="All 2 branches covered.">                for (int i = node.numElements - 1; i &gt;= 0; i--) {</span>
-<span class="fc bfc" id="L619" title="All 2 branches covered.">                    if (node.elements[i] == null) {</span>
-<span class="fc" id="L620">                        return (index + i);</span>
+<span class="pc bpc" id="L615" title="1 of 2 branches missed.">        if (o == null) {</span>
+<span class="nc bnc" id="L616" title="All 2 branches missed.">            while (node != null) {</span>
+<span class="nc" id="L617">                index -= node.numElements;</span>
+<span class="nc bnc" id="L618" title="All 2 branches missed.">                for (int i = node.numElements - 1; i &gt;= 0; i--) {</span>
+<span class="nc bnc" id="L619" title="All 2 branches missed.">                    if (node.elements[i] == null) {</span>
+<span class="nc" id="L620">                        return (index + i);</span>
                     }
                 }
-<span class="fc" id="L623">                node = node.previous;</span>
+<span class="nc" id="L623">                node = node.previous;</span>
             }
         } else {
 <span class="fc bfc" id="L626" title="All 2 branches covered.">            while (node != null) {</span>
@@ -675,22 +675,22 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     @Override
     public ListIterator&lt;E&gt; listIterator(int index) {
 
-<span class="fc bfc" id="L678" title="All 4 branches covered.">        if (index &lt; 0 || index &gt; size) {</span>
-<span class="fc" id="L679">            throw new IndexOutOfBoundsException();</span>
+<span class="pc bpc" id="L678" title="2 of 4 branches missed.">        if (index &lt; 0 || index &gt; size) {</span>
+<span class="nc" id="L679">            throw new IndexOutOfBoundsException();</span>
         }
         Node node;
 <span class="fc" id="L682">        int p = 0;</span>
-<span class="fc bfc" id="L683" title="All 2 branches covered.">        if (size - index &gt; index) {</span>
+<span class="pc bpc" id="L683" title="1 of 2 branches missed.">        if (size - index &gt; index) {</span>
 <span class="fc" id="L684">            node = firstNode;</span>
-<span class="fc bfc" id="L685" title="All 2 branches covered.">            while (p &lt;= index - node.numElements) {</span>
-<span class="fc" id="L686">                p += node.numElements;</span>
-<span class="fc" id="L687">                node = node.next;</span>
+<span class="pc bpc" id="L685" title="1 of 2 branches missed.">            while (p &lt;= index - node.numElements) {</span>
+<span class="nc" id="L686">                p += node.numElements;</span>
+<span class="nc" id="L687">                node = node.next;</span>
             }
         } else {
-<span class="fc" id="L690">            node = lastNode;</span>
-<span class="fc" id="L691">            p = size;</span>
-<span class="fc bfc" id="L692" title="All 2 branches covered.">            while ((p -= node.numElements) &gt; index) {</span>
-<span class="fc" id="L693">                node = node.previous;</span>
+<span class="nc" id="L690">            node = lastNode;</span>
+<span class="nc" id="L691">            p = size;</span>
+<span class="nc bnc" id="L692" title="All 2 branches missed.">            while ((p -= node.numElements) &gt; index) {</span>
+<span class="nc" id="L693">                node = node.previous;</span>
             }
         }
 <span class="fc" id="L696">        return new ULLIterator(node, index - p, index);</span>
@@ -751,7 +751,7 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
         @Override
         public boolean hasNext() {
 
-<span class="fc bfc" id="L754" title="All 2 branches covered.">            return (index &lt; size - 1);</span>
+<span class="pc bpc" id="L754" title="1 of 2 branches missed.">            return (index &lt; size - 1);</span>
 
         }
 
@@ -760,9 +760,9 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
 
 <span class="fc" id="L761">            ptr++;</span>
 <span class="fc bfc" id="L762" title="All 2 branches covered.">            if (ptr &gt;= currentNode.numElements) {</span>
-<span class="fc bfc" id="L763" title="All 2 branches covered.">                if (currentNode.next != null) {</span>
-<span class="fc" id="L764">                    currentNode = currentNode.next;</span>
-<span class="fc" id="L765">                    ptr = 0;</span>
+<span class="pc bpc" id="L763" title="1 of 2 branches missed.">                if (currentNode.next != null) {</span>
+<span class="nc" id="L764">                    currentNode = currentNode.next;</span>
+<span class="nc" id="L765">                    ptr = 0;</span>
                 } else {
 <span class="fc" id="L767">                    throw new NoSuchElementException();</span>
                 }
@@ -785,9 +785,9 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
 
 <span class="fc" id="L786">            ptr--;</span>
 <span class="fc bfc" id="L787" title="All 2 branches covered.">            if (ptr &lt; 0) {</span>
-<span class="fc bfc" id="L788" title="All 2 branches covered.">                if (currentNode.previous != null) {</span>
-<span class="fc" id="L789">                    currentNode = currentNode.previous;</span>
-<span class="fc" id="L790">                    ptr = currentNode.numElements - 1;</span>
+<span class="pc bpc" id="L788" title="1 of 2 branches missed.">                if (currentNode.previous != null) {</span>
+<span class="nc" id="L789">                    currentNode = currentNode.previous;</span>
+<span class="nc" id="L790">                    ptr = currentNode.numElements - 1;</span>
                 } else {
 <span class="fc" id="L792">                    throw new NoSuchElementException();</span>
                 }
@@ -801,14 +801,14 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
         @Override
         public int nextIndex() {
 
-<span class="fc" id="L804">            return (index + 1);</span>
+<span class="nc" id="L804">            return (index + 1);</span>
 
         }
 
         @Override
         public int previousIndex() {
 
-<span class="fc" id="L811">            return (index - 1);</span>
+<span class="nc" id="L811">            return (index - 1);</span>
 
         }
 
@@ -859,36 +859,36 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
     public void insertIntoNode(Node node, int ptr, E element) {
 
         // if the node is full
-<span class="fc bfc" id="L862" title="All 2 branches covered.">        if (node.numElements == nodeCapacity) {</span>
+<span class="pc bpc" id="L862" title="1 of 2 branches missed.">        if (node.numElements == nodeCapacity) {</span>
             // create a new node
-<span class="fc" id="L864">            Node newNode = new Node();</span>
+<span class="nc" id="L864">            Node newNode = new Node();</span>
             // move half of the elements to the new node
-<span class="fc" id="L866">            int elementsToMove = nodeCapacity / 2;</span>
-<span class="fc" id="L867">            int startIndex = nodeCapacity - elementsToMove;</span>
+<span class="nc" id="L866">            int elementsToMove = nodeCapacity / 2;</span>
+<span class="nc" id="L867">            int startIndex = nodeCapacity - elementsToMove;</span>
             int i;
-<span class="fc bfc" id="L869" title="All 2 branches covered.">            for (i = 0; i &lt; elementsToMove; i++) {</span>
-<span class="fc" id="L870">                newNode.elements[i] = node.elements[startIndex + i];</span>
-<span class="fc" id="L871">                node.elements[startIndex + i] = null;</span>
+<span class="nc bnc" id="L869" title="All 2 branches missed.">            for (i = 0; i &lt; elementsToMove; i++) {</span>
+<span class="nc" id="L870">                newNode.elements[i] = node.elements[startIndex + i];</span>
+<span class="nc" id="L871">                node.elements[startIndex + i] = null;</span>
             }
-<span class="fc" id="L873">            node.numElements -= elementsToMove;</span>
-<span class="fc" id="L874">            newNode.numElements = elementsToMove;</span>
+<span class="nc" id="L873">            node.numElements -= elementsToMove;</span>
+<span class="nc" id="L874">            newNode.numElements = elementsToMove;</span>
             // insert the new node into the list
-<span class="fc" id="L876">            newNode.next = node.next;</span>
-<span class="fc" id="L877">            newNode.previous = node;</span>
-<span class="fc bfc" id="L878" title="All 2 branches covered.">            if (node.next != null) {</span>
-<span class="fc" id="L879">                node.next.previous = newNode;</span>
+<span class="nc" id="L876">            newNode.next = node.next;</span>
+<span class="nc" id="L877">            newNode.previous = node;</span>
+<span class="nc bnc" id="L878" title="All 2 branches missed.">            if (node.next != null) {</span>
+<span class="nc" id="L879">                node.next.previous = newNode;</span>
             }
-<span class="fc" id="L881">            node.next = newNode;</span>
+<span class="nc" id="L881">            node.next = newNode;</span>
 
-<span class="fc bfc" id="L883" title="All 2 branches covered.">            if (node == lastNode) {</span>
-<span class="fc" id="L884">                lastNode = newNode;</span>
+<span class="nc bnc" id="L883" title="All 2 branches missed.">            if (node == lastNode) {</span>
+<span class="nc" id="L884">                lastNode = newNode;</span>
             }
 
             // check whether the element should be inserted into
             // the original node or into the new node
-<span class="fc bfc" id="L889" title="All 2 branches covered.">            if (ptr &gt; node.numElements) {</span>
-<span class="fc" id="L890">                node = newNode;</span>
-<span class="fc" id="L891">                ptr -= node.numElements;</span>
+<span class="nc bnc" id="L889" title="All 2 branches missed.">            if (ptr &gt; node.numElements) {</span>
+<span class="nc" id="L890">                node = newNode;</span>
+<span class="nc" id="L891">                ptr -= node.numElements;</span>
             }
         }
 <span class="fc bfc" id="L894" title="All 2 branches covered.">        for (int i = node.numElements; i &gt; ptr; i--) {</span>
@@ -915,10 +915,10 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
 <span class="fc" id="L915">            node.elements[i] = node.elements[i + 1];</span>
         }
 <span class="fc" id="L917">        node.elements[node.numElements] = null;</span>
-<span class="fc bfc" id="L918" title="All 4 branches covered.">        if (node.next != null &amp;&amp; node.next.numElements + node.numElements &lt;= nodeCapacity) {</span>
-<span class="fc" id="L919">            mergeWithNextNode(node);</span>
-<span class="fc bfc" id="L920" title="All 4 branches covered.">        } else if (node.previous != null &amp;&amp; node.previous.numElements + node.numElements &lt;= nodeCapacity) {</span>
-<span class="fc" id="L921">            mergeWithNextNode(node.previous);</span>
+<span class="pc bpc" id="L918" title="3 of 4 branches missed.">        if (node.next != null &amp;&amp; node.next.numElements + node.numElements &lt;= nodeCapacity) {</span>
+<span class="nc" id="L919">            mergeWithNextNode(node);</span>
+<span class="pc bpc" id="L920" title="3 of 4 branches missed.">        } else if (node.previous != null &amp;&amp; node.previous.numElements + node.numElements &lt;= nodeCapacity) {</span>
+<span class="nc" id="L921">            mergeWithNextNode(node.previous);</span>
         }
 <span class="fc" id="L923">        size--;</span>
 <span class="fc" id="L924">        modCount++;</span>
@@ -932,21 +932,21 @@ public class UnrolledLinkedList&lt;E&gt; extends AbstractList&lt;E&gt; implement
      */
     public void mergeWithNextNode(Node node) {
 
-<span class="fc" id="L935">        Node next = node.next;</span>
-<span class="fc bfc" id="L936" title="All 2 branches covered.">        for (int i = 0; i &lt; next.numElements; i++) {</span>
-<span class="fc" id="L937">            node.elements[node.numElements + i] = next.elements[i];</span>
-<span class="fc" id="L938">            next.elements[i] = null;</span>
+<span class="nc" id="L935">        Node next = node.next;</span>
+<span class="nc bnc" id="L936" title="All 2 branches missed.">        for (int i = 0; i &lt; next.numElements; i++) {</span>
+<span class="nc" id="L937">            node.elements[node.numElements + i] = next.elements[i];</span>
+<span class="nc" id="L938">            next.elements[i] = null;</span>
         }
-<span class="fc" id="L940">        node.numElements += next.numElements;</span>
-<span class="fc bfc" id="L941" title="All 2 branches covered.">        if (next.next != null) {</span>
-<span class="fc" id="L942">            next.next.previous = node;</span>
+<span class="nc" id="L940">        node.numElements += next.numElements;</span>
+<span class="nc bnc" id="L941" title="All 2 branches missed.">        if (next.next != null) {</span>
+<span class="nc" id="L942">            next.next.previous = node;</span>
         }
-<span class="fc" id="L944">        node.next = next.next;</span>
-<span class="fc bfc" id="L945" title="All 2 branches covered.">        if (next == lastNode) {</span>
-<span class="fc" id="L946">            lastNode = node;</span>
+<span class="nc" id="L944">        node.next = next.next;</span>
+<span class="nc bnc" id="L945" title="All 2 branches missed.">        if (next == lastNode) {</span>
+<span class="nc" id="L946">            lastNode = node;</span>
         }
 
-<span class="fc" id="L949">    }</span>
+<span class="nc" id="L949">    }</span>
 
     /*
     // DEBUG

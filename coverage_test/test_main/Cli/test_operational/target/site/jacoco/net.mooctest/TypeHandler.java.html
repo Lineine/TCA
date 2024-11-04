@@ -55,7 +55,7 @@ public class TypeHandler {
      * @throws ParseException if the class could not be found
      */
     public static Class&lt;?&gt; createClass(final String className) throws ParseException {
-<span class="nc" id="L58">        return createValue(className, Class.class);</span>
+<span class="fc" id="L58">        return createValue(className, Class.class);</span>
     }
 
     /**
@@ -88,7 +88,7 @@ public class TypeHandler {
      * @return The file represented by {@code string}.
      */
     public static File createFile(final String string) {
-<span class="nc" id="L91">        return createValueUnchecked(string, File.class);</span>
+<span class="fc" id="L91">        return createValueUnchecked(string, File.class);</span>
     }
 
     /**
@@ -107,7 +107,7 @@ public class TypeHandler {
     public static File[] createFiles(final String string) {
         // to implement/port:
         // return FileW.findFiles(string);
-<span class="nc" id="L110">        throw new UnsupportedOperationException(&quot;Not yet implemented&quot;);</span>
+<span class="fc" id="L110">        throw new UnsupportedOperationException(&quot;Not yet implemented&quot;);</span>
     }
 
     /**
@@ -119,7 +119,7 @@ public class TypeHandler {
      */
     @Deprecated // since 1.7.0
     public static Number createNumber(final String string) throws ParseException {
-<span class="nc" id="L122">        return createValue(string, Number.class);</span>
+<span class="fc" id="L122">        return createValue(string, Number.class);</span>
     }
 
     /**
@@ -132,7 +132,7 @@ public class TypeHandler {
      */
     @Deprecated // since 1.7.0
     public static Object createObject(final String className) throws ParseException {
-<span class="nc" id="L135">        return createValue(className, Object.class);</span>
+<span class="fc" id="L135">        return createValue(className, Object.class);</span>
     }
 
     /**
@@ -143,7 +143,7 @@ public class TypeHandler {
      * @throws ParseException if the URL in {@code string} is not well-formed
      */
     public static URL createURL(final String string) throws ParseException {
-<span class="nc" id="L146">        return createValue(string, URL.class);</span>
+<span class="fc" id="L146">        return createValue(string, URL.class);</span>
     }
 
     /**
@@ -157,7 +157,7 @@ public class TypeHandler {
      */
     public static &lt;T&gt; T createValue(final String string, final Class&lt;T&gt; clazz) throws ParseException {
         try {
-<span class="nc" id="L160">            return getDefault().getConverter(clazz).apply(string);</span>
+<span class="fc" id="L160">            return getDefault().getConverter(clazz).apply(string);</span>
 <span class="fc" id="L161">        } catch (final Throwable e) {</span>
 <span class="fc" id="L162">            throw ParseException.wrap(e);</span>
         }
@@ -188,7 +188,7 @@ public class TypeHandler {
      */
     private static &lt;T&gt; T createValueUnchecked(final String string, final Class&lt;T&gt; clazz) {
         try {
-<span class="nc" id="L191">            return createValue(string, clazz);</span>
+<span class="fc" id="L191">            return createValue(string, clazz);</span>
 <span class="fc" id="L192">        } catch (final ParseException e) {</span>
 <span class="fc" id="L193">            throw new IllegalArgumentException(e);</span>
         }

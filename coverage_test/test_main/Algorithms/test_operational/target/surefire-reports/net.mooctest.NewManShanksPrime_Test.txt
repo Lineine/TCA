@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.NewManShanksPrime_Test
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.NewManShanksPrime_Test
+testNthManShanksPrime  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at net.mooctest.NewManShanksPrime_Test.testNthManShanksPrime(NewManShanksPrime_Test.java:16)
+
+testNthManShanksPrime_InvalidInput  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at net.mooctest.NewManShanksPrime_Test.testNthManShanksPrime_InvalidInput(NewManShanksPrime_Test.java:28)
+

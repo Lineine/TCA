@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.JsonTreeReader_Test
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.JsonTreeReader_Test
+testNextString(net.mooctest.JsonTreeReader_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Expected END_OBJECT but was NAME at path $.name
+	at net.mooctest.JsonTreeReader_Test.testNextString(JsonTreeReader_Test.java:61)
+
+testHasNext(net.mooctest.JsonTreeReader_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.JsonTreeReader_Test.testHasNext(JsonTreeReader_Test.java:78)
+
+testNextInt(net.mooctest.JsonTreeReader_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Expected END_OBJECT but was NAME at path $.age
+	at net.mooctest.JsonTreeReader_Test.testNextInt(JsonTreeReader_Test.java:71)
+
+testNextName(net.mooctest.JsonTreeReader_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Expected NAME but was STRING at path $.name
+	at net.mooctest.JsonTreeReader_Test.testNextName(JsonTreeReader_Test.java:51)
+

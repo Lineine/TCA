@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.EggDropping_Test
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in net.mooctest.EggDropping_Test
+testMinTrialsNegativeFloors  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at net.mooctest.EggDropping_Test.testMinTrialsNegativeFloors(EggDropping_Test.java:30)
+
+testMinTrials  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at net.mooctest.EggDropping_Test.testMinTrials(EggDropping_Test.java:17)
+
+testMinTrialsNegativeEggs  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at net.mooctest.EggDropping_Test.testMinTrialsNegativeEggs(EggDropping_Test.java:24)
+

@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: net.mooctest.NIOServer_sub_5_0_Test
--------------------------------------------------------------------------------
-Tests run: 191, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.382 s <<< FAILURE! - in net.mooctest.NIOServer_sub_5_0_Test
-test_4390(net.mooctest.NIOServer_sub_5_0_Test)  Time elapsed: 0.009 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.NIOServer_sub_5_0_Test.test_4390(NIOServer_sub_5_0_Test.java:623)
-

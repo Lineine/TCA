@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Forest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Forest.java</span></div><h1>Forest.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+public class Forest&lt;T&gt; extends TreeLike&lt;T, Forest&lt;T&gt;&gt; {
+
+    private List&lt;Tree&lt;T&gt;&gt; chld;
+
+<span class="fc" id="L17">    public Forest(List&lt;Tree&lt;T&gt;&gt; chld) {</span>
+<span class="fc" id="L18">        this.chld = chld;</span>
+<span class="fc" id="L19">    }</span>
+
+    @Override
+    public Iterator&lt;Tree&lt;T&gt;&gt; treeIterator() {
+<span class="fc" id="L23">        Iterator&lt;Iterator&lt;Tree&lt;T&gt;&gt;&gt; treeIterators = Iterators.transform(chld.iterator(), new Function&lt;Tree&lt;T&gt;, Iterator&lt;Tree&lt;T&gt;&gt;&gt;() {</span>
+            @Override
+            public Iterator&lt;Tree&lt;T&gt;&gt; apply(Tree&lt;T&gt; input) {
+<span class="fc" id="L26">                return input.treeIterator();</span>
+            }
+        });
+<span class="fc" id="L29">        return Iterators.concat(treeIterators);</span>
+    }
+
+    @Override
+    public void sort(final Comparator&lt;T&gt; comparator) {
+<span class="fc" id="L34">        Collections.sort(chld, new Comparator&lt;Tree&lt;T&gt;&gt;() {</span>
+            @Override
+            public int compare(Tree&lt;T&gt; o1, Tree&lt;T&gt; o2) {
+<span class="fc" id="L37">                return comparator.compare(o1.getValue(), o2.getValue());</span>
+            }
+        });
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (Tree&lt;T&gt; ts : chld) {</span>
+<span class="fc" id="L41">            ts.sort(comparator);</span>
+<span class="fc" id="L42">        }</span>
+<span class="fc" id="L43">    }</span>
+
+    @Override
+    public Forest&lt;T&gt; filter(Predicate&lt;T&gt; predicate) {
+<span class="fc" id="L47">        List&lt;Tree&lt;T&gt;&gt; newList = Lists.newArrayList();</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for (Tree&lt;T&gt; ts : chld) {</span>
+<span class="fc" id="L49">            Tree&lt;T&gt; filtered = ts.filter(predicate);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (filtered != null) newList.add(filtered);</span>
+<span class="fc" id="L51">        }</span>
+<span class="fc" id="L52">        return new Forest&lt;T&gt;(newList);</span>
+    }
+
+    @Override
+    protected void appendToString(StringBuilder sb, int depth) {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for (int i = 0; i &lt; chld.size(); i++) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            if (i != 0) sb.append(System.getProperty(&quot;line.separator&quot;));</span>
+<span class="fc" id="L59">            chld.get(i).appendToString(sb, depth);</span>
+        }
+<span class="fc" id="L61">    }</span>
+
+    /**
+     *
+     * Maps (transforms) forest to another value types.
+     * @param f mapping function
+     * @param &lt;K&gt; output type
+     * @return mapped tree
+     */
+    public &lt;K&gt; Forest&lt;K&gt; map(final Function&lt;T, K&gt; f) {
+<span class="fc" id="L71">        return new Forest&lt;K&gt;(Lists.newArrayList(Lists.transform(chld, new Function&lt;Tree&lt;T&gt;, Tree&lt;K&gt;&gt;() {</span>
+            @Override
+            public Tree&lt;K&gt; apply(Tree&lt;T&gt; input) {
+<span class="fc" id="L74">                return input.map(f);</span>
+            }
+        })));
+    }
+
+    /**
+     * Alias to {@link Tree#map(com.google.common.base.Function)}
+     */
+    public &lt;K&gt; Forest&lt;K&gt; transform(Function&lt;T, K&gt; f) {
+<span class="fc" id="L83">        return map(f);</span>
+    }
+
+    /**
+     * Provides ability to map tree nodes using additional info - parents, children
+     * @param f mapping function
+     * @param &lt;K&gt; output type
+     * @return mapped tree
+     */
+    public &lt;K&gt; Forest&lt;K&gt; mapTrees(final Function&lt;Tree&lt;T&gt;, K&gt; f) {
+<span class="fc" id="L93">        return new Forest&lt;K&gt;(Lists.newArrayList(Lists.transform(chld, new Function&lt;Tree&lt;T&gt;, Tree&lt;K&gt;&gt;() {</span>
+            @Override
+            public Tree&lt;K&gt; apply(Tree&lt;T&gt; input) {
+<span class="fc" id="L96">                return input.mapTrees(f);</span>
+            }
+        })));
+    }
+
+    public List&lt;Tree&lt;T&gt;&gt; getChld() {
+<span class="fc" id="L102">        return chld;</span>
+    }
+
+    public int size() {
+<span class="fc" id="L106">        return chld.size();</span>
+    }
+
+    public boolean isEmpty() {
+<span class="fc" id="L110">        return chld.isEmpty();</span>
+    }
+
+    public boolean add(Tree&lt;T&gt; ts) {
+<span class="fc" id="L114">        return chld.add(ts);</span>
+    }
+
+    public Tree&lt;T&gt; get(int index) {
+<span class="fc" id="L118">        return chld.get(index);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

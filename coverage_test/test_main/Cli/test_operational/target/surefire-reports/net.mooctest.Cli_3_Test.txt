@@ -1,4 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Cli_3_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in net.mooctest.Cli_3_Test
+Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Cli_3_Test
+test_12(net.mooctest.Cli_3_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_3_Test.test_12(Cli_3_Test.java:43)
+
+test_23(net.mooctest.Cli_3_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Expected AlreadySelectedException to be thrown
+	at net.mooctest.Cli_3_Test.test_23(Cli_3_Test.java:53)
+
+test_1(net.mooctest.Cli_3_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_3_Test.test_1(Cli_3_Test.java:35)
+
+test_4(net.mooctest.Cli_3_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_3_Test.test_4(Cli_3_Test.java:20)
+
+test_7(net.mooctest.Cli_3_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_3_Test.test_7(Cli_3_Test.java:30)
+

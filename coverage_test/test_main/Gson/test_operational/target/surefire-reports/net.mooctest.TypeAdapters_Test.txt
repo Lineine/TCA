@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.TypeAdapters_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in net.mooctest.TypeAdapters_Test

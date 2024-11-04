@@ -63,7 +63,7 @@ public class Option implements Cloneable, Serializable {
          * @return the input Class or the default type (String) if null.
          */
         private static Class&lt;?&gt; toType(final Class&lt;?&gt; type) {
-<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            return type != null ? type : DEFAULT_TYPE;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            return type != null ? type : DEFAULT_TYPE;</span>
         }
 
         /** The number of argument values this option can have. */
@@ -145,8 +145,8 @@ public class Option implements Cloneable, Serializable {
          * @since 1.7.0
          */
         public Builder converter(final Converter&lt;?, ?&gt; converter) {
-<span class="nc" id="L148">            this.converter = converter;</span>
-<span class="nc" id="L149">            return this;</span>
+<span class="fc" id="L148">            this.converter = converter;</span>
+<span class="fc" id="L149">            return this;</span>
         }
 
         /**
@@ -156,7 +156,7 @@ public class Option implements Cloneable, Serializable {
          * @since 1.7.0
          */
         public Builder deprecated() {
-<span class="nc" id="L159">            return deprecated(DeprecatedAttributes.DEFAULT);</span>
+<span class="fc" id="L159">            return deprecated(DeprecatedAttributes.DEFAULT);</span>
         }
 
         /**
@@ -167,8 +167,8 @@ public class Option implements Cloneable, Serializable {
          * @since 1.7.0
          */
         public Builder deprecated(final DeprecatedAttributes deprecated) {
-<span class="nc" id="L170">            this.deprecated = deprecated;</span>
-<span class="nc" id="L171">            return this;</span>
+<span class="fc" id="L170">            this.deprecated = deprecated;</span>
+<span class="fc" id="L171">            return this;</span>
         }
 
         /**
@@ -178,8 +178,8 @@ public class Option implements Cloneable, Serializable {
          * @return this builder, to allow method chaining.
          */
         public Builder desc(final String description) {
-<span class="nc" id="L181">            this.description = description;</span>
-<span class="nc" id="L182">            return this;</span>
+<span class="fc" id="L181">            this.description = description;</span>
+<span class="fc" id="L182">            return this;</span>
         }
 
         /**
@@ -433,8 +433,8 @@ public class Option implements Cloneable, Serializable {
      * @throws IllegalArgumentException if there are any non valid Option characters in {@code opt}.
      */
     public Option(final String option, final boolean hasArg, final String description) throws IllegalArgumentException {
-<span class="nc" id="L436">        this(option, null, hasArg, description);</span>
-<span class="nc" id="L437">    }</span>
+<span class="fc" id="L436">        this(option, null, hasArg, description);</span>
+<span class="fc" id="L437">    }</span>
 
     /**
      * Creates an Option using the specified parameters. The option does not take an argument.
@@ -464,8 +464,8 @@ public class Option implements Cloneable, Serializable {
 <span class="fc" id="L464">        this.option = OptionValidator.validate(option);</span>
 <span class="fc" id="L465">        this.longOption = longOption;</span>
         // if hasArg is set then the number of arguments is 1
-<span class="pc bpc" id="L467" title="1 of 2 branches missed.">        if (hasArg) {</span>
-<span class="nc" id="L468">            this.argCount = 1;</span>
+<span class="fc bfc" id="L467" title="All 2 branches covered.">        if (hasArg) {</span>
+<span class="fc" id="L468">            this.argCount = 1;</span>
         }
 <span class="fc" id="L470">        this.description = description;</span>
 <span class="fc" id="L471">    }</span>
@@ -477,7 +477,7 @@ public class Option implements Cloneable, Serializable {
      * @since 1.3
      */
     boolean acceptsArg() {
-<span class="nc bnc" id="L480" title="All 10 branches missed.">        return (hasArg() || hasArgs() || hasOptionalArg()) &amp;&amp; (argCount &lt;= 0 || values.size() &lt; argCount);</span>
+<span class="pc bpc" id="L480" title="6 of 10 branches missed.">        return (hasArg() || hasArgs() || hasOptionalArg()) &amp;&amp; (argCount &lt;= 0 || values.size() &lt; argCount);</span>
     }
 
     /**
@@ -487,12 +487,12 @@ public class Option implements Cloneable, Serializable {
      * @param value The value to be added to this Option.
      */
     private void add(final String value) {
-<span class="nc bnc" id="L490" title="All 2 branches missed.">        if (!acceptsArg()) {</span>
+<span class="pc bpc" id="L490" title="1 of 2 branches missed.">        if (!acceptsArg()) {</span>
 <span class="nc" id="L491">            throw new IllegalArgumentException(&quot;Cannot add value, list full.&quot;);</span>
         }
         // store value
-<span class="nc" id="L494">        values.add(value);</span>
-<span class="nc" id="L495">    }</span>
+<span class="fc" id="L494">        values.add(value);</span>
+<span class="fc" id="L495">    }</span>
 
     /**
      * This method is not intended to be used. It was a piece of internal API that was made public in 1.0. It currently throws an UnsupportedOperationException.
@@ -504,7 +504,7 @@ public class Option implements Cloneable, Serializable {
      */
     @Deprecated
     public boolean addValue(final String value) {
-<span class="nc" id="L507">        throw new UnsupportedOperationException(</span>
+<span class="fc" id="L507">        throw new UnsupportedOperationException(</span>
                 &quot;The addValue method is not intended for client use. Subclasses should use the processValue method instead.&quot;);
     }
 
@@ -514,8 +514,8 @@ public class Option implements Cloneable, Serializable {
      * See: &lt;a href=&quot;https://issues.apache.org/jira/browse/CLI-71&quot;&gt;CLI-71&lt;/a&gt;
      */
     void clearValues() {
-<span class="nc" id="L517">        values.clear();</span>
-<span class="nc" id="L518">    }</span>
+<span class="fc" id="L517">        values.clear();</span>
+<span class="fc" id="L518">    }</span>
 
     /**
      * A rather odd clone method - due to incorrect code in 1.0 it is public and in 1.1 rather than throwing a CloneNotSupportedException it throws a
@@ -529,9 +529,9 @@ public class Option implements Cloneable, Serializable {
     @Override
     public Object clone() {
         try {
-<span class="nc" id="L532">            final Option option = (Option) super.clone();</span>
-<span class="nc" id="L533">            option.values = new ArrayList&lt;&gt;(values);</span>
-<span class="nc" id="L534">            return option;</span>
+<span class="fc" id="L532">            final Option option = (Option) super.clone();</span>
+<span class="fc" id="L533">            option.values = new ArrayList&lt;&gt;(values);</span>
+<span class="fc" id="L534">            return option;</span>
 <span class="nc" id="L535">        } catch (final CloneNotSupportedException e) {</span>
 <span class="nc" id="L536">            throw new UnsupportedOperationException(e.getMessage(), e);</span>
         }
@@ -539,14 +539,14 @@ public class Option implements Cloneable, Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-<span class="nc bnc" id="L542" title="All 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L543">            return true;</span>
+<span class="fc bfc" id="L542" title="All 2 branches covered.">        if (this == obj) {</span>
+<span class="fc" id="L543">            return true;</span>
         }
-<span class="nc bnc" id="L545" title="All 2 branches missed.">        if (!(obj instanceof Option)) {</span>
+<span class="pc bpc" id="L545" title="1 of 2 branches missed.">        if (!(obj instanceof Option)) {</span>
 <span class="nc" id="L546">            return false;</span>
         }
-<span class="nc" id="L548">        final Option other = (Option) obj;</span>
-<span class="nc bnc" id="L549" title="All 4 branches missed.">        return Objects.equals(longOption, other.longOption) &amp;&amp; Objects.equals(option, other.option);</span>
+<span class="fc" id="L548">        final Option other = (Option) obj;</span>
+<span class="pc bpc" id="L549" title="1 of 4 branches missed.">        return Objects.equals(longOption, other.longOption) &amp;&amp; Objects.equals(option, other.option);</span>
     }
 
     /**
@@ -555,7 +555,7 @@ public class Option implements Cloneable, Serializable {
      * @return the display name for the argument value.
      */
     public String getArgName() {
-<span class="nc" id="L558">        return argName;</span>
+<span class="fc" id="L558">        return argName;</span>
     }
 
     /**
@@ -571,7 +571,7 @@ public class Option implements Cloneable, Serializable {
      * @see #UNLIMITED_VALUES
      */
     public int getArgs() {
-<span class="nc" id="L574">        return argCount;</span>
+<span class="fc" id="L574">        return argCount;</span>
     }
 
     /**
@@ -581,7 +581,7 @@ public class Option implements Cloneable, Serializable {
      * @since 1.7.0
      */
     public Converter&lt;?, ?&gt; getConverter() {
-<span class="nc bnc" id="L584" title="All 2 branches missed.">        return converter == null ? TypeHandler.getDefault().getConverter(type) : converter;</span>
+<span class="pc bpc" id="L584" title="1 of 2 branches missed.">        return converter == null ? TypeHandler.getDefault().getConverter(type) : converter;</span>
     }
 
     /**
@@ -600,7 +600,7 @@ public class Option implements Cloneable, Serializable {
      * @return The string description of this option.
      */
     public String getDescription() {
-<span class="nc" id="L603">        return description;</span>
+<span class="fc" id="L603">        return description;</span>
     }
 
     /**
@@ -629,7 +629,7 @@ public class Option implements Cloneable, Serializable {
      * @return Long name of this option, or null, if there is no long name.
      */
     public String getLongOpt() {
-<span class="nc" id="L632">        return longOption;</span>
+<span class="fc" id="L632">        return longOption;</span>
     }
 
     /**
@@ -641,7 +641,7 @@ public class Option implements Cloneable, Serializable {
      * @return The name of this option.
      */
     public String getOpt() {
-<span class="nc" id="L644">        return option;</span>
+<span class="fc" id="L644">        return option;</span>
     }
 
     /**
@@ -650,7 +650,7 @@ public class Option implements Cloneable, Serializable {
      * @return The type of this option.
      */
     public Object getType() {
-<span class="nc" id="L653">        return type;</span>
+<span class="fc" id="L653">        return type;</span>
     }
 
     /**
@@ -659,7 +659,7 @@ public class Option implements Cloneable, Serializable {
      * @return the value/first value of this Option or {@code null} if there is no value.
      */
     public String getValue() {
-<span class="nc bnc" id="L662" title="All 2 branches missed.">        return hasNoValues() ? null : values.get(0);</span>
+<span class="pc bpc" id="L662" title="1 of 2 branches missed.">        return hasNoValues() ? null : values.get(0);</span>
     }
 
     /**
@@ -672,7 +672,7 @@ public class Option implements Cloneable, Serializable {
      * @throws IndexOutOfBoundsException if index is less than 1 or greater than the number of the values for this Option.
      */
     public String getValue(final int index) throws IndexOutOfBoundsException {
-<span class="nc bnc" id="L675" title="All 2 branches missed.">        return hasNoValues() ? null : values.get(index);</span>
+<span class="pc bpc" id="L675" title="1 of 2 branches missed.">        return hasNoValues() ? null : values.get(index);</span>
     }
 
     /**
@@ -683,8 +683,8 @@ public class Option implements Cloneable, Serializable {
      * @return the value/first value of this Option or the {@code defaultValue} if there are no values.
      */
     public String getValue(final String defaultValue) {
-<span class="nc" id="L686">        final String value = getValue();</span>
-<span class="nc bnc" id="L687" title="All 2 branches missed.">        return value != null ? value : defaultValue;</span>
+<span class="fc" id="L686">        final String value = getValue();</span>
+<span class="pc bpc" id="L687" title="1 of 2 branches missed.">        return value != null ? value : defaultValue;</span>
     }
 
     /**
@@ -693,7 +693,7 @@ public class Option implements Cloneable, Serializable {
      * @return the values of this Option as a String array or null if there are no values.
      */
     public String[] getValues() {
-<span class="nc bnc" id="L696" title="All 2 branches missed.">        return hasNoValues() ? null : values.toArray(EMPTY_STRING_ARRAY);</span>
+<span class="pc bpc" id="L696" title="1 of 2 branches missed.">        return hasNoValues() ? null : values.toArray(EMPTY_STRING_ARRAY);</span>
     }
 
     /**
@@ -702,7 +702,7 @@ public class Option implements Cloneable, Serializable {
      * @return the value separator character.
      */
     public char getValueSeparator() {
-<span class="nc" id="L705">        return valuesep;</span>
+<span class="fc" id="L705">        return valuesep;</span>
     }
 
     /**
@@ -711,7 +711,7 @@ public class Option implements Cloneable, Serializable {
      * @return the values of this Option as a List or null if there are no values.
      */
     public List&lt;String&gt; getValuesList() {
-<span class="nc" id="L714">        return values;</span>
+<span class="fc" id="L714">        return values;</span>
     }
 
     /**
@@ -720,7 +720,7 @@ public class Option implements Cloneable, Serializable {
      * @return boolean flag indicating if an argument is required.
      */
     public boolean hasArg() {
-<span class="pc bpc" id="L723" title="3 of 4 branches missed.">        return argCount &gt; 0 || argCount == UNLIMITED_VALUES;</span>
+<span class="pc bpc" id="L723" title="1 of 4 branches missed.">        return argCount &gt; 0 || argCount == UNLIMITED_VALUES;</span>
     }
 
     /**
@@ -729,7 +729,7 @@ public class Option implements Cloneable, Serializable {
      * @return if the display name for the argument value has been set.
      */
     public boolean hasArgName() {
-<span class="nc bnc" id="L732" title="All 4 branches missed.">        return argName != null &amp;&amp; !argName.isEmpty();</span>
+<span class="pc bpc" id="L732" title="2 of 4 branches missed.">        return argName != null &amp;&amp; !argName.isEmpty();</span>
     }
 
     /**
@@ -738,12 +738,12 @@ public class Option implements Cloneable, Serializable {
      * @return boolean flag indicating if multiple values are allowed.
      */
     public boolean hasArgs() {
-<span class="nc bnc" id="L741" title="All 4 branches missed.">        return argCount &gt; 1 || argCount == UNLIMITED_VALUES;</span>
+<span class="pc bpc" id="L741" title="2 of 4 branches missed.">        return argCount &gt; 1 || argCount == UNLIMITED_VALUES;</span>
     }
 
     @Override
     public int hashCode() {
-<span class="nc" id="L746">        return Objects.hash(longOption, option);</span>
+<span class="fc" id="L746">        return Objects.hash(longOption, option);</span>
     }
 
     /**
@@ -752,7 +752,7 @@ public class Option implements Cloneable, Serializable {
      * @return boolean flag indicating existence of a long name.
      */
     public boolean hasLongOpt() {
-<span class="pc bpc" id="L755" title="1 of 2 branches missed.">        return longOption != null;</span>
+<span class="fc bfc" id="L755" title="All 2 branches covered.">        return longOption != null;</span>
     }
 
     /**
@@ -761,7 +761,7 @@ public class Option implements Cloneable, Serializable {
      * @return whether this Option has any values.
      */
     private boolean hasNoValues() {
-<span class="nc" id="L764">        return values.isEmpty();</span>
+<span class="fc" id="L764">        return values.isEmpty();</span>
     }
 
     /**
@@ -770,7 +770,7 @@ public class Option implements Cloneable, Serializable {
      * @return whether this Option can have an optional argument.
      */
     public boolean hasOptionalArg() {
-<span class="nc" id="L773">        return optionalArg;</span>
+<span class="fc" id="L773">        return optionalArg;</span>
     }
 
     /**
@@ -780,7 +780,7 @@ public class Option implements Cloneable, Serializable {
      * @since 1.1
      */
     public boolean hasValueSeparator() {
-<span class="nc bnc" id="L783" title="All 2 branches missed.">        return valuesep &gt; 0;</span>
+<span class="fc bfc" id="L783" title="All 2 branches covered.">        return valuesep &gt; 0;</span>
     }
 
     /**
@@ -790,7 +790,7 @@ public class Option implements Cloneable, Serializable {
      * @since 1.7.0
      */
     public boolean isDeprecated() {
-<span class="pc bpc" id="L793" title="1 of 2 branches missed.">        return deprecated != null;</span>
+<span class="fc bfc" id="L793" title="All 2 branches covered.">        return deprecated != null;</span>
     }
 
     /**
@@ -809,21 +809,21 @@ public class Option implements Cloneable, Serializable {
      * @param value The String to be processed.
      */
     void processValue(final String value) {
-<span class="pc bpc" id="L812" title="1 of 2 branches missed.">        if (argCount == UNINITIALIZED) {</span>
+<span class="fc bfc" id="L812" title="All 2 branches covered.">        if (argCount == UNINITIALIZED) {</span>
 <span class="fc" id="L813">            throw new IllegalArgumentException(&quot;NO_ARGS_ALLOWED&quot;);</span>
         }
-<span class="nc" id="L815">        String add = value;</span>
+<span class="fc" id="L815">        String add = value;</span>
         // this Option has a separator character
-<span class="nc bnc" id="L817" title="All 2 branches missed.">        if (hasValueSeparator()) {</span>
+<span class="fc bfc" id="L817" title="All 2 branches covered.">        if (hasValueSeparator()) {</span>
             // get the separator character
-<span class="nc" id="L819">            final char sep = getValueSeparator();</span>
+<span class="fc" id="L819">            final char sep = getValueSeparator();</span>
             // store the index for the value separator
-<span class="nc" id="L821">            int index = add.indexOf(sep);</span>
+<span class="fc" id="L821">            int index = add.indexOf(sep);</span>
             // while there are more value separators
-<span class="nc bnc" id="L823" title="All 2 branches missed.">            while (index != -1) {</span>
+<span class="fc bfc" id="L823" title="All 2 branches covered.">            while (index != -1) {</span>
                 // next value to be added
-<span class="nc bnc" id="L825" title="All 2 branches missed.">                if (values.size() == argCount - 1) {</span>
-<span class="nc" id="L826">                    break;</span>
+<span class="pc bpc" id="L825" title="1 of 2 branches missed.">                if (values.size() == argCount - 1) {</span>
+<span class="fc" id="L826">                    break;</span>
                 }
                 // store
 <span class="nc" id="L829">                add(add.substring(0, index));</span>
@@ -834,8 +834,8 @@ public class Option implements Cloneable, Serializable {
             }
         }
         // store the actual value or the last value that has been parsed
-<span class="nc" id="L837">        add(add);</span>
-<span class="nc" id="L838">    }</span>
+<span class="fc" id="L837">        add(add);</span>
+<span class="fc" id="L838">    }</span>
 
     /**
      * Tests whether the option requires more arguments to be valid.
@@ -843,13 +843,13 @@ public class Option implements Cloneable, Serializable {
      * @return false if the option doesn't require more arguments.
      */
     boolean requiresArg() {
-<span class="nc bnc" id="L846" title="All 2 branches missed.">        if (optionalArg) {</span>
+<span class="pc bpc" id="L846" title="1 of 2 branches missed.">        if (optionalArg) {</span>
 <span class="nc" id="L847">            return false;</span>
         }
-<span class="nc bnc" id="L849" title="All 2 branches missed.">        if (argCount == UNLIMITED_VALUES) {</span>
+<span class="pc bpc" id="L849" title="1 of 2 branches missed.">        if (argCount == UNLIMITED_VALUES) {</span>
 <span class="nc" id="L850">            return values.isEmpty();</span>
         }
-<span class="nc" id="L852">        return acceptsArg();</span>
+<span class="fc" id="L852">        return acceptsArg();</span>
     }
 
     /**
@@ -974,28 +974,28 @@ public class Option implements Cloneable, Serializable {
      */
     @Override
     public String toString() {
-<span class="nc" id="L977">        final StringBuilder buf = new StringBuilder().append(&quot;[ &quot;);</span>
-<span class="nc" id="L978">        buf.append(&quot;Option &quot;);</span>
-<span class="nc" id="L979">        buf.append(option);</span>
-<span class="nc bnc" id="L980" title="All 2 branches missed.">        if (longOption != null) {</span>
-<span class="nc" id="L981">            buf.append(Char.SP).append(longOption);</span>
+<span class="fc" id="L977">        final StringBuilder buf = new StringBuilder().append(&quot;[ &quot;);</span>
+<span class="fc" id="L978">        buf.append(&quot;Option &quot;);</span>
+<span class="fc" id="L979">        buf.append(option);</span>
+<span class="fc bfc" id="L980" title="All 2 branches covered.">        if (longOption != null) {</span>
+<span class="fc" id="L981">            buf.append(Char.SP).append(longOption);</span>
         }
-<span class="nc bnc" id="L983" title="All 2 branches missed.">        if (isDeprecated()) {</span>
+<span class="pc bpc" id="L983" title="1 of 2 branches missed.">        if (isDeprecated()) {</span>
 <span class="nc" id="L984">            buf.append(Char.SP);</span>
 <span class="nc" id="L985">            buf.append(deprecated.toString());</span>
         }
-<span class="nc bnc" id="L987" title="All 2 branches missed.">        if (hasArgs()) {</span>
+<span class="pc bpc" id="L987" title="1 of 2 branches missed.">        if (hasArgs()) {</span>
 <span class="nc" id="L988">            buf.append(&quot;[ARG...]&quot;);</span>
-<span class="nc bnc" id="L989" title="All 2 branches missed.">        } else if (hasArg()) {</span>
-<span class="nc" id="L990">            buf.append(&quot; [ARG]&quot;);</span>
+<span class="fc bfc" id="L989" title="All 2 branches covered.">        } else if (hasArg()) {</span>
+<span class="fc" id="L990">            buf.append(&quot; [ARG]&quot;);</span>
         }
         // @formatter:off
-<span class="nc" id="L993">        return buf.append(&quot; :: &quot;)</span>
-<span class="nc" id="L994">            .append(description)</span>
-<span class="nc" id="L995">            .append(&quot; :: &quot;)</span>
-<span class="nc" id="L996">            .append(type)</span>
-<span class="nc" id="L997">            .append(&quot; ]&quot;)</span>
-<span class="nc" id="L998">            .toString();</span>
+<span class="fc" id="L993">        return buf.append(&quot; :: &quot;)</span>
+<span class="fc" id="L994">            .append(description)</span>
+<span class="fc" id="L995">            .append(&quot; :: &quot;)</span>
+<span class="fc" id="L996">            .append(type)</span>
+<span class="fc" id="L997">            .append(&quot; ]&quot;)</span>
+<span class="fc" id="L998">            .toString();</span>
         // @formatter:on
     }
 }

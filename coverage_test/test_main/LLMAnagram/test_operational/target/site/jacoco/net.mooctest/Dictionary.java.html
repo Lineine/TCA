@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Dictionary.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Dictionary.java</span></div><h1>Dictionary.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+/*
+ * data structure to store the dictionary of words with sorted keys
+ *
+ */
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">public class Dictionary {</span>
+
+    // below map will store string with sorted characters as key and all the anagrams of that string as value
+<span class="fc" id="L22">    private final Map&lt;String, Set&lt;String&gt;&gt; sortedStringMap = new TreeMap&lt;String, Set&lt;String&gt;&gt;();</span>
+<span class="fc" id="L23">    private boolean isDictionaryLoaded = false;</span>
+
+    /*
+      * loads the words from wordlist file into map; it assumes the wordlist file contains words delimited by newline
+      * i.e. \n
+      *
+      * @param filePath absolute file path of the wordlist (assuming it's in the classpath)
+      */
+    public void loadDictionary(String filePath) throws IOException {
+
+<span class="nc" id="L33">        loadDictionaryWithSubsets(filePath, null, 0);</span>
+<span class="nc" id="L34">    }</span>
+
+    /*
+      * loads only the words that are subsets of wordString from wordlist file into map;
+      * it assumes the wordlist file contains words delimited by newline i.e. \n
+      *
+      * @param filePath absolute file path of the wordlist (assuming it's in the classpath)
+      *
+      * @param wordString string to check for subsets
+      *
+      * @param minWordSize minimum word size to load from dictionary
+      */
+    public void loadDictionaryWithSubsets(String filePath, String wordString,
+                                          int minWordSize) throws IOException {
+
+<span class="pc bpc" id="L49" title="2 of 4 branches missed.">        if (filePath == null || filePath.isEmpty()) {</span>
+<span class="nc" id="L50">            throw new IllegalArgumentException(&quot;file path invalid&quot;);</span>
+        }
+
+        try {
+<span class="fc" id="L54">            File file = new File(filePath);</span>
+<span class="nc" id="L55">            BufferedReader reader = new BufferedReader(new InputStreamReader(</span>
+                    new FileInputStream(file)));
+            String word;
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            while ((word = reader.readLine()) != null) {</span>
+<span class="nc bnc" id="L59" title="All 4 branches missed.">                assert word != null;</span>
+<span class="nc" id="L60">                word = word.trim().toLowerCase();</span>
+<span class="nc" id="L61">                String sortedWord = Helper.sortWord(word);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                if (sortedWord == null</span>
+<span class="nc bnc" id="L63" title="All 4 branches missed.">                        || sortedWord.isEmpty()</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                        || (wordString != null &amp;&amp; !wordString.isEmpty() &amp;&amp; (sortedWord</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">                        .length() &lt; minWordSize || !Helper</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">                        .isSubset(sortedWord.toCharArray(), wordString</span>
+<span class="nc" id="L67">                                .replaceAll(&quot;\\s&quot;, &quot;&quot;).toLowerCase()</span>
+<span class="nc" id="L68">                                .toCharArray())))) {</span>
+                    // don't add the word to dictionary if word is empty or if
+                    // word from word-list is not a subset of wordString or word
+                    // is less than minWordSize
+<span class="nc" id="L72">                    continue;</span>
+                }
+<span class="nc" id="L74">                Set&lt;String&gt; wordSet = sortedStringMap.get(sortedWord);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                if (wordSet != null) {</span>
+                    // add word to the existing wordset
+<span class="nc" id="L77">                    wordSet.add(word);</span>
+                } else {
+<span class="nc" id="L79">                    wordSet = new TreeSet&lt;String&gt;();</span>
+<span class="nc" id="L80">                    wordSet.add(word);</span>
+<span class="nc" id="L81">                    sortedStringMap.put(sortedWord, wordSet);</span>
+                }
+<span class="nc" id="L83">            }</span>
+
+<span class="nc" id="L85">            reader.close();</span>
+<span class="nc" id="L86">            isDictionaryLoaded = true;</span>
+<span class="fc" id="L87">        } catch (IOException ioException) {</span>
+<span class="fc" id="L88">            throw ioException;</span>
+<span class="nc" id="L89">        }</span>
+<span class="nc" id="L90">    }</span>
+
+    /*
+      * adds word to dictionary
+      *
+      * @param wordString adds wordString to current dictionary
+      *
+      * @return true if the word is successfully added, false otherwise
+      */
+    public boolean addWord(String wordString) {
+
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (wordString.isEmpty()) {</span>
+<span class="fc" id="L102">            return false;</span>
+        }
+
+<span class="fc" id="L105">        String sortedWord = Helper.sortWord(wordString);</span>
+<span class="fc" id="L106">        Set&lt;String&gt; wordSet = sortedStringMap.get(sortedWord);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (wordSet != null) {</span>
+            // add word to the existing words set
+<span class="fc" id="L109">            wordSet.add(wordString);</span>
+        } else {
+            // add create new words set
+<span class="fc" id="L112">            wordSet = new TreeSet&lt;String&gt;();</span>
+<span class="fc" id="L113">            wordSet.add(wordString);</span>
+<span class="fc" id="L114">            sortedStringMap.put(sortedWord, wordSet);</span>
+        }
+
+<span class="fc" id="L117">        return true;</span>
+    }
+
+    /*
+      * finds all the anagrams of the word in the dictionary
+      *
+      * @param wordString word for which anagrams are to be found
+      *
+      * @return set of single word anagrams for given string
+      */
+    public Set&lt;String&gt; findSingleWordAnagrams(String wordString) {
+
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        if (!isDictionaryLoaded) {</span>
+<span class="nc" id="L130">            throw new IllegalStateException(&quot;dictionary not loaded&quot;);</span>
+        } else {
+
+<span class="nc bnc" id="L133" title="All 4 branches missed.">            if (wordString == null || wordString.isEmpty()) {</span>
+<span class="nc" id="L134">                throw new IllegalStateException(&quot;word string invalid&quot;);</span>
+            }
+<span class="nc" id="L136">            return sortedStringMap</span>
+<span class="nc" id="L137">                    .get(Helper.sortWord(wordString));</span>
+        }
+    }
+
+    /*
+      * get list for all the keys in dictionary
+      *
+      * @return returns the list of all the keys
+      */
+    public List&lt;String&gt; getDictionaryKeyList() {
+<span class="pc bpc" id="L147" title="2 of 4 branches missed.">        assert sortedStringMap != null;</span>
+<span class="fc" id="L148">        return new ArrayList&lt;String&gt;(sortedStringMap.keySet());</span>
+    }
+
+    public boolean isDictionaryLoaded() {
+<span class="fc" id="L152">        return isDictionaryLoaded;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L157">        return &quot;isDictionaryLoaded?: &quot; + isDictionaryLoaded + &quot;\nDictionary: &quot; + sortedStringMap;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

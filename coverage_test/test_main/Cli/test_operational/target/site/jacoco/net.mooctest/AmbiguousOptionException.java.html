@@ -39,22 +39,22 @@ public class AmbiguousOptionException extends UnrecognizedOptionException {
      * @return
      */
     private static String createMessage(final String option, final Collection&lt;String&gt; matchingOptions) {
-<span class="nc" id="L42">        final StringBuilder buf = new StringBuilder(&quot;Ambiguous option: '&quot;);</span>
-<span class="nc" id="L43">        buf.append(option);</span>
-<span class="nc" id="L44">        buf.append(&quot;'  (could be: &quot;);</span>
+<span class="fc" id="L42">        final StringBuilder buf = new StringBuilder(&quot;Ambiguous option: '&quot;);</span>
+<span class="fc" id="L43">        buf.append(option);</span>
+<span class="fc" id="L44">        buf.append(&quot;'  (could be: &quot;);</span>
 
-<span class="nc" id="L46">        final Iterator&lt;String&gt; it = matchingOptions.iterator();</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        while (it.hasNext()) {</span>
-<span class="nc" id="L48">            buf.append(Char.APOS);</span>
-<span class="nc" id="L49">            buf.append(it.next());</span>
-<span class="nc" id="L50">            buf.append(Char.APOS);</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (it.hasNext()) {</span>
-<span class="nc" id="L52">                buf.append(&quot;, &quot;);</span>
+<span class="fc" id="L46">        final Iterator&lt;String&gt; it = matchingOptions.iterator();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        while (it.hasNext()) {</span>
+<span class="fc" id="L48">            buf.append(Char.APOS);</span>
+<span class="fc" id="L49">            buf.append(it.next());</span>
+<span class="fc" id="L50">            buf.append(Char.APOS);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            if (it.hasNext()) {</span>
+<span class="fc" id="L52">                buf.append(&quot;, &quot;);</span>
             }
         }
-<span class="nc" id="L55">        buf.append(&quot;)&quot;);</span>
+<span class="fc" id="L55">        buf.append(&quot;)&quot;);</span>
 
-<span class="nc" id="L57">        return buf.toString();</span>
+<span class="fc" id="L57">        return buf.toString();</span>
     }
 
     /** The list of options matching the partial name specified */
@@ -67,9 +67,9 @@ public class AmbiguousOptionException extends UnrecognizedOptionException {
      * @param matchingOptions the options matching the name
      */
     public AmbiguousOptionException(final String option, final Collection&lt;String&gt; matchingOptions) {
-<span class="nc" id="L70">        super(createMessage(option, matchingOptions), option);</span>
-<span class="nc" id="L71">        this.matchingOptions = matchingOptions;</span>
-<span class="nc" id="L72">    }</span>
+<span class="fc" id="L70">        super(createMessage(option, matchingOptions), option);</span>
+<span class="fc" id="L71">        this.matchingOptions = matchingOptions;</span>
+<span class="fc" id="L72">    }</span>
 
     /**
      * Gets the options matching the partial name.
@@ -77,7 +77,7 @@ public class AmbiguousOptionException extends UnrecognizedOptionException {
      * @return a collection of options matching the name
      */
     public Collection&lt;String&gt; getMatchingOptions() {
-<span class="nc" id="L80">        return matchingOptions;</span>
+<span class="fc" id="L80">        return matchingOptions;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

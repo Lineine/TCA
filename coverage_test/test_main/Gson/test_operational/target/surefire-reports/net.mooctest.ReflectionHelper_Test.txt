@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.ReflectionHelper_Test
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 4, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in net.mooctest.ReflectionHelper_Test
+testGetAccessibleObjectDescription(net.mooctest.ReflectionHelper_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.ReflectionHelper_Test.testGetAccessibleObjectDescription(ReflectionHelper_Test.java:28)
+
+testConstructorToString(net.mooctest.ReflectionHelper_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[ReflectionHelper_Test.]TestClass(String)> but was:<[net.mooctest.ReflectionHelper_Test$]TestClass(String)>
+	at net.mooctest.ReflectionHelper_Test.testConstructorToString(ReflectionHelper_Test.java:48)
+
+testCreateExceptionForUnexpectedIllegalAccess(net.mooctest.ReflectionHelper_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.RuntimeException: Unexpected IllegalAccessException occurred (Gson 1.0). Certain ReflectionAccessFilter features require Java >= 9 to work correctly. If you are not using ReflectionAccessFilter, report this to the Gson maintainers.
+	at net.mooctest.ReflectionHelper_Test.testCreateExceptionForUnexpectedIllegalAccess(ReflectionHelper_Test.java:98)
+Caused by: java.lang.IllegalAccessException: Test exception
+	at net.mooctest.ReflectionHelper_Test.testCreateExceptionForUnexpectedIllegalAccess(ReflectionHelper_Test.java:97)
+
+testFieldToString(net.mooctest.ReflectionHelper_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[ReflectionHelper_Test.]TestClass#publicFiel...> but was:<[net.mooctest.ReflectionHelper_Test$]TestClass#publicFiel...>
+	at net.mooctest.ReflectionHelper_Test.testFieldToString(ReflectionHelper_Test.java:38)
+
+testIsStatic(net.mooctest.ReflectionHelper_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.ReflectionHelper_Test.testIsStatic(ReflectionHelper_Test.java:56)
+

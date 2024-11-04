@@ -75,38 +75,38 @@ import java.util.Map;
 <span class="nc" id="L75">public class PatternOptionBuilder {</span>
 
     /** String class */
-<span class="nc" id="L78">    public static final Class&lt;String&gt; STRING_VALUE = String.class;</span>
+<span class="fc" id="L78">    public static final Class&lt;String&gt; STRING_VALUE = String.class;</span>
 
     /** Object class */
-<span class="nc" id="L81">    public static final Class&lt;Object&gt; OBJECT_VALUE = Object.class;</span>
+<span class="fc" id="L81">    public static final Class&lt;Object&gt; OBJECT_VALUE = Object.class;</span>
 
     /** Number class */
-<span class="nc" id="L84">    public static final Class&lt;Number&gt; NUMBER_VALUE = Number.class;</span>
+<span class="fc" id="L84">    public static final Class&lt;Number&gt; NUMBER_VALUE = Number.class;</span>
 
     /** Date class */
-<span class="nc" id="L87">    public static final Class&lt;Date&gt; DATE_VALUE = Date.class;</span>
+<span class="fc" id="L87">    public static final Class&lt;Date&gt; DATE_VALUE = Date.class;</span>
 
     /** Class class */
-<span class="nc" id="L90">    public static final Class&lt;?&gt; CLASS_VALUE = Class.class;</span>
+<span class="fc" id="L90">    public static final Class&lt;?&gt; CLASS_VALUE = Class.class;</span>
 
     /// can we do this one??
     // is meant to check that the file exists, else it errors.
     // ie) it's for reading not writing.
 
     /** FileInputStream class */
-<span class="nc" id="L97">    public static final Class&lt;FileInputStream&gt; EXISTING_FILE_VALUE = FileInputStream.class;</span>
+<span class="fc" id="L97">    public static final Class&lt;FileInputStream&gt; EXISTING_FILE_VALUE = FileInputStream.class;</span>
 
     /** File class */
-<span class="nc" id="L100">    public static final Class&lt;File&gt; FILE_VALUE = File.class;</span>
+<span class="fc" id="L100">    public static final Class&lt;File&gt; FILE_VALUE = File.class;</span>
 
     /** File array class */
-<span class="nc" id="L103">    public static final Class&lt;File[]&gt; FILES_VALUE = File[].class;</span>
+<span class="fc" id="L103">    public static final Class&lt;File[]&gt; FILES_VALUE = File[].class;</span>
 
     /** URL class */
-<span class="nc" id="L106">    public static final Class&lt;URL&gt; URL_VALUE = URL.class;</span>
+<span class="fc" id="L106">    public static final Class&lt;URL&gt; URL_VALUE = URL.class;</span>
 
     /** The converter to use for Unimplemented data types */
-<span class="nc" id="L109">    private static final Converter&lt;?, UnsupportedOperationException&gt; UNSUPPORTED = s -&gt; {</span>
+<span class="fc" id="L109">    private static final Converter&lt;?, UnsupportedOperationException&gt; UNSUPPORTED = s -&gt; {</span>
 <span class="nc" id="L110">        throw new UnsupportedOperationException(&quot;Not yet implemented&quot;);</span>
     };
 
@@ -130,25 +130,25 @@ import java.util.Map;
      * @since 1.7.0
      */
     public static Class&lt;?&gt; getValueType(final char ch) {
-<span class="nc bnc" id="L133" title="All 10 branches missed.">        switch (ch) {</span>
+<span class="pc bpc" id="L133" title="2 of 10 branches missed.">        switch (ch) {</span>
         case '@':
 <span class="nc" id="L135">            return OBJECT_VALUE;</span>
         case ':':
-<span class="nc" id="L137">            return STRING_VALUE;</span>
+<span class="fc" id="L137">            return STRING_VALUE;</span>
         case '%':
-<span class="nc" id="L139">            return NUMBER_VALUE;</span>
+<span class="fc" id="L139">            return NUMBER_VALUE;</span>
         case '+':
-<span class="nc" id="L141">            return CLASS_VALUE;</span>
+<span class="fc" id="L141">            return CLASS_VALUE;</span>
         case '#':
-<span class="nc" id="L143">            return DATE_VALUE;</span>
+<span class="fc" id="L143">            return DATE_VALUE;</span>
         case '&lt;':
-<span class="nc" id="L145">            return EXISTING_FILE_VALUE;</span>
+<span class="fc" id="L145">            return EXISTING_FILE_VALUE;</span>
         case '&gt;':
-<span class="nc" id="L147">            return FILE_VALUE;</span>
+<span class="fc" id="L147">            return FILE_VALUE;</span>
         case '*':
-<span class="nc" id="L149">            return FILES_VALUE;</span>
+<span class="fc" id="L149">            return FILES_VALUE;</span>
         case '/':
-<span class="nc" id="L151">            return URL_VALUE;</span>
+<span class="fc" id="L151">            return URL_VALUE;</span>
         }
 
 <span class="nc" id="L154">        return null;</span>
@@ -161,7 +161,7 @@ import java.util.Map;
      * @return true if {@code ch} is a value code, otherwise false.
      */
     public static boolean isValueCode(final char ch) {
-<span class="nc bnc" id="L164" title="All 20 branches missed.">        return ch == '@' || ch == ':' || ch == '%' || ch == '+' || ch == '#' || ch == '&lt;' || ch == '&gt;' || ch == '*' || ch == '/' || ch == '!';</span>
+<span class="pc bpc" id="L164" title="1 of 20 branches missed.">        return ch == '@' || ch == ':' || ch == '%' || ch == '+' || ch == '#' || ch == '&lt;' || ch == '&gt;' || ch == '*' || ch == '/' || ch == '!';</span>
     }
 
     /**
@@ -171,60 +171,60 @@ import java.util.Map;
      * @return The {@link Options} instance
      */
     public static Options parsePattern(final String pattern) {
-<span class="nc" id="L174">        char opt = Char.SP;</span>
-<span class="nc" id="L175">        boolean required = false;</span>
-<span class="nc" id="L176">        Class&lt;?&gt; type = null;</span>
-<span class="nc" id="L177">        Converter&lt;?, ?&gt; converter = Converter.DEFAULT;</span>
+<span class="fc" id="L174">        char opt = Char.SP;</span>
+<span class="fc" id="L175">        boolean required = false;</span>
+<span class="fc" id="L176">        Class&lt;?&gt; type = null;</span>
+<span class="fc" id="L177">        Converter&lt;?, ?&gt; converter = Converter.DEFAULT;</span>
 
-<span class="nc" id="L179">        final Options options = new Options();</span>
+<span class="fc" id="L179">        final Options options = new Options();</span>
 
-<span class="nc bnc" id="L181" title="All 2 branches missed.">        for (int i = 0; i &lt; pattern.length(); i++) {</span>
-<span class="nc" id="L182">            final char ch = pattern.charAt(i);</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">        for (int i = 0; i &lt; pattern.length(); i++) {</span>
+<span class="fc" id="L182">            final char ch = pattern.charAt(i);</span>
 
             // a value code comes after an option and specifies
             // details about it
-<span class="nc bnc" id="L186" title="All 2 branches missed.">            if (!isValueCode(ch)) {</span>
-<span class="nc bnc" id="L187" title="All 2 branches missed.">                if (opt != Char.SP) {</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">            if (!isValueCode(ch)) {</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">                if (opt != Char.SP) {</span>
                     // @formatter:off
-<span class="nc bnc" id="L189" title="All 2 branches missed.">                    final Option option = Option.builder(String.valueOf(opt))</span>
-<span class="nc" id="L190">                            .hasArg(type != null)</span>
-<span class="nc" id="L191">                            .required(required)</span>
-<span class="nc" id="L192">                            .type(type)</span>
-<span class="nc" id="L193">                            .converter(converter)</span>
-<span class="nc" id="L194">                            .build();</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">                    final Option option = Option.builder(String.valueOf(opt))</span>
+<span class="fc" id="L190">                            .hasArg(type != null)</span>
+<span class="fc" id="L191">                            .required(required)</span>
+<span class="fc" id="L192">                            .type(type)</span>
+<span class="fc" id="L193">                            .converter(converter)</span>
+<span class="fc" id="L194">                            .build();</span>
                     // @formatter:on
                     // we have a previous one to deal with
-<span class="nc" id="L197">                    options.addOption(option);</span>
-<span class="nc" id="L198">                    required = false;</span>
-<span class="nc" id="L199">                    type = null;</span>
-<span class="nc" id="L200">                    converter = Converter.DEFAULT;</span>
+<span class="fc" id="L197">                    options.addOption(option);</span>
+<span class="fc" id="L198">                    required = false;</span>
+<span class="fc" id="L199">                    type = null;</span>
+<span class="fc" id="L200">                    converter = Converter.DEFAULT;</span>
                 }
 
-<span class="nc" id="L203">                opt = ch;</span>
-<span class="nc bnc" id="L204" title="All 2 branches missed.">            } else if (ch == '!') {</span>
-<span class="nc" id="L205">                required = true;</span>
+<span class="fc" id="L203">                opt = ch;</span>
+<span class="fc bfc" id="L204" title="All 2 branches covered.">            } else if (ch == '!') {</span>
+<span class="fc" id="L205">                required = true;</span>
             } else {
-<span class="nc" id="L207">                type = getValueType(ch);</span>
-<span class="nc" id="L208">                final Map&lt;Class&lt;?&gt;, Converter&lt;?, ? extends Throwable&gt;&gt; map = TypeHandler.createDefaultMap();</span>
+<span class="fc" id="L207">                type = getValueType(ch);</span>
+<span class="fc" id="L208">                final Map&lt;Class&lt;?&gt;, Converter&lt;?, ? extends Throwable&gt;&gt; map = TypeHandler.createDefaultMap();</span>
                 // Backward compatibility (probably).
-<span class="nc" id="L210">                map.put(FILES_VALUE, unsupported());</span>
-<span class="nc" id="L211">                converter = new TypeHandler(map).getConverter(getValueType(ch));</span>
+<span class="fc" id="L210">                map.put(FILES_VALUE, unsupported());</span>
+<span class="fc" id="L211">                converter = new TypeHandler(map).getConverter(getValueType(ch));</span>
             }
         }
 
-<span class="nc bnc" id="L215" title="All 2 branches missed.">        if (opt != Char.SP) {</span>
-<span class="nc bnc" id="L216" title="All 2 branches missed.">            final Option option = Option.builder(String.valueOf(opt)).hasArg(type != null).required(required).type(type).build();</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">        if (opt != Char.SP) {</span>
+<span class="pc bpc" id="L216" title="1 of 2 branches missed.">            final Option option = Option.builder(String.valueOf(opt)).hasArg(type != null).required(required).type(type).build();</span>
 
             // we have a final one to deal with
-<span class="nc" id="L219">            options.addOption(option);</span>
+<span class="fc" id="L219">            options.addOption(option);</span>
         }
 
-<span class="nc" id="L222">        return options;</span>
+<span class="fc" id="L222">        return options;</span>
     }
 
     @SuppressWarnings(&quot;unchecked&quot;)
     static &lt;T&gt; T unsupported() {
-<span class="nc" id="L227">        return (T) UNSUPPORTED;</span>
+<span class="fc" id="L227">        return (T) UNSUPPORTED;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

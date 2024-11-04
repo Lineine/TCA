@@ -1,24 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.SegmentTree_sub_10_0_Test
 -------------------------------------------------------------------------------
-Tests run: 250, Failures: 1, Errors: 4, Skipped: 0, Time elapsed: 0.901 s <<< FAILURE! - in net.mooctest.SegmentTree_sub_10_0_Test
-test_15(net.mooctest.SegmentTree_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_15(SegmentTree_sub_10_0_Test.java:1823)
-
-test_2221(net.mooctest.SegmentTree_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_2221(SegmentTree_sub_10_0_Test.java:4029)
-
+Tests run: 167, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0.578 s <<< FAILURE! - in net.mooctest.SegmentTree_sub_10_0_Test
 test_2313(net.mooctest.SegmentTree_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_2313(SegmentTree_sub_10_0_Test.java:4025)
+	at net.mooctest.SegmentTree_sub_10_0_Test.test_2313(SegmentTree_sub_10_0_Test.java:3158)
 
 test_116(net.mooctest.SegmentTree_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_116(SegmentTree_sub_10_0_Test.java:2014)
+	at net.mooctest.SegmentTree_sub_10_0_Test.test_116(SegmentTree_sub_10_0_Test.java:1579)
 
-test_220(net.mooctest.SegmentTree_sub_10_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+test_220(net.mooctest.SegmentTree_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError: expected:<0->0 1,0,0,0> but was:<-9223372036854775808->9223372036854775807 0,0,0,0>
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_220(SegmentTree_sub_10_0_Test.java:3532)
+	at net.mooctest.SegmentTree_sub_10_0_Test.test_220(SegmentTree_sub_10_0_Test.java:2846)
 

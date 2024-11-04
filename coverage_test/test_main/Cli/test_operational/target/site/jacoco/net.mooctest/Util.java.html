@@ -34,7 +34,7 @@ final class Util {
      * @return the given array is null or empty.
      */
     static boolean isEmpty(final Object[] array) {
-<span class="pc bpc" id="L37" title="3 of 4 branches missed.">        return array == null || array.length == 0;</span>
+<span class="fc bfc" id="L37" title="All 4 branches covered.">        return array == null || array.length == 0;</span>
     }
 
     /**
@@ -44,7 +44,7 @@ final class Util {
      * @return Whether the given string is null or empty.
      */
     static boolean isEmpty(final String str) {
-<span class="pc bpc" id="L47" title="2 of 4 branches missed.">        return str == null || str.isEmpty();</span>
+<span class="fc bfc" id="L47" title="All 4 branches covered.">        return str == null || str.isEmpty();</span>
     }
 
     /**
@@ -54,14 +54,14 @@ final class Util {
      * @return The string without the leading and trailing quotes.
      */
     static String stripLeadingAndTrailingQuotes(final String str) {
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (isEmpty(str)) {</span>
-<span class="nc" id="L58">            return str;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (isEmpty(str)) {</span>
+<span class="fc" id="L58">            return str;</span>
         }
-<span class="nc" id="L60">        final int length = str.length();</span>
-<span class="nc bnc" id="L61" title="All 8 branches missed.">        if (length &gt; 1 &amp;&amp; str.startsWith(&quot;\&quot;&quot;) &amp;&amp; str.endsWith(&quot;\&quot;&quot;) &amp;&amp; str.substring(1, length - 1).indexOf('&quot;') == -1) {</span>
-<span class="nc" id="L62">            return str.substring(1, length - 1);</span>
+<span class="fc" id="L60">        final int length = str.length();</span>
+<span class="pc bpc" id="L61" title="3 of 8 branches missed.">        if (length &gt; 1 &amp;&amp; str.startsWith(&quot;\&quot;&quot;) &amp;&amp; str.endsWith(&quot;\&quot;&quot;) &amp;&amp; str.substring(1, length - 1).indexOf('&quot;') == -1) {</span>
+<span class="fc" id="L62">            return str.substring(1, length - 1);</span>
         }
-<span class="nc" id="L64">        return str;</span>
+<span class="fc" id="L64">        return str;</span>
     }
 
     /**
@@ -71,16 +71,16 @@ final class Util {
      * @return the new String.
      */
     static String stripLeadingHyphens(final String str) {
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if (isEmpty(str)) {</span>
-<span class="nc" id="L75">            return str;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (isEmpty(str)) {</span>
+<span class="fc" id="L75">            return str;</span>
         }
-<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (str.startsWith(&quot;--&quot;)) {</span>
-<span class="nc" id="L78">            return str.substring(2);</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        if (str.startsWith(&quot;--&quot;)) {</span>
+<span class="fc" id="L78">            return str.substring(2);</span>
         }
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (str.startsWith(&quot;-&quot;)) {</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (str.startsWith(&quot;-&quot;)) {</span>
 <span class="fc" id="L81">            return str.substring(1);</span>
         }
-<span class="nc" id="L83">        return str;</span>
+<span class="fc" id="L83">        return str;</span>
     }
 
     private Util() {

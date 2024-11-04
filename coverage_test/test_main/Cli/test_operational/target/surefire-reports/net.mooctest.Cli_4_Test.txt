@@ -1,4 +1,48 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Cli_4_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in net.mooctest.Cli_4_Test
+Tests run: 39, Failures: 11, Errors: 0, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! - in net.mooctest.Cli_4_Test
+test_124(net.mooctest.Cli_4_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<description> but was:<null>
+	at net.mooctest.Cli_4_Test.test_124(Cli_4_Test.java:107)
+
+test_129(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<value1> but was:<null>
+	at net.mooctest.Cli_4_Test.test_129(Cli_4_Test.java:142)
+
+test_131(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<key1> but was:<null>
+	at net.mooctest.Cli_4_Test.test_131(Cli_4_Test.java:83)
+
+test_132(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<value1> but was:<null>
+	at net.mooctest.Cli_4_Test.test_132(Cli_4_Test.java:122)
+
+test_141(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_4_Test.test_141(Cli_4_Test.java:87)
+
+test_144(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_4_Test.test_144(Cli_4_Test.java:138)
+
+test_153(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_4_Test.test_153(Cli_4_Test.java:75)
+
+test_159(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_4_Test.test_159(Cli_4_Test.java:111)
+
+test_163(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_4_Test.test_163(Cli_4_Test.java:62)
+
+test_174(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_4_Test.test_174(Cli_4_Test.java:41)
+
+test_177(net.mooctest.Cli_4_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[ Option a alpha[[ARG...] :: description] :: class java.lang....> but was:<[ Option a alpha[ [ARG] :: null] :: class java.lang....>
+	at net.mooctest.Cli_4_Test.test_177(Cli_4_Test.java:151)
+

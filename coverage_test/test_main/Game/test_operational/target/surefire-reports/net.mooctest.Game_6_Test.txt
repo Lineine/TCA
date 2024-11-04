@@ -1,44 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_6_Test
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.Game_6_Test
-test_168(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_168(Game_6_Test.java:95)
+Tests run: 5, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.011 s <<< FAILURE! - in net.mooctest.Game_6_Test
+test_135(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_6_Test.test_135(Game_6_Test.java:36)
 
-test_169(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_169(Game_6_Test.java:66)
+test_137(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_6_Test.test_137(Game_6_Test.java:28)
 
-test_170(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_170(Game_6_Test.java:90)
+test_138(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_6_Test.test_138(Game_6_Test.java:47)
 
-test_172(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_172(Game_6_Test.java:31)
-
-test_173(net.mooctest.Game_6_Test)  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_173(Game_6_Test.java:26)
-
-test_175(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_175(Game_6_Test.java:74)
-
-test_177(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_177(Game_6_Test.java:82)
-
-test_178(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_178(Game_6_Test.java:48)
-
-test_179(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
-	at net.mooctest.Game_6_Test.test_179(Game_6_Test.java:39)
-
-test_288(net.mooctest.Game_6_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: 0 expected:<0> but was:<callQueue should be empty initially>
-	at net.mooctest.Game_6_Test.test_288(Game_6_Test.java:61)
+test_139(net.mooctest.Game_6_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Game_6_Test.test_139(Game_6_Test.java:43)
 

@@ -4,7 +4,6 @@ net/mooctest/AStar_sub_10_12_Test.class
 net/mooctest/AStar_sub_10_9_Test.class
 net/mooctest/AStar_sub_10_32_Test.class
 net/mooctest/AStar_sub_10_29_Test.class
-net/mooctest/AStar_sub_10_1_Test$2.class
 net/mooctest/AStar_sub_10_25_Test.class
 net/mooctest/AStar_sub_10_16_Test.class
 net/mooctest/AStar_sub_10_35_Test.class
@@ -18,10 +17,8 @@ net/mooctest/AStar_sub_10_7_Test.class
 net/mooctest/AStar_sub_10_15_Test.class
 net/mooctest/AStar_sub_10_34_Test.class
 net/mooctest/AStar_sub_10_11_Test.class
-net/mooctest/AStar_sub_10_38_Test.class
 net/mooctest/AStar_sub_10_3_Test.class
-net/mooctest/AStar_sub_10_1_Test$1.class
-net/mooctest/AStar_sub_10_37_Test.class
+net/mooctest/AStar_sub_10_0_Test$1.class
 net/mooctest/AStar_sub_10_14_Test.class
 net/mooctest/AStar_sub_10_30_Test.class
 net/mooctest/AStar_sub_10_17_Test.class
@@ -36,6 +33,7 @@ net/mooctest/AStar_sub_10_13_Test.class
 net/mooctest/AStar_sub_10_33_Test.class
 net/mooctest/AStar_sub_10_26_Test.class
 net/mooctest/AStar_sub_10_23_Test.class
+net/mooctest/AStar_sub_10_0_Test$2.class
 net/mooctest/AStar_sub_10_1_Test.class
 net/mooctest/AStar_sub_10_36_Test.class
 net/mooctest/AStar_sub_10_5_Test.class

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.NumberLimits_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.NumberLimits_Test
+testParseBigDecimal_unsupportedScale1(net.mooctest.NumberLimits_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected java.lang.NumberFormatException to be thrown, but nothing was thrown
+	at net.mooctest.NumberLimits_Test.testParseBigDecimal_unsupportedScale1(NumberLimits_Test.java:62)
+

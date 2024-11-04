@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.JsonReaderInternalAccess_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.JsonReaderInternalAccess_Test
+test_promoteNameToValue_calls_reader_setInnerHTML(net.mooctest.JsonReaderInternalAccess_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: 
+Expected a name but was nullnull
+See https://github.net.mooctest/blob/main/Troubleshooting.md#unexpected-json-structure
+	at net.mooctest.JsonReaderInternalAccess_Test.test_promoteNameToValue_calls_reader_setInnerHTML(JsonReaderInternalAccess_Test.java:60)
+
+testPromoteNameToValue_NullReader(net.mooctest.JsonReaderInternalAccess_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected java.lang.NullPointerException to be thrown, but nothing was thrown
+	at net.mooctest.JsonReaderInternalAccess_Test.testPromoteNameToValue_NullReader(JsonReaderInternalAccess_Test.java:22)
+

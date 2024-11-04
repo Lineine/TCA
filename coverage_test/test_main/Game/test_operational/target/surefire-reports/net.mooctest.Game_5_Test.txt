@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_5_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in net.mooctest.Game_5_Test
+Tests run: 9, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.Game_5_Test
+test_508(net.mooctest.Game_5_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Game_5_Test.test_508(Game_5_Test.java:35)
+
+test_512(net.mooctest.Game_5_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0.0> but was:<-1.72957958144E12>
+	at net.mooctest.Game_5_Test.test_512(Game_5_Test.java:50)
+

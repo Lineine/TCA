@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.HammingDistance_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in net.mooctest.HammingDistance_Test
+testDifferentStrings  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at net.mooctest.HammingDistance_Test.testDifferentStrings(HammingDistance_Test.java:25)
+

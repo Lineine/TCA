@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.mooctest.SegmentTree_sub_10_0_Test" time="0.901" tests="250" errors="4" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.mooctest.SegmentTree_sub_10_0_Test" time="0.578" tests="167" errors="2" skipped="0" failures="1">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -15,28 +15,28 @@
     <property name="os.name" value="Linux"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.boot.library.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/surefire/surefirebooter2472957980104913919.jar /data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/surefire 2024-06-22T17-48-17_269-jvmRun1 surefire1979691516811993171tmp surefire_03256054081773146182tmp"/>
+    <property name="sun.boot.library.path" value="/data02/LCD/CTCA/environment/Java8/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/surefire/surefirebooter953516257399239264.jar /data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/surefire 2024-10-19T10-56-49_273-jvmRun1 surefire3155655858488685887tmp surefire_02262683618559454586tmp"/>
     <property name="surefire.test.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/test-classes:/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/classes:/data02/LCD/.m2/repository/junit/junit/4.12/junit-4.12.jar:/data02/LCD/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/data02/LCD/.m2/repository/org/evosuite/evosuite-master/1.0.6/evosuite-master-1.0.6.jar:/data02/LCD/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.7/jacoco-maven-plugin-0.8.7.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar:/data02/LCD/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/data02/LCD/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/data02/LCD/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.core/0.8.7/org.jacoco.core-0.8.7.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-commons/9.1/asm-commons-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-analysis/9.1/asm-analysis-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-tree/9.1/asm-tree-9.1.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.report/0.8.7/org.jacoco.report-0.8.7.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/data02/LCD"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.home" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre"/>
+    <property name="java.home" value="/data02/LCD/CTCA/environment/Java8/jre"/>
     <property name="basedir" value="/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational"/>
     <property name="file.separator" value="/"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/surefire/surefirebooter2472957980104913919.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
-    <property name="sun.boot.class.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/resources.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/rt.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jsse.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jce.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/charsets.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jfr.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/classes"/>
+    <property name="surefire.real.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/SegmentTree/test_operational/target/surefire/surefirebooter953516257399239264.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/data02/LCD/CTCA/environment/Java8/jre/lib/resources.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/rt.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/jsse.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/jce.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/charsets.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/jfr.jar:/data02/LCD/CTCA/environment/Java8/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_391-b13"/>
     <property name="user.name" value="lcd"/>
     <property name="path.separator" value=":"/>
     <property name="os.version" value="5.15.0-102-generic"/>
-    <property name="java.endorsed.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/endorsed"/>
+    <property name="java.endorsed.dirs" value="/data02/LCD/CTCA/environment/Java8/jre/lib/endorsed"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
@@ -54,183 +54,120 @@
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="25.391-b13"/>
     <property name="java.specification.maintenance.version" value="5"/>
-    <property name="java.ext.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="java.ext.dirs" value="/data02/LCD/CTCA/environment/Java8/jre/lib/ext:/usr/java/packages/lib/ext"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="test_15" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0">
-    <error message="Segments list is empty." type="java.security.InvalidParameterException">java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_15(SegmentTree_sub_10_0_Test.java:1823)
-</error>
-  </testcase>
   <testcase name="test_33" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_36" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_44" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_46" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_80" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_82" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_84" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_85" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1013" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.3"/>
   <testcase name="test_1015" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1096" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1152" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1208" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1328" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1334" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1337" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1325" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1340" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1342" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1360" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1363" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1436" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1437" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1438" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1439" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1470" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_1470" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.003"/>
   <testcase name="test_1497" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1498" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1501" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1504" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1500" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1505" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1509" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1510" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_1514" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1510" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1514" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_1517" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1520" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1544" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1545" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1551" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1554" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1557" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1542" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1558" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1560" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1567" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1568" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1573" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1574" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1575" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1576" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1577" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1579" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1599" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1603" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1605" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1606" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1607" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.559"/>
+  <testcase name="test_1606" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_1607" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.569"/>
   <testcase name="test_1608" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1609" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1610" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1621" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1669" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1674" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1675" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1681" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1684" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1764" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1744" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1765" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1785" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1799" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1800" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1810" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1814" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1914" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1814" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_1915" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_1916" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1947" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1958" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1948" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2000" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2005" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2010" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2014" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2011" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2015" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2016" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2017" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2018" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2024" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2021" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2025" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2026" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2028" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2031" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2044" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2045" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.003"/>
-  <testcase name="test_2048" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2051" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2053" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2054" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2058" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2086" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.032"/>
-  <testcase name="test_2087" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2089" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2059" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2090" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2091" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2094" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2095" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2098" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2099" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2109" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_2112" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2115" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2172" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2175" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2179" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2117" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2176" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2182" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2183" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2205" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2206" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2208" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2209" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2221" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0">
-    <error message="Segments list is empty." type="java.security.InvalidParameterException">java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_2221(SegmentTree_sub_10_0_Test.java:4029)
-</error>
-  </testcase>
   <testcase name="test_2222" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2223" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2246" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2247" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2297" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2299" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2257" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2303" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2304" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2308" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2305" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2313" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0">
     <error message="Segments list is empty." type="java.security.InvalidParameterException">java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_2313(SegmentTree_sub_10_0_Test.java:4025)
+	at net.mooctest.SegmentTree_sub_10_0_Test.test_2313(SegmentTree_sub_10_0_Test.java:3158)
 </error>
   </testcase>
-  <testcase name="test_2322" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2325" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2324" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2326" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2358" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2359" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2424" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2426" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2435" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_2424" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_2431" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2436" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2453" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2481" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2482" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2486" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2487" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2495" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2496" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2498" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2499" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2551" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2554" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2558" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2555" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_2559" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2591" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2648" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2645" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_113" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_116" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0">
     <error message="Segments list is empty." type="java.security.InvalidParameterException">java.security.InvalidParameterException: Segments list is empty.
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_116(SegmentTree_sub_10_0_Test.java:2014)
+	at net.mooctest.SegmentTree_sub_10_0_Test.test_116(SegmentTree_sub_10_0_Test.java:1579)
 </error>
   </testcase>
   <testcase name="test_121" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_122" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_124" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_125" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_150" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_151" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_152" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_153" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_154" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_159" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_160" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_161" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_162" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
@@ -239,93 +176,65 @@
   <testcase name="test_165" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_166" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_167" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_169" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_173" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_219" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_220" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001">
+  <testcase name="test_220" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0">
     <failure message="expected:&lt;0-&gt;0 1,0,0,0&gt; but was:&lt;-9223372036854775808-&gt;9223372036854775807 0,0,0,0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<0->0 1,0,0,0> but was:<-9223372036854775808->9223372036854775807 0,0,0,0>
-	at net.mooctest.SegmentTree_sub_10_0_Test.test_220(SegmentTree_sub_10_0_Test.java:3532)
+	at net.mooctest.SegmentTree_sub_10_0_Test.test_220(SegmentTree_sub_10_0_Test.java:2846)
 ]]></failure>
   </testcase>
-  <testcase name="test_231" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_224" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_233" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_235" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_326" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_362" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_364" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_366" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_369" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_370" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_373" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_372" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_374" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_375" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_376" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_377" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_378" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_379" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_380" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_381" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_382" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_384" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_385" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_386" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_390" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_394" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_403" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_418" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_468" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_470" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_442" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_483" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_485" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_487" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_551" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_553" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_555" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_554" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_556" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_564" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_597" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_639" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_652" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_652" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_653" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_654" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_656" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_655" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_657" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_685" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_686" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_701" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_705" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_684" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_709" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_710" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_711" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_712" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_750" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_751" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_752" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_755" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_769" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_802" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_808" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_858" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_876" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_885" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_821" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_886" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_887" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_888" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_889" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_891" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_894" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_896" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_898" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_900" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_935" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_958" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_961" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_962" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_964" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_965" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_971" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_982" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_983" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_984" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_980" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
+  <testcase name="test_981" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_985" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
   <testcase name="test_999" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
-  <testcase name="test_0" classname="net.mooctest.SegmentTree_sub_10_0_Test" time="0"/>
 </testsuite>

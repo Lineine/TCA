@@ -1,4 +1,4 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 test_operational,net.mooctest,Helper,2,274,2,40,0,61,2,29,0,10
 test_operational,net.mooctest,Anagram,123,235,17,29,19,59,14,17,0,8
-test_operational,net.mooctest,Dictionary,10,220,7,33,0,54,7,22,0,9
+test_operational,net.mooctest,Dictionary,10,220,8,32,0,54,8,21,0,9

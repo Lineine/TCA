@@ -36,7 +36,7 @@ public final class DeprecatedAttributes {
     /**
      * Builds {@link DeprecatedAttributes}.
      */
-<span class="nc" id="L39">    public static class Builder implements Supplier&lt;DeprecatedAttributes&gt; {</span>
+<span class="fc" id="L39">    public static class Builder implements Supplier&lt;DeprecatedAttributes&gt; {</span>
 
         /** The description. */
         private String description;
@@ -57,7 +57,7 @@ public final class DeprecatedAttributes {
 
         @Override
         public DeprecatedAttributes get() {
-<span class="nc" id="L60">            return new DeprecatedAttributes(description, since, forRemoval);</span>
+<span class="fc" id="L60">            return new DeprecatedAttributes(description, since, forRemoval);</span>
         }
 
         /**
@@ -67,8 +67,8 @@ public final class DeprecatedAttributes {
          * @return {@code this} instance.
          */
         public Builder setDescription(final String description) {
-<span class="nc" id="L70">            this.description = description;</span>
-<span class="nc" id="L71">            return this;</span>
+<span class="fc" id="L70">            this.description = description;</span>
+<span class="fc" id="L71">            return this;</span>
         }
 
         /**
@@ -79,8 +79,8 @@ public final class DeprecatedAttributes {
          * @see &lt;a href=&quot;https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Deprecated.html#forRemoval()&quot;&gt;Deprecated.forRemoval&lt;/a&gt;
          */
         public Builder setForRemoval(final boolean forRemoval) {
-<span class="nc" id="L82">            this.forRemoval = forRemoval;</span>
-<span class="nc" id="L83">            return this;</span>
+<span class="fc" id="L82">            this.forRemoval = forRemoval;</span>
+<span class="fc" id="L83">            return this;</span>
         }
 
         /**
@@ -90,15 +90,15 @@ public final class DeprecatedAttributes {
          * @return {@code this} instance.
          */
         public Builder setSince(final String since) {
-<span class="nc" id="L93">            this.since = since;</span>
-<span class="nc" id="L94">            return this;</span>
+<span class="fc" id="L93">            this.since = since;</span>
+<span class="fc" id="L94">            return this;</span>
         }
     }
 
     /**
      * The default value for a DeprecatedAttributes.
      */
-<span class="nc" id="L101">    static final DeprecatedAttributes DEFAULT = new DeprecatedAttributes(&quot;&quot;, &quot;&quot;, false);</span>
+<span class="fc" id="L101">    static final DeprecatedAttributes DEFAULT = new DeprecatedAttributes(&quot;&quot;, &quot;&quot;, false);</span>
 
     /**
      * The empty string.
@@ -111,7 +111,7 @@ public final class DeprecatedAttributes {
      * @return a new builder.
      */
     public static Builder builder() {
-<span class="nc" id="L114">        return new Builder();</span>
+<span class="fc" id="L114">        return new Builder();</span>
     }
 
     /** The description. */
@@ -130,11 +130,11 @@ public final class DeprecatedAttributes {
      * @param since       The version label for removal.
      * @param forRemoval  Whether this option will be removed.
      */
-<span class="nc" id="L133">    private DeprecatedAttributes(final String description, final String since, final boolean forRemoval) {</span>
-<span class="nc" id="L134">        this.description = toEmpty(description);</span>
-<span class="nc" id="L135">        this.since = toEmpty(since);</span>
-<span class="nc" id="L136">        this.forRemoval = forRemoval;</span>
-<span class="nc" id="L137">    }</span>
+<span class="fc" id="L133">    private DeprecatedAttributes(final String description, final String since, final boolean forRemoval) {</span>
+<span class="fc" id="L134">        this.description = toEmpty(description);</span>
+<span class="fc" id="L135">        this.since = toEmpty(since);</span>
+<span class="fc" id="L136">        this.forRemoval = forRemoval;</span>
+<span class="fc" id="L137">    }</span>
 
     /**
      * Gets the descriptions.
@@ -142,7 +142,7 @@ public final class DeprecatedAttributes {
      * @return the descriptions.
      */
     public String getDescription() {
-<span class="nc" id="L145">        return description;</span>
+<span class="fc" id="L145">        return description;</span>
     }
 
     /**
@@ -151,7 +151,7 @@ public final class DeprecatedAttributes {
      * @return the version in which the option became deprecated.
      */
     public String getSince() {
-<span class="nc" id="L154">        return since;</span>
+<span class="fc" id="L154">        return since;</span>
     }
 
     /**
@@ -160,28 +160,28 @@ public final class DeprecatedAttributes {
      * @return whether this option is subject to removal in a future version.
      */
     public boolean isForRemoval() {
-<span class="nc" id="L163">        return forRemoval;</span>
+<span class="fc" id="L163">        return forRemoval;</span>
     }
 
     private String toEmpty(final String since) {
-<span class="nc bnc" id="L167" title="All 2 branches missed.">        return since != null ? since : EMPTY_STRING;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">        return since != null ? since : EMPTY_STRING;</span>
     }
 
     @Override
     public String toString() {
-<span class="nc" id="L172">        final StringBuilder builder = new StringBuilder(&quot;Deprecated&quot;);</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">        if (forRemoval) {</span>
-<span class="nc" id="L174">            builder.append(&quot; for removal&quot;);</span>
+<span class="fc" id="L172">        final StringBuilder builder = new StringBuilder(&quot;Deprecated&quot;);</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">        if (forRemoval) {</span>
+<span class="fc" id="L174">            builder.append(&quot; for removal&quot;);</span>
         }
-<span class="nc bnc" id="L176" title="All 2 branches missed.">        if (!since.isEmpty()) {</span>
-<span class="nc" id="L177">            builder.append(&quot; since &quot;);</span>
-<span class="nc" id="L178">            builder.append(since);</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        if (!since.isEmpty()) {</span>
+<span class="fc" id="L177">            builder.append(&quot; since &quot;);</span>
+<span class="fc" id="L178">            builder.append(since);</span>
         }
-<span class="nc bnc" id="L180" title="All 2 branches missed.">        if (!description.isEmpty()) {</span>
-<span class="nc" id="L181">            builder.append(&quot;: &quot;);</span>
-<span class="nc" id="L182">            builder.append(description);</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">        if (!description.isEmpty()) {</span>
+<span class="fc" id="L181">            builder.append(&quot;: &quot;);</span>
+<span class="fc" id="L182">            builder.append(description);</span>
         }
-<span class="nc" id="L184">        return builder.toString();</span>
+<span class="fc" id="L184">        return builder.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

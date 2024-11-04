@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Othello_sub_10_0_Test
+-------------------------------------------------------------------------------
+Tests run: 147, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.051 s <<< FAILURE! - in net.mooctest.Othello_sub_10_0_Test
+test_9247(net.mooctest.Othello_sub_10_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<7>
+	at net.mooctest.Othello_sub_10_0_Test.test_9247(Othello_sub_10_0_Test.java:2100)
+

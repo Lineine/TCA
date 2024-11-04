@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Knapsack_Test
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in net.mooctest.Knapsack_Test
+testNegativeWeightCapacity  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Input arrays must not be null and must have the same length.> but was: <Weight capacity should not be negative.>
+	at net.mooctest.Knapsack_Test.testNegativeWeightCapacity(Knapsack_Test.java:35)
+
+testNonPositiveWeight  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Input arrays must not be null and must have the same length.> but was: <Input array should not contain non-positive weight(s).>
+	at net.mooctest.Knapsack_Test.testNonPositiveWeight(Knapsack_Test.java:70)
+

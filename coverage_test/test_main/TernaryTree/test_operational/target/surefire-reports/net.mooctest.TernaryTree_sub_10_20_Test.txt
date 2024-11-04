@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.TernaryTree_sub_10_20_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in net.mooctest.TernaryTree_sub_10_20_Test
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.TernaryTree_sub_10_20_Test
+test_326(net.mooctest.TernaryTree_sub_10_20_Test)  Time elapsed: 0 s  <<< ERROR!
+java.util.NoSuchElementException
+	at net.mooctest.TernaryTree_sub_10_20_Test.test_326(TernaryTree_sub_10_20_Test.java:30)
+

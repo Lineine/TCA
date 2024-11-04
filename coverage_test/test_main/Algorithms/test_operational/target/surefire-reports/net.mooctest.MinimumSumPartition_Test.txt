@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.MinimumSumPartition_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in net.mooctest.MinimumSumPartition_Test
+testEvenSumArray  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at net.mooctest.MinimumSumPartition_Test.testEvenSumArray(MinimumSumPartition_Test.java:28)
+
+testNegativeNumberArray  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Input array should not contain negative number(s).
+	at net.mooctest.MinimumSumPartition_Test.testNegativeNumberArray(MinimumSumPartition_Test.java:42)
+
+testOddSumArray  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at net.mooctest.MinimumSumPartition_Test.testOddSumArray(MinimumSumPartition_Test.java:35)
+

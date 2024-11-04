@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.GTree_sub_10_40_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.GTree_sub_10_40_Test
+test_2730(net.mooctest.GTree_sub_10_40_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-528274667> but was:<292384123>
+	at net.mooctest.GTree_sub_10_40_Test.test_2730(GTree_sub_10_40_Test.java:24)
+

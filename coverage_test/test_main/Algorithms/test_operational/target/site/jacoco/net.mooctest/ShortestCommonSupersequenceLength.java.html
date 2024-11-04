@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShortestCommonSupersequenceLength.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">ShortestCommonSupersequenceLength.java</span></div><h1>ShortestCommonSupersequenceLength.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+// Java program to find length of the shortest supersequence
+final class ShortestSuperSequence {
+    private ShortestSuperSequence() {
+    }
+
+    // Function to find length of the
+    // shortest supersequence of x and y.
+    static int shortestSuperSequence(String x, String y) {
+<span class="nc" id="L11">        int m = x.length();</span>
+<span class="nc" id="L12">        int n = y.length();</span>
+
+        // find lcs
+<span class="nc" id="L15">        int l = lcs(x, y, m, n);</span>
+
+        // Result is sum of input string
+        // lengths - length of lcs
+<span class="nc" id="L19">        return (m + n - l);</span>
+    }
+
+    // Returns length of LCS
+    // for x[0..m - 1], y[0..n - 1]
+    static int lcs(String x, String y, int m, int n) {
+<span class="nc" id="L25">        int[][] lN = new int[m + 1][n + 1];</span>
+        int i;
+        int j;
+
+        // Following steps build lN[m + 1][n + 1]
+        // in bottom up fashion. Note that
+        // lN[i][j] contains length of lNCS
+        // of x[0..i - 1]and y[0..j - 1]
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (i = 0; i &lt;= m; i++) {</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            for (j = 0; j &lt;= n; j++) {</span>
+<span class="nc bnc" id="L35" title="All 4 branches missed.">                if (i == 0 || j == 0) {</span>
+<span class="nc" id="L36">                    lN[i][j] = 0;</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                } else if (x.charAt(i - 1) == y.charAt(j - 1)) {</span>
+<span class="nc" id="L38">                    lN[i][j] = lN[i - 1][j - 1] + 1;</span>
+                } else {
+<span class="nc" id="L40">                    lN[i][j] = Math.max(lN[i - 1][j], lN[i][j - 1]);</span>
+                }
+            }
+        }
+
+        // lN[m][n] contains length of LCS
+        // for x[0..n - 1] and y[0..m - 1]
+<span class="nc" id="L47">        return lN[m][n];</span>
+    }
+
+    // Driver code
+    public static void main(String[] args) {
+<span class="nc" id="L52">        String x = &quot;AGGTAB&quot;;</span>
+<span class="nc" id="L53">        String y = &quot;GXTXAYB&quot;;</span>
+
+<span class="nc" id="L55">        System.out.println(&quot;Length of the shortest &quot;</span>
+<span class="nc" id="L56">            + &quot;supersequence is &quot; + shortestSuperSequence(x, y));</span>
+<span class="nc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

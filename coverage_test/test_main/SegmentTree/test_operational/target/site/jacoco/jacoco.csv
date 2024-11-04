@@ -13,4 +13,4 @@ test_operational,net.mooctest,SegmentTree.Data.RangeSumData,0,279,6,40,0,57,6,28
 test_operational,net.mooctest,SegmentTree.Data,0,72,0,4,0,21,0,7,0,5
 test_operational,net.mooctest,FlatSegmentTree,2,225,1,19,1,44,1,13,0,4
 test_operational,net.mooctest,SegmentTree.Data.IntervalData,0,211,0,22,0,48,0,23,0,12
-test_operational,net.mooctest,FlatSegmentTree.NonOverlappingSegment,24,432,14,60,6,80,12,31,0,6
+test_operational,net.mooctest,FlatSegmentTree.NonOverlappingSegment,24,432,15,59,6,80,13,30,0,6

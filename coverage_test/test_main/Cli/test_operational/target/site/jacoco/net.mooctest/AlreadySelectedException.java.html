@@ -41,9 +41,9 @@ public class AlreadySelectedException extends ParseException {
      * @since 1.2
      */
     public AlreadySelectedException(final OptionGroup group, final Option option) {
-<span class="nc" id="L44">        this(String.format(&quot;The option '%s' was specified but an option from this group has already been selected: '%s'&quot;, option.getKey(), group.getSelected()),</span>
+<span class="fc" id="L44">        this(String.format(&quot;The option '%s' was specified but an option from this group has already been selected: '%s'&quot;, option.getKey(), group.getSelected()),</span>
                 group, option);
-<span class="nc" id="L46">    }</span>
+<span class="fc" id="L46">    }</span>
 
     /**
      * Constructs a new {@code AlreadySelectedException} with the specified detail message.
@@ -51,14 +51,14 @@ public class AlreadySelectedException extends ParseException {
      * @param message the detail message
      */
     public AlreadySelectedException(final String message) {
-<span class="nc" id="L54">        this(message, null, null);</span>
-<span class="nc" id="L55">    }</span>
+<span class="fc" id="L54">        this(message, null, null);</span>
+<span class="fc" id="L55">    }</span>
 
     private AlreadySelectedException(final String message, final OptionGroup group, final Option option) {
-<span class="nc" id="L58">        super(message);</span>
-<span class="nc" id="L59">        this.group = group;</span>
-<span class="nc" id="L60">        this.option = option;</span>
-<span class="nc" id="L61">    }</span>
+<span class="fc" id="L58">        super(message);</span>
+<span class="fc" id="L59">        this.group = group;</span>
+<span class="fc" id="L60">        this.option = option;</span>
+<span class="fc" id="L61">    }</span>
 
     /**
      * Gets the option that was added to the group and triggered the exception.
@@ -67,7 +67,7 @@ public class AlreadySelectedException extends ParseException {
      * @since 1.2
      */
     public Option getOption() {
-<span class="nc" id="L70">        return option;</span>
+<span class="fc" id="L70">        return option;</span>
     }
 
     /**
@@ -77,7 +77,7 @@ public class AlreadySelectedException extends ParseException {
      * @since 1.2
      */
     public OptionGroup getOptionGroup() {
-<span class="nc" id="L80">        return group;</span>
+<span class="fc" id="L80">        return group;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,24 +1,46 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_10_Test
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! - in net.mooctest.Game_10_Test
-test_197(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Game_10_Test.test_197(Game_10_Test.java:28)
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_10_Test
+test_293(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-test_198(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Game_10_Test.test_198(Game_10_Test.java:36)
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
 
-test_199(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Game_10_Test.test_199(Game_10_Test.java:44)
+test_294(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-test_200(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Game_10_Test.test_200(Game_10_Test.java:59)
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
 
-test_201(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Game_10_Test.test_201(Game_10_Test.java:55)
+test_295(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
+
+test_296(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
+
+test_297(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
+
+test_298(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
+
+test_299(net.mooctest.Game_10_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
+
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_10_Test.setUp(Game_10_Test.java:13)
 

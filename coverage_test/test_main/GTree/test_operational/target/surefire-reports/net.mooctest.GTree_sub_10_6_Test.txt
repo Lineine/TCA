@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.GTree_sub_10_6_Test
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in net.mooctest.GTree_sub_10_6_Test
+test_2800(net.mooctest.GTree_sub_10_6_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.GTree_sub_10_6_Test.test_2800(GTree_sub_10_6_Test.java:333)
+

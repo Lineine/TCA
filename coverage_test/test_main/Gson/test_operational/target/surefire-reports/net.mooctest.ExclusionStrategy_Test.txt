@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.ExclusionStrategy_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.ExclusionStrategy_Test
+testShouldSkipFieldNotExcludedClass(net.mooctest.ExclusionStrategy_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.FieldAttributes
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.ExclusionStrategy_Test.testShouldSkipFieldNotExcludedClass(ExclusionStrategy_Test.java:31)
+
+testShouldSkipFieldẾxcludedClass(net.mooctest.ExclusionStrategy_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.FieldAttributes
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.ExclusionStrategy_Test.testShouldSkipFieldẾxcludedClass(ExclusionStrategy_Test.java:15)
+
+testShouldSkipField_NotAnnotatedField(net.mooctest.ExclusionStrategy_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.FieldAttributes
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.ExclusionStrategy_Test.testShouldSkipField_NotAnnotatedField(ExclusionStrategy_Test.java:65)
+
+testShouldSkipField_AnnotatedField(net.mooctest.ExclusionStrategy_Test)  Time elapsed: 0 s  <<< ERROR!
+org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+
+Cannot mock/spy class net.mooctest.FieldAttributes
+Mockito cannot mock/spy because :
+ - final class
+	at net.mooctest.ExclusionStrategy_Test.testShouldSkipField_AnnotatedField(ExclusionStrategy_Test.java:50)
+

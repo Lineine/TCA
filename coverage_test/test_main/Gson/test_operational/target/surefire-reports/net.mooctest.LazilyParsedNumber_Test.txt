@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.LazilyParsedNumber_Test
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.LazilyParsedNumber_Test
+testLongValue(net.mooctest.LazilyParsedNumber_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<9223372036854775807> but was:<-4362896299872285998>
+	at net.mooctest.LazilyParsedNumber_Test.testLongValue(LazilyParsedNumber_Test.java:24)
+
+testIntValue(net.mooctest.LazilyParsedNumber_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2147483647> but was:<2112454933>
+	at net.mooctest.LazilyParsedNumber_Test.testIntValue(LazilyParsedNumber_Test.java:15)
+
+testDoubleValue(net.mooctest.LazilyParsedNumber_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
+	at net.mooctest.LazilyParsedNumber_Test.testDoubleValue(LazilyParsedNumber_Test.java:36)
+

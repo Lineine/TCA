@@ -1,10 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_1_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_1_Test
-test_372(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< ERROR!
-java.awt.HeadlessException: 
+Tests run: 10, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_1_Test
+test_162(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0.0> but was:<-1.72957958E12>
+	at net.mooctest.Game_1_Test.test_162(Game_1_Test.java:39)
 
-No X11 DISPLAY variable was set, but this program performed an operation which requires it.
-	at net.mooctest.Game_1_Test.setup(Game_1_Test.java:11)
+test_163(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Values should be different. Actual: 0.0
+	at net.mooctest.Game_1_Test.test_163(Game_1_Test.java:74)
+
+test_164(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Game_1_Test.test_164(Game_1_Test.java:51)
+
+test_166(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Game_1_Test.test_166(Game_1_Test.java:87)
+
+test_229(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<20.0> but was:<13.0>
+	at net.mooctest.Game_1_Test.test_229(Game_1_Test.java:68)
+
+test_230(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<<0.0,0.0,-1.0>> but was:<<2.0,-1.0,0.0>>
+	at net.mooctest.Game_1_Test.test_230(Game_1_Test.java:34)
+
+test_231(net.mooctest.Game_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Game_1_Test.test_231(Game_1_Test.java:28)
 

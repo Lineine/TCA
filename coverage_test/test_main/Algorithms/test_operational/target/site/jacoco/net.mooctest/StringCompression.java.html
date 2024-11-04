@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringCompression.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">StringCompression.java</span></div><h1>StringCompression.java</h1><pre class="source lang-java linenums">package net.mooctest;
+/*  References : https://en.wikipedia.org/wiki/Run-length_encoding
+ * String compression algorithm deals with encoding the string, that is, shortening the size of the
+ * string
+ * @author Swarga-codes (https://github.com/Swarga-codes)
+ */
+public final class StringCompression {
+    private StringCompression() {
+    }
+    /**
+     * Returns the compressed or encoded string
+     *
+     * @param ch character array that contains the group of characters to be encoded
+     * @return the compressed character array as string
+     */
+    public static String compress(String input) {
+        // Keeping the count as 1 since every element present will have atleast a count
+        // of 1
+<span class="nc" id="L19">        int count = 1;</span>
+<span class="nc" id="L20">        String compressedString = &quot;&quot;;</span>
+        // Base condition to check whether the array is of size 1, if it is then we
+        // return the array
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (input.length() == 1) {</span>
+<span class="nc" id="L24">            return &quot;&quot; + input.charAt(0);</span>
+        }
+        // If the array has a length greater than 1 we move into this loop
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        for (int i = 0; i &lt; input.length() - 1; i++) {</span>
+            // here we check for similarity of the adjacent elements and change the count
+            // accordingly
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            if (input.charAt(i) == input.charAt(i + 1)) {</span>
+<span class="nc" id="L31">                count = count + 1;</span>
+            }
+<span class="nc bnc" id="L33" title="All 4 branches missed.">            if ((i + 1) == input.length() - 1 &amp;&amp; input.charAt(i + 1) == input.charAt(i)) {</span>
+<span class="nc" id="L34">                compressedString = appendCount(compressedString, count, input.charAt(i));</span>
+<span class="nc" id="L35">                break;</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            } else if (input.charAt(i) != input.charAt(i + 1)) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                if ((i + 1) == input.length() - 1) {</span>
+<span class="nc" id="L38">                    compressedString = appendCount(compressedString, count, input.charAt(i)) + input.charAt(i + 1);</span>
+<span class="nc" id="L39">                    break;</span>
+                } else {
+<span class="nc" id="L41">                    compressedString = appendCount(compressedString, count, input.charAt(i));</span>
+<span class="nc" id="L42">                    count = 1;</span>
+                }
+            }
+        }
+<span class="nc" id="L46">        return compressedString;</span>
+    }
+    /**
+     * @param res   the resulting string
+     * @param count current count
+     * @param ch    the character at a particular index
+     * @return the res string appended with the count
+     */
+    public static String appendCount(String res, int count, char ch) {
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        if (count &gt; 1) {</span>
+<span class="nc" id="L56">            res += ch + &quot;&quot; + count;</span>
+<span class="nc" id="L57">            count = 1;</span>
+        } else {
+<span class="nc" id="L59">            res += ch + &quot;&quot;;</span>
+        }
+<span class="nc" id="L61">        return res;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

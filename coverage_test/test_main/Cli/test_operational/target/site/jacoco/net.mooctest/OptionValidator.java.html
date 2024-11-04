@@ -45,7 +45,7 @@ package net.mooctest;
      * @return true if {@code c} is a valid character letter.
      */
     private static boolean isValidChar(final char c) {
-<span class="nc bnc" id="L48" title="All 4 branches missed.">        return Character.isJavaIdentifierPart(c) || search(ADDITIONAL_LONG_CHARS, c);</span>
+<span class="fc bfc" id="L48" title="All 4 branches covered.">        return Character.isJavaIdentifierPart(c) || search(ADDITIONAL_LONG_CHARS, c);</span>
     }
 
     /**
@@ -66,7 +66,7 @@ package net.mooctest;
      * @return true if {@code c} is a letter, '?' or '@', otherwise false.
      */
     private static boolean isValidOpt(final char c) {
-<span class="pc bpc" id="L69" title="3 of 4 branches missed.">        return Character.isJavaIdentifierPart(c) || search(ADDITIONAL_OPTION_CHARS, c);</span>
+<span class="fc bfc" id="L69" title="All 4 branches covered.">        return Character.isJavaIdentifierPart(c) || search(ADDITIONAL_OPTION_CHARS, c);</span>
     }
 
     /**
@@ -76,12 +76,12 @@ package net.mooctest;
      * @return {@code true} if {@code c} was in {@code ary}, {@code false} otherwise.
      */
     private static boolean search(final char[] chars, final char c) {
-<span class="nc bnc" id="L79" title="All 2 branches missed.">        for (final char a : chars) {</span>
-<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (a == c) {</span>
-<span class="nc" id="L81">                return true;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        for (final char a : chars) {</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            if (a == c) {</span>
+<span class="fc" id="L81">                return true;</span>
             }
         }
-<span class="nc" id="L84">        return false;</span>
+<span class="fc" id="L84">        return false;</span>
     }
 
     /**
@@ -113,23 +113,23 @@ package net.mooctest;
      */
     static String validate(final String option) throws IllegalArgumentException {
         // if opt is null do not check further.
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        if (option == null) {</span>
-<span class="nc" id="L117">            return null;</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">        if (option == null) {</span>
+<span class="fc" id="L117">            return null;</span>
         }
-<span class="pc bpc" id="L119" title="1 of 2 branches missed.">        if (option.isEmpty()) {</span>
-<span class="nc" id="L120">            throw new IllegalArgumentException(&quot;Empty option name.&quot;);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (option.isEmpty()) {</span>
+<span class="fc" id="L120">            throw new IllegalArgumentException(&quot;Empty option name.&quot;);</span>
         }
 <span class="fc" id="L122">        final char[] chars = option.toCharArray();</span>
 <span class="fc" id="L123">        final char ch0 = chars[0];</span>
-<span class="pc bpc" id="L124" title="1 of 2 branches missed.">        if (!isValidOpt(ch0)) {</span>
-<span class="nc" id="L125">            throw new IllegalArgumentException(String.format(&quot;Illegal option name '%s'.&quot;, ch0));</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">        if (!isValidOpt(ch0)) {</span>
+<span class="fc" id="L125">            throw new IllegalArgumentException(String.format(&quot;Illegal option name '%s'.&quot;, ch0));</span>
         }
         // handle the multi-character opt
-<span class="pc bpc" id="L128" title="1 of 2 branches missed.">        if (option.length() &gt; 1) {</span>
-<span class="nc bnc" id="L129" title="All 2 branches missed.">            for (int i = 1; i &lt; chars.length; i++) {</span>
-<span class="nc" id="L130">                final char ch = chars[i];</span>
-<span class="nc bnc" id="L131" title="All 2 branches missed.">                if (!isValidChar(ch)) {</span>
-<span class="nc" id="L132">                    throw new IllegalArgumentException(String.format(&quot;The option '%s' contains an illegal &quot; + &quot;character : '%s'.&quot;, option, ch));</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (option.length() &gt; 1) {</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            for (int i = 1; i &lt; chars.length; i++) {</span>
+<span class="fc" id="L130">                final char ch = chars[i];</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                if (!isValidChar(ch)) {</span>
+<span class="fc" id="L132">                    throw new IllegalArgumentException(String.format(&quot;The option '%s' contains an illegal &quot; + &quot;character : '%s'.&quot;, option, ch));</span>
                 }
             }
         }

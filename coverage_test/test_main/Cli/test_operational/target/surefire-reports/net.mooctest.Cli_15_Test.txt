@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_15_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! - in net.mooctest.Cli_15_Test
+test_362(net.mooctest.Cli_15_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: array lengths differed, expected.length=1 actual.length=0
+	at net.mooctest.Cli_15_Test.test_362(Cli_15_Test.java:48)
+
+test_363(net.mooctest.Cli_15_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: array lengths differed, expected.length=2 actual.length=0
+	at net.mooctest.Cli_15_Test.test_363(Cli_15_Test.java:60)
+
+test_364(net.mooctest.Cli_15_Test)  Time elapsed: 0.009 s  <<< FAILURE!
+java.lang.AssertionError: array lengths differed, expected.length=2 actual.length=0
+	at net.mooctest.Cli_15_Test.test_364(Cli_15_Test.java:31)
+
+test_365(net.mooctest.Cli_15_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: array lengths differed, expected.length=4 actual.length=0
+	at net.mooctest.Cli_15_Test.test_365(Cli_15_Test.java:37)
+
+test_366(net.mooctest.Cli_15_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: array lengths differed, expected.length=5 actual.length=3
+	at net.mooctest.Cli_15_Test.test_366(Cli_15_Test.java:54)
+

@@ -1,144 +1,52 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Game_3_Test
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.575 s <<< FAILURE! - in net.mooctest.Game_3_Test
-test_231(net.mooctest.Game_3_Test)  Time elapsed: 0.44 s  <<< ERROR!
-org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Game_3_Test
+test_86(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-Mockito cannot mock this class: class java.awt.event.MouseEvent.
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
-Mockito can only mock non-private & non-final classes.
-If you're not sure why you're getting this error, please report to the mailing list.
+test_87(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
-Java               : 11
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 11.0.22+9-LTS-219
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 11.0.22+9-LTS-219
-JVM info           : mixed mode
-OS name            : Linux
-OS version         : 5.15.0-102-generic
+test_90(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
-Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.IllegalStateException: Could not find sun.misc.Unsafe
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.NoSuchMethodException: sun.misc.Unsafe.defineClass(java.lang.String, [B, int, int, java.lang.ClassLoader, java.security.ProtectionDomain)
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
+test_224(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-test_232(net.mooctest.Game_3_Test)  Time elapsed: 0.049 s  <<< ERROR!
-org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
-Mockito cannot mock this class: class java.awt.event.MouseEvent.
+test_225(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-Mockito can only mock non-private & non-final classes.
-If you're not sure why you're getting this error, please report to the mailing list.
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
+test_226(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-Java               : 11
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 11.0.22+9-LTS-219
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 11.0.22+9-LTS-219
-JVM info           : mixed mode
-OS name            : Linux
-OS version         : 5.15.0-102-generic
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
+test_239(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_232(Game_3_Test.java:61)
-Caused by: java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_232(Game_3_Test.java:61)
-Caused by: java.lang.IllegalStateException: Could not find sun.misc.Unsafe
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.NoSuchMethodException: sun.misc.Unsafe.defineClass(java.lang.String, [B, int, int, java.lang.ClassLoader, java.security.ProtectionDomain)
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 
-test_233(net.mooctest.Game_3_Test)  Time elapsed: 0.039 s  <<< ERROR!
-org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
+test_240(net.mooctest.Game_3_Test)  Time elapsed: 0 s  <<< ERROR!
+java.awt.HeadlessException: 
 
-Mockito cannot mock this class: class java.awt.event.MouseEvent.
-
-Mockito can only mock non-private & non-final classes.
-If you're not sure why you're getting this error, please report to the mailing list.
-
-
-Java               : 11
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 11.0.22+9-LTS-219
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 11.0.22+9-LTS-219
-JVM info           : mixed mode
-OS name            : Linux
-OS version         : 5.15.0-102-generic
-
-
-Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_233(Game_3_Test.java:81)
-Caused by: java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_233(Game_3_Test.java:81)
-Caused by: java.lang.IllegalStateException: Could not find sun.misc.Unsafe
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.NoSuchMethodException: sun.misc.Unsafe.defineClass(java.lang.String, [B, int, int, java.lang.ClassLoader, java.security.ProtectionDomain)
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-
-test_234(net.mooctest.Game_3_Test)  Time elapsed: 0.033 s  <<< ERROR!
-org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class java.awt.event.MouseEvent.
-
-Mockito can only mock non-private & non-final classes.
-If you're not sure why you're getting this error, please report to the mailing list.
-
-
-Java               : 11
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 11.0.22+9-LTS-219
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 11.0.22+9-LTS-219
-JVM info           : mixed mode
-OS name            : Linux
-OS version         : 5.15.0-102-generic
-
-
-Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_234(Game_3_Test.java:100)
-Caused by: java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_234(Game_3_Test.java:100)
-Caused by: java.lang.IllegalStateException: Could not find sun.misc.Unsafe
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.NoSuchMethodException: sun.misc.Unsafe.defineClass(java.lang.String, [B, int, int, java.lang.ClassLoader, java.security.ProtectionDomain)
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-
-test_595(net.mooctest.Game_3_Test)  Time elapsed: 0.013 s  <<< ERROR!
-org.evosuite.shaded.org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class net.mooctest.KeyboardInput.
-
-Mockito can only mock non-private & non-final classes.
-If you're not sure why you're getting this error, please report to the mailing list.
-
-
-Java               : 11
-JVM vendor name    : Oracle Corporation
-JVM vendor version : 11.0.22+9-LTS-219
-JVM name           : Java HotSpot(TM) 64-Bit Server VM
-JVM version        : 11.0.22+9-LTS-219
-JVM info           : mixed mode
-OS name            : Linux
-OS version         : 5.15.0-102-generic
-
-
-Underlying exception : java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_595(Game_3_Test.java:50)
-Caused by: java.lang.UnsupportedOperationException: Cannot define class using reflection
-	at net.mooctest.Game_3_Test.test_595(Game_3_Test.java:50)
-Caused by: java.lang.IllegalStateException: Could not find sun.misc.Unsafe
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
-Caused by: java.lang.NoSuchMethodException: sun.misc.Unsafe.defineClass(java.lang.String, [B, int, int, java.lang.ClassLoader, java.security.ProtectionDomain)
-	at net.mooctest.Game_3_Test.test_231(Game_3_Test.java:32)
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at net.mooctest.Game_3_Test.setUp(Game_3_Test.java:34)
 

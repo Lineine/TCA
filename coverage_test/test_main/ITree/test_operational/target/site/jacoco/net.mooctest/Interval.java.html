@@ -252,7 +252,7 @@ public abstract class Interval&lt;T extends Comparable&lt;? super T&gt;&gt; {
 <span class="fc bfc" id="L252" title="All 4 branches covered.">		if (start == null || end == null) {</span>
 <span class="fc" id="L253">			return false;</span>
 		}
-<span class="fc bfc" id="L255" title="All 6 branches covered.">		return start.compareTo(end) == 0 &amp;&amp; isStartInclusive &amp;&amp; isEndInclusive;</span>
+<span class="pc bpc" id="L255" title="1 of 6 branches missed.">		return start.compareTo(end) == 0 &amp;&amp; isStartInclusive &amp;&amp; isEndInclusive;</span>
 	}
 
 	/**

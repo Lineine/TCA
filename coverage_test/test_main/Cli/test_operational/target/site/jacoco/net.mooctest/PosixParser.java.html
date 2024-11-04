@@ -63,10 +63,10 @@ import java.util.List;
      * @param stopAtNonOption Specifies whether to stop processing at the first non-Option encountered.
      */
     protected void burstToken(final String token, final boolean stopAtNonOption) {
-<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (int i = 1; i &lt; token.length(); i++) {</span>
-<span class="nc" id="L67">            final String ch = String.valueOf(token.charAt(i));</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">        for (int i = 1; i &lt; token.length(); i++) {</span>
+<span class="fc" id="L67">            final String ch = String.valueOf(token.charAt(i));</span>
 
-<span class="nc bnc" id="L69" title="All 2 branches missed.">            if (!options.hasOption(ch)) {</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">            if (!options.hasOption(ch)) {</span>
 <span class="nc bnc" id="L70" title="All 2 branches missed.">                if (stopAtNonOption) {</span>
 <span class="nc" id="L71">                    processNonOptionToken(token.substring(i), true);</span>
                 } else {
@@ -74,16 +74,16 @@ import java.util.List;
                 }
 <span class="nc" id="L75">                break;</span>
             }
-<span class="nc" id="L77">            tokens.add(&quot;-&quot; + ch);</span>
-<span class="nc" id="L78">            currentOption = options.getOption(ch);</span>
+<span class="fc" id="L77">            tokens.add(&quot;-&quot; + ch);</span>
+<span class="fc" id="L78">            currentOption = options.getOption(ch);</span>
 
-<span class="nc bnc" id="L80" title="All 4 branches missed.">            if (currentOption.hasArg() &amp;&amp; token.length() != i + 1) {</span>
-<span class="nc" id="L81">                tokens.add(token.substring(i + 1));</span>
+<span class="pc bpc" id="L80" title="2 of 4 branches missed.">            if (currentOption.hasArg() &amp;&amp; token.length() != i + 1) {</span>
+<span class="fc" id="L81">                tokens.add(token.substring(i + 1));</span>
 
-<span class="nc" id="L83">                break;</span>
+<span class="fc" id="L83">                break;</span>
             }
         }
-<span class="nc" id="L86">    }</span>
+<span class="fc" id="L86">    }</span>
 
     /**
      * &lt;p&gt;
@@ -129,29 +129,29 @@ import java.util.List;
                 // single or double hyphen
 <span class="pc bpc" id="L130" title="1 of 4 branches missed.">                if (&quot;-&quot;.equals(token) || &quot;--&quot;.equals(token)) {</span>
 <span class="fc" id="L131">                    tokens.add(token);</span>
-<span class="pc bpc" id="L132" title="1 of 2 branches missed.">                } else if (token.startsWith(&quot;--&quot;)) {</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">                } else if (token.startsWith(&quot;--&quot;)) {</span>
                     // handle long option --foo or --foo=bar
-<span class="nc" id="L134">                    final int pos = DefaultParser.indexOfEqual(token);</span>
-<span class="nc bnc" id="L135" title="All 2 branches missed.">                    final String opt = pos == -1 ? token : token.substring(0, pos); // --foo</span>
+<span class="fc" id="L134">                    final int pos = DefaultParser.indexOfEqual(token);</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">                    final String opt = pos == -1 ? token : token.substring(0, pos); // --foo</span>
 
-<span class="nc" id="L137">                    final List&lt;String&gt; matchingOpts = options.getMatchingOptions(opt);</span>
+<span class="fc" id="L137">                    final List&lt;String&gt; matchingOpts = options.getMatchingOptions(opt);</span>
 
-<span class="nc bnc" id="L139" title="All 2 branches missed.">                    if (matchingOpts.isEmpty()) {</span>
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">                    if (matchingOpts.isEmpty()) {</span>
 <span class="nc" id="L140">                        processNonOptionToken(token, stopAtNonOption);</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">                    } else if (matchingOpts.size() &gt; 1) {</span>
+<span class="pc bpc" id="L141" title="1 of 2 branches missed.">                    } else if (matchingOpts.size() &gt; 1) {</span>
 <span class="nc" id="L142">                        throw new AmbiguousOptionException(opt, matchingOpts);</span>
                     } else {
-<span class="nc" id="L144">                        currentOption = options.getOption(matchingOpts.get(0));</span>
+<span class="fc" id="L144">                        currentOption = options.getOption(matchingOpts.get(0));</span>
 
-<span class="nc" id="L146">                        tokens.add(&quot;--&quot; + currentOption.getLongOpt());</span>
-<span class="nc bnc" id="L147" title="All 2 branches missed.">                        if (pos != -1) {</span>
+<span class="fc" id="L146">                        tokens.add(&quot;--&quot; + currentOption.getLongOpt());</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">                        if (pos != -1) {</span>
 <span class="nc" id="L148">                            tokens.add(token.substring(pos + 1));</span>
                         }
                     }
-<span class="pc bfc" id="L151" title="All 2 branches covered.">                } else if (token.startsWith(&quot;-&quot;)) {</span>
-<span class="pc bpc" id="L152" title="3 of 4 branches missed.">                    if (token.length() == 2 || options.hasOption(token)) {</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">                } else if (token.startsWith(&quot;-&quot;)) {</span>
+<span class="pc bpc" id="L152" title="1 of 4 branches missed.">                    if (token.length() == 2 || options.hasOption(token)) {</span>
 <span class="fc" id="L153">                        processOptionToken(token, stopAtNonOption);</span>
-<span class="nc bnc" id="L154" title="All 2 branches missed.">                    } else if (!options.getMatchingOptions(token).isEmpty()) {</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">                    } else if (!options.getMatchingOptions(token).isEmpty()) {</span>
 <span class="nc" id="L155">                        final List&lt;String&gt; matchingOpts = options.getMatchingOptions(token);</span>
 <span class="nc bnc" id="L156" title="All 2 branches missed.">                        if (matchingOpts.size() &gt; 1) {</span>
 <span class="nc" id="L157">                            throw new AmbiguousOptionException(token, matchingOpts);</span>
@@ -161,7 +161,7 @@ import java.util.List;
 <span class="nc" id="L161">                    }</span>
                     // requires bursting
                     else {
-<span class="nc" id="L164">                        burstToken(token, stopAtNonOption);</span>
+<span class="fc" id="L164">                        burstToken(token, stopAtNonOption);</span>
                     }
                 } else {
 <span class="fc" id="L167">                    processNonOptionToken(token, stopAtNonOption);</span>
@@ -178,8 +178,8 @@ import java.util.List;
      * @param iter An iterator over the remaining tokens
      */
     private void gobble(final Iterator&lt;String&gt; iter) {
-<span class="pc bpc" id="L181" title="1 of 2 branches missed.">        if (eatTheRest) {</span>
-<span class="nc bnc" id="L182" title="All 2 branches missed.">            while (iter.hasNext()) {</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">        if (eatTheRest) {</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">            while (iter.hasNext()) {</span>
 <span class="nc" id="L183">                tokens.add(iter.next());</span>
             }
         }
@@ -201,9 +201,9 @@ import java.util.List;
      * @param value The current token
      */
     private void processNonOptionToken(final String value, final boolean stopAtNonOption) {
-<span class="pc bpc" id="L204" title="2 of 6 branches missed.">        if (stopAtNonOption &amp;&amp; (currentOption == null || !currentOption.hasArg())) {</span>
-<span class="nc" id="L205">            eatTheRest = true;</span>
-<span class="nc" id="L206">            tokens.add(&quot;--&quot;);</span>
+<span class="pc bpc" id="L204" title="1 of 6 branches missed.">        if (stopAtNonOption &amp;&amp; (currentOption == null || !currentOption.hasArg())) {</span>
+<span class="fc" id="L205">            eatTheRest = true;</span>
+<span class="fc" id="L206">            tokens.add(&quot;--&quot;);</span>
         }
 
 <span class="fc" id="L209">        tokens.add(value);</span>

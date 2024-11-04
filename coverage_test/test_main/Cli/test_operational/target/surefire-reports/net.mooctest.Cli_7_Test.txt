@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_7_Test
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 4, Errors: 4, Skipped: 0, Time elapsed: 0.031 s <<< FAILURE! - in net.mooctest.Cli_7_Test
+test_110(net.mooctest.Cli_7_Test)  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.IllegalArgumentException: net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_7_Test.test_110(Cli_7_Test.java:24)
+Caused by: net.mooctest.ParseException: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_7_Test.test_110(Cli_7_Test.java:24)
+Caused by: java.lang.RuntimeException: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_7_Test.test_110(Cli_7_Test.java:24)
+Caused by: java.text.ParseException: Unparseable date: "2023-04-30"
+	at net.mooctest.Cli_7_Test.test_110(Cli_7_Test.java:24)
+
+test_111(net.mooctest.Cli_7_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_7_Test.test_111(Cli_7_Test.java:94)
+
+test_113(net.mooctest.Cli_7_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Expected UnsupportedOperationException to be thrown
+	at net.mooctest.Cli_7_Test.test_113(Cli_7_Test.java:35)
+
+test_114(net.mooctest.Cli_7_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Expected UnsupportedOperationException to be thrown
+	at net.mooctest.Cli_7_Test.test_114(Cli_7_Test.java:145)
+
+test_116(net.mooctest.Cli_7_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<Optional[123]> but was:<123>
+	at net.mooctest.Cli_7_Test.test_116(Cli_7_Test.java:43)
+
+test_479(net.mooctest.Cli_7_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.ParseException: java.lang.ClassNotFoundException: non.existent.Class
+	at net.mooctest.Cli_7_Test.test_479(Cli_7_Test.java:139)
+Caused by: java.lang.ClassNotFoundException: non.existent.Class
+	at net.mooctest.Cli_7_Test.test_479(Cli_7_Test.java:139)
+
+test_482(net.mooctest.Cli_7_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.ParseException: java.lang.NumberFormatException: For input string: "abc"
+	at net.mooctest.Cli_7_Test.test_482(Cli_7_Test.java:122)
+Caused by: java.lang.NumberFormatException: For input string: "abc"
+	at net.mooctest.Cli_7_Test.test_482(Cli_7_Test.java:122)
+
+test_485(net.mooctest.Cli_7_Test)  Time elapsed: 0.001 s  <<< ERROR!
+net.mooctest.ParseException: java.net.MalformedURLException: no protocol: invalid-url
+	at net.mooctest.Cli_7_Test.test_485(Cli_7_Test.java:29)
+Caused by: java.net.MalformedURLException: no protocol: invalid-url
+	at net.mooctest.Cli_7_Test.test_485(Cli_7_Test.java:29)
+

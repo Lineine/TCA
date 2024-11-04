@@ -65,15 +65,15 @@ import java.util.Map;
     public Options addOption(final Option opt) {
 <span class="fc" id="L66">        final String key = opt.getKey();</span>
         // add it to the long option list
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (opt.hasLongOpt()) {</span>
-<span class="nc" id="L69">            longOpts.put(opt.getLongOpt(), opt);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (opt.hasLongOpt()) {</span>
+<span class="fc" id="L69">            longOpts.put(opt.getLongOpt(), opt);</span>
         }
         // if the option is required add it to the required list
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (opt.isRequired()) {</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (requiredOpts.contains(key)) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (opt.isRequired()) {</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            if (requiredOpts.contains(key)) {</span>
 <span class="nc" id="L74">                requiredOpts.remove(requiredOpts.indexOf(key));</span>
             }
-<span class="nc" id="L76">            requiredOpts.add(key);</span>
+<span class="fc" id="L76">            requiredOpts.add(key);</span>
         }
 <span class="fc" id="L78">        shortOpts.put(key, opt);</span>
 <span class="fc" id="L79">        return this;</span>
@@ -91,8 +91,8 @@ import java.util.Map;
      * @return the resulting Options instance
      */
     public Options addOption(final String opt, final boolean hasArg, final String description) {
-<span class="nc" id="L94">        addOption(opt, null, hasArg, description);</span>
-<span class="nc" id="L95">        return this;</span>
+<span class="fc" id="L94">        addOption(opt, null, hasArg, description);</span>
+<span class="fc" id="L95">        return this;</span>
     }
 
     /**
@@ -124,8 +124,8 @@ import java.util.Map;
      * @return the resulting Options instance
      */
     public Options addOption(final String opt, final String longOpt, final boolean hasArg, final String description) {
-<span class="nc" id="L127">        addOption(new Option(opt, longOpt, hasArg, description));</span>
-<span class="nc" id="L128">        return this;</span>
+<span class="fc" id="L127">        addOption(new Option(opt, longOpt, hasArg, description));</span>
+<span class="fc" id="L128">        return this;</span>
     }
 
     /**
@@ -135,18 +135,18 @@ import java.util.Map;
      * @return the resulting Options instance
      */
     public Options addOptionGroup(final OptionGroup group) {
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        if (group.isRequired()) {</span>
+<span class="pc bpc" id="L138" title="1 of 2 branches missed.">        if (group.isRequired()) {</span>
 <span class="nc" id="L139">            requiredOpts.add(group);</span>
         }
-<span class="nc bnc" id="L141" title="All 2 branches missed.">        for (final Option option : group.getOptions()) {</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        for (final Option option : group.getOptions()) {</span>
             // an Option cannot be required if it is in an
             // OptionGroup, either the group is required or
             // nothing is required
-<span class="nc" id="L145">            option.setRequired(false);</span>
-<span class="nc" id="L146">            addOption(option);</span>
-<span class="nc" id="L147">            optionGroups.put(option.getKey(), group);</span>
-<span class="nc" id="L148">        }</span>
-<span class="nc" id="L149">        return this;</span>
+<span class="fc" id="L145">            option.setRequired(false);</span>
+<span class="fc" id="L146">            addOption(option);</span>
+<span class="fc" id="L147">            optionGroups.put(option.getKey(), group);</span>
+<span class="fc" id="L148">        }</span>
+<span class="fc" id="L149">        return this;</span>
     }
 
     /**
@@ -189,10 +189,10 @@ import java.util.Map;
      * @since 1.4
      */
     public Options addRequiredOption(final String opt, final String longOpt, final boolean hasArg, final String description) {
-<span class="nc" id="L192">        final Option option = new Option(opt, longOpt, hasArg, description);</span>
-<span class="nc" id="L193">        option.setRequired(true);</span>
-<span class="nc" id="L194">        addOption(option);</span>
-<span class="nc" id="L195">        return this;</span>
+<span class="fc" id="L192">        final Option option = new Option(opt, longOpt, hasArg, description);</span>
+<span class="fc" id="L193">        option.setRequired(true);</span>
+<span class="fc" id="L194">        addOption(option);</span>
+<span class="fc" id="L195">        return this;</span>
     }
 
     /**
@@ -203,18 +203,18 @@ import java.util.Map;
      * @since 1.3
      */
     public List&lt;String&gt; getMatchingOptions(final String opt) {
-<span class="nc" id="L206">        final String clean = Util.stripLeadingHyphens(opt);</span>
-<span class="nc" id="L207">        final List&lt;String&gt; matchingOpts = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L206">        final String clean = Util.stripLeadingHyphens(opt);</span>
+<span class="fc" id="L207">        final List&lt;String&gt; matchingOpts = new ArrayList&lt;&gt;();</span>
         // for a perfect match return the single option only
-<span class="nc bnc" id="L209" title="All 2 branches missed.">        if (longOpts.containsKey(clean)) {</span>
-<span class="nc" id="L210">            return Collections.singletonList(clean);</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">        if (longOpts.containsKey(clean)) {</span>
+<span class="fc" id="L210">            return Collections.singletonList(clean);</span>
         }
-<span class="nc bnc" id="L212" title="All 2 branches missed.">        for (final String longOpt : longOpts.keySet()) {</span>
-<span class="nc bnc" id="L213" title="All 2 branches missed.">            if (longOpt.startsWith(clean)) {</span>
-<span class="nc" id="L214">                matchingOpts.add(longOpt);</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">        for (final String longOpt : longOpts.keySet()) {</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">            if (longOpt.startsWith(clean)) {</span>
+<span class="fc" id="L214">                matchingOpts.add(longOpt);</span>
             }
-<span class="nc" id="L216">        }</span>
-<span class="nc" id="L217">        return matchingOpts;</span>
+<span class="fc" id="L216">        }</span>
+<span class="fc" id="L217">        return matchingOpts;</span>
     }
 
     /**
@@ -229,7 +229,7 @@ import java.util.Map;
     public Option getOption(final String opt) {
 <span class="fc" id="L230">        final String clean = Util.stripLeadingHyphens(opt);</span>
 <span class="fc" id="L231">        final Option option = shortOpts.get(clean);</span>
-<span class="pc bpc" id="L232" title="1 of 2 branches missed.">        return option != null ? option : longOpts.get(clean);</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">        return option != null ? option : longOpts.get(clean);</span>
     }
 
     /**
@@ -239,7 +239,7 @@ import java.util.Map;
      * @return the OptionGroup if {@code opt} is part of an OptionGroup, otherwise return null
      */
     public OptionGroup getOptionGroup(final Option opt) {
-<span class="nc" id="L242">        return optionGroups.get(opt.getKey());</span>
+<span class="fc" id="L242">        return optionGroups.get(opt.getKey());</span>
     }
 
     /**
@@ -253,7 +253,7 @@ import java.util.Map;
          * OpitonGroup.  The decision to return a Collection rather than a set
          * was probably to keep symmetry with the getOptions() method.
          */
-<span class="nc" id="L256">        return new HashSet&lt;&gt;(optionGroups.values());</span>
+<span class="fc" id="L256">        return new HashSet&lt;&gt;(optionGroups.values());</span>
     }
 
     /**
@@ -262,7 +262,7 @@ import java.util.Map;
      * @return read-only Collection of {@link Option} objects in this descriptor
      */
     public Collection&lt;Option&gt; getOptions() {
-<span class="nc" id="L265">        return Collections.unmodifiableCollection(helpOptions());</span>
+<span class="fc" id="L265">        return Collections.unmodifiableCollection(helpOptions());</span>
     }
 
     /**
@@ -271,7 +271,7 @@ import java.util.Map;
      * @return read-only List of required options
      */
     public List&lt;?&gt; getRequiredOptions() {
-<span class="nc" id="L274">        return Collections.unmodifiableList(requiredOpts);</span>
+<span class="fc" id="L274">        return Collections.unmodifiableList(requiredOpts);</span>
     }
 
     /**
@@ -282,7 +282,7 @@ import java.util.Map;
      * @since 1.3
      */
     public boolean hasLongOption(final String opt) {
-<span class="nc" id="L285">        return longOpts.containsKey(Util.stripLeadingHyphens(opt));</span>
+<span class="fc" id="L285">        return longOpts.containsKey(Util.stripLeadingHyphens(opt));</span>
     }
 
     /**
@@ -293,7 +293,7 @@ import java.util.Map;
      */
     public boolean hasOption(final String opt) {
 <span class="fc" id="L295">        final String clean = Util.stripLeadingHyphens(opt);</span>
-<span class="pc bpc" id="L296" title="3 of 4 branches missed.">        return shortOpts.containsKey(clean) || longOpts.containsKey(clean);</span>
+<span class="fc bfc" id="L296" title="All 4 branches covered.">        return shortOpts.containsKey(clean) || longOpts.containsKey(clean);</span>
     }
 
     /**
@@ -304,8 +304,8 @@ import java.util.Map;
      * @since 1.3
      */
     public boolean hasShortOption(final String opt) {
-<span class="nc" id="L307">        final String clean = Util.stripLeadingHyphens(opt);</span>
-<span class="nc" id="L308">        return shortOpts.containsKey(clean);</span>
+<span class="fc" id="L307">        final String clean = Util.stripLeadingHyphens(opt);</span>
+<span class="fc" id="L308">        return shortOpts.containsKey(clean);</span>
     }
 
     /**
@@ -314,7 +314,7 @@ import java.util.Map;
      * @return the List of Options
      */
     List&lt;Option&gt; helpOptions() {
-<span class="nc" id="L317">        return new ArrayList&lt;&gt;(shortOpts.values());</span>
+<span class="fc" id="L317">        return new ArrayList&lt;&gt;(shortOpts.values());</span>
     }
 
     /**
@@ -324,13 +324,13 @@ import java.util.Map;
      */
     @Override
     public String toString() {
-<span class="nc" id="L327">        final StringBuilder buf = new StringBuilder();</span>
-<span class="nc" id="L328">        buf.append(&quot;[ Options: [ short &quot;);</span>
-<span class="nc" id="L329">        buf.append(shortOpts.toString());</span>
-<span class="nc" id="L330">        buf.append(&quot; ] [ long &quot;);</span>
-<span class="nc" id="L331">        buf.append(longOpts);</span>
-<span class="nc" id="L332">        buf.append(&quot; ]&quot;);</span>
-<span class="nc" id="L333">        return buf.toString();</span>
+<span class="fc" id="L327">        final StringBuilder buf = new StringBuilder();</span>
+<span class="fc" id="L328">        buf.append(&quot;[ Options: [ short &quot;);</span>
+<span class="fc" id="L329">        buf.append(shortOpts.toString());</span>
+<span class="fc" id="L330">        buf.append(&quot; ] [ long &quot;);</span>
+<span class="fc" id="L331">        buf.append(longOpts);</span>
+<span class="fc" id="L332">        buf.append(&quot; ]&quot;);</span>
+<span class="fc" id="L333">        return buf.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

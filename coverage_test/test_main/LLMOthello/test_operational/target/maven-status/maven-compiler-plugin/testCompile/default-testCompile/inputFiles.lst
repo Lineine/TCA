@@ -1,4 +1,1 @@
-/data02/LCD/CTCA/coverage_test/test_main/LLMOthello/test_operational/src/test/java/net/mooctest/MyTreeNode_Test.java
-/data02/LCD/CTCA/coverage_test/test_main/LLMOthello/test_operational/src/test/java/net/mooctest/Othello_Test.java
-/data02/LCD/CTCA/coverage_test/test_main/LLMOthello/test_operational/src/test/java/net/mooctest/Board_Test.java
-/data02/LCD/CTCA/coverage_test/test_main/LLMOthello/test_operational/src/test/java/net/mooctest/AlphaBetaPruning_Test.java
+/data02/LCD/CTCA/coverage_test/test_main/LLMOthello/test_operational/src/test/java/net/mooctest/OthelloTest.java

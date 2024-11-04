@@ -70,12 +70,12 @@ public final class OptionBuilder {
      * @throws IllegalArgumentException if {@code longOpt} has not been set.
      */
     public static Option create() throws IllegalArgumentException {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (longOption == null) {</span>
-<span class="nc" id="L74">            reset();</span>
-<span class="nc" id="L75">            throw new IllegalArgumentException(&quot;must specify longopt&quot;);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (longOption == null) {</span>
+<span class="fc" id="L74">            reset();</span>
+<span class="fc" id="L75">            throw new IllegalArgumentException(&quot;must specify longopt&quot;);</span>
         }
 
-<span class="nc" id="L78">        return create(null);</span>
+<span class="fc" id="L78">        return create(null);</span>
     }
 
     /**
@@ -86,7 +86,7 @@ public final class OptionBuilder {
      * @throws IllegalArgumentException if {@code opt} is not a valid character. See Option.
      */
     public static Option create(final char opt) throws IllegalArgumentException {
-<span class="nc" id="L89">        return create(String.valueOf(opt));</span>
+<span class="fc" id="L89">        return create(String.valueOf(opt));</span>
     }
 
     /**
@@ -147,8 +147,8 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder hasArgs() {
-<span class="nc" id="L150">        argCount = Option.UNLIMITED_VALUES;</span>
-<span class="nc" id="L151">        return INSTANCE;</span>
+<span class="fc" id="L150">        argCount = Option.UNLIMITED_VALUES;</span>
+<span class="fc" id="L151">        return INSTANCE;</span>
     }
 
     /**
@@ -158,8 +158,8 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder hasArgs(final int num) {
-<span class="nc" id="L161">        argCount = num;</span>
-<span class="nc" id="L162">        return INSTANCE;</span>
+<span class="fc" id="L161">        argCount = num;</span>
+<span class="fc" id="L162">        return INSTANCE;</span>
     }
 
     /**
@@ -168,9 +168,9 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder hasOptionalArg() {
-<span class="nc" id="L171">        argCount = 1;</span>
-<span class="nc" id="L172">        optionalArg = true;</span>
-<span class="nc" id="L173">        return INSTANCE;</span>
+<span class="fc" id="L171">        argCount = 1;</span>
+<span class="fc" id="L172">        optionalArg = true;</span>
+<span class="fc" id="L173">        return INSTANCE;</span>
     }
 
     /**
@@ -191,9 +191,9 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder hasOptionalArgs(final int numArgs) {
-<span class="nc" id="L194">        argCount = numArgs;</span>
-<span class="nc" id="L195">        optionalArg = true;</span>
-<span class="nc" id="L196">        return INSTANCE;</span>
+<span class="fc" id="L194">        argCount = numArgs;</span>
+<span class="fc" id="L195">        optionalArg = true;</span>
+<span class="fc" id="L196">        return INSTANCE;</span>
     }
 
     /**
@@ -238,8 +238,8 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder withArgName(final String name) {
-<span class="nc" id="L241">        argName = name;</span>
-<span class="nc" id="L242">        return INSTANCE;</span>
+<span class="fc" id="L241">        argName = name;</span>
+<span class="fc" id="L242">        return INSTANCE;</span>
     }
 
     /**
@@ -249,8 +249,8 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder withDescription(final String newDescription) {
-<span class="nc" id="L252">        description = newDescription;</span>
-<span class="nc" id="L253">        return INSTANCE;</span>
+<span class="fc" id="L252">        description = newDescription;</span>
+<span class="fc" id="L253">        return INSTANCE;</span>
     }
 
     /**
@@ -260,8 +260,8 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder withLongOpt(final String newLongopt) {
-<span class="nc" id="L263">        longOption = newLongopt;</span>
-<span class="nc" id="L264">        return INSTANCE;</span>
+<span class="fc" id="L263">        longOption = newLongopt;</span>
+<span class="fc" id="L264">        return INSTANCE;</span>
     }
 
     /**
@@ -272,8 +272,8 @@ public final class OptionBuilder {
      * @since 1.3
      */
     public static OptionBuilder withType(final Class&lt;?&gt; newType) {
-<span class="nc" id="L275">        type = newType;</span>
-<span class="nc" id="L276">        return INSTANCE;</span>
+<span class="fc" id="L275">        type = newType;</span>
+<span class="fc" id="L276">        return INSTANCE;</span>
     }
 
     /**
@@ -330,8 +330,8 @@ public final class OptionBuilder {
      * @return the OptionBuilder instance
      */
     public static OptionBuilder withValueSeparator(final char sep) {
-<span class="nc" id="L333">        valueSeparator = sep;</span>
-<span class="nc" id="L334">        return INSTANCE;</span>
+<span class="fc" id="L333">        valueSeparator = sep;</span>
+<span class="fc" id="L334">        return INSTANCE;</span>
     }
 
     /**

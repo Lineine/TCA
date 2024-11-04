@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Othello_sub_10_5_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Othello_sub_10_5_Test
+test_2017(net.mooctest.Othello_sub_10_5_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.Othello_sub_10_5_Test.test_2017(Othello_sub_10_5_Test.java:9)
+

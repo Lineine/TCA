@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.JsonParser_Test
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.JsonParser_Test
+testParseReaderWithJsonReaderInvalidJson(net.mooctest.JsonParser_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Expected exception: net.mooctest.JsonSyntaxException
+
+testParseReader_emptyJson(net.mooctest.JsonParser_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected net.mooctest.JsonSyntaxException to be thrown, but nothing was thrown
+	at net.mooctest.JsonParser_Test.testParseReader_emptyJson(JsonParser_Test.java:42)
+

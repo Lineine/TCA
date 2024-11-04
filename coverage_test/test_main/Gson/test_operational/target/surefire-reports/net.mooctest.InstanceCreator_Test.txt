@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.InstanceCreator_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in net.mooctest.InstanceCreator_Test
+testCreateInstance(net.mooctest.InstanceCreator_Test)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.UnsupportedOperationException: 
+Attempted to deserialize a java.lang.Class. Forgot to register a type adapter?
+See https://github.net.mooctest/blob/main/Troubleshooting.md#java-lang-class-unsupported
+	at net.mooctest.InstanceCreator_Test.testCreateInstance(InstanceCreator_Test.java:30)
+

@@ -1,74 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Square_sub_10_0_Test
 -------------------------------------------------------------------------------
-Tests run: 292, Failures: 1, Errors: 16, Skipped: 0, Time elapsed: 0.108 s <<< FAILURE! - in net.mooctest.Square_sub_10_0_Test
-test_1002(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0.005 s  <<< ERROR!
+Tests run: 181, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.082 s <<< FAILURE! - in net.mooctest.Square_sub_10_0_Test
+test_1002(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0.004 s  <<< ERROR!
 java.lang.IndexOutOfBoundsException
-	at net.mooctest.Square_sub_10_0_Test.test_1002(Square_sub_10_0_Test.java:2474)
-
-test_1839(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.Square_sub_10_0_Test.test_1839(Square_sub_10_0_Test.java:285)
-
-test_1840(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: 13
-	at net.mooctest.Square_sub_10_0_Test.test_1840(Square_sub_10_0_Test.java:1353)
-
-test_2127(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException
-	at net.mooctest.Square_sub_10_0_Test.test_2127(Square_sub_10_0_Test.java:1430)
+	at net.mooctest.Square_sub_10_0_Test.test_1002(Square_sub_10_0_Test.java:1565)
 
 test_3548(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException: 8
-	at net.mooctest.Square_sub_10_0_Test.test_3548(Square_sub_10_0_Test.java:1559)
+	at net.mooctest.Square_sub_10_0_Test.test_3548(Square_sub_10_0_Test.java:967)
 
-test_3550(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+test_3550(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException: 8
-	at net.mooctest.Square_sub_10_0_Test.test_3550(Square_sub_10_0_Test.java:3788)
+	at net.mooctest.Square_sub_10_0_Test.test_3550(Square_sub_10_0_Test.java:2473)
 
-test_3558(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: 8
-	at net.mooctest.Square_sub_10_0_Test.test_3558(Square_sub_10_0_Test.java:718)
-
-test_3563(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
+test_3563(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException
-	at net.mooctest.Square_sub_10_0_Test.test_3563(Square_sub_10_0_Test.java:2265)
+	at net.mooctest.Square_sub_10_0_Test.test_3563(Square_sub_10_0_Test.java:1463)
+
+test_3571(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at net.mooctest.Square_sub_10_0_Test.test_3571(Square_sub_10_0_Test.java:467)
 
 test_3573(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException: 8
-	at net.mooctest.Square_sub_10_0_Test.test_3573(Square_sub_10_0_Test.java:2202)
+	at net.mooctest.Square_sub_10_0_Test.test_3573(Square_sub_10_0_Test.java:1428)
 
-test_3577(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+test_3592(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException
-	at net.mooctest.Square_sub_10_0_Test.test_3577(Square_sub_10_0_Test.java:3204)
-
-test_3592(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException
-	at net.mooctest.Square_sub_10_0_Test.test_3592(Square_sub_10_0_Test.java:840)
+	at net.mooctest.Square_sub_10_0_Test.test_3592(Square_sub_10_0_Test.java:539)
 
 test_3614(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.NullPointerException
-	at net.mooctest.Square_sub_10_0_Test.test_3614(Square_sub_10_0_Test.java:3732)
-
-test_3622(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: 8
-	at net.mooctest.Square_sub_10_0_Test.test_3622(Square_sub_10_0_Test.java:738)
+	at net.mooctest.Square_sub_10_0_Test.test_3614(Square_sub_10_0_Test.java:2427)
 
 test_3696(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.NullPointerException
-	at net.mooctest.Square_sub_10_0_Test.test_3696(Square_sub_10_0_Test.java:2971)
+	at net.mooctest.Square_sub_10_0_Test.test_3696(Square_sub_10_0_Test.java:1918)
 
 test_5205(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
 java.lang.IndexOutOfBoundsException
-	at net.mooctest.Square_sub_10_0_Test.test_5205(Square_sub_10_0_Test.java:1814)
-
-test_5352(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: 14
-	at net.mooctest.Square_sub_10_0_Test.test_5352(Square_sub_10_0_Test.java:1270)
-
-test_5418(net.mooctest.Square_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-org.junit.internal.ArrayComparisonFailure: CBC decryption failed: arrays first differed at element [0]; expected:<0> but was:<60>
-	at net.mooctest.Square_sub_10_0_Test.test_5418(Square_sub_10_0_Test.java:1031)
-Caused by: java.lang.AssertionError: expected:<0> but was:<60>
-	at net.mooctest.Square_sub_10_0_Test.test_5418(Square_sub_10_0_Test.java:1031)
+	at net.mooctest.Square_sub_10_0_Test.test_5205(Square_sub_10_0_Test.java:1172)
 

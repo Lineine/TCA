@@ -70,10 +70,10 @@ public class CommandLine implements Serializable {
          * @return this Builder instance for method chaining.
          */
         public Builder addArg(final String arg) {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (arg != null) {</span>
-<span class="nc" id="L74">                args.add(arg);</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            if (arg != null) {</span>
+<span class="fc" id="L74">                args.add(arg);</span>
             }
-<span class="nc" id="L76">            return this;</span>
+<span class="fc" id="L76">            return this;</span>
         }
 
         /**
@@ -84,10 +84,10 @@ public class CommandLine implements Serializable {
          * @return this Builder instance for method chaining.
          */
         public Builder addOption(final Option opt) {
-<span class="nc bnc" id="L87" title="All 2 branches missed.">            if (opt != null) {</span>
-<span class="nc" id="L88">                options.add(opt);</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">            if (opt != null) {</span>
+<span class="fc" id="L88">                options.add(opt);</span>
             }
-<span class="nc" id="L90">            return this;</span>
+<span class="fc" id="L90">            return this;</span>
         }
 
         /**
@@ -107,8 +107,8 @@ public class CommandLine implements Serializable {
          * @since 1.7.0
          */
         public Builder setDeprecatedHandler(final Consumer&lt;Option&gt; deprecatedHandler) {
-<span class="nc" id="L110">            this.deprecatedHandler = deprecatedHandler;</span>
-<span class="nc" id="L111">            return this;</span>
+<span class="fc" id="L110">            this.deprecatedHandler = deprecatedHandler;</span>
+<span class="fc" id="L111">            return this;</span>
         }
     }
 
@@ -143,8 +143,8 @@ public class CommandLine implements Serializable {
      * Creates a command line.
      */
     protected CommandLine() {
-<span class="nc" id="L146">        this(new LinkedList&lt;&gt;(), new ArrayList&lt;&gt;(), Builder.DEPRECATED_HANDLER);</span>
-<span class="nc" id="L147">    }</span>
+<span class="fc" id="L146">        this(new LinkedList&lt;&gt;(), new ArrayList&lt;&gt;(), Builder.DEPRECATED_HANDLER);</span>
+<span class="fc" id="L147">    }</span>
 
     /**
      * Creates a command line.
@@ -161,10 +161,10 @@ public class CommandLine implements Serializable {
      * @param arg the unrecognized option/argument.
      */
     protected void addArg(final String arg) {
-<span class="nc bnc" id="L164" title="All 2 branches missed.">        if (arg != null) {</span>
-<span class="nc" id="L165">            args.add(arg);</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">        if (arg != null) {</span>
+<span class="fc" id="L165">            args.add(arg);</span>
         }
-<span class="nc" id="L167">    }</span>
+<span class="fc" id="L167">    }</span>
 
     /**
      * Adds an option to the command line. The values of the option are stored.
@@ -172,13 +172,13 @@ public class CommandLine implements Serializable {
      * @param opt the processed option.
      */
     protected void addOption(final Option opt) {
-<span class="nc bnc" id="L175" title="All 2 branches missed.">        if (opt != null) {</span>
-<span class="nc" id="L176">            options.add(opt);</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">        if (opt != null) {</span>
+<span class="fc" id="L176">            options.add(opt);</span>
         }
-<span class="nc" id="L178">    }</span>
+<span class="fc" id="L178">    }</span>
 
     private &lt;T&gt; T get(final Supplier&lt;T&gt; supplier) {
-<span class="nc bnc" id="L181" title="All 2 branches missed.">        return supplier == null ? null : supplier.get();</span>
+<span class="pc bpc" id="L181" title="1 of 2 branches missed.">        return supplier == null ? null : supplier.get();</span>
     }
 
     /**
@@ -187,7 +187,7 @@ public class CommandLine implements Serializable {
      * @return remaining items passed in but not parsed as a {@code List}.
      */
     public List&lt;String&gt; getArgList() {
-<span class="nc" id="L190">        return args;</span>
+<span class="fc" id="L190">        return args;</span>
     }
 
     /**
@@ -196,7 +196,7 @@ public class CommandLine implements Serializable {
      * @return remaining items passed in but not parsed as an array.
      */
     public String[] getArgs() {
-<span class="nc" id="L199">        return args.toArray(Util.EMPTY_STRING_ARRAY);</span>
+<span class="fc" id="L199">        return args.toArray(Util.EMPTY_STRING_ARRAY);</span>
     }
 
     /**
@@ -260,13 +260,13 @@ public class CommandLine implements Serializable {
      * @since 1.2
      */
     public Properties getOptionProperties(final String opt) {
-<span class="nc" id="L263">        final Properties props = new Properties();</span>
-<span class="nc bnc" id="L264" title="All 2 branches missed.">        for (final Option option : options) {</span>
+<span class="fc" id="L263">        final Properties props = new Properties();</span>
+<span class="pc bpc" id="L264" title="1 of 2 branches missed.">        for (final Option option : options) {</span>
 <span class="nc bnc" id="L265" title="All 4 branches missed.">            if (opt.equals(option.getOpt()) || opt.equals(option.getLongOpt())) {</span>
 <span class="nc" id="L266">                processPropertiesFromValues(props, option.getValuesList());</span>
             }
 <span class="nc" id="L268">        }</span>
-<span class="nc" id="L269">        return props;</span>
+<span class="fc" id="L269">        return props;</span>
     }
 
     /**
@@ -275,7 +275,7 @@ public class CommandLine implements Serializable {
      * @return an array of the processed {@link Option}s.
      */
     public Option[] getOptions() {
-<span class="nc" id="L278">        return options.toArray(Option.EMPTY_ARRAY);</span>
+<span class="fc" id="L278">        return options.toArray(Option.EMPTY_ARRAY);</span>
     }
 
     /**
@@ -285,7 +285,7 @@ public class CommandLine implements Serializable {
      * @return Value of the argument if option is set, and has an argument, otherwise null.
      */
     public String getOptionValue(final char opt) {
-<span class="nc" id="L288">        return getOptionValue(String.valueOf(opt));</span>
+<span class="fc" id="L288">        return getOptionValue(String.valueOf(opt));</span>
     }
 
     /**
@@ -319,8 +319,8 @@ public class CommandLine implements Serializable {
      * @since 1.5.0
      */
     public String getOptionValue(final Option option) {
-<span class="nc" id="L322">        final String[] values = getOptionValues(option);</span>
-<span class="nc bnc" id="L323" title="All 2 branches missed.">        return values == null ? null : values[0];</span>
+<span class="fc" id="L322">        final String[] values = getOptionValues(option);</span>
+<span class="fc bfc" id="L323" title="All 2 branches covered.">        return values == null ? null : values[0];</span>
     }
 
     /**
@@ -393,7 +393,7 @@ public class CommandLine implements Serializable {
      * @return Value of the argument if option is set, and has an argument, otherwise null.
      */
     public String getOptionValue(final String opt) {
-<span class="nc" id="L396">        return getOptionValue(resolveOption(opt));</span>
+<span class="fc" id="L396">        return getOptionValue(resolveOption(opt));</span>
     }
 
     /**
@@ -438,19 +438,19 @@ public class CommandLine implements Serializable {
      * @since 1.5.0
      */
     public String[] getOptionValues(final Option option) {
-<span class="nc bnc" id="L441" title="All 2 branches missed.">        if (option == null) {</span>
-<span class="nc" id="L442">            return null;</span>
+<span class="fc bfc" id="L441" title="All 2 branches covered.">        if (option == null) {</span>
+<span class="fc" id="L442">            return null;</span>
         }
-<span class="nc" id="L444">        final List&lt;String&gt; values = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L445" title="All 2 branches missed.">        for (final Option processedOption : options) {</span>
-<span class="nc bnc" id="L446" title="All 2 branches missed.">            if (processedOption.equals(option)) {</span>
-<span class="nc bnc" id="L447" title="All 2 branches missed.">                if (option.isDeprecated()) {</span>
+<span class="fc" id="L444">        final List&lt;String&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L445" title="All 2 branches covered.">        for (final Option processedOption : options) {</span>
+<span class="fc bfc" id="L446" title="All 2 branches covered.">            if (processedOption.equals(option)) {</span>
+<span class="pc bpc" id="L447" title="1 of 2 branches missed.">                if (option.isDeprecated()) {</span>
 <span class="nc" id="L448">                    handleDeprecated(option);</span>
                 }
-<span class="nc" id="L450">                values.addAll(processedOption.getValuesList());</span>
+<span class="fc" id="L450">                values.addAll(processedOption.getValuesList());</span>
             }
-<span class="nc" id="L452">        }</span>
-<span class="nc bnc" id="L453" title="All 2 branches missed.">        return values.isEmpty() ? null : values.toArray(Util.EMPTY_STRING_ARRAY);</span>
+<span class="fc" id="L452">        }</span>
+<span class="pc bpc" id="L453" title="1 of 2 branches missed.">        return values.isEmpty() ? null : values.toArray(Util.EMPTY_STRING_ARRAY);</span>
     }
 
     /**
@@ -532,7 +532,7 @@ public class CommandLine implements Serializable {
      * @since 1.5.0
      */
     public &lt;T&gt; T getParsedOptionValue(final Option option) throws ParseException {
-<span class="nc" id="L535">        return getParsedOptionValue(option, () -&gt; null);</span>
+<span class="fc" id="L535">        return getParsedOptionValue(option, () -&gt; null);</span>
     }
 
     /**
@@ -548,8 +548,8 @@ public class CommandLine implements Serializable {
      */
     @SuppressWarnings(&quot;unchecked&quot;)
     public &lt;T&gt; T getParsedOptionValue(final Option option, final Supplier&lt;T&gt; defaultValue) throws ParseException {
-<span class="nc bnc" id="L551" title="All 2 branches missed.">        if (option == null) {</span>
-<span class="nc" id="L552">            return get(defaultValue);</span>
+<span class="pc bpc" id="L551" title="1 of 2 branches missed.">        if (option == null) {</span>
+<span class="fc" id="L552">            return get(defaultValue);</span>
         }
 <span class="nc" id="L554">        final String res = getOptionValue(option);</span>
         try {
@@ -603,8 +603,8 @@ public class CommandLine implements Serializable {
      * @since 1.9.0
      */
     public &lt;T&gt; T getParsedOptionValue(final OptionGroup optionGroup, final Supplier&lt;T&gt; defaultValue) throws ParseException {
-<span class="nc bnc" id="L606" title="All 4 branches missed.">        if (optionGroup == null || !optionGroup.isSelected()) {</span>
-<span class="nc" id="L607">            return get(defaultValue);</span>
+<span class="pc bpc" id="L606" title="2 of 4 branches missed.">        if (optionGroup == null || !optionGroup.isSelected()) {</span>
+<span class="fc" id="L607">            return get(defaultValue);</span>
         }
 <span class="nc" id="L609">        return getParsedOptionValue(optionGroup.getSelected(), defaultValue);</span>
     }
@@ -621,7 +621,7 @@ public class CommandLine implements Serializable {
      * @since 1.9.0
      */
     public &lt;T&gt; T getParsedOptionValue(final OptionGroup optionGroup, final T defaultValue) throws ParseException {
-<span class="nc" id="L624">        return getParsedOptionValue(optionGroup, () -&gt; defaultValue);</span>
+<span class="fc" id="L624">        return getParsedOptionValue(optionGroup, () -&gt; defaultValue);</span>
     }
 
     /**
@@ -635,7 +635,7 @@ public class CommandLine implements Serializable {
      * @since 1.2
      */
     public &lt;T&gt; T getParsedOptionValue(final String opt) throws ParseException {
-<span class="nc" id="L638">        return getParsedOptionValue(resolveOption(opt));</span>
+<span class="fc" id="L638">        return getParsedOptionValue(resolveOption(opt));</span>
     }
 
     /**
@@ -715,11 +715,11 @@ public class CommandLine implements Serializable {
      * @since 1.5.0
      */
     public boolean hasOption(final Option opt) {
-<span class="nc" id="L718">        final boolean result = options.contains(opt);</span>
-<span class="nc bnc" id="L719" title="All 4 branches missed.">        if (result &amp;&amp; opt.isDeprecated()) {</span>
+<span class="fc" id="L718">        final boolean result = options.contains(opt);</span>
+<span class="pc bpc" id="L719" title="1 of 4 branches missed.">        if (result &amp;&amp; opt.isDeprecated()) {</span>
 <span class="nc" id="L720">            handleDeprecated(opt);</span>
         }
-<span class="nc" id="L722">        return result;</span>
+<span class="fc" id="L722">        return result;</span>
     }
 
     /**
@@ -743,7 +743,7 @@ public class CommandLine implements Serializable {
      * @return true if set, false if not.
      */
     public boolean hasOption(final String opt) {
-<span class="nc" id="L746">        return hasOption(resolveOption(opt));</span>
+<span class="fc" id="L746">        return hasOption(resolveOption(opt));</span>
     }
 
     /**
@@ -779,15 +779,15 @@ public class CommandLine implements Serializable {
      * @return Canonicalized option.
      */
     private Option resolveOption(final String opt) {
-<span class="nc" id="L782">        final String actual = Util.stripLeadingHyphens(opt);</span>
-<span class="nc bnc" id="L783" title="All 2 branches missed.">        if (actual != null) {</span>
-<span class="nc bnc" id="L784" title="All 2 branches missed.">            for (final Option option : options) {</span>
-<span class="nc bnc" id="L785" title="All 4 branches missed.">                if (actual.equals(option.getOpt()) || actual.equals(option.getLongOpt())) {</span>
-<span class="nc" id="L786">                    return option;</span>
+<span class="fc" id="L782">        final String actual = Util.stripLeadingHyphens(opt);</span>
+<span class="pc bpc" id="L783" title="1 of 2 branches missed.">        if (actual != null) {</span>
+<span class="fc bfc" id="L784" title="All 2 branches covered.">            for (final Option option : options) {</span>
+<span class="pc bpc" id="L785" title="1 of 4 branches missed.">                if (actual.equals(option.getOpt()) || actual.equals(option.getLongOpt())) {</span>
+<span class="fc" id="L786">                    return option;</span>
                 }
-<span class="nc" id="L788">            }</span>
+<span class="fc" id="L788">            }</span>
         }
-<span class="nc" id="L790">        return null;</span>
+<span class="fc" id="L790">        return null;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

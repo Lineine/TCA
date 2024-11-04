@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_6_Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Cli_6_Test
+test_328(net.mooctest.Cli_6_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at net.mooctest.Cli_6_Test.test_328(Cli_6_Test.java:33)
+
+test_331(net.mooctest.Cli_6_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at net.mooctest.Cli_6_Test.test_331(Cli_6_Test.java:44)
+
+test_335(net.mooctest.Cli_6_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<a> but was:<null>
+	at net.mooctest.Cli_6_Test.test_335(Cli_6_Test.java:28)
+
+test_351(net.mooctest.Cli_6_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_6_Test.test_351(Cli_6_Test.java:24)
+
+test_356(net.mooctest.Cli_6_Test)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[[ -a Option A, -b Option B]]> but was:<[[]]>
+	at net.mooctest.Cli_6_Test.test_356(Cli_6_Test.java:20)
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LevelBFIterator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">LevelBFIterator.java</span></div><h1>LevelBFIterator.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
+
+public class LevelBFIterator&lt;T&gt; implements Iterator&lt;T&gt; {
+
+<span class="fc" id="L12">    private final Stack&lt;Integer&gt; stack = new Stack&lt;Integer&gt;();</span>
+    final int level;
+    private Tree&lt;T&gt; current;
+
+<span class="fc" id="L16">    public LevelBFIterator(Tree&lt;T&gt; root, int level) {</span>
+<span class="fc" id="L17">        this.level = level;</span>
+<span class="fc" id="L18">        current = root;</span>
+<span class="fc" id="L19">        moveToGoodNode();</span>
+<span class="fc" id="L20">    }</span>
+
+    @Override
+    public boolean hasNext() {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        return current != null;</span>
+    }
+
+    @Override
+    public T next() {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (current == null) throw new NoSuchElementException();</span>
+<span class="fc" id="L30">        Tree&lt;T&gt; toReturn = current;</span>
+        //current node is already our level so we can go higher only
+        //so moving up
+<span class="fc" id="L33">        boolean success = moveUpToNext();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (!success) return toReturn.getValue();</span>
+        //and moving down or up while we find our level
+<span class="fc" id="L36">        moveToGoodNode();</span>
+<span class="fc" id="L37">        return toReturn.getValue();</span>
+    }
+
+    private void moveToGoodNode() {
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        while (stack.size() != level) {</span>
+<span class="fc" id="L42">            boolean found = tryMoveDownToNext();</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (!found) { //no way down, try up</span>
+<span class="fc" id="L44">                boolean success = moveUpToNext();</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">                if (!success) return;</span>
+            }
+<span class="fc" id="L47">        }</span>
+<span class="fc" id="L48">    }</span>
+
+    private boolean tryMoveDownToNext() {
+<span class="fc" id="L51">        List&lt;Tree&lt;T&gt;&gt; children = current.getChildren();</span>
+<span class="fc bfc" id="L52" title="All 4 branches covered.">        if (children != null &amp;&amp; !children.isEmpty()) {</span>
+            //starting next level
+<span class="fc" id="L54">            Tree&lt;T&gt; firstChild = children.get(0);</span>
+<span class="fc" id="L55">            stack.push(0);</span>
+<span class="fc" id="L56">            current = firstChild;</span>
+<span class="fc" id="L57">            return true;</span>
+        }
+<span class="fc" id="L59">        return false;</span>
+    }
+
+    private boolean moveUpToNext() {
+<span class="fc" id="L63">        Tree&lt;T&gt; localCurrent = current;</span>
+<span class="fc" id="L64">        current = null;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        while (!stack.empty()) {</span>
+<span class="fc" id="L66">            Tree&lt;T&gt; parent = localCurrent.getParent();</span>
+<span class="fc" id="L67">            Integer parentIndex = stack.pop();</span>
+<span class="fc" id="L68">            int nextIndex = parentIndex + 1;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            if (nextIndex &lt; parent.getChildren().size()) {</span>
+<span class="fc" id="L70">                stack.push(nextIndex);</span>
+<span class="fc" id="L71">                current = parent.getChildren().get(nextIndex);</span>
+<span class="fc" id="L72">                return true;</span>
+            } else {
+<span class="fc" id="L74">                localCurrent = parent;</span>
+            }
+<span class="fc" id="L76">        }</span>
+<span class="fc" id="L77">        return false;</span>
+    }
+
+    @Override
+    public void remove() {
+<span class="fc" id="L82">        throw new UnsupportedOperationException();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

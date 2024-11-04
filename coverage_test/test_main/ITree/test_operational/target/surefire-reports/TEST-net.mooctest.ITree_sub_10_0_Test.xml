@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.mooctest.ITree_sub_10_0_Test" time="0.058" tests="207" errors="1" skipped="2" failures="4">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.mooctest.ITree_sub_10_0_Test" time="0.059" tests="136" errors="1" skipped="1" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -15,28 +15,28 @@
     <property name="os.name" value="Linux"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.boot.library.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/surefire/surefirebooter3974313652857154042.jar /data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/surefire 2024-06-21T14-37-56_532-jvmRun1 surefire5137577736332420512tmp surefire_0694245340339862095tmp"/>
+    <property name="sun.boot.library.path" value="/data02/LCD/CTCA/environment/Java8/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/surefire/surefirebooter6474769075650312843.jar /data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/surefire 2024-10-17T20-53-31_987-jvmRun1 surefire1804382495693679030tmp surefire_07292102947165165940tmp"/>
     <property name="surefire.test.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/test-classes:/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/classes:/data02/LCD/.m2/repository/junit/junit/4.12/junit-4.12.jar:/data02/LCD/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar:/data02/LCD/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/data02/LCD/.m2/repository/org/evosuite/evosuite-master/1.0.6/evosuite-master-1.0.6.jar:/data02/LCD/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.7/jacoco-maven-plugin-0.8.7.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/data02/LCD/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/data02/LCD/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/data02/LCD/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/data02/LCD/.m2/repository/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar:/data02/LCD/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.jar:/data02/LCD/.m2/repository/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar:/data02/LCD/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/data02/LCD/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/data02/LCD/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/data02/LCD/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.core/0.8.7/org.jacoco.core-0.8.7.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-commons/9.1/asm-commons-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-analysis/9.1/asm-analysis-9.1.jar:/data02/LCD/.m2/repository/org/ow2/asm/asm-tree/9.1/asm-tree-9.1.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.report/0.8.7/org.jacoco.report-0.8.7.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/data02/LCD"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.home" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre"/>
+    <property name="java.home" value="/data02/LCD/CTCA/environment/Java8/jre"/>
     <property name="basedir" value="/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational"/>
     <property name="file.separator" value="/"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/surefire/surefirebooter3974313652857154042.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
-    <property name="sun.boot.class.path" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/resources.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/rt.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jsse.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jce.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/charsets.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/jfr.jar:/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/classes"/>
+    <property name="surefire.real.class.path" value="/data02/LCD/CTCA/coverage_test/test_main/ITree/test_operational/target/surefire/surefirebooter6474769075650312843.jar:/data02/LCD/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/data02/LCD/CTCA/environment/Java8/jre/lib/resources.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/rt.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/jsse.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/jce.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/charsets.jar:/data02/LCD/CTCA/environment/Java8/jre/lib/jfr.jar:/data02/LCD/CTCA/environment/Java8/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_391-b13"/>
     <property name="user.name" value="lcd"/>
     <property name="path.separator" value=":"/>
     <property name="os.version" value="5.15.0-102-generic"/>
-    <property name="java.endorsed.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/endorsed"/>
+    <property name="java.endorsed.dirs" value="/data02/LCD/CTCA/environment/Java8/jre/lib/endorsed"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
@@ -54,223 +54,137 @@
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="25.391-b13"/>
     <property name="java.specification.maintenance.version" value="5"/>
-    <property name="java.ext.dirs" value="/data02/LCD/CTCA/environment/jdk1.8.0_391/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="java.ext.dirs" value="/data02/LCD/CTCA/environment/Java8/jre/lib/ext:/usr/java/packages/lib/ext"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="test_1002" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1123" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1123" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_1124" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1125" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1126" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1127" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1128" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1150" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1150" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_1160" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1192" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1202" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1234" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1235" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1261" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1267" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1279" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1280" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1282" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1236" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1283" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1287" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1290" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1305" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1313" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1362" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1362" classname="net.mooctest.ITree_sub_10_0_Test" time="0.002"/>
   <testcase name="test_1491" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1492" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1496" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1498" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1537" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1541" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1544" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1579" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1643" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1694" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_1577" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1694" classname="net.mooctest.ITree_sub_10_0_Test" time="0.002"/>
   <testcase name="test_1695" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1697" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1697" classname="net.mooctest.ITree_sub_10_0_Test" time="0.002"/>
   <testcase name="test_1700" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1717" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1719" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1720" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1721" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1721" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_1722" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1726" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1743" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1745" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1823" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1927" classname="net.mooctest.ITree_sub_10_0_Test" time="0.004"/>
+  <testcase name="test_1927" classname="net.mooctest.ITree_sub_10_0_Test" time="0.007"/>
   <testcase name="test_1990" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1991" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_1994" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_1995" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_1997" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2000" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2003" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2006" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2009" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2010" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_2013" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2014" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2027" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2028" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2043" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2102" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2106" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2124" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2047" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2127" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2142" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2149" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2160" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2197" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2206" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2240" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2256" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_2160" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_2326" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2551" classname="net.mooctest.ITree_sub_10_0_Test" time="0">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at net.mooctest.ITree_sub_10_0_Test.test_2551(ITree_sub_10_0_Test.java:1262)
-</failure>
-  </testcase>
-  <testcase name="test_2556" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2559" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2564" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2575" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2585" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2597" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2636" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2649" classname="net.mooctest.ITree_sub_10_0_Test" time="0">
-    <failure message="expected:&lt;2&gt; but was:&lt;1&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<2> but was:<1>
-	at net.mooctest.ITree_sub_10_0_Test.test_2649(ITree_sub_10_0_Test.java:853)
-]]></failure>
-  </testcase>
-  <testcase name="test_2650" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2672" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2677" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2700" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_2643" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2677" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_2724" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2725" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2755" classname="net.mooctest.ITree_sub_10_0_Test" time="0">
-    <failure message="expected:&lt;2&gt; but was:&lt;1&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<2> but was:<1>
-	at net.mooctest.ITree_sub_10_0_Test.test_2755(ITree_sub_10_0_Test.java:4062)
-]]></failure>
-  </testcase>
+  <testcase name="test_2725" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_2764" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2770" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_2770" classname="net.mooctest.ITree_sub_10_0_Test" time="0.002"/>
   <testcase name="test_2771" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_2871" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_2917" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3097" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_3100" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_3100" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_3123" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3125" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3127" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3128" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_3128" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3131" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3132" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3144" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3163" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3184" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_3185" classname="net.mooctest.ITree_sub_10_0_Test" time="0">
+  <testcase name="test_3185" classname="net.mooctest.ITree_sub_10_0_Test" time="0.005">
     <error type="java.lang.IllegalMonitorStateException">java.lang.IllegalMonitorStateException
-	at net.mooctest.ITree_sub_10_0_Test.test_3185(ITree_sub_10_0_Test.java:690)
+	at net.mooctest.ITree_sub_10_0_Test.test_3185(ITree_sub_10_0_Test.java:387)
 </error>
   </testcase>
   <testcase name="test_3189" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3191" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3192" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3283" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3333" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3339" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3340" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_3496" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3509" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3609" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3631" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3684" classname="net.mooctest.ITree_sub_10_0_Test" time="0">
-    <skipped message="Mock call to contains which was not presented when the test was generated"/>
-  </testcase>
+  <testcase name="test_3605" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3796" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3797" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3824" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_3828" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3837" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3843" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_3840" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_3958" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_3960" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4007" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4040" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4163" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4192" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4288" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4290" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_4048" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_4287" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4295" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4299" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4309" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_4310" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4311" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4312" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4326" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4360" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4364" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_4384" classname="net.mooctest.ITree_sub_10_0_Test" time="0.002"/>
-  <testcase name="test_4387" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_4387" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_4493" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4630" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4758" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4803" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_4902" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_4989" classname="net.mooctest.ITree_sub_10_0_Test" time="0">
     <skipped message="Mock call to contains which was not presented when the test was generated"/>
   </testcase>
-  <testcase name="test_5097" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5098" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5124" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_5090" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_5124" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_5126" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_5128" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5134" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_5134" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_5135" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5137" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_5144" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_5236" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5314" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_5312" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_5330" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_5331" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5626" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_5626" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_171" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_178" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_185" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_220" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_224" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_234" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_236" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_242" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_264" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_286" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_290" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_311" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_312" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_313" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_286" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_311" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_314" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_315" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_315" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_326" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_328" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_329" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_340" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_345" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_353" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_358" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_375" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_381" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_390" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001">
-    <failure message="expected:&lt;true&gt; but was:&lt;false&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<true> but was:<false>
-	at net.mooctest.ITree_sub_10_0_Test.test_390(ITree_sub_10_0_Test.java:1742)
-]]></failure>
-  </testcase>
+  <testcase name="test_381" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_390" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_394" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_404" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_404" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_405" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_411" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_430" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_500" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_512" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
@@ -278,15 +192,12 @@
   <testcase name="test_548" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_567" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_802" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_816" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
+  <testcase name="test_817" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_821" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_844" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
-  <testcase name="test_845" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_899" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_971" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_982" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_993" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
-  <testcase name="test_5" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_4" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
+  <testcase name="test_5" classname="net.mooctest.ITree_sub_10_0_Test" time="0.001"/>
   <testcase name="test_6" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
   <testcase name="test_7" classname="net.mooctest.ITree_sub_10_0_Test" time="0"/>
 </testsuite>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">Tree.java</span></div><h1>Tree.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+
+import java.util.*;
+
+/**
+ * Generic tree implementation
+ * Iterable
+ * Supports mapping, filtering, sorting, pretty-printing and more
+ */
+
+public class Tree&lt;T&gt; extends TreeLike&lt;T, Tree&lt;T&gt;&gt; {
+
+    private static final long serialVersionUID = 124356L;
+
+    private final T value;
+    //nullable (if root)
+    private Tree&lt;T&gt; parent;
+    //nullable (if no children)
+    private List&lt;Tree&lt;T&gt;&gt; chld;
+
+<span class="fc" id="L24">    public Tree(T value) {</span>
+<span class="fc" id="L25">        this.value = value;</span>
+<span class="fc" id="L26">    }</span>
+
+<span class="fc" id="L28">    public Tree(T value, List&lt;Tree&lt;T&gt;&gt; children) {</span>
+<span class="fc" id="L29">        this.value = value;</span>
+<span class="fc" id="L30">        chld = children;</span>
+<span class="fc" id="L31">    }</span>
+
+    // ::::: Access operations
+
+    public List&lt;Tree&lt;T&gt;&gt; getChildren() {
+<span class="fc" id="L36">        return chld;</span>
+    }
+
+    public T getValue() {
+<span class="fc" id="L40">        return value;</span>
+    }
+
+    public Tree&lt;T&gt; getParent() {
+<span class="fc" id="L44">        return parent;</span>
+    }
+
+    @Override
+    public Iterator&lt;Tree&lt;T&gt;&gt; treeIterator() {
+<span class="fc" id="L49">        return new TreeDFIterator&lt;T&gt;(this);</span>
+    }
+
+    /**
+     * Breadth-first
+     */
+    public Iterator&lt;T&gt; breadthFirstIterator() {
+<span class="fc" id="L56">        return new BFIterator&lt;T&gt;(this);</span>
+    }
+
+    // ::::: Modification operations
+
+    public void addChild(Tree&lt;T&gt; child) {
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (chld == null) chld = new ArrayList&lt;Tree&lt;T&gt;&gt;();</span>
+<span class="fc" id="L63">        chld.add(child);</span>
+<span class="fc" id="L64">        child.setParent(this);</span>
+<span class="fc" id="L65">    }</span>
+
+
+    public void setParent(Tree&lt;T&gt; parent) {
+<span class="fc" id="L69">        this.parent = parent;</span>
+<span class="fc" id="L70">    }</span>
+
+    /**
+     *
+     * Maps (transforms) tree to another value types.
+     * @param f mapping function
+     * @param &lt;K&gt; output type
+     * @return mapped tree
+     */
+    public &lt;K&gt; Tree&lt;K&gt; map(final Function&lt;T, K&gt; f) {
+<span class="fc" id="L80">        return mapTrees(new Function&lt;Tree&lt;T&gt;, K&gt;() {</span>
+            @Override
+            public K apply(Tree&lt;T&gt; input) {
+<span class="fc" id="L83">                return f.apply(input.value);</span>
+            }
+        });
+    }
+
+    /**
+     * Alias to {@link Tree#map(com.google.common.base.Function)}
+     */
+    public &lt;K&gt; Tree&lt;K&gt; transform(Function&lt;T, K&gt; f) {
+<span class="fc" id="L92">        return map(f);</span>
+    }
+
+    /**
+     * Provides ability to map tree nodes using additional info - parents, children
+     * @param f mapping function
+     * @param &lt;K&gt; output type
+     * @return mapped tree
+     */
+    public &lt;K&gt; Tree&lt;K&gt; mapTrees(Function&lt;Tree&lt;T&gt;, K&gt; f) {
+<span class="fc" id="L102">        K transformed = f.apply(this);</span>
+<span class="fc" id="L103">        Tree&lt;K&gt; newTree = new Tree&lt;K&gt;(transformed);</span>
+<span class="fc bfc" id="L104" title="All 4 branches covered.">        if (chld != null) for (Tree&lt;T&gt; t : chld) {</span>
+<span class="fc" id="L105">            Tree&lt;K&gt; mapped = t.mapTrees(f);</span>
+<span class="fc" id="L106">            mapped.setParent(newTree);</span>
+<span class="fc" id="L107">            newTree.addChild(mapped);</span>
+<span class="fc" id="L108">        }</span>
+<span class="fc" id="L109">        return newTree;</span>
+    }
+
+    /**
+     * Sorts each node list
+     * @param comparator sorting comparator
+     */
+    public void sort(final Comparator&lt;T&gt; comparator) {
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (chld != null) {</span>
+<span class="fc" id="L118">            Collections.sort(chld, new Comparator&lt;Tree&lt;T&gt;&gt;() {</span>
+                @Override
+                public int compare(Tree&lt;T&gt; o1, Tree&lt;T&gt; o2) {
+<span class="fc" id="L121">                    return comparator.compare(o1.value, o2.value);</span>
+                }
+            });
+<span class="fc bfc" id="L124" title="All 2 branches covered.">            for (Tree&lt;T&gt; child : chld) {</span>
+<span class="fc" id="L125">                child.sort(comparator);</span>
+<span class="fc" id="L126">            }</span>
+        }
+<span class="fc" id="L128">    }</span>
+
+    /**
+     * Does not modify source tree
+     * Children of filtered nodes will be dropped
+     */
+    public Tree&lt;T&gt; filter(Predicate&lt;T&gt; predicate) {
+<span class="fc bfc" id="L135" title="All 2 branches covered.">        if (!predicate.apply(value)) return null;</span>
+<span class="fc" id="L136">        Tree&lt;T&gt; newTree = new Tree&lt;T&gt;(value);</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        if (chld == null) return newTree;</span>
+<span class="fc" id="L138">        List&lt;Tree&lt;T&gt;&gt; newChilds = new ArrayList&lt;Tree&lt;T&gt;&gt;();</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">        for (Tree&lt;T&gt; tTree : chld) {</span>
+<span class="fc" id="L140">            Tree&lt;T&gt; filtered = tTree.filter(predicate);</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            if (filtered != null) {</span>
+<span class="fc" id="L142">                filtered.setParent(newTree);</span>
+<span class="fc" id="L143">                newChilds.add(filtered);</span>
+            }
+<span class="fc" id="L145">        }</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">        if (newChilds.isEmpty()) return newTree;</span>
+<span class="fc" id="L147">        newTree.chld = newChilds;</span>
+<span class="fc" id="L148">        return newTree;</span>
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L154" title="All 2 branches covered.">        if (this == o) return true;</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">        if (!(o instanceof Tree)) return false;</span>
+
+<span class="fc" id="L157">        Tree tree = (Tree) o;</span>
+
+<span class="fc bfc" id="L159" title="All 6 branches covered.">        if (chld != null ? !chld.equals(tree.chld) : tree.chld != null) return false;</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">        if (!value.equals(tree.value)) return false;</span>
+
+<span class="fc" id="L162">        return true;</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L167">        int result = value.hashCode();</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">        result = 31 * result + (chld != null ? chld.hashCode() : 0);</span>
+<span class="fc" id="L169">        return result;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L174">        return &quot;node{&quot; +</span>
+                value +
+                '}';
+    }
+
+    @Override
+    protected void appendToString(StringBuilder sb, int depth) {
+<span class="fc bfc" id="L181" title="All 2 branches covered.">        if (depth != 0) sb.append(System.getProperty(&quot;line.separator&quot;));</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        for (int i = 0; i &lt; depth; i++) {</span>
+<span class="fc" id="L183">            sb.append('\t');</span>
+        }
+<span class="fc" id="L185">        sb.append(value);</span>
+<span class="fc bfc" id="L186" title="All 4 branches covered.">        if (chld != null) for (Tree&lt;T&gt; ts : chld) {</span>
+<span class="fc" id="L187">            ts.appendToString(sb, depth + 1);</span>
+<span class="fc" id="L188">        }</span>
+<span class="fc" id="L189">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

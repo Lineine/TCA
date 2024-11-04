@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Cli_12_Test
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! - in net.mooctest.Cli_12_Test
+test_182(net.mooctest.Cli_12_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_12_Test.test_182(Cli_12_Test.java:35)
+
+test_187(net.mooctest.Cli_12_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_12_Test.test_187(Cli_12_Test.java:57)
+

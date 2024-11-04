@@ -1,24 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.ITree_sub_10_0_Test
 -------------------------------------------------------------------------------
-Tests run: 207, Failures: 4, Errors: 1, Skipped: 2, Time elapsed: 0.058 s <<< FAILURE! - in net.mooctest.ITree_sub_10_0_Test
-test_2551(net.mooctest.ITree_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError
-	at net.mooctest.ITree_sub_10_0_Test.test_2551(ITree_sub_10_0_Test.java:1262)
-
-test_2649(net.mooctest.ITree_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: expected:<2> but was:<1>
-	at net.mooctest.ITree_sub_10_0_Test.test_2649(ITree_sub_10_0_Test.java:853)
-
-test_2755(net.mooctest.ITree_sub_10_0_Test)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError: expected:<2> but was:<1>
-	at net.mooctest.ITree_sub_10_0_Test.test_2755(ITree_sub_10_0_Test.java:4062)
-
-test_3185(net.mooctest.ITree_sub_10_0_Test)  Time elapsed: 0 s  <<< ERROR!
+Tests run: 136, Failures: 0, Errors: 1, Skipped: 1, Time elapsed: 0.059 s <<< FAILURE! - in net.mooctest.ITree_sub_10_0_Test
+test_3185(net.mooctest.ITree_sub_10_0_Test)  Time elapsed: 0.005 s  <<< ERROR!
 java.lang.IllegalMonitorStateException
-	at net.mooctest.ITree_sub_10_0_Test.test_3185(ITree_sub_10_0_Test.java:690)
-
-test_390(net.mooctest.ITree_sub_10_0_Test)  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.AssertionError: expected:<true> but was:<false>
-	at net.mooctest.ITree_sub_10_0_Test.test_390(ITree_sub_10_0_Test.java:1742)
+	at net.mooctest.ITree_sub_10_0_Test.test_3185(ITree_sub_10_0_Test.java:387)
 

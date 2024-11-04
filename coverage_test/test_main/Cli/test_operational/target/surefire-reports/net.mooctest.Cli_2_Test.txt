@@ -1,8 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.Cli_2_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.039 s <<< FAILURE! - in net.mooctest.Cli_2_Test
-test_182(net.mooctest.Cli_2_Test)  Time elapsed: 0.007 s  <<< FAILURE!
+Tests run: 12, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in net.mooctest.Cli_2_Test
+test_373(net.mooctest.Cli_2_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at net.mooctest.Cli_2_Test.test_373(Cli_2_Test.java:37)
+
+test_375(net.mooctest.Cli_2_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_2_Test.test_375(Cli_2_Test.java:87)
+
+test_377(net.mooctest.Cli_2_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at net.mooctest.Cli_2_Test.test_377(Cli_2_Test.java:81)
+
+test_380(net.mooctest.Cli_2_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+	at net.mooctest.Cli_2_Test.test_380(Cli_2_Test.java:60)
+
+test_383(net.mooctest.Cli_2_Test)  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError
-	at net.mooctest.Cli_2_Test.test_182(Cli_2_Test.java:24)
+	at net.mooctest.Cli_2_Test.test_383(Cli_2_Test.java:75)
+
+test_395(net.mooctest.Cli_2_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Cli_2_Test.test_395(Cli_2_Test.java:55)
 

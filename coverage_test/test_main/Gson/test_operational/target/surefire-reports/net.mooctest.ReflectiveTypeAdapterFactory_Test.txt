@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.ReflectiveTypeAdapterFactory_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.ReflectiveTypeAdapterFactory_Test
+testCreateWithNullRawType(net.mooctest.ReflectiveTypeAdapterFactory_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.ReflectiveTypeAdapterFactory_Test.testCreateWithNullRawType(ReflectiveTypeAdapterFactory_Test.java:22)
+
+testReadFromJson(net.mooctest.ReflectiveTypeAdapterFactory_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.ReflectiveTypeAdapterFactory_Test.testReadFromJson(ReflectiveTypeAdapterFactory_Test.java:30)
+
+testReadWithInvalidJson(net.mooctest.ReflectiveTypeAdapterFactory_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.ReflectiveTypeAdapterFactory_Test.testReadWithInvalidJson(ReflectiveTypeAdapterFactory_Test.java:60)
+
+testWriteToJson(net.mooctest.ReflectiveTypeAdapterFactory_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.ReflectiveTypeAdapterFactory_Test.testWriteToJson(ReflectiveTypeAdapterFactory_Test.java:43)
+

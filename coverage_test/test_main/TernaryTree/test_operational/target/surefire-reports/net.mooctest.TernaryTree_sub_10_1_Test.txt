@@ -1,4 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.TernaryTree_sub_10_1_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in net.mooctest.TernaryTree_sub_10_1_Test
+Tests run: 158, Failures: 2, Errors: 8, Skipped: 0, Time elapsed: 0.019 s <<< FAILURE! - in net.mooctest.TernaryTree_sub_10_1_Test
+test_1120(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.util.EmptyStackException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_1120(TernaryTree_sub_10_1_Test.java:728)
+
+test_1121(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.EmptyQueueException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_1121(TernaryTree_sub_10_1_Test.java:1729)
+
+test_1742(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.EmptyQueueException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_1742(TernaryTree_sub_10_1_Test.java:1735)
+
+test_3950(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<5> but was:<net.mooctest.TernaryNode@114a85c2>
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_3950(TernaryTree_sub_10_1_Test.java:1135)
+
+test_5098(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_5098(TernaryTree_sub_10_1_Test.java:437)
+
+test_7160(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.util.EmptyStackException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_7160(TernaryTree_sub_10_1_Test.java:1115)
+
+test_272(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+junit.framework.AssertionFailedError: expected:<2134991632> but was:<105751207>
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_272(TernaryTree_sub_10_1_Test.java:195)
+
+test_377(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.UnsupportedOperationException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_377(TernaryTree_sub_10_1_Test.java:2248)
+
+test_783(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_783(TernaryTree_sub_10_1_Test.java:1183)
+
+test_802(net.mooctest.TernaryTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.EmptyTreeException
+	at net.mooctest.TernaryTree_sub_10_1_Test.test_802(TernaryTree_sub_10_1_Test.java:396)
+

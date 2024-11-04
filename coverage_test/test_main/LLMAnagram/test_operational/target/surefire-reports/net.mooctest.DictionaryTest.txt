@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.DictionaryTest
+-------------------------------------------------------------------------------
+Tests run: 17, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.053 s <<< FAILURE! - in net.mooctest.DictionaryTest
+test(net.mooctest.DictionaryTest)  Time elapsed: 0.01 s  <<< ERROR!
+java.io.FileNotFoundException: d:/ana.dic (No such file or directory)
+	at net.mooctest.DictionaryTest.test(DictionaryTest.java:43)
+

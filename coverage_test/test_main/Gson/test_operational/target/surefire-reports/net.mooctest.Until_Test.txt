@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.Until_Test
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in net.mooctest.Until_Test
+testInvalidVersionNumber(net.mooctest.Until_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: Expected IllegalArgumentException
+	at net.mooctest.Until_Test.testInvalidVersionNumber(Until_Test.java:34)
+
+testUntilAnnotationValue(net.mooctest.Until_Test)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at net.mooctest.Until_Test.testUntilAnnotationValue(Until_Test.java:18)
+

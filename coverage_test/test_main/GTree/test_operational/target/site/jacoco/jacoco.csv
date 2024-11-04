@@ -1,0 +1,22 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+test_operational,net.mooctest,LevelBFIterator,0,144,0,20,0,41,0,17,0,7
+test_operational,net.mooctest,DFIterator,0,22,0,0,0,6,0,4,0,4
+test_operational,net.mooctest,PathTreeBuilder,19,147,4,14,5,29,3,8,0,2
+test_operational,net.mooctest,Forest.new Function() {...},0,14,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,Forest.new Function() {...},0,14,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,Forest.new Comparator() {...},0,17,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,Tree.new Function() {...},0,15,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,Tree.new Comparator() {...},0,17,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,TreeLike.new Function() {...},0,9,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,ChildrenLinkTreeBuilder,0,48,0,4,0,12,0,5,0,3
+test_operational,net.mooctest,TreeLike,0,64,0,8,0,14,0,9,0,5
+test_operational,net.mooctest,ChildrenLinkTreeBuilder.new Function() {...},0,11,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,ParentLinkTreeBuilder,13,59,1,3,0,12,1,4,0,3
+test_operational,net.mooctest,KeyTreeBuilder.BuildResult,0,23,0,0,0,7,0,4,0,4
+test_operational,net.mooctest,ParentLinkTreeBuilder.new KeyTreeBuilder.Funnel() {...},0,14,0,0,0,3,0,3,0,3
+test_operational,net.mooctest,TreeDFIterator,0,104,0,12,0,27,0,10,0,4
+test_operational,net.mooctest,BFIterator,0,45,0,2,0,11,0,5,0,4
+test_operational,net.mooctest,Tree,0,301,0,42,0,65,0,39,0,18
+test_operational,net.mooctest,Forest.new Function() {...},0,9,0,0,0,2,0,2,0,2
+test_operational,net.mooctest,Forest,0,148,0,10,0,28,0,18,0,13
+test_operational,net.mooctest,KeyTreeBuilder,13,116,1,11,0,26,1,8,0,3

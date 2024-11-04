@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: net.mooctest.AStar_sub_10_6_Test
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.AStar_sub_10_6_Test
-test_7070(net.mooctest.AStar_sub_10_6_Test)  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.NullPointerException
-	at net.mooctest.AStar_sub_10_6_Test.test_7070(AStar_sub_10_6_Test.java:225)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in net.mooctest.AStar_sub_10_6_Test

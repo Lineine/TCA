@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChildrenLinkTreeBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">ChildrenLinkTreeBuilder.java</span></div><h1>ChildrenLinkTreeBuilder.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
+/**
+ * Builds tree from another tree
+ *
+ */
+public class ChildrenLinkTreeBuilder&lt;T&gt; {
+
+    public static interface Funnel&lt;T&gt; {
+        public List&lt;T&gt; getChildren(T nodes);
+    }
+
+    private final Funnel&lt;T&gt; funnel;
+
+<span class="fc" id="L21">    public ChildrenLinkTreeBuilder(Funnel&lt;T&gt; funnel) {</span>
+<span class="fc" id="L22">        this.funnel = funnel;</span>
+<span class="fc" id="L23">    }</span>
+
+    /**
+     *
+     * @param root root
+     * @return built tree
+     * @throws IllegalStateException if found no one or more than one root
+     */
+    public Tree&lt;T&gt; build(T root) {
+<span class="fc" id="L32">        Tree&lt;T&gt; current = new Tree&lt;T&gt;(root);</span>
+<span class="fc" id="L33">        List&lt;T&gt; children = funnel.getChildren(root);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (children != null) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            for (T child : children) {</span>
+<span class="fc" id="L36">                Tree&lt;T&gt; childTree = build(child);</span>
+<span class="fc" id="L37">                current.addChild(childTree);</span>
+<span class="fc" id="L38">            }</span>
+        }
+<span class="fc" id="L40">        return current;</span>
+    }
+
+    /**
+     *
+     * @param roots roots of another tree
+     * @return list of roots
+     * @throws IllegalStateException if no roots found
+     */
+    public Forest&lt;T&gt; buildForest(Iterable &lt;? extends T&gt; roots) {
+<span class="fc" id="L50">        return new Forest&lt;T&gt;(Lists.newArrayList(Iterables.transform(roots, new Function&lt;T, Tree&lt;T&gt;&gt;() {</span>
+            @Override
+            public Tree&lt;T&gt; apply(T input) {
+<span class="fc" id="L53">                return build(input);</span>
+            }
+        })));
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

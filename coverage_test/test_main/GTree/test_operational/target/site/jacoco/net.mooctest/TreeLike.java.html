@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TreeLike.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test_operational</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">TreeLike.java</span></div><h1>TreeLike.java</h1><pre class="source lang-java linenums">package net.mooctest;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * Tree or forest
+ * Iterable
+ *
+ * Define some access operations
+ *
+ * Can't put {@link Tree#mapTrees(com.google.common.base.Function)} here due to java type system limitations
+ *
+ */
+
+<span class="fc" id="L23">public abstract class TreeLike&lt;T, R extends TreeLike&lt;T, R&gt;&gt; implements Serializable, Iterable&lt;T&gt; {</span>
+
+    private static final long serialVersionUID = 124356L;
+
+    // ::::: Access operations
+
+    public List&lt;T&gt; find(Predicate&lt;T&gt; predicate) {
+<span class="fc" id="L30">        List&lt;T&gt; builder = new ArrayList&lt;T&gt;();</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        for (T t : this) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if (predicate.apply(t)) builder.add(t);</span>
+<span class="fc" id="L33">        }</span>
+<span class="fc" id="L34">        return builder;</span>
+    }
+
+    public T findOne(Predicate&lt;T&gt; predicate) {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (T t : this) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (predicate.apply(t)) return t;</span>
+<span class="fc" id="L40">        }</span>
+<span class="fc" id="L41">        return null;</span>
+    }
+
+
+    public abstract Iterator&lt;Tree&lt;T&gt;&gt; treeIterator();
+
+    @Override
+    public Iterator&lt;T&gt; iterator() {
+<span class="fc" id="L49">        return Iterators.transform(treeIterator(), new Function&lt;Tree&lt;T&gt;, T&gt;() {</span>
+            @Override
+            public T apply(Tree&lt;T&gt; input) {
+<span class="fc" id="L52">                return input.getValue();</span>
+            }
+        });
+    }
+
+    // ::::: Modification operations
+
+    /**
+     * Sorts each node list
+     * @param comparator sorting comparator
+     */
+    public abstract void sort(final Comparator&lt;T&gt; comparator);
+
+    /**
+     * Does not modify source tree
+     * Children of filtered nodes will be dropped
+     */
+    public abstract R filter(Predicate&lt;T&gt; predicate);
+
+    public String toStringTree() {
+<span class="fc" id="L72">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L73">        appendToString(sb, 0);</span>
+<span class="fc" id="L74">        return sb.toString();</span>
+    }
+
+    protected abstract void appendToString(StringBuilder sb, int depth);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

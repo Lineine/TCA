@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.JsonStreamParser_Test
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in net.mooctest.JsonStreamParser_Test
+testHasNextWithEmptyString(net.mooctest.JsonStreamParser_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.JsonIOException: java.io.EOFException: End of input at line 1 column 1 path $
+	at net.mooctest.JsonStreamParser_Test.testHasNextWithEmptyString(JsonStreamParser_Test.java:90)
+Caused by: java.io.EOFException: End of input at line 1 column 1 path $
+	at net.mooctest.JsonStreamParser_Test.testHasNextWithEmptyString(JsonStreamParser_Test.java:90)
+
+testHasNextWithWhitespaceOnly(net.mooctest.JsonStreamParser_Test)  Time elapsed: 0 s  <<< ERROR!
+net.mooctest.JsonIOException: java.io.EOFException: End of input at line 1 column 4 path $
+	at net.mooctest.JsonStreamParser_Test.testHasNextWithWhitespaceOnly(JsonStreamParser_Test.java:96)
+Caused by: java.io.EOFException: End of input at line 1 column 4 path $
+	at net.mooctest.JsonStreamParser_Test.testHasNextWithWhitespaceOnly(JsonStreamParser_Test.java:96)
+

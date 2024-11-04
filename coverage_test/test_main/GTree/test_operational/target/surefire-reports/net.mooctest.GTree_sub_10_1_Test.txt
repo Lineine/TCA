@@ -1,0 +1,23 @@
+-------------------------------------------------------------------------------
+Test set: net.mooctest.GTree_sub_10_1_Test
+-------------------------------------------------------------------------------
+Tests run: 100, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0.043 s <<< FAILURE! - in net.mooctest.GTree_sub_10_1_Test
+test_96(net.mooctest.GTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException
+	at net.mooctest.GTree_sub_10_1_Test.test_96(GTree_sub_10_1_Test.java:1184)
+
+test_2492(net.mooctest.GTree_sub_10_1_Test)  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException
+	at net.mooctest.GTree_sub_10_1_Test.test_2492(GTree_sub_10_1_Test.java:866)
+
+test_3271(net.mooctest.GTree_sub_10_1_Test)  Time elapsed: 0.001 s  <<< ERROR!
+java.util.NoSuchElementException
+	at net.mooctest.GTree_sub_10_1_Test.test_3271(GTree_sub_10_1_Test.java:1445)
+
+test_796(net.mooctest.GTree_sub_10_1_Test)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: 
+expected:<[]
+> but was:<[]
+>
+	at net.mooctest.GTree_sub_10_1_Test.test_796(GTree_sub_10_1_Test.java:1528)
+

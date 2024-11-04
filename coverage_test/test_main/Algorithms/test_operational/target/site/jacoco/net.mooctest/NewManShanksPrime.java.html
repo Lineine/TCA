@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NewManShanksPrime.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Java</a> &gt; <a href="index.source.html" class="el_package">net.mooctest</a> &gt; <span class="el_source">NewManShanksPrime.java</span></div><h1>NewManShanksPrime.java</h1><pre class="source lang-java linenums">/**
+ * Author : Siddhant Swarup Mallick
+ * Github : https://github.com/siddhant2002
+ */
+
+/** Program description - To find the New Man Shanks Prime. */
+/** Wikipedia Link - https://en.wikipedia.org/wiki/Newman%E2%80%93Shanks%E2%80%93Williams_prime */
+
+package net.mooctest;
+
+public final class NewManShanksPrime {
+    private NewManShanksPrime() {
+    }
+
+    public static boolean nthManShanksPrime(int n, int expected_answer) {
+<span class="nc" id="L16">        int[] a = new int[n + 1];</span>
+        // array of n+1 size is initialized
+<span class="nc" id="L18">        a[0] = 1;</span>
+<span class="nc" id="L19">        a[1] = 1;</span>
+        // The 0th and 1st index position values are fixed. They are initialized as 1
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        for (int i = 2; i &lt;= n; i++) {</span>
+<span class="nc" id="L22">            a[i] = 2 * a[i - 1] + a[i - 2];</span>
+        }
+        // The loop is continued till n
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        return a[n] == expected_answer;</span>
+        // returns true if calculated answer matches with expected answer
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

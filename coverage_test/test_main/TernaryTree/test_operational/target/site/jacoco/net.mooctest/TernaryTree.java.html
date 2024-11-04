@@ -47,14 +47,14 @@ public class TernaryTree&lt;T&gt; implements TernaryTreeInterface&lt;T&gt;{
             }
         }
 <span class="fc bfc" id="L49" title="All 4 branches covered.">        if ((middleTree != null) &amp;&amp; !middleTree.isEmpty()) {</span>
-<span class="fc bfc" id="L50" title="All 4 branches covered.">            if (middleTree != leftTree &amp;&amp;middleTree!=rightTree) {</span>
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">            if (middleTree != leftTree &amp;&amp;middleTree!=rightTree) {</span>
 <span class="fc" id="L51">                root.setMiddleChild(middleTree.root);</span>
             } else {
 <span class="fc" id="L53">                root.setMiddleChild(middleTree.root.copy());</span>
             }
         }
 
-<span class="fc bfc" id="L57" title="All 4 branches covered.">        if ((leftTree != null) &amp;&amp; (leftTree != this)) {</span>
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">        if ((leftTree != null) &amp;&amp; (leftTree != this)) {</span>
 <span class="fc" id="L58">            leftTree.clear();</span>
         }
 <span class="fc bfc" id="L60" title="All 4 branches covered.">        if ((middleTree != null) &amp;&amp; (middleTree != this)) {</span>
